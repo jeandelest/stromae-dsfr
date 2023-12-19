@@ -8,6 +8,8 @@ export const { OidcProvider, prOidc } = createOidcProvider({
   publicUrl: import.meta.env.BASE_URL,
 });
 
+export { useOidc };
+
 // Convenience hook to get the parsed idToken
 // To call only when the user is logged in
 export function useUser() {

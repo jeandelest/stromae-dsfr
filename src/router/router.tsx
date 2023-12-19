@@ -2,37 +2,40 @@ import { createBrowserRouter } from "react-router-dom"
 import { Layout } from "./Layout";
 import { ProtectedPage } from "../pages/ProtectedPage";
 import { PublicPage } from "../pages/PublicPage";
-import { prOidc } from "oidc";
+import { useOidc } from "oidc";
 
-export const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      Component: Layout,
-      children: [
-        {
-          path: 'protected',
-          Component: ProtectedPage,
-          loader: protectedRouteLoader
-        },
-        {
-          index: true,
-          Component: PublicPage
-        },
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: Layout,
+    children: [
+      {
+        path: "protected",
+        element: <RequireAuth><ProtectedPage /></RequireAuth>,
+      },
+      {
+        index: true,
+        Component: PublicPage
+      },
 
-      ]
-    }]);
+    ]
+  }
+]);
 
-async function protectedRouteLoader() {
+function RequireAuth(params: { children: React.ReactNode; }) {
 
-  const oidc = await prOidc;
+  const { children } = params;
 
-  if (oidc.isUserLoggedIn) {
+  const { oidc } = useOidc();
+
+  if (!oidc.isUserLoggedIn) {
+    oidc.login({ doesCurrentHrefRequiresAuth: true });
     return null;
   }
 
-  await oidc.login({
-    doesCurrentHrefRequiresAuth: true
-  });
+  return children;
 
 }
+
+
+
