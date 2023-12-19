@@ -1,8 +1,8 @@
-import { createBrowserRouter } from "react-router-dom"
+import { createBrowserRouter, type LoaderFunctionArgs } from "react-router-dom"
 import { Layout } from "./Layout";
 import { ProtectedPage } from "../pages/ProtectedPage";
 import { PublicPage } from "../pages/PublicPage";
-import { useOidc } from "oidc";
+import { prOidc } from "oidc";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +11,8 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "protected",
-        element: <RequireAuth><ProtectedPage /></RequireAuth>,
+        Component: ProtectedPage,
+        loader: protectedRouteLoader
       },
       {
         index: true,
@@ -22,18 +23,23 @@ export const router = createBrowserRouter([
   }
 ]);
 
-function RequireAuth(params: { children: React.ReactNode; }) {
 
-  const { children } = params;
+async function protectedRouteLoader({ request }: LoaderFunctionArgs) {
 
-  const { oidc } = useOidc();
+  const oidc = await prOidc;
 
   if (!oidc.isUserLoggedIn) {
-    oidc.login({ doesCurrentHrefRequiresAuth: true });
-    return null;
+
+    // Replace the href without reloading the page.
+    history.pushState({}, "", request.url);
+
+    await oidc.login({ doesCurrentHrefRequiresAuth: true });
+
+    // Never here, the login method redirects the user to the identity provider.
   }
 
-  return children;
+  return null;
+
 
 }
 
