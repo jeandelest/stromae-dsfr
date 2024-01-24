@@ -1,6 +1,5 @@
 import { Layout } from './Layout'
-import { ProtectedPage } from '../pages/ProtectedPage'
-import { PublicPage } from '../pages/PublicPage'
+import { PublicPage } from 'pages/PublicPage'
 import { prOidc } from 'oidc'
 
 import { RootRoute, Route, Router } from '@tanstack/react-router'
@@ -12,14 +11,15 @@ const indexRoute = new Route({
   path: '/',
   component: PublicPage,
 })
-const protectedRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: 'protected',
-  component: ProtectedPage,
-  beforeLoad: protectedRouteLoader,
-})
 
-const routeTree = rootRoute.addChildren([indexRoute, protectedRoute])
+// const protectedRoute = new Route({
+//   getParentRoute: () => rootRoute,
+//   path: 'protected',
+//   component: ProtectedPage,
+//   beforeLoad: protectedRouteLoader,
+// })
+
+const routeTree = rootRoute.addChildren([indexRoute])
 
 export const router = new Router({ routeTree })
 
@@ -29,14 +29,14 @@ declare module '@tanstack/react-router' {
   }
 }
 
-async function protectedRouteLoader() {
-  const oidc = await prOidc
+// async function protectedRouteLoader() {
+//   const oidc = await prOidc
 
-  if (oidc.isUserLoggedIn) {
-    return null
-  }
+//   if (oidc.isUserLoggedIn) {
+//     return null
+//   }
 
-  await oidc.login({
-    doesCurrentHrefRequiresAuth: true,
-  })
-}
+//   await oidc.login({
+//     doesCurrentHrefRequiresAuth: true,
+//   })
+// }
