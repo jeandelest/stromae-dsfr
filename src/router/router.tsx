@@ -3,6 +3,7 @@ import { PublicPage } from 'pages/PublicPage'
 import { prOidc } from 'oidc'
 
 import { RootRoute, Route, Router } from '@tanstack/react-router'
+import { SecondPage } from 'pages/SecondPage'
 
 const rootRoute = new RootRoute({ component: Layout })
 
@@ -12,14 +13,14 @@ const indexRoute = new Route({
   component: PublicPage,
 })
 
-// const protectedRoute = new Route({
-//   getParentRoute: () => rootRoute,
-//   path: 'protected',
-//   component: ProtectedPage,
-//   beforeLoad: protectedRouteLoader,
-// })
+const protectedRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: 'protected',
+  component: SecondPage,
+  //beforeLoad: protectedRouteLoader,
+})
 
-const routeTree = rootRoute.addChildren([indexRoute])
+const routeTree = rootRoute.addChildren([indexRoute, protectedRoute])
 
 export const router = new Router({ routeTree })
 
