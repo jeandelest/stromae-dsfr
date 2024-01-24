@@ -34,7 +34,7 @@ export function Footer() {
         </>
       }
       websiteMapLinkProps={{
-        to: 'plan-du-site',
+        to: '/plan-du-site',
       }}
       accessibilityLinkProps={{
         to: '/accessibilite',

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { OidcProvider } from 'oidc'
-import { RouterProvider } from '@tanstack/react-router'
+import { type Route, RouterProvider } from '@tanstack/react-router'
 import { router } from 'router/router'
 import { startReactDsfr } from '@codegouvfr/react-dsfr/spa'
 import { Link } from '@tanstack/react-router'
@@ -11,10 +11,9 @@ startReactDsfr({
   Link,
 })
 
-//Only in TypeScript projects
 declare module '@codegouvfr/react-dsfr/spa' {
   interface RegisterLink {
-    Link: typeof Link
+    Link: (props: Parameters<typeof Link<Route>>[0]) => JSX.Element
   }
 }
 
