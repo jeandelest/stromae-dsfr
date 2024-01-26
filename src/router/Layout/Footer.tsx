@@ -23,14 +23,16 @@ export function Footer() {
             target="_blank"
           >
             licence MIT
-          </a>, en s’appuyant sur le système de design de l'Etat disponible sous{' '}
+          </a>
+          , en s’appuyant sur le système de design de l'Etat disponible sous{' '}
           <a
             href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
             title="licence etalab-2.0 - nouvelle fenêtre"
             target="_blank"
           >
             licence etalab-2.0
-          </a>.
+          </a>
+          .
         </>
       }
       websiteMapLinkProps={{
@@ -53,7 +55,10 @@ export function Footer() {
           text: 'Aide à la navigation ',
           linkProps: { to: '/aide-a-la-navigation' },
         },
-        <span className={fr.cx("fr-footer__bottom-link")}>Stromae : {import.meta.env.VITE_APP_VERSION} | Lunatic : {import.meta.env.VITE_LUNATIC_VERSION.replace('^', '')}</span>
+        <span className={fr.cx('fr-footer__bottom-link')}>
+          Stromae : {import.meta.env.VITE_APP_VERSION} | Lunatic :{' '}
+          {import.meta.env.VITE_LUNATIC_VERSION.replace('^', '')}
+        </span>,
       ]}
     />
   )

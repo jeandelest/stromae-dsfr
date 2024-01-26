@@ -31,8 +31,8 @@ export function Header() {
           text: 'Se déconnecter',
         },
       ]}
-      serviceTagline="baseline - précisions sur l'organisation"
-      serviceTitle="Nom du site / service"
+      serviceTagline="Application de collecte internet"
+      serviceTitle="Filière d'enquête"
       operatorLogo={{
         alt: 'Insee, mesurer pour comprendre',
         imgUrl: logoInsee,

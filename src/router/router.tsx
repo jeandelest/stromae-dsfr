@@ -1,9 +1,9 @@
-import { Layout } from './Layout'
+import { Layout } from './Layout/Layout'
 import { PublicPage } from 'pages/PublicPage'
-import { prOidc } from 'oidc'
 
 import { RootRoute, Route, Router } from '@tanstack/react-router'
-import { SecondPage } from 'pages/SecondPage'
+import { VisualizePage } from 'pages/Visualize/Visualize'
+import { z } from 'zod'
 
 const rootRoute = new RootRoute({ component: Layout })
 
@@ -13,14 +13,21 @@ const indexRoute = new Route({
   component: PublicPage,
 })
 
-const protectedRoute = new Route({
+export const visualizeRoute = new Route({
   getParentRoute: () => rootRoute,
-  path: 'protected',
-  component: SecondPage,
-  //beforeLoad: protectedRouteLoader,
+  path: 'visualize',
+  component: VisualizePage,
+  validateSearch: z.object({
+    source: z.string().optional(),
+    metadata: z.string().optional(),
+    data: z.string().optional(),
+    nomenclature: z.object({ name: z.string(), uri: z.string() }).optional()
+  }),
+  loaderDeps: ({ search }) => search,
+  loader: async ({ deps: { source, data, metadata, nomenclature } }) => ({ source, data, metadata, nomenclature }),
 })
 
-const routeTree = rootRoute.addChildren([indexRoute, protectedRoute])
+const routeTree = rootRoute.addChildren([indexRoute, visualizeRoute])
 
 export const router = new Router({ routeTree })
 
@@ -29,15 +36,3 @@ declare module '@tanstack/react-router' {
     router: typeof router
   }
 }
-
-// async function protectedRouteLoader() {
-//   const oidc = await prOidc
-
-//   if (oidc.isUserLoggedIn) {
-//     return null
-//   }
-
-//   await oidc.login({
-//     doesCurrentHrefRequiresAuth: true,
-//   })
-// }
