@@ -1,19 +1,28 @@
 import { Layout } from './Layout/Layout'
-import { PublicPage } from 'pages/PublicPage'
-
-import { RootRoute, Route, Router } from '@tanstack/react-router'
+import { createRootRoute, createRoute, createRouter, NotFoundRoute } from '@tanstack/react-router'
 import { VisualizePage } from 'pages/Visualize/Visualize'
 import { z } from 'zod'
 
-const rootRoute = new RootRoute({ component: Layout })
+import { ErrorPage } from 'pages/Error/ErrorPage'
+import { OrchestratorPage } from 'pages/OrchestratorPage'
 
-const indexRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: '/',
-  component: PublicPage,
+const rootRoute = createRootRoute({
+  component: Layout,
 })
 
-export const visualizeRoute = new Route({
+const indexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/',
+  component: () => <>Index Route</>
+})
+
+const notFoundRoute = new NotFoundRoute({
+  getParentRoute: () => rootRoute,
+  component: () => <ErrorPage code={404} />,
+})
+
+
+export const visualizeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'visualize',
   component: VisualizePage,
@@ -21,15 +30,20 @@ export const visualizeRoute = new Route({
     source: z.string().optional(),
     metadata: z.string().optional(),
     data: z.string().optional(),
-    nomenclature: z.object({ name: z.string(), uri: z.string() }).optional()
+    nomenclature: z.record(z.string()).optional()
   }),
   loaderDeps: ({ search }) => search,
   loader: async ({ deps: { source, data, metadata, nomenclature } }) => ({ source, data, metadata, nomenclature }),
 })
 
-const routeTree = rootRoute.addChildren([indexRoute, visualizeRoute])
+export const orchestratorRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  component: OrchestratorPage,
+  path: "/orchestrator"
+})
+const routeTree = rootRoute.addChildren([indexRoute, visualizeRoute, orchestratorRoute])
 
-export const router = new Router({ routeTree })
+export const router = createRouter({ routeTree, notFoundRoute })
 
 declare module '@tanstack/react-router' {
   interface Register {

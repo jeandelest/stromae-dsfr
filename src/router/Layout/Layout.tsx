@@ -1,7 +1,6 @@
 import { Outlet } from '@tanstack/react-router'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import { Container } from 'components/Container'
 
 export function Layout() {
   return (
@@ -9,9 +8,9 @@ export function Layout() {
       style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
     >
       <Header />
-      <Container>
+      <main id="contenu" role="main">
         <Outlet />
-      </Container>
+      </main>
       <Footer />
     </div>
   )
