@@ -1,15 +1,15 @@
 import { Orchestrator } from 'components/Orchestrator/Orchestrator';
 import { VisualizeForm } from './Form/VisualizeForm'
-import { visualizeRoute } from 'router/router'
+import { visualizeRoute } from './visualizeRoute';
 
 export function VisualizePage() {
-  const data = visualizeRoute.useLoaderData()
+  const loaderResults = visualizeRoute.useLoaderData()
 
-  console.log(data);
 
-  if (data.source)
-    return <Orchestrator source={data.source} data={data.data} />
-
+  if (loaderResults) {
+    const { source, data } = loaderResults
+    return <Orchestrator source={source} data={data} />
+  }
 
   return <VisualizeForm />
 }

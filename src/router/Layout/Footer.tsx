@@ -36,13 +36,16 @@ export function Footer() {
         </>
       }
       websiteMapLinkProps={{
-        to: '/plan-du-site',
+        to: '',
+        //to: '/plan-du-site',
       }}
       accessibilityLinkProps={{
-        to: '/accessibilite',
+        to: '',
+        //to: '/accessibilite',
       }}
       termsLinkProps={{
-        to: '/mentions-legales',
+        to: '',
+        //to: '/mentions-legales',
       }}
       operatorLogo={{
         alt: 'Insee, mesurer pour comprendre',
@@ -50,10 +53,18 @@ export function Footer() {
         orientation: 'vertical',
       }}
       bottomItems={[
-        { text: 'Sécurité', linkProps: { to: '/securite' } },
+        {
+          text: 'Sécurité', linkProps: {
+            to: ''
+            //to: '/securite'
+          }
+        },
         {
           text: 'Aide à la navigation ',
-          linkProps: { to: '/aide-a-la-navigation' },
+          linkProps: {
+            to: ''
+            //to: '/aide-a-la-navigation'
+          },
         },
         <span className={fr.cx('fr-footer__bottom-link')}>
           Stromae : {import.meta.env.VITE_APP_VERSION} | Lunatic :{' '}

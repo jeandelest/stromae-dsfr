@@ -6,6 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { useNavigate } from '@tanstack/react-router'
 import { encodeParams } from './encodeParams'
 import { Container } from 'components/Container'
+import { useEffect } from 'react'
 
 export type FormInputs = {
   source: string,
@@ -32,6 +33,13 @@ export function VisualizeForm() {
       search: encodeParams(data),
     })
   })
+
+  useEffect(() => {
+    // Reset the scroll on component unmount
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
 
   return (
