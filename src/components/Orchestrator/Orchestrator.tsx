@@ -20,7 +20,7 @@ export function Orchestrator(props: { source: LunaticSource, data?: LunaticData 
 
 
   return (
-    <div className={fr.cx('fr-container--fluid', "fr-mt-2w", "fr-mb-7w")}>
+    <div className={fr.cx('fr-container--fluid', "fr-mt-1w", "fr-mb-7w")}>
       <Provider>
         <div className={fr.cx("fr-col-12", "fr-container")}>
           <Navigation handleNextClick={goNextPage} handlePreviousClick={goPreviousPage} isFirstPage={isFirstPage} isLastPage={isLastPage} >
