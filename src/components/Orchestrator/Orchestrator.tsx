@@ -1,56 +1,79 @@
 import {
-  type LunaticData,
-  type LunaticSource,
   useLunatic,
   LunaticComponents,
+  type LunaticSource,
+  type LunaticData,
 } from '@inseefr/lunatic';
 import * as custom from '@inseefr/lunatic-dsfr';
 import { useStyles } from "tss-react/dsfr"
-
-import { data, source } from "./source"
 import Button from '@codegouvfr/react-dsfr/Button';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Grid } from 'components/Grid';
+import { useMemo, type PropsWithChildren } from 'react';
 
-export function Orchestrator() {
+export function Orchestrator(props: { source: LunaticSource, data?: LunaticData }) {
+  const { source, data } = props
   const { getComponents, Provider, goPreviousPage, goNextPage, isFirstPage, isLastPage } = useLunatic(source, data, {
-    initialPage: '1',
+    // @ts-expect-error need some work on lunatic-dsfr to remove this
     custom
   });
 
-  const { css } = useStyles()
+
   return (
     <div className={fr.cx('fr-container--fluid')}>
       <Provider>
-        <Button
-          id="button-precedent"
-          title="Revenir à l'étape précédente"
-          priority="tertiary no outline"
-          iconId="fr-icon-arrow-left-line"
-          onClick={goPreviousPage}
-          disabled={isFirstPage}
-          className={css({ visibility: isFirstPage ? "hidden" : "visible" })}
-        >
-          Précédent
-        </Button>
-        <Grid className={"fr-container"}>
-          <LunaticComponents components={getComponents()} wrapper={({ children, id }) => (
-            <div className={fr.cx('fr-mb-1w')}>{children}</div>
-          )} />
-          <Button
-            priority="primary"
-            //title={getButtonTitle(getComponents)}
-            nativeButtonProps={{
-              //'aria-disabled': waiting || saving,
-            }}
-            id="continue-button"
-            onClick={goNextPage}
-          >
-            Continuer
-          </Button>
-        </Grid>
-
+        <div className={fr.cx("fr-col-12", "fr-container")}>
+          <Navigation handleNextClick={goNextPage} handlePreviousClick={goPreviousPage} isFirstPage={isFirstPage} isLastPage={isLastPage} >
+            <LunaticComponents components={getComponents()} wrapper={({ children }) => (
+              <div className={fr.cx('fr-mb-1w')}>{children}</div>
+            )} />
+          </Navigation>
+        </div>
       </Provider>
     </div >
   );
+}
+
+function Navigation(props: PropsWithChildren<{ isFirstPage: boolean, isLastPage: boolean, handlePreviousClick: () => void, handleNextClick: () => void }>) {
+  const { isFirstPage, isLastPage, handleNextClick, handlePreviousClick, children } = props
+  const { css } = useStyles()
+
+  const nextLabel = useMemo(() => {
+    if (isFirstPage) {
+      return 'Commencer';
+    }
+    if (isLastPage) {
+      return 'Envoyer mes réponses';
+    }
+    return 'Continuer';
+
+  }, [isFirstPage, isLastPage]);
+
+
+  return (
+    <>
+      <Button
+        id="button-precedent"
+        title="Revenir à l'étape précédente"
+        priority="tertiary no outline"
+        iconId="fr-icon-arrow-left-line"
+        onClick={handlePreviousClick}
+        disabled={isFirstPage}
+        className={css({ visibility: isFirstPage ? "hidden" : "visible" })}
+      >
+        Précédent
+      </Button>
+      <Grid>
+        {children}
+        <Button
+          priority="primary"
+          title={"Passer à l'étape suivante"}
+          id="continue-button"
+          onClick={handleNextClick}
+        >
+          {nextLabel}
+        </Button>
+      </Grid>
+    </>
+  )
 }
