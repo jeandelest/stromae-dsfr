@@ -6,11 +6,10 @@ import type { FormInputs } from './VisualizeForm'
 
 export function SelectNomenclatures() {
   const { register, control } = useFormContext<FormInputs>()
-  const { fields, append, remove } =
-    useFieldArray({
-      control,
-      name: 'nomenclature',
-    })
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'nomenclature',
+  })
 
   const addNomenclature = () => {
     append({ name: '', uri: '' })
@@ -23,10 +22,7 @@ export function SelectNomenclatures() {
         Ajouter de nouveaux référentiels du suggestion. Pour être utiliser, ils
         devront aussi figurer dans la section suggesters du fichier source.
       </p>
-      <Button
-        priority="secondary"
-        onClick={addNomenclature}
-      >
+      <Button priority="secondary" onClick={addNomenclature}>
         Ajouter un nouveau référentiel
       </Button>
       <ul style={{ listStyle: 'none' }}>
@@ -36,7 +32,7 @@ export function SelectNomenclatures() {
               <Input
                 {...register(`nomenclature.${index}.name`)}
                 label="Nom"
-                className={fr.cx("fr-mr-4v")}
+                className={fr.cx('fr-mr-4v')}
                 nativeInputProps={{ ...register(`nomenclature.${index}.name`) }}
               />
               <Input

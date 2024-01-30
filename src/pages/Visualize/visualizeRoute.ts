@@ -49,8 +49,9 @@ const visualizeQueryOptions = (params: {
   return queryOptions({
     queryKey: [sourceUrl, dataUrl, metadataUrl, nomenclature],
     queryFn: async () => {
-       const sourcePromise = axiosGet<LunaticSource>(sourceUrl)
-      const dataPromise = dataUrl === '' ? undefined : axiosGet<LunaticData>(dataUrl)
+      const sourcePromise = axiosGet<LunaticSource>(sourceUrl)
+      const dataPromise =
+        dataUrl === '' ? undefined : axiosGet<LunaticData>(dataUrl)
       //TODO TYPE THIS
       const metadataPromise =
         metadataUrl === '' ? undefined : axiosGet<unknown>(metadataUrl)

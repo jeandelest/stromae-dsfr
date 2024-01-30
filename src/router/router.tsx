@@ -1,6 +1,10 @@
 import type { QueryClient } from '@tanstack/react-query'
 import { Layout } from './Layout/Layout'
-import { createRootRouteWithContext, createRoute, NotFoundRoute } from '@tanstack/react-router'
+import {
+  createRootRouteWithContext,
+  createRoute,
+  NotFoundRoute,
+} from '@tanstack/react-router'
 import { ErrorPage } from 'pages/Error/ErrorPage'
 import { visualizeRoute } from 'pages/Visualize/visualizeRoute'
 
@@ -14,10 +18,8 @@ export const rootRoute = createRootRouteWithContext<{
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: () => <>Index Route</>
+  component: () => <>Index Route</>,
 })
-
-
 
 export const notFoundRoute = new NotFoundRoute({
   getParentRoute: () => rootRoute,

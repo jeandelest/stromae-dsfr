@@ -54,15 +54,16 @@ export function Footer() {
       }}
       bottomItems={[
         {
-          text: 'Sécurité', linkProps: {
-            to: ''
+          text: 'Sécurité',
+          linkProps: {
+            to: '',
             //to: '/securite'
-          }
+          },
         },
         {
           text: 'Aide à la navigation ',
           linkProps: {
-            to: ''
+            to: '',
             //to: '/aide-a-la-navigation'
           },
         },

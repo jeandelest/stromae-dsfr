@@ -1,7 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { OidcProvider } from 'oidc'
-import { RouterProvider, createRouter, type RegisteredRouter } from '@tanstack/react-router'
+import {
+  RouterProvider,
+  createRouter,
+  type RegisteredRouter,
+} from '@tanstack/react-router'
 import { routeTree, notFoundRoute } from 'router/router'
 import { startReactDsfr } from '@codegouvfr/react-dsfr/spa'
 import { Link } from '@tanstack/react-router'
@@ -23,9 +27,11 @@ declare module '@codegouvfr/react-dsfr/spa' {
 export const queryClient = new QueryClient()
 
 const router = createRouter({
-  routeTree, notFoundRoute, context: {
+  routeTree,
+  notFoundRoute,
+  context: {
     queryClient,
-  }
+  },
 })
 
 declare module '@tanstack/react-router' {
