@@ -6,7 +6,7 @@ import {
   createRouter,
   type RegisteredRouter,
 } from '@tanstack/react-router'
-import { routeTree, notFoundRoute } from 'router/router'
+import { routeTree } from 'router/router'
 import { startReactDsfr } from '@codegouvfr/react-dsfr/spa'
 import { Link } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -28,7 +28,6 @@ export const queryClient = new QueryClient()
 
 const router = createRouter({
   routeTree,
-  notFoundRoute,
   context: {
     queryClient,
   },

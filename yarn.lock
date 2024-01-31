@@ -851,10 +851,10 @@
   dependencies:
     "@tanstack/query-core" "5.18.0"
 
-"@tanstack/react-router@^1.15.3":
-  version "1.15.3"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.15.3.tgz#95028314e09485ba93ca978fb3f086c1d007bdd5"
-  integrity sha512-WLalKKoj6Y0PrsbfzRRKfScflbCmP7rrmh2+68F3lGfCOgRY1eFf6KQek/J1eR82JRUEM4C+T0m1x7bwwe4zFQ==
+"@tanstack/react-router@^1.15.7":
+  version "1.15.7"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.15.7.tgz#bcef0e311012135d1429d3b5271fd397c7189aa4"
+  integrity sha512-4b5ia1HG1iQhdRQ67NDjzDkA0tLm2aeoE07DqIXSWTY8xrrNBgYUjfCKKNy2l/qIE5/gFmsoaqab3ZJxohOFmQ==
   dependencies:
     "@tanstack/history" "1.12.16"
     "@tanstack/react-store" "^0.2.1"

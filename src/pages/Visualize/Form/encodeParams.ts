@@ -21,11 +21,14 @@ export const decodeParams = (params: {
   const { source, data, metadata, nomenclature } = params
 
   const decodedNomenclature = nomenclature
-    ? Object.entries(nomenclature).map(([name, uri]) => ({
-        name,
-        uri: decodeURIComponent(uri),
-      }))
-    : []
+    ? Object.entries(nomenclature).reduce<Record<string, string>>(
+        (acc, [name, uri]) => ({
+          ...acc,
+          [name]: decodeURIComponent(uri),
+        }),
+        {}
+      )
+    : {}
 
   return {
     sourceUrl: source ? decodeURIComponent(source) : undefined,

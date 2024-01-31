@@ -22,7 +22,7 @@ export function SelectNomenclatures() {
         Ajouter de nouveaux référentiels du suggestion. Pour être utiliser, ils
         devront aussi figurer dans la section suggesters du fichier source.
       </p>
-      <Button priority="secondary" onClick={addNomenclature}>
+      <Button type="button" priority="secondary" onClick={addNomenclature}>
         Ajouter un nouveau référentiel
       </Button>
       <ul style={{ listStyle: 'none' }}>
@@ -33,15 +33,10 @@ export function SelectNomenclatures() {
                 {...register(`nomenclature.${index}.name`)}
                 label="Nom"
                 className={fr.cx('fr-mr-4v')}
-                nativeInputProps={{ ...register(`nomenclature.${index}.name`) }}
               />
-              <Input
-                label="Uri"
-                nativeInputProps={{
-                  ...register(`nomenclature.${index}.uri`),
-                }}
-              />
+              <Input {...register(`nomenclature.${index}.uri`)} label="Uri" />
               <Button
+                type="button"
                 iconId={'fr-icon-close-line'}
                 onClick={() => remove(index)}
                 title="Supprimer"

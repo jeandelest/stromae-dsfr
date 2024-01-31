@@ -1,15 +1,16 @@
-import { Outlet } from '@tanstack/react-router'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import type { PropsWithChildren } from 'react'
 
-export function Layout() {
+export function Layout(props: PropsWithChildren) {
+  const { children } = props
   return (
     <div
       style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
     >
       <Header />
       <main id="contenu" role="main">
-        <Outlet />
+        {children}
       </main>
       <Footer />
     </div>

@@ -12,12 +12,15 @@ import { fr } from '@codegouvfr/react-dsfr'
 import { Grid } from 'components/Grid'
 import { useMemo, type PropsWithChildren } from 'react'
 import { downloadAsJson } from 'utils/downloadAsJson'
+import { useNavigate } from '@tanstack/react-router'
+import { Welcome } from './CustomPages/Welcome'
 
 export function Orchestrator(props: {
   source: LunaticSource
   data?: LunaticData | null
+  getReferentiel?: (name: string) => Promise<Array<unknown>>
 }) {
-  const { source, data } = props
+  const { source, data, getReferentiel } = props
   const {
     getComponents,
     Provider,
@@ -29,21 +32,32 @@ export function Orchestrator(props: {
   } = useLunatic(source, data ?? undefined, {
     // @ts-expect-error need some work on lunatic-dsfr to remove this
     custom,
-    activeControls: true
-
+    activeControls: true,
+    getReferentiel,
   })
+
+  const navigate = useNavigate()
+
+  const handleNextClick = () => {
+    if (isLastPage) {
+      downloadAsJson({ data: getData(true) })
+      navigate({ to: '/visualize' })
+    }
+    goNextPage()
+  }
 
   return (
     <div className={fr.cx('fr-container--fluid', 'fr-mt-1w', 'fr-mb-7w')}>
       <Provider>
         <div className={fr.cx('fr-col-12', 'fr-container')}>
           <Navigation
-            handleNextClick={goNextPage}
+            handleNextClick={handleNextClick}
             handlePreviousClick={goPreviousPage}
             getData={() => getData(true)}
             isFirstPage={isFirstPage}
             isLastPage={isLastPage}
           >
+            {false ?? <Welcome />}
             <LunaticComponents
               components={getComponents()}
               wrapper={({ children }) => (
@@ -52,8 +66,8 @@ export function Orchestrator(props: {
             />
           </Navigation>
         </div>
-      </Provider >
-    </div >
+      </Provider>
+    </div>
   )
 }
 
@@ -64,7 +78,6 @@ function Navigation(
     handlePreviousClick: () => void
     handleNextClick: () => void
     getData: () => LunaticData
-
   }>
 ) {
   const {
@@ -112,19 +125,18 @@ function Navigation(
         </Button>
       </Grid>
       <ButtonsGroup
-        buttons={[{
-          children: "Télécharger les données",
-          priority: "tertiary no outline",
-          id: "button-saveData",
-          iconId: "ri-download-2-line",
-          onClick: () => downloadAsJson({ data: getData() })
-        }]
-        }
-        alignment='right'
+        buttons={[
+          {
+            children: 'Télécharger les données',
+            priority: 'tertiary no outline',
+            id: 'button-saveData',
+            iconId: 'ri-download-2-line',
+            onClick: () => downloadAsJson({ data: getData() }),
+          },
+        ]}
+        alignment="right"
         buttonsEquisized={true}
       />
-
-
     </>
   )
 }
