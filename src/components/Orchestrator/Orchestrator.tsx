@@ -7,13 +7,15 @@ import {
 import * as custom from '@inseefr/lunatic-dsfr'
 import { useStyles } from 'tss-react/dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
+import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup'
 import { fr } from '@codegouvfr/react-dsfr'
 import { Grid } from 'components/Grid'
 import { useMemo, type PropsWithChildren } from 'react'
+import { downloadAsJson } from 'utils/downloadAsJson'
 
 export function Orchestrator(props: {
   source: LunaticSource
-  data?: LunaticData
+  data?: LunaticData | null
 }) {
   const { source, data } = props
   const {
@@ -21,11 +23,14 @@ export function Orchestrator(props: {
     Provider,
     goPreviousPage,
     goNextPage,
+    getData,
     isFirstPage,
     isLastPage,
-  } = useLunatic(source, data, {
+  } = useLunatic(source, data ?? undefined, {
     // @ts-expect-error need some work on lunatic-dsfr to remove this
     custom,
+    activeControls: true
+
   })
 
   return (
@@ -35,6 +40,7 @@ export function Orchestrator(props: {
           <Navigation
             handleNextClick={goNextPage}
             handlePreviousClick={goPreviousPage}
+            getData={() => getData(true)}
             isFirstPage={isFirstPage}
             isLastPage={isLastPage}
           >
@@ -46,8 +52,8 @@ export function Orchestrator(props: {
             />
           </Navigation>
         </div>
-      </Provider>
-    </div>
+      </Provider >
+    </div >
   )
 }
 
@@ -57,6 +63,8 @@ function Navigation(
     isLastPage: boolean
     handlePreviousClick: () => void
     handleNextClick: () => void
+    getData: () => LunaticData
+
   }>
 ) {
   const {
@@ -64,6 +72,7 @@ function Navigation(
     isLastPage,
     handleNextClick,
     handlePreviousClick,
+    getData,
     children,
   } = props
   const { css } = useStyles()
@@ -102,6 +111,20 @@ function Navigation(
           {nextLabel}
         </Button>
       </Grid>
+      <ButtonsGroup
+        buttons={[{
+          children: "Télécharger les données",
+          priority: "tertiary no outline",
+          id: "button-saveData",
+          iconId: "ri-download-2-line",
+          onClick: () => downloadAsJson({ data: getData() })
+        }]
+        }
+        alignment='right'
+        buttonsEquisized={true}
+      />
+
+
     </>
   )
 }

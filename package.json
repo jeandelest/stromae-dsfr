@@ -13,7 +13,7 @@
     "format:check": "npm run _format -- --list-different",
     "postinstall": "copy-dsfr-to-public",
     "predev": "only-include-used-icons",
-    "prebuild": "only-include-used-icons"
+    "prebuild": "only-include-used-icons && npx @inseefr/lunatic workers"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.2.1",
@@ -32,7 +32,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/node": "^20.11.10",
+    "@types/node": "^20.11.13",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^6.20.0",

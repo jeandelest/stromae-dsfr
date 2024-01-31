@@ -17,7 +17,7 @@ export const decodeParams = (params: {
   source?: string
   metadata?: string
   data?: string
-}): FormInputs => {
+}) => {
   const { source, data, metadata, nomenclature } = params
 
   const decodedNomenclature = nomenclature
@@ -28,9 +28,9 @@ export const decodeParams = (params: {
     : []
 
   return {
-    source: source ? decodeURIComponent(source) : '',
-    metadata: metadata ? decodeURIComponent(metadata) : '',
-    data: data ? decodeURIComponent(data) : '',
+    sourceUrl: source ? decodeURIComponent(source) : undefined,
+    metadataUrl: metadata ? decodeURIComponent(metadata) : undefined,
+    dataUrl: data ? decodeURIComponent(data) : undefined,
     nomenclature: decodedNomenclature,
   }
 }

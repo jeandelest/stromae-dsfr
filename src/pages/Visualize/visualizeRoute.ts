@@ -18,51 +18,39 @@ export const visualizeRoute = createRoute({
     nomenclature: z.record(z.string()).optional(),
   }),
   loaderDeps: ({ search }) => decodeParams(search),
-  loader: ({
+  loader: async ({
     context: { queryClient },
-    deps: { source, data, metadata, nomenclature },
+    deps: { sourceUrl, dataUrl, metadataUrl, nomenclature },
   }) => {
-    if (!source) {
+    if (!sourceUrl) {
       return
     }
 
-    return queryClient.ensureQueryData(
-      visualizeQueryOptions({
-        sourceUrl: source,
-        dataUrl: data,
-        metadataUrl: metadata,
-        nomenclature,
-      })
-    )
+    const sourceQueryOption = queryOptions({
+      queryKey: [sourceUrl],
+      queryFn: () => axiosGet<LunaticSource>(sourceUrl),
+    })
+
+    const dataQueryOption = queryOptions({
+      queryKey: [dataUrl],
+      queryFn: () => (dataUrl ? axiosGet<LunaticData>(dataUrl) : null),
+    })
+
+    //TODO Type metadata
+    const metadataQueryOption = queryOptions({
+      queryKey: [metadataUrl],
+      queryFn: () => (metadataUrl ? axiosGet<unknown>(metadataUrl) : null),
+    })
+
+    const sourcePr = queryClient.ensureQueryData(sourceQueryOption)
+    const dataPr = queryClient.ensureQueryData(dataQueryOption)
+    const metadataPr = queryClient.ensureQueryData(metadataQueryOption)
+
+    const [source, data, metadata] = await Promise.all([
+      sourcePr,
+      dataPr,
+      metadataPr,
+    ])
+    return { source, data, metadata, nomenclature }
   },
 })
-const visualizeQueryOptions = (params: {
-  sourceUrl: string
-  dataUrl: string
-  metadataUrl: string
-  nomenclature: {
-    name: string
-    uri: string
-  }[]
-}) => {
-  const { sourceUrl, dataUrl, metadataUrl, nomenclature } = params
-  return queryOptions({
-    queryKey: [sourceUrl, dataUrl, metadataUrl, nomenclature],
-    queryFn: async () => {
-      const sourcePromise = axiosGet<LunaticSource>(sourceUrl)
-      const dataPromise =
-        dataUrl === '' ? undefined : axiosGet<LunaticData>(dataUrl)
-      //TODO TYPE THIS
-      const metadataPromise =
-        metadataUrl === '' ? undefined : axiosGet<unknown>(metadataUrl)
-
-      const [source, data, metadata] = await Promise.all([
-        sourcePromise,
-        dataPromise,
-        metadataPromise,
-      ])
-
-      return { source, data, metadata, nomenclature }
-    },
-  })
-}
