@@ -8,7 +8,13 @@ export function Header() {
 
   return (
     <DsfrHeader
-      brandTop="République Française"
+      brandTop={
+        <>
+          République
+          <br />
+          Française
+        </>
+      }
       homeLinkProps={{
         to: '/',
         title:

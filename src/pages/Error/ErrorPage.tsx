@@ -2,6 +2,7 @@ import { fr } from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
 import TechnicalError from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg'
 import { Container } from 'components/Container'
+import { useDocumentTitle } from 'hooks/useDocumentTitle'
 
 const getErrorInformations = (code: 301 | 404 | undefined) => {
   switch (code) {
@@ -21,6 +22,8 @@ export function ErrorPage(props: { code: 301 | 404 | undefined }) {
   const { code } = props
 
   const { title, subtitle, paragraph } = getErrorInformations(code)
+
+  useDocumentTitle(title)
 
   return (
     <Container>

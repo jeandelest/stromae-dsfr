@@ -22,6 +22,7 @@ export const visualizeRoute = createRoute({
     context: { queryClient },
     deps: { sourceUrl, dataUrl, metadataUrl, nomenclature },
   }) => {
+    document.title = 'Visualisation'
     if (!sourceUrl) {
       return
     }

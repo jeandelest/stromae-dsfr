@@ -16,24 +16,24 @@
     "prebuild": "only-include-used-icons && npx @inseefr/lunatic workers"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^1.2.1",
+    "@codegouvfr/react-dsfr": "^1.2.2",
     "@emotion/react": "^11.11.3",
-    "@inseefr/lunatic": "^2.7.14",
+    "@inseefr/lunatic": "^2.7.15",
     "@inseefr/lunatic-dsfr": "^1.0.21",
-    "@tanstack/react-query": "^5.18.0",
-    "@tanstack/react-router": "^1.15.7",
+    "@tanstack/react-query": "^5.18.1",
+    "@tanstack/react-router": "^1.15.17",
     "axios": "^1.6.7",
     "oidc-spa": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.49.3",
-    "tss-react": "^4.9.3",
+    "react-hook-form": "^7.50.0",
+    "tss-react": "^4.9.4",
     "vite-tsconfig-paths": "^4.3.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/node": "^20.11.13",
-    "@types/react": "^18.2.48",
+    "@types/node": "^20.11.16",
+    "@types/react": "^18.2.53",
     "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "@typescript-eslint/parser": "^6.20.0",
@@ -41,7 +41,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3",
     "vite": "^5.0.12"
   }

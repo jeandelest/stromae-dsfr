@@ -1,12 +1,13 @@
 import type { QueryClient } from '@tanstack/react-query'
 import { Layout } from './Layout'
-import {
-  createRootRouteWithContext,
-  createRoute,
-  Outlet,
-} from '@tanstack/react-router'
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
 import { ErrorPage } from 'pages/Error/ErrorPage'
-import { visualizeRoute } from 'pages/Visualize/visualizeRoute'
+import { visualizeRoute } from 'pages/Visualize/route'
+import { accessibilityRoute } from 'pages/Accessibility/route'
+import { securityRoute } from 'pages/Security/route'
+import { siteMapRoute } from 'pages/SiteMap/route'
+import { legalsRoute } from 'pages/Legals/route'
+import { navigationAssistanceRoute } from 'pages/NavigationAssistance/route'
 
 export const rootRoute = createRootRouteWithContext<{
   queryClient: QueryClient
@@ -23,11 +24,11 @@ export const rootRoute = createRootRouteWithContext<{
   ),
 })
 
-// test route, need to be removed
-const indexRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/',
-  component: () => <>Index Route</>,
-})
-
-export const routeTree = rootRoute.addChildren([indexRoute, visualizeRoute])
+export const routeTree = rootRoute.addChildren([
+  visualizeRoute,
+  accessibilityRoute,
+  securityRoute,
+  siteMapRoute,
+  legalsRoute,
+  navigationAssistanceRoute
+])

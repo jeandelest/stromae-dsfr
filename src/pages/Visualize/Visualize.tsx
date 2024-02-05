@@ -1,6 +1,6 @@
 import { Orchestrator } from 'components/Orchestrator/Orchestrator'
 import { VisualizeForm } from './Form/VisualizeForm'
-import { visualizeRoute } from './visualizeRoute'
+import { visualizeRoute } from './route'
 import { axiosGet } from 'utils/axios'
 
 export function VisualizePage() {

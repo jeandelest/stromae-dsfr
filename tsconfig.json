@@ -22,8 +22,8 @@
 
     "verbatimModuleSyntax": true,
 
-    "baseUrl": "./src",
+    "baseUrl": "./src"
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

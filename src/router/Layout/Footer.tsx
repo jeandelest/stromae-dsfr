@@ -36,16 +36,13 @@ export function Footer() {
         </>
       }
       websiteMapLinkProps={{
-        to: '',
-        //to: '/plan-du-site',
+        to: '/plan-du-site',
       }}
       accessibilityLinkProps={{
-        to: '',
-        //to: '/accessibilite',
+        to: '/accessibilite',
       }}
       termsLinkProps={{
-        to: '',
-        //to: '/mentions-legales',
+        to: '/mentions-legales',
       }}
       operatorLogo={{
         alt: 'Insee, mesurer pour comprendre',
@@ -56,15 +53,13 @@ export function Footer() {
         {
           text: 'Sécurité',
           linkProps: {
-            to: '',
-            //to: '/securite'
+            to: '/securite',
           },
         },
         {
-          text: 'Aide à la navigation ',
+          text: 'Aide à la navigation',
           linkProps: {
-            to: '',
-            //to: '/aide-a-la-navigation'
+            to: '/aide-a-la-navigation',
           },
         },
         <span className={fr.cx('fr-footer__bottom-link')}>
