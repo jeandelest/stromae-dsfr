@@ -30,5 +30,5 @@ export const routeTree = rootRoute.addChildren([
   securityRoute,
   siteMapRoute,
   legalsRoute,
-  navigationAssistanceRoute
+  navigationAssistanceRoute,
 ])

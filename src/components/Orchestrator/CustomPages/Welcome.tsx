@@ -6,7 +6,7 @@ export function Welcome() {
   //const { metadata, personalization } = props
 
   return (
-    <>
+    <div className={fr.cx('fr-mb-1w')}>
       <h1>
         Bienvenue sur le questionnaire de réponse à l'Enquête statistique sur
         les technologies de l’information et de la communication 2021.
@@ -44,6 +44,6 @@ export function Welcome() {
           l'Insee.
         </Accordion>
       </div>
-    </>
+    </div>
   )
 }

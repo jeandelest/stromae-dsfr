@@ -1,5 +1,8 @@
-export const downloadAsJson = (params: { data: object; filename?: string }) => {
-  const { data, filename = 'data.json' } = params
+export function downloadAsJson<T extends object>(params: {
+  dataToDownload: T
+  filename?: string
+}) {
+  const { dataToDownload: data, filename = 'data.json' } = params
   if (!data) {
     console.error('No data to download.')
     return

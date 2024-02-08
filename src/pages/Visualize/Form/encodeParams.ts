@@ -28,12 +28,12 @@ export const decodeParams = (params: {
         }),
         {}
       )
-    : {}
+    : undefined
 
   return {
     sourceUrl: source ? decodeURIComponent(source) : undefined,
     metadataUrl: metadata ? decodeURIComponent(metadata) : undefined,
-    dataUrl: data ? decodeURIComponent(data) : undefined,
+    surveyUnitDataUrl: data ? decodeURIComponent(data) : undefined,
     nomenclature: decodedNomenclature,
   }
 }

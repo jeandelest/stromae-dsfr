@@ -2,10 +2,11 @@ import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from 'router/router'
 import { VisualizePage } from './Visualize'
 import { z } from 'zod'
-import { type LunaticData, type LunaticSource } from '@inseefr/lunatic'
+import { type LunaticSource } from '@inseefr/lunatic'
 import { queryOptions } from '@tanstack/react-query'
 import { axiosGet } from 'utils/axios'
 import { decodeParams } from './Form/encodeParams'
+import type { SurveyUnitData } from 'components/Orchestrator/type'
 
 export const visualizeRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -20,7 +21,7 @@ export const visualizeRoute = createRoute({
   loaderDeps: ({ search }) => decodeParams(search),
   loader: async ({
     context: { queryClient },
-    deps: { sourceUrl, dataUrl, metadataUrl, nomenclature },
+    deps: { sourceUrl, surveyUnitDataUrl, metadataUrl, nomenclature },
   }) => {
     document.title = 'Visualisation'
     if (!sourceUrl) {
@@ -32,26 +33,31 @@ export const visualizeRoute = createRoute({
       queryFn: () => axiosGet<LunaticSource>(sourceUrl),
     })
 
-    const dataQueryOption = queryOptions({
-      queryKey: [dataUrl],
-      queryFn: () => (dataUrl ? axiosGet<LunaticData>(dataUrl) : null),
+    const surveyUnitDataQueryOption = queryOptions({
+      queryKey: [surveyUnitDataUrl],
+      queryFn: () =>
+        surveyUnitDataUrl
+          ? axiosGet<SurveyUnitData>(surveyUnitDataUrl)
+          : undefined,
     })
 
     //TODO Type metadata
     const metadataQueryOption = queryOptions({
       queryKey: [metadataUrl],
-      queryFn: () => (metadataUrl ? axiosGet<unknown>(metadataUrl) : null),
+      queryFn: () => (metadataUrl ? axiosGet<unknown>(metadataUrl) : undefined),
     })
 
     const sourcePr = queryClient.ensureQueryData(sourceQueryOption)
-    const dataPr = queryClient.ensureQueryData(dataQueryOption)
+    const surveyUnitDataPr = queryClient.ensureQueryData(
+      surveyUnitDataQueryOption
+    )
     const metadataPr = queryClient.ensureQueryData(metadataQueryOption)
 
-    const [source, data, metadata] = await Promise.all([
+    const [source, surveyUnitData, metadata] = await Promise.all([
       sourcePr,
-      dataPr,
+      surveyUnitDataPr,
       metadataPr,
     ])
-    return { source, data, metadata, nomenclature }
+    return { source, surveyUnitData, metadata, nomenclature }
   },
 })

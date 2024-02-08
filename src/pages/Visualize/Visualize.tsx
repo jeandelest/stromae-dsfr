@@ -7,15 +7,18 @@ export function VisualizePage() {
   const loaderResults = visualizeRoute.useLoaderData()
 
   if (loaderResults) {
-    const { source, data, nomenclature } = loaderResults
+    const { source, surveyUnitData, nomenclature } = loaderResults
+
     const getReferentiel = (name: string) => {
-      return axiosGet<Array<unknown>>(nomenclature[name])
+      return nomenclature
+        ? axiosGet<Array<unknown>>(nomenclature[name])
+        : Promise.reject(new Error('No nomenclature provided'))
     }
 
     return (
       <Orchestrator
         source={source}
-        data={data}
+        surveyUnitData={surveyUnitData}
         getReferentiel={getReferentiel}
       />
     )

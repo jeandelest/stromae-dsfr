@@ -2,141 +2,124 @@ import {
   useLunatic,
   LunaticComponents,
   type LunaticSource,
-  type LunaticData,
 } from '@inseefr/lunatic'
 import * as custom from '@inseefr/lunatic-dsfr'
-import { useStyles } from 'tss-react/dsfr'
-import Button from '@codegouvfr/react-dsfr/Button'
-import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup'
 import { fr } from '@codegouvfr/react-dsfr'
-import { Grid } from 'components/Grid'
-import { useMemo, type PropsWithChildren } from 'react'
 import { downloadAsJson } from 'utils/downloadAsJson'
 import { useNavigate } from '@tanstack/react-router'
 import { Welcome } from './CustomPages/Welcome'
+import { Navigation } from './Navigation'
+import type { StateData, SurveyUnitData } from './type'
+import { useEffect } from 'react'
+import { Validation } from './CustomPages/Validation'
+import { useStromaeNavigation } from './useStromaeNavigation'
+import { EndPage } from './CustomPages/EndPage'
+import { ValidationModal, openValidationModal } from './CustomPages/ValidationModal'
+
+
+
 
 export function Orchestrator(props: {
   source: LunaticSource
-  data?: LunaticData | null
+  surveyUnitData?: SurveyUnitData
   getReferentiel?: (name: string) => Promise<Array<unknown>>
 }) {
-  const { source, data, getReferentiel } = props
+  const { source, surveyUnitData, getReferentiel } = props
+  const navigate = useNavigate()
+
+  const initialCurrentPage = surveyUnitData?.stateData?.currentPage
+
   const {
     getComponents,
     Provider,
-    goPreviousPage,
-    goNextPage,
+    goPreviousPage: goPrevLunatic,
+    goNextPage: goNextLunatic,
     getData,
     isFirstPage,
     isLastPage,
-  } = useLunatic(source, data ?? undefined, {
+    pageTag,
+  } = useLunatic(source, surveyUnitData?.data, {
     // @ts-expect-error need some work on lunatic-dsfr to remove this
     custom,
     activeControls: true,
     getReferentiel,
+    initialPage: initialCurrentPage,
   })
 
-  const navigate = useNavigate()
+  const { currentPage, goNext, goPrevious } = useStromaeNavigation({
+    goNextLunatic,
+    goPrevLunatic,
+    isFirstPage,
+    isLastPage,
+    initialCurrentPage,
+  })
 
-  const handleNextClick = () => {
-    if (isLastPage) {
-      downloadAsJson({ data: getData(true) })
-      navigate({ to: '/visualize' })
+  useEffect(() => {
+    if (currentPage === "validationModal") {
+      openValidationModal()
     }
-    goNextPage()
+  }, [currentPage]);
+
+  const getStateData = (): StateData => {
+    switch (currentPage) {
+      case 'endPage':
+        return { date: Date.now(), currentPage, state: 'VALIDATED' }
+      case 'lunaticPage':
+        return { date: Date.now(), currentPage: pageTag, state: 'INIT' }
+      case 'downloadPage':
+        //downloadPage is not really a page, this is only use internally to manage state
+        return { date: Date.now(), currentPage: 'endPage', state: 'VALIDATED' }
+      case 'validationPage':
+      case 'welcomePage':
+      default:
+        return { date: Date.now(), currentPage, state: 'INIT' }
+    }
   }
+
+  function handleDownloadData() {
+    downloadAsJson<SurveyUnitData>({
+      dataToDownload: {
+        data: getData(false),
+        stateData: getStateData(),
+        personalization: surveyUnitData?.personalization,
+      },
+    })
+  }
+
+  const isDownloadPage = currentPage === 'downloadPage'
+
+  useEffect(() => {
+    if (!isDownloadPage) return
+    handleDownloadData()
+    navigate({ to: '/visualize' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDownloadPage])
 
   return (
     <div className={fr.cx('fr-container--fluid', 'fr-mt-1w', 'fr-mb-7w')}>
       <Provider>
         <div className={fr.cx('fr-col-12', 'fr-container')}>
           <Navigation
-            handleNextClick={handleNextClick}
-            handlePreviousClick={goPreviousPage}
-            getData={() => getData(true)}
-            isFirstPage={isFirstPage}
-            isLastPage={isLastPage}
+            handleNextClick={goNext}
+            handlePreviousClick={goPrevious}
+            handleDownloadData={handleDownloadData}
+            currentPage={currentPage}
           >
-            {false ?? <Welcome />}
-            <LunaticComponents
-              components={getComponents()}
-              wrapper={({ children }) => (
-                <div className={fr.cx('fr-mb-1w')}>{children}</div>
-              )}
-            />
+            {currentPage === 'welcomePage' && <Welcome />}
+            {currentPage === 'lunaticPage' && (
+              <LunaticComponents
+                components={getComponents()}
+                wrapper={({ children }) => (
+                  <div className={fr.cx('fr-mb-1w')}>{children}</div>
+                )}
+              />
+            )}
+            {['validationPage', 'validationModal'].includes(currentPage) && <Validation />}
+            {currentPage === 'endPage' && <EndPage date={Date.now()} />}
+            <ValidationModal goNext={goNext} goPrevious={goPrevious} />
           </Navigation>
         </div>
       </Provider>
     </div>
-  )
-}
-
-function Navigation(
-  props: PropsWithChildren<{
-    isFirstPage: boolean
-    isLastPage: boolean
-    handlePreviousClick: () => void
-    handleNextClick: () => void
-    getData: () => LunaticData
-  }>
-) {
-  const {
-    isFirstPage,
-    isLastPage,
-    handleNextClick,
-    handlePreviousClick,
-    getData,
-    children,
-  } = props
-  const { css } = useStyles()
-
-  const nextLabel = useMemo(() => {
-    if (isFirstPage) {
-      return 'Commencer'
-    }
-    if (isLastPage) {
-      return 'Envoyer mes réponses'
-    }
-    return 'Continuer'
-  }, [isFirstPage, isLastPage])
-
-  return (
-    <>
-      <Button
-        id="button-precedent"
-        title="Revenir à l'étape précédente"
-        priority="tertiary no outline"
-        iconId="fr-icon-arrow-left-line"
-        onClick={handlePreviousClick}
-        disabled={isFirstPage}
-        className={css({ visibility: isFirstPage ? 'hidden' : 'visible' })}
-      >
-        Précédent
-      </Button>
-      <Grid>
-        {children}
-        <Button
-          priority="primary"
-          title={"Passer à l'étape suivante"}
-          id="continue-button"
-          onClick={handleNextClick}
-        >
-          {nextLabel}
-        </Button>
-      </Grid>
-      <ButtonsGroup
-        buttons={[
-          {
-            children: 'Télécharger les données',
-            priority: 'tertiary no outline',
-            id: 'button-saveData',
-            iconId: 'ri-download-2-line',
-            onClick: () => downloadAsJson({ data: getData() }),
-          },
-        ]}
-        alignment="right"
-        buttonsEquisized={true}
-      />
-    </>
   )
 }
