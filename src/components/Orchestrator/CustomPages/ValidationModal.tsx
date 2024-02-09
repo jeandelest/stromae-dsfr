@@ -55,7 +55,7 @@ export function ValidationModal(props: Props) {
       concealingBackdrop={true}
     >
       Vous êtes sur le point d'envoyer vos réponses au questionnaire. Après
-      envoi, vous ne pourrez plus modifier vos réponses
+      envoi, vous ne pourrez plus modifier vos réponses.
     </modal.Component>
   )
 }
