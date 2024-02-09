@@ -10,14 +10,12 @@ import { useNavigate } from '@tanstack/react-router'
 import { Welcome } from './CustomPages/Welcome'
 import { Navigation } from './Navigation'
 import type { StateData, SurveyUnitData } from './type'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Validation } from './CustomPages/Validation'
 import { useStromaeNavigation } from './useStromaeNavigation'
 import { EndPage } from './CustomPages/EndPage'
-import { ValidationModal, openValidationModal } from './CustomPages/ValidationModal'
-
-
-
+import { ValidationModal } from './CustomPages/ValidationModal'
+import { assert } from 'tsafe/assert'
 
 export function Orchestrator(props: {
   source: LunaticSource
@@ -46,19 +44,21 @@ export function Orchestrator(props: {
     initialPage: initialCurrentPage,
   })
 
+  const [validationModalActions] = useState<{
+    open?: () => Promise<{ doProceed: boolean }>
+  }>({})
+
   const { currentPage, goNext, goPrevious } = useStromaeNavigation({
     goNextLunatic,
     goPrevLunatic,
     isFirstPage,
     isLastPage,
     initialCurrentPage,
+    openValidationModal: () => {
+      assert(validationModalActions.open !== undefined)
+      return validationModalActions.open()
+    },
   })
-
-  useEffect(() => {
-    if (currentPage === "validationModal") {
-      openValidationModal()
-    }
-  }, [currentPage]);
 
   const getStateData = (): StateData => {
     switch (currentPage) {
@@ -114,9 +114,9 @@ export function Orchestrator(props: {
                 )}
               />
             )}
-            {['validationPage', 'validationModal'].includes(currentPage) && <Validation />}
+            {currentPage === 'validationPage' && <Validation />}
             {currentPage === 'endPage' && <EndPage date={Date.now()} />}
-            <ValidationModal goNext={goNext} goPrevious={goPrevious} />
+            <ValidationModal actions={validationModalActions} />
           </Navigation>
         </div>
       </Provider>

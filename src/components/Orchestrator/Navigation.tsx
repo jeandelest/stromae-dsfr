@@ -31,12 +31,13 @@ export function Navigation(
       case 'endPage':
         return "Télécharger l'accusé de réception"
       case 'validationPage':
-      case 'validationModal':
         return 'Envoyer mes réponses'
     }
   }, [currentPage])
 
-  const isPreviousButtonDisable = ['welcomePage', "endPage"].includes(currentPage)
+  const isPreviousButtonDisable = ['welcomePage', 'endPage'].includes(
+    currentPage
+  )
 
   return (
     <>
@@ -47,7 +48,9 @@ export function Navigation(
         iconId="fr-icon-arrow-left-line"
         onClick={handlePreviousClick}
         disabled={isPreviousButtonDisable}
-        className={css({ visibility: isPreviousButtonDisable ? 'hidden' : 'visible' })}
+        className={css({
+          visibility: isPreviousButtonDisable ? 'hidden' : 'visible',
+        })}
       >
         Précédent
       </Button>
