@@ -19,7 +19,7 @@ export function SiteMapPage() {
           <Link to="/">Accueil</Link>
         </li>
         <li>
-          <Link to="">Mentions légales</Link>
+          <Link to="/mentions-legales">Mentions légales</Link>
         </li>
         <li>
           <Link to="/accessibilite">Accessibilité</Link>

@@ -36,23 +36,24 @@ export function Orchestrator(props: {
     isFirstPage,
     isLastPage,
     pageTag,
+    goToPage: goToLunaticPage
   } = useLunatic(source, surveyUnitData?.data, {
     // @ts-expect-error need some work on lunatic-dsfr to remove this
     custom,
     activeControls: true,
     getReferentiel,
-    initialPage: initialCurrentPage,
   })
 
   const [validationModalActions] = useState<{
-    open?: () => Promise<{ doProceed: boolean }>
+    open?: () => Promise<void>
   }>({})
 
-  const { currentPage, goNext, goPrevious } = useStromaeNavigation({
+  const { currentPage, goNext, goToPage, goPrevious } = useStromaeNavigation({
     goNextLunatic,
     goPrevLunatic,
     isFirstPage,
     isLastPage,
+    goToLunaticPage,
     initialCurrentPage,
     openValidationModal: () => {
       assert(validationModalActions.open !== undefined)
@@ -86,7 +87,7 @@ export function Orchestrator(props: {
     })
   }
 
-  const isDownloadPage = currentPage === 'downloadPage'
+  const isDownloadPage = currentPage === 'downloadPage';
 
   useEffect(() => {
     if (!isDownloadPage) return
@@ -105,7 +106,7 @@ export function Orchestrator(props: {
             handleDownloadData={handleDownloadData}
             currentPage={currentPage}
           >
-            {currentPage === 'welcomePage' && <Welcome />}
+            {currentPage === 'welcomePage' && <Welcome initialCurrentPage={initialCurrentPage} goToPage={goToPage} />}
             {currentPage === 'lunaticPage' && (
               <LunaticComponents
                 components={getComponents()}

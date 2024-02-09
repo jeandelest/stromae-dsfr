@@ -4,9 +4,7 @@ import { assert } from 'tsafe/assert'
 
 export type Props = {
   actions: {
-    open?: () => Promise<{
-      doProceed: boolean
-    }>
+    open?: () => Promise<void>
   }
 }
 export function ValidationModal(props: Props) {
@@ -23,17 +21,15 @@ export function ValidationModal(props: Props) {
 
   const [openState, setOpenState] = useState<
     | {
-        resolve: (params: { doProceed: boolean }) => void
-      }
+      resolve: () => void
+    }
     | undefined
   >(undefined)
 
   useEffect(() => {
     actions.open = () =>
-      new Promise<{ doProceed: boolean }>((resolve) => {
-        setOpenState({
-          resolve,
-        })
+      new Promise<void>((resolve) => {
+        setOpenState({ resolve })
         modal.open()
       })
   }, [])
@@ -51,11 +47,7 @@ export function ValidationModal(props: Props) {
           children: 'Envoyer mes réponses',
           onClick: () => {
             assert(openState !== undefined)
-
-            openState.resolve({
-              doProceed: true,
-            })
-
+            openState.resolve()
             setOpenState(undefined)
           },
         },

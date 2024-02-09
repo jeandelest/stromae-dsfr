@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import type { PageType } from './type'
 import { assert, type Equals } from 'tsafe/assert'
+import type { useLunatic } from '@inseefr/lunatic'
 
+type LunaticGoToPage = ReturnType<typeof useLunatic>["goToPage"]
 type Params = {
   isFirstPage: boolean
   isLastPage: boolean
   initialCurrentPage: string | undefined
   goNextLunatic: () => void
   goPrevLunatic: () => void
-  openValidationModal: () => Promise<{ doProceed: boolean }>
+  openValidationModal: () => Promise<void>
+  goToLunaticPage: LunaticGoToPage
 }
 
 export function useStromaeNavigation({
@@ -17,34 +20,32 @@ export function useStromaeNavigation({
   goNextLunatic,
   goPrevLunatic,
   initialCurrentPage,
+  goToLunaticPage,
   openValidationModal,
 }: Params) {
-  const getInitialCurrentPage = () => {
-    switch (initialCurrentPage) {
-      case undefined:
-        return 'welcomePage'
-      case 'welcomePage':
-      case 'validationPage':
-      case 'endPage':
-        return initialCurrentPage
-      default:
-        //string value (pageTag in fact)
-        return 'lunaticPage'
-    }
-  }
+
+  // const getInitialCurrentPage = () => {
+  //   switch (initialCurrentPage) {
+  //     case undefined:
+  //       return 'welcomePage'
+  //     case 'welcomePage':
+  //     case 'validationPage':
+  //     case 'endPage':
+  //       return initialCurrentPage
+  //     default:
+  //       //string value (pageTag in fact)
+  //       return 'lunaticPage'
+  //   }
+  // }
 
   const [currentPage, setCurrentPage] = useState<PageType>(
-    getInitialCurrentPage //Avoiding recreating the initialState https://react.dev/reference/react/useState#avoiding-recreating-the-initial-state
-  )
+    initialCurrentPage === "endPage" ? "endPage" : 'welcomePage')
 
   const goNext = () => {
     switch (currentPage) {
       case 'validationPage':
         //return setCurrentPage('validationModal')
-        openValidationModal().then(({ doProceed }) => {
-          if (!doProceed) {
-            return
-          }
+        openValidationModal().then(() => {
           setCurrentPage('endPage')
         })
         return
@@ -73,5 +74,28 @@ export function useStromaeNavigation({
     assert<Equals<typeof currentPage, never>>(false)
   }
 
-  return { goNext, goPrevious, currentPage: currentPage }
+  const goToPage = (params: {
+    page: 'welcomePage'
+    | 'validationPage'
+    | 'endPage'
+    | 'downloadPage'
+  } | Parameters<LunaticGoToPage>[0]) => {
+    switch (params.page) {
+      case "validationPage":
+      case "downloadPage":
+      case 'endPage':
+      case 'welcomePage':
+        setCurrentPage(params.page)
+        return;
+      case 'lunaticPage':
+        //This should not happened
+        setCurrentPage("lunaticPage")
+        return;
+      default:
+        // Lunatic page
+        setCurrentPage("lunaticPage")
+        goToLunaticPage(params)
+    }
+  }
+  return { goNext, goPrevious, goToPage, currentPage: currentPage }
 }
