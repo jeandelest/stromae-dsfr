@@ -3,7 +3,7 @@ import type { PageType } from './type'
 import { assert, type Equals } from 'tsafe/assert'
 import type { useLunatic } from '@inseefr/lunatic'
 
-type LunaticGoToPage = ReturnType<typeof useLunatic>["goToPage"]
+type LunaticGoToPage = ReturnType<typeof useLunatic>['goToPage']
 type Params = {
   isFirstPage: boolean
   isLastPage: boolean
@@ -23,7 +23,6 @@ export function useStromaeNavigation({
   goToLunaticPage,
   openValidationModal,
 }: Params) {
-
   // const getInitialCurrentPage = () => {
   //   switch (initialCurrentPage) {
   //     case undefined:
@@ -39,7 +38,8 @@ export function useStromaeNavigation({
   // }
 
   const [currentPage, setCurrentPage] = useState<PageType>(
-    initialCurrentPage === "endPage" ? "endPage" : 'welcomePage')
+    initialCurrentPage === 'endPage' ? 'endPage' : 'welcomePage'
+  )
 
   const goNext = () => {
     switch (currentPage) {
@@ -74,26 +74,27 @@ export function useStromaeNavigation({
     assert<Equals<typeof currentPage, never>>(false)
   }
 
-  const goToPage = (params: {
-    page: 'welcomePage'
-    | 'validationPage'
-    | 'endPage'
-    | 'downloadPage'
-  } | Parameters<LunaticGoToPage>[0]) => {
+  const goToPage = (
+    params:
+      | {
+          page: 'welcomePage' | 'validationPage' | 'endPage' | 'downloadPage'
+        }
+      | Parameters<LunaticGoToPage>[0]
+  ) => {
     switch (params.page) {
-      case "validationPage":
-      case "downloadPage":
+      case 'validationPage':
+      case 'downloadPage':
       case 'endPage':
       case 'welcomePage':
         setCurrentPage(params.page)
-        return;
+        return
       case 'lunaticPage':
         //This should not happened
-        setCurrentPage("lunaticPage")
-        return;
+        setCurrentPage('lunaticPage')
+        return
       default:
         // Lunatic page
-        setCurrentPage("lunaticPage")
+        setCurrentPage('lunaticPage')
         goToLunaticPage(params)
     }
   }

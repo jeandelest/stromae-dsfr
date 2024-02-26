@@ -21,8 +21,8 @@ export function ValidationModal(props: Props) {
 
   const [openState, setOpenState] = useState<
     | {
-      resolve: () => void
-    }
+        resolve: () => void
+      }
     | undefined
   >(undefined)
 

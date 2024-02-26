@@ -36,7 +36,7 @@ export function Orchestrator(props: {
     isFirstPage,
     isLastPage,
     pageTag,
-    goToPage: goToLunaticPage
+    goToPage: goToLunaticPage,
   } = useLunatic(source, surveyUnitData?.data, {
     // @ts-expect-error need some work on lunatic-dsfr to remove this
     custom,
@@ -87,7 +87,7 @@ export function Orchestrator(props: {
     })
   }
 
-  const isDownloadPage = currentPage === 'downloadPage';
+  const isDownloadPage = currentPage === 'downloadPage'
 
   useEffect(() => {
     if (!isDownloadPage) return
@@ -106,7 +106,12 @@ export function Orchestrator(props: {
             handleDownloadData={handleDownloadData}
             currentPage={currentPage}
           >
-            {currentPage === 'welcomePage' && <Welcome initialCurrentPage={initialCurrentPage} goToPage={goToPage} />}
+            {currentPage === 'welcomePage' && (
+              <Welcome
+                initialCurrentPage={initialCurrentPage}
+                goToPage={goToPage}
+              />
+            )}
             {currentPage === 'lunaticPage' && (
               <LunaticComponents
                 components={getComponents()}

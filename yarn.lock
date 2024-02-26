@@ -227,12 +227,13 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@codegouvfr/react-dsfr@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.4.1.tgz#a39f29e7222c8bdc0f79b33a3ac2cd12cf702021"
-  integrity sha512-7veAh7brhOD0PHnexhvUpDzwhSxB6/+c4Qmm7pcr22oBaIhXRUuCFbG2QaGL6C4qKYTrRNQ9m3WiR+90koK2ew==
+"@codegouvfr/react-dsfr@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.7.2.tgz#c38a330333c9cdff60b20d8b1a7e0aebd89cd73d"
+  integrity sha512-4kZ1EajPQVelkneSzbn7EZbrVBdukWUBsy+RsHBXf9a+JRvgYS3xlf7jDmc70tuEHF/824pShue7kDvoR6uxnw==
   dependencies:
     tsafe "^1.6.3"
+    yargs-parser "^21.1.1"
 
 "@data-forge/serialization@^1.0.0":
   version "1.0.1"
@@ -586,10 +587,10 @@
     snowball "^0.3.1"
     string-tokenizer "^0.0.8"
 
-"@inseefr/lunatic@^2.7.16":
-  version "2.7.16"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.7.16.tgz#f5ef622f311eca1e02da2f73e190cc9d0560366f"
-  integrity sha512-XpDzRgil5zfYDq2oZlOO5W8ipl4s++R2CPNdx8Vf345TRRiVPbLmlrStnniTV7L7jYo/07GYUJoMqXdXxEFzbw==
+"@inseefr/lunatic@^2.7.19":
+  version "2.7.19"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.7.19.tgz#f78b479a95db7c55925f981c48a95dbd3318ec1d"
+  integrity sha512-Mo62ydKIejMeO6bXrI+xYxXgPhVEvcwAgdD8xV5ehHeh9kAOzIYBf8mY+VMi/IzhIBkm3bQhCvk5NIJCWP3TQQ==
   dependencies:
     "@inseefr/trevas" "^0.1.20"
     "@inseefr/vtl-2.0-antlr-tools" "^0.1.0"
@@ -839,22 +840,22 @@
   resolved "https://registry.yarnpkg.com/@tanstack/history/-/history-1.15.13.tgz#544878665989e6ce07872378961fc6717d342682"
   integrity sha512-ToaeMtK5S4YaxCywAlYexc7KPFN0esjyTZ4vXzJhXEWAkro9iHgh7m/4ozPJb7oTo65WkHWX0W9GjcZbInSD8w==
 
-"@tanstack/query-core@5.18.1":
-  version "5.18.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.18.1.tgz#b653ee354b7f4712d53565ccc5c6d8fb83ec866c"
-  integrity sha512-fYhrG7bHgSNbnkIJF2R4VUXb4lF7EBiQjKkDc5wOlB7usdQOIN4LxxHpDxyE3qjqIst1WBGvDtL48T0sHJGKCw==
+"@tanstack/query-core@5.24.1":
+  version "5.24.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.24.1.tgz#d40928dec22b47df97fb2648e8c499772e8d7eb2"
+  integrity sha512-DZ6Nx9p7BhjkG50ayJ+MKPgff+lMeol7QYXkvuU5jr2ryW/4ok5eanaS9W5eooA4xN0A/GPHdLGOZGzArgf5Cg==
 
-"@tanstack/react-query@^5.18.1":
-  version "5.18.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.18.1.tgz#fd4e7b87260e82c5277355ad64f0e431a9302e02"
-  integrity sha512-PdI07BbsahZ+04PxSuDQsQvBWe008eWFk/YYWzt8fvzt2sALUM0TpAJa/DFpqa7+SSo7j1EQR6Jx6znXNHyaXw==
+"@tanstack/react-query@^5.24.1":
+  version "5.24.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.24.1.tgz#bcb913febe0d813cec1fda7783298d07aa998b20"
+  integrity sha512-4+09JEdO4d6+Gc8Y/g2M/MuxDK5IY0QV8+2wL2304wPKJgJ54cBbULd3nciJ5uvh/as8rrxx6s0mtIwpRuGd1g==
   dependencies:
-    "@tanstack/query-core" "5.18.1"
+    "@tanstack/query-core" "5.24.1"
 
-"@tanstack/react-router@^1.15.23":
-  version "1.15.23"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.15.23.tgz#1f87ab2c72ee20d6a6901e2b54e4aad56fe8caa8"
-  integrity sha512-C9d1Wj8n28z+qclMiiDFxR9Ydxu7/7Gv9hm9I0H1yiKyxXzoGTbcT2x8znsM8Fouqw2DtAW5NsFw9FVtvz9zfQ==
+"@tanstack/react-router@^1.17.4":
+  version "1.17.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.17.4.tgz#15d1745bae2c77ee60549824c174e4eaf8af93be"
+  integrity sha512-iW/TgJN/qZ+Ly73jDU3D2AuC3IlAHGx3ybXTvVuZ1hihsud7arEg7g83hsuU+xbkPcVWfly9ndTb1XKxrovw9w==
   dependencies:
     "@tanstack/history" "1.15.13"
     "@tanstack/react-store" "^0.2.1"
@@ -2552,7 +2553,7 @@ object-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/object-values/-/object-values-1.0.0.tgz#72af839630119e5b98c3b02bb8c27e3237158105"
   integrity sha512-+8hwcz/JnQ9EpLIXzN0Rs7DLsBpJNT/xYehtB/jU93tHYr5BFEO8E+JGQNOSqE7opVzz5cGksKFHt7uUJVLSjQ==
 
-oidc-client-ts@^2.3.0:
+oidc-client-ts@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/oidc-client-ts/-/oidc-client-ts-2.4.0.tgz#764c8a33de542026e2798de9849ce8049047d7e5"
   integrity sha512-WijhkTrlXK2VvgGoakWJiBdfIsVGz6CFzgjNNqZU1hPKV2kyeEaJgLs7RwuiSp2WhLfWBQuLvr2SxVlZnk3N1w==
@@ -2560,13 +2561,13 @@ oidc-client-ts@^2.3.0:
     crypto-js "^4.2.0"
     jwt-decode "^3.1.2"
 
-oidc-spa@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/oidc-spa/-/oidc-spa-3.0.3.tgz#01e524064e91615e3f2c6d6c906234fc13351787"
-  integrity sha512-yoAQHaTPw0Eb3AYLQ1ODuCfO0iboUv3agnz45QSm0LWG9o6+9mtN6g71XljrSIPR/G5g4rLria4Ke+Rq/LoJZg==
+oidc-spa@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/oidc-spa/-/oidc-spa-4.2.1.tgz#1b33214fd4b657f7a09aae70058df76ce7275a8e"
+  integrity sha512-2Vm3Ohrh+F6Xd+HfybBs20ahQmJf3w852G20hnOl80O7G8wQ2IBKuivVEU/gb2hg4O3X9h4uQr4fuhIMO0/dFA==
   dependencies:
     jwt-decode "^3.1.2"
-    oidc-client-ts "^2.3.0"
+    oidc-client-ts "2.4.0"
     tsafe "^1.6.5"
 
 once@^1.3.0:
@@ -3382,6 +3383,11 @@ yaml@^1.10.0:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
+
+yargs-parser@^21.1.1:
+  version "21.1.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
+  integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
 
 yocto-queue@^0.1.0:
   version "0.1.0"
