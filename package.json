@@ -1,9 +1,10 @@
 {
   "name": "stromae-dsfr",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
+    "prepare": "vite-envs update-types",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -13,12 +14,12 @@
     "format:check": "npm run _format -- --list-different",
     "postinstall": "copy-dsfr-to-public",
     "predev": "only-include-used-icons",
-    "prebuild": "only-include-used-icons && npx @inseefr/lunatic workers"
+    "prebuild": "only-include-used-icons && npx @inseefr/lunatic"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.7.2",
     "@emotion/react": "^11.11.3",
-    "@inseefr/lunatic": "^2.7.19",
+    "@inseefr/lunatic": "^2.7.20",
     "@inseefr/lunatic-dsfr": "^1.0.21",
     "@tanstack/react-query": "^5.24.1",
     "@tanstack/react-router": "^1.17.4",
@@ -45,6 +46,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3",
-    "vite": "^5.1.0"
+    "vite": "^5.1.0",
+    "vite-envs": "^4.0.8"
   }
 }

@@ -1,5 +1,6 @@
 import type { FormInputs } from './VisualizeForm'
 
+//TODO Remove this and use Zod with Form everywhere
 export const encodeParams = (data: FormInputs) => {
   return {
     nomenclature: data.nomenclature.reduce<Record<string, string>>(
@@ -9,31 +10,5 @@ export const encodeParams = (data: FormInputs) => {
     source: encodeURIComponent(data.source),
     metadata: encodeURIComponent(data.metadata),
     data: encodeURIComponent(data.data),
-  }
-}
-
-export const decodeParams = (params: {
-  nomenclature?: Record<string, string>
-  source?: string
-  metadata?: string
-  data?: string
-}) => {
-  const { source, data, metadata, nomenclature } = params
-
-  const decodedNomenclature = nomenclature
-    ? Object.entries(nomenclature).reduce<Record<string, string>>(
-        (acc, [name, uri]) => ({
-          ...acc,
-          [name]: decodeURIComponent(uri),
-        }),
-        {}
-      )
-    : undefined
-
-  return {
-    sourceUrl: source ? decodeURIComponent(source) : undefined,
-    metadataUrl: metadata ? decodeURIComponent(metadata) : undefined,
-    surveyUnitDataUrl: data ? decodeURIComponent(data) : undefined,
-    nomenclature: decodedNomenclature,
   }
 }

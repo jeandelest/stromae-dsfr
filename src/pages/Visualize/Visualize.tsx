@@ -6,23 +6,22 @@ import { axiosGet } from 'utils/axios'
 export function VisualizePage() {
   const loaderResults = visualizeRoute.useLoaderData()
 
-  if (loaderResults) {
-    const { source, surveyUnitData, nomenclature } = loaderResults
+  if (!loaderResults) {
+    return <VisualizeForm />
+  }
+  const { source, surveyUnitData, nomenclature } = loaderResults
 
-    const getReferentiel = (name: string) => {
-      return nomenclature
-        ? axiosGet<Array<unknown>>(nomenclature[name])
-        : Promise.reject(new Error('No nomenclature provided'))
-    }
-
-    return (
-      <Orchestrator
-        source={source}
-        surveyUnitData={surveyUnitData}
-        getReferentiel={getReferentiel}
-      />
-    )
+  const getReferentiel = (name: string) => {
+    return nomenclature
+      ? axiosGet<Array<unknown>>(nomenclature[name])
+      : Promise.reject(new Error('No nomenclature provided'))
   }
 
-  return <VisualizeForm />
+  return (
+    <Orchestrator
+      source={source}
+      surveyUnitData={surveyUnitData}
+      getReferentiel={getReferentiel}
+    />
+  )
 }

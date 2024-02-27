@@ -8,6 +8,7 @@ type Params = {
   isFirstPage: boolean
   isLastPage: boolean
   initialCurrentPage: string | undefined
+  //initialCurrentPage: PageType
   goNextLunatic: () => void
   goPrevLunatic: () => void
   openValidationModal: () => Promise<void>
@@ -23,20 +24,7 @@ export function useStromaeNavigation({
   goToLunaticPage,
   openValidationModal,
 }: Params) {
-  // const getInitialCurrentPage = () => {
-  //   switch (initialCurrentPage) {
-  //     case undefined:
-  //       return 'welcomePage'
-  //     case 'welcomePage':
-  //     case 'validationPage':
-  //     case 'endPage':
-  //       return initialCurrentPage
-  //     default:
-  //       //string value (pageTag in fact)
-  //       return 'lunaticPage'
-  //   }
-  // }
-
+  //Wait for https://github.com/InseeFr/Lunatic/issues/876 to handle case lunaticPage
   const [currentPage, setCurrentPage] = useState<PageType>(
     initialCurrentPage === 'endPage' ? 'endPage' : 'welcomePage'
   )
@@ -44,7 +32,6 @@ export function useStromaeNavigation({
   const goNext = () => {
     switch (currentPage) {
       case 'validationPage':
-        //return setCurrentPage('validationModal')
         openValidationModal().then(() => {
           setCurrentPage('endPage')
         })

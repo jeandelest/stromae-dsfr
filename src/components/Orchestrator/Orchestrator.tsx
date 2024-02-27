@@ -9,13 +9,14 @@ import { downloadAsJson } from 'utils/downloadAsJson'
 import { useNavigate } from '@tanstack/react-router'
 import { Welcome } from './CustomPages/Welcome'
 import { Navigation } from './Navigation'
-import type { StateData, SurveyUnitData } from './type'
 import { useEffect, useState } from 'react'
 import { Validation } from './CustomPages/Validation'
 import { useStromaeNavigation } from './useStromaeNavigation'
 import { EndPage } from './CustomPages/EndPage'
 import { ValidationModal } from './CustomPages/ValidationModal'
 import { assert } from 'tsafe/assert'
+import type { SurveyUnitData } from 'model/SurveyUnitData'
+import type { StateData } from 'model/StateData'
 
 export function Orchestrator(props: {
   source: LunaticSource
@@ -37,6 +38,7 @@ export function Orchestrator(props: {
     isLastPage,
     pageTag,
     goToPage: goToLunaticPage,
+    
   } = useLunatic(source, surveyUnitData?.data, {
     // @ts-expect-error need some work on lunatic-dsfr to remove this
     custom,

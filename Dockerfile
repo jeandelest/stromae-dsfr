@@ -18,4 +18,4 @@ EXPOSE 8080
 
 USER nginx
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT sh -c "./vite-envs.sh && nginx -g 'daemon off;'"
