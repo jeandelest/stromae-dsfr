@@ -63,8 +63,8 @@ export function Footer() {
           },
         },
         <span className={fr.cx('fr-footer__bottom-link')}>
-          Stromae : {import.meta.env.VITE_APP_VERSION} | Lunatic :{' '}
-          {import.meta.env.VITE_LUNATIC_VERSION.replace('^', '')}
+          Stromae : {import.meta.env.APP_VERSION} | Lunatic :{' '}
+          {import.meta.env.LUNATIC_VERSION.replace('^', '')}
         </span>,
       ]}
     />

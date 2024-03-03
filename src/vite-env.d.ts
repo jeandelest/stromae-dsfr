@@ -6,12 +6,12 @@ type ImportMetaEnv = {
   VITE_OIDC_ISSUER: string
   VITE_OIDC_CLIENT_ID: string
   VITE_PORTAIL_URL: string
-  VITE_APP_VERSION: string
-  VITE_LUNATIC_VERSION: string
   BASE_URL: string
   MODE: string
   DEV: boolean
   PROD: boolean
+  APP_VERSION: string
+  LUNATIC_VERSION: string
   // @user-defined-start
   /*
    * Here you can define your own special variables

@@ -2,6 +2,7 @@ import { useOidc } from 'oidc'
 import { Header as DsfrHeader } from '@codegouvfr/react-dsfr/Header'
 import logoInsee from 'assets/logo-insee.png'
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display'
+import { Badge } from '@codegouvfr/react-dsfr/Badge'
 
 export function Header() {
   const { isUserLoggedIn, logout } = useOidc()
@@ -18,7 +19,7 @@ export function Header() {
       homeLinkProps={{
         to: '/',
         title:
-          'Accueil - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)',
+          "Accueil - Nom de l’entité (ministère, secrétariat d'état, gouvernement)",
       }}
       quickAccessItems={[
         headerFooterDisplayItem,
@@ -38,7 +39,14 @@ export function Header() {
         },
       ]}
       serviceTagline="Application de collecte internet"
-      serviceTitle="Filière d'enquête"
+      serviceTitle={
+        <>
+          Filière d'enquête{' '}
+          <Badge as="span" noIcon severity="new">
+            Alpha
+          </Badge>
+        </>
+      }
       operatorLogo={{
         alt: 'Insee, mesurer pour comprendre',
         imgUrl: logoInsee,
