@@ -3,10 +3,7 @@ FROM nginx:stable-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf    
 WORKDIR /usr/share/nginx/html
 
-# Add bash
-RUN apk add --no-cache bash
-
-## Copy .env file and shell script to container
+## Copy dist to container
 ADD dist /usr/share/nginx/html
 
 # add non-root user
@@ -15,7 +12,6 @@ RUN chown -R nginx:nginx /var/run/nginx.pid /usr/share/nginx/html /var/cache/ngi
 
 # non root users cannot listen on 80
 EXPOSE 8080
-
 USER nginx
 
-ENTRYPOINT sh -c "/usr/share/nginx/html/vite-envs.sh && nginx -g 'daemon off;'"
+ENTRYPOINT sh -c "sh /usr/share/nginx/html/vite-envs.sh && nginx -g 'daemon off;'"
