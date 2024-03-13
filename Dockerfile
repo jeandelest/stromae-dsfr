@@ -18,4 +18,4 @@ EXPOSE 8080
 
 USER nginx
 
-ENTRYPOINT sh -c "./vite-envs.sh && nginx -g 'daemon off;'"
+ENTRYPOINT sh -c "/usr/share/nginx/html/vite-envs.sh && nginx -g 'daemon off;'"
