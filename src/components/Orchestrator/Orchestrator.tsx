@@ -3,7 +3,7 @@ import {
   LunaticComponents,
   type LunaticSource,
 } from '@inseefr/lunatic'
-import * as custom from '@inseefr/lunatic-dsfr'
+import { slotComponents } from '@inseefr/lunatic-dsfr'
 import { fr } from '@codegouvfr/react-dsfr'
 import { downloadAsJson } from 'utils/downloadAsJson'
 import { useNavigate } from '@tanstack/react-router'
@@ -38,12 +38,10 @@ export function Orchestrator(props: {
     isLastPage,
     pageTag,
     goToPage: goToLunaticPage,
-    
   } = useLunatic(source, surveyUnitData?.data, {
-    // @ts-expect-error need some work on lunatic-dsfr to remove this
-    custom,
     activeControls: true,
     getReferentiel,
+    autoSuggesterLoading: true,
   })
 
   const [validationModalActions] = useState<{
@@ -117,9 +115,7 @@ export function Orchestrator(props: {
             {currentPage === 'lunaticPage' && (
               <LunaticComponents
                 components={getComponents()}
-                wrapper={({ children }) => (
-                  <div className={fr.cx('fr-mb-1w')}>{children}</div>
-                )}
+                slots={slotComponents}
               />
             )}
             {currentPage === 'validationPage' && <Validation />}

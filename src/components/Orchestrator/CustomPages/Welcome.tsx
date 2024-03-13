@@ -2,12 +2,20 @@ import { fr } from '@codegouvfr/react-dsfr'
 import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import { WelcomeModal } from './WelcomeModal'
 import type { useStromaeNavigation } from '../useStromaeNavigation'
+import { useEffect } from 'react'
 
 export function Welcome(props: {
   initialCurrentPage: string | undefined
   goToPage: ReturnType<typeof useStromaeNavigation>['goToPage']
 }) {
   const { initialCurrentPage, goToPage } = props
+
+  useEffect(() => {
+    // Reset the scroll on component unmount
+    return () => {
+      window.scrollTo(0, 0)
+    }
+  }, [])
 
   return (
     <>
