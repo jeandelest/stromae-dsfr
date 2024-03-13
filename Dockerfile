@@ -10,8 +10,11 @@ ADD dist /usr/share/nginx/html
 RUN touch /var/run/nginx.pid
 RUN chown -R nginx:nginx /var/run/nginx.pid /usr/share/nginx/html /var/cache/nginx /var/log/nginx /etc/nginx/conf.d
 
+# Make our shell script executable
+RUN chmod +x vite-envs.sh
+
 # non root users cannot listen on 80
 EXPOSE 8080
 USER nginx
 
-ENTRYPOINT sh -c "sh /usr/share/nginx/html/vite-envs.sh && nginx -g 'daemon off;'"
+ENTRYPOINT sh -c "/usr/share/nginx/html/vite-envs.sh && nginx -g 'daemon off;'"
