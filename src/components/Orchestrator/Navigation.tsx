@@ -3,7 +3,7 @@ import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup'
 import { Grid } from 'components/Grid'
 import { useMemo, type PropsWithChildren } from 'react'
 import { useStyles } from 'tss-react'
-import type { PageType } from './type'
+import type { PageType } from './utils/type'
 
 export function Navigation(
   props: PropsWithChildren<{

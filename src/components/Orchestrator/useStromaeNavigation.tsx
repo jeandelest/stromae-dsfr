@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { PageType } from './type'
+import type { PageType } from './utils/type'
 import { assert, type Equals } from 'tsafe/assert'
 import type { useLunatic } from '@inseefr/lunatic'
 
@@ -9,8 +9,8 @@ type Params = {
   isLastPage: boolean
   initialCurrentPage: string | undefined
   //initialCurrentPage: PageType
-  goNextLunatic: () => void
-  goPrevLunatic: () => void
+  goNextLunatic: ReturnType<typeof useLunatic>['goNextPage']
+  goPrevLunatic: ReturnType<typeof useLunatic>['goPreviousPage']
   openValidationModal: () => Promise<void>
   goToLunaticPage: LunaticGoToPage
 }

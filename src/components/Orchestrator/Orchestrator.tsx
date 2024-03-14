@@ -2,6 +2,7 @@ import {
   useLunatic,
   LunaticComponents,
   type LunaticSource,
+  type LunaticError,
 } from '@inseefr/lunatic'
 import { slotComponents } from '@inseefr/lunatic-dsfr'
 import { fr } from '@codegouvfr/react-dsfr'
@@ -17,6 +18,7 @@ import { ValidationModal } from './CustomPages/ValidationModal'
 import { assert } from 'tsafe/assert'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
 import type { StateData } from 'model/StateData'
+import { isBlockingError, isSameErrors } from './utils/controls'
 
 export function Orchestrator(props: {
   source: LunaticSource
@@ -31,6 +33,7 @@ export function Orchestrator(props: {
   const {
     getComponents,
     Provider,
+    compileControls,
     goPreviousPage: goPrevLunatic,
     goNextPage: goNextLunatic,
     getData,
@@ -44,12 +47,43 @@ export function Orchestrator(props: {
     autoSuggesterLoading: true,
   })
 
+  const [activeErrors, setActiveErrors] = useState<
+    Record<string, LunaticError[]> | undefined
+  >(undefined)
+
   const [validationModalActions] = useState<{
     open?: () => Promise<void>
   }>({})
 
+  const goNextHandlingControls = () => {
+    const { currentErrors } = compileControls()
+
+    //No errors, we goNext
+    if (!currentErrors) {
+      setActiveErrors(undefined)
+      goNextLunatic()
+      return
+    }
+
+    //An error is blocking, we stay on the page
+    if (isBlockingError(currentErrors)) {
+      //compileControls returns isCritical but I prefer define my own rules of blocking error in the orchestrator
+      setActiveErrors(currentErrors)
+      return
+    }
+
+    // activeErrors and currentErrors are the same and no blocking error, we go next
+    if (isSameErrors(currentErrors, activeErrors)) {
+      setActiveErrors(undefined)
+      goNextLunatic()
+      return
+    }
+
+    setActiveErrors(currentErrors)
+  }
+
   const { currentPage, goNext, goToPage, goPrevious } = useStromaeNavigation({
-    goNextLunatic,
+    goNextLunatic: goNextHandlingControls,
     goPrevLunatic,
     isFirstPage,
     isLastPage,
@@ -114,8 +148,12 @@ export function Orchestrator(props: {
             )}
             {currentPage === 'lunaticPage' && (
               <LunaticComponents
+                autoFocusKey={pageTag}
                 components={getComponents()}
                 slots={slotComponents}
+                componentProps={() => ({
+                  errors: activeErrors,
+                })}
               />
             )}
             {currentPage === 'validationPage' && <Validation />}
