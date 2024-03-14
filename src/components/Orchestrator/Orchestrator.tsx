@@ -140,25 +140,27 @@ export function Orchestrator(props: {
             handleDownloadData={handleDownloadData}
             currentPage={currentPage}
           >
-            {currentPage === 'welcomePage' && (
-              <Welcome
-                initialCurrentPage={initialCurrentPage}
-                goToPage={goToPage}
-              />
-            )}
-            {currentPage === 'lunaticPage' && (
-              <LunaticComponents
-                autoFocusKey={pageTag}
-                components={getComponents()}
-                slots={slotComponents}
-                componentProps={() => ({
-                  errors: activeErrors,
-                })}
-              />
-            )}
-            {currentPage === 'validationPage' && <Validation />}
-            {currentPage === 'endPage' && <EndPage date={Date.now()} />}
-            <ValidationModal actions={validationModalActions} />
+            <div className={fr.cx('fr-mb-4v')}>
+              {currentPage === 'welcomePage' && (
+                <Welcome
+                  initialCurrentPage={initialCurrentPage}
+                  goToPage={goToPage}
+                />
+              )}
+              {currentPage === 'lunaticPage' && (
+                <LunaticComponents
+                  autoFocusKey={pageTag}
+                  components={getComponents()}
+                  slots={slotComponents}
+                  componentProps={() => ({
+                    errors: activeErrors,
+                  })}
+                />
+              )}
+              {currentPage === 'validationPage' && <Validation />}
+              {currentPage === 'endPage' && <EndPage date={Date.now()} />}
+              <ValidationModal actions={validationModalActions} />
+            </div>
           </Navigation>
         </div>
       </Provider>
