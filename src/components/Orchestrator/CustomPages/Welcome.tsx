@@ -3,9 +3,10 @@ import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import { WelcomeModal } from './WelcomeModal'
 import type { useStromaeNavigation } from '../useStromaeNavigation'
 import { useEffect } from 'react'
+import type { PageType } from 'model/Page'
 
 export function Welcome(props: {
-  initialCurrentPage: string | undefined
+  initialCurrentPage: PageType | undefined
   goToPage: ReturnType<typeof useStromaeNavigation>['goToPage']
 }) {
   const { initialCurrentPage, goToPage } = props

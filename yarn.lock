@@ -547,17 +547,17 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-2.0.2.tgz#d9fae00a2d5cb40f92cfe64b47ad749fbc38f917"
   integrity sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==
 
-"@inseefr/lunatic-dsfr@2.0.0-rc.4":
-  version "2.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.0.0-rc.4.tgz#ca557c564cea5cce87bcd99ddde90af0c0692a1c"
-  integrity sha512-2PcDXKff4Cycxcg8lI3lp/dMCw2LyWgtSY+Euabz362k6US7d3N9WoGbniwYsurRfeFPXrQ34J4n2pIX9RYwsA==
+"@inseefr/lunatic-dsfr@2.0.0-rc.6":
+  version "2.0.0-rc.6"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.0.0-rc.6.tgz#a20d068cffb2ff98d9215a39b5cc26951eccbfc9"
+  integrity sha512-v7d/Dk96505LPuLcPywpMCc2D6hWhvm9pzeHbOlIyCv5ZETOqi6Sz1jx1j3TageQ1mD9ajrt4rRlODTwIUKJWg==
   dependencies:
     react-number-format "^5.3.3"
 
-"@inseefr/lunatic@3.0.0-rc.11":
-  version "3.0.0-rc.11"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.0-rc.11.tgz#fbfcae8e87b5f3d30db4cb55de67a789a7689015"
-  integrity sha512-yQgTV4J33QMlDfjjTaQETyLk/0COnxTmiCYogWF1yM/38ySgCWKx1EgmrOYtgielEAWQ7XXAqiraid0wIHFw7w==
+"@inseefr/lunatic@3.0.0-rc.13":
+  version "3.0.0-rc.13"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.0-rc.13.tgz#6d09a71c14e72147d35a94906e561fe24da85f27"
+  integrity sha512-+Rvpc5GDhOVYaHYvAurNjKlIa7kOEgWepvIWxNPb8PgIoYZFtbNfQVxWKfeQTNf3jpzpVS/j9WdCbwrXi+97Xw==
   dependencies:
     "@inseefr/trevas" "^0.1.20"
     "@inseefr/vtl-2.0-antlr-tools" "^0.1.0"

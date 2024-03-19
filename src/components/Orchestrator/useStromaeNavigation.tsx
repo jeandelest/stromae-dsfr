@@ -1,14 +1,13 @@
 import { useState } from 'react'
-import type { PageType } from './utils/type'
 import { assert, type Equals } from 'tsafe/assert'
 import type { useLunatic } from '@inseefr/lunatic'
+import type { InternalPageType, PageType, StromaePage } from 'model/Page'
 
 type LunaticGoToPage = ReturnType<typeof useLunatic>['goToPage']
 type Params = {
   isFirstPage: boolean
   isLastPage: boolean
-  initialCurrentPage: string | undefined
-  //initialCurrentPage: PageType
+  initialCurrentPage: PageType | undefined
   goNextLunatic: ReturnType<typeof useLunatic>['goNextPage']
   goPrevLunatic: ReturnType<typeof useLunatic>['goPreviousPage']
   openValidationModal: () => Promise<void>
@@ -18,15 +17,16 @@ type Params = {
 export function useStromaeNavigation({
   isFirstPage,
   isLastPage,
+  initialCurrentPage = 'welcomePage',
   goNextLunatic,
   goPrevLunatic,
-  initialCurrentPage,
   goToLunaticPage,
   openValidationModal,
 }: Params) {
-  //Wait for https://github.com/InseeFr/Lunatic/issues/876 to handle case lunaticPage
-  const [currentPage, setCurrentPage] = useState<PageType>(
-    initialCurrentPage === 'endPage' ? 'endPage' : 'welcomePage'
+  const [currentPage, setCurrentPage] = useState<InternalPageType>(() =>
+    ['endPage', 'downloadPage'].includes(initialCurrentPage) //downloadPage should not be saved into state but to be sure i handle case
+      ? 'endPage'
+      : 'welcomePage'
   )
 
   const goNext = () => {
@@ -64,7 +64,7 @@ export function useStromaeNavigation({
   const goToPage = (
     params:
       | {
-          page: 'welcomePage' | 'validationPage' | 'endPage' | 'downloadPage'
+          page: StromaePage
         }
       | Parameters<LunaticGoToPage>[0]
   ) => {
@@ -74,10 +74,6 @@ export function useStromaeNavigation({
       case 'endPage':
       case 'welcomePage':
         setCurrentPage(params.page)
-        return
-      case 'lunaticPage':
-        //This should not happened
-        setCurrentPage('lunaticPage')
         return
       default:
         // Lunatic page

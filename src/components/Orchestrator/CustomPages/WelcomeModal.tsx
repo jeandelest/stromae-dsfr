@@ -13,7 +13,7 @@ export function WelcomeModal(props: { goBack: () => void }) {
   )
   return (
     <modal.Component
-      title="Bienvenue "
+      title="Bienvenue"
       buttons={[
         {
           doClosesModal: true, //Default true, clicking a button close the modal.

@@ -1,13 +1,13 @@
 import Button from '@codegouvfr/react-dsfr/Button'
 import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup'
 import { Grid } from 'components/Grid'
+import type { InternalPageType } from 'model/Page'
 import { useMemo, type PropsWithChildren } from 'react'
 import { useStyles } from 'tss-react'
-import type { PageType } from './utils/type'
 
 export function Navigation(
   props: PropsWithChildren<{
-    currentPage: PageType
+    currentPage: InternalPageType
     handlePreviousClick: () => void
     handleNextClick: () => void
     handleDownloadData: () => void
