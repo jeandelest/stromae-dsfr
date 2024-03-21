@@ -4,7 +4,6 @@ import {
   type LunaticSource,
   type LunaticError,
 } from '@inseefr/lunatic'
-import { slotComponents } from '@inseefr/lunatic-dsfr'
 import { fr } from '@codegouvfr/react-dsfr'
 import { downloadAsJson } from 'utils/downloadAsJson'
 import { useNavigate } from '@tanstack/react-router'
@@ -19,6 +18,7 @@ import { assert } from 'tsafe/assert'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
 import type { StateData } from 'model/StateData'
 import { isBlockingError, isSameErrors } from './utils/controls'
+import { slotComponents } from './slotComponents'
 
 export function Orchestrator(props: {
   source: LunaticSource
@@ -95,7 +95,7 @@ export function Orchestrator(props: {
     },
   })
 
-  const getStateData = (): StateData => {
+  const getCurrentStateData = (): StateData => {
     switch (currentPage) {
       case 'endPage':
         return { date: Date.now(), currentPage, state: 'VALIDATED' }
@@ -115,9 +115,11 @@ export function Orchestrator(props: {
     downloadAsJson<SurveyUnitData>({
       dataToDownload: {
         data: getData(false),
-        stateData: getStateData(),
+        stateData: getCurrentStateData(),
         personalization: surveyUnitData?.personalization,
       },
+      //The label of source is not dynamic 
+      filename: `${source.label.value}-${new Date().toLocaleDateString()}`,
     })
   }
 
@@ -158,7 +160,9 @@ export function Orchestrator(props: {
                 />
               )}
               {currentPage === 'validationPage' && <Validation />}
-              {currentPage === 'endPage' && <EndPage date={Date.now()} />}
+              {currentPage === 'endPage' && (
+                <EndPage date={surveyUnitData?.stateData?.date} />
+              )}
               <ValidationModal actions={validationModalActions} />
             </div>
           </Navigation>

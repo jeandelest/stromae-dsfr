@@ -7,6 +7,7 @@ export const legalsRoute = createRoute({
   path: 'mentions-legales',
   component: LegalPage,
   loader: () => {
-    document.title = 'Mentions Légales'
+    //TODO get name (Filière d'Enquête) in metadata
+    document.title = "Mentions Légales | Filière d'Enquête"
   },
 })

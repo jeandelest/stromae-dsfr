@@ -29,7 +29,8 @@ export const visualizeRoute = createRoute({
     context: { queryClient },
     deps: { sourceUrl, surveyUnitDataUrl, metadataUrl, nomenclature },
   }) => {
-    document.title = 'Visualisation'
+    //TODO get name (Filière d'Enquête) in metadata
+    document.title = "Visualisation | Filière d'Enquête"
 
     if (!sourceUrl) {
       return

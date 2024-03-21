@@ -7,6 +7,7 @@ export const accessibilityRoute = createRoute({
   path: 'accessibilite',
   component: AccessibilityPage,
   loader: () => {
-    document.title = 'Accessibilité'
+    //TODO get name (Filière d'Enquête) in metadata
+    document.title = "Accessibilité | Filière d'Enquête"
   },
 })

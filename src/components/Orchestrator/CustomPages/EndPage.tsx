@@ -1,5 +1,5 @@
-export function EndPage(props: { date: number }) {
-  const { date } = props
+export function EndPage(props: { date: number | undefined }) {
+  const { date = Date.now() } = props
   const formatedData = new Date(date).toLocaleString()
   return (
     <>

@@ -7,6 +7,7 @@ export const securityRoute = createRoute({
   path: 'securite',
   component: SecurityPage,
   loader: () => {
-    document.title = 'Sécurité'
+    //TODO get name (Filière d'Enquête) in metadata
+    document.title = "Sécurité | Filière d'Enquête"
   },
 })

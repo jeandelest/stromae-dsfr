@@ -7,6 +7,7 @@ export const navigationAssistanceRoute = createRoute({
   path: 'aide-a-la-navigation',
   component: NavigationAssistancePage,
   loader: () => {
-    document.title = 'Aide à la navigation'
+    //TODO get name (Filière d'Enquête) in metadata
+    document.title = "Aide à la navigation | Filière d'Enquête"
   },
 })
