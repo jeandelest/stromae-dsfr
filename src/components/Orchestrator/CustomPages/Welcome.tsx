@@ -22,23 +22,19 @@ export function Welcome(props: {
     <>
       <div className={fr.cx('fr-mb-1w')}>
         <h1>
-          Bienvenue sur le questionnaire de réponse à l'Enquête statistique sur
-          les technologies de l’information et de la communication 2021.
+          Bienvenue sur le questionnaire de votre enquête
         </h1>
         <p className={fr.cx('fr-text--lead')}>
-          Cette enquête permet de connaître l'équipement et les usages des
-          personnes dans le domaine des technologies de l'information et de la
-          communication (téléphone fixe et mobile, informatique, internet sur
-          support fixe et mobile).
+          Cette enquête permet de connaître plus d'informations sur le domaine concerné
         </p>
         <h2>Qui doit répondre à ce questionnaire ?</h2>
         <ul>
-          <li>Jonh Doe</li>
-          <li>Julia Doe</li>
-          <li>Juliette Doe</li>
+          <li>Alice Doe</li>
+          <li>Bernard Doe</li>
+          <li>Charlotte Doe</li>
         </ul>
 
-        <h3>En savoir plus sur l'enquête TIC</h3>
+        <h3>En savoir plus sur l'enquête</h3>
         <div className={fr.cx('fr-accordions-group')}>
           <Accordion label="Connaître le cadre légal de l'enquête">
             Vu l'avis favorable du Conseil national de l'information
