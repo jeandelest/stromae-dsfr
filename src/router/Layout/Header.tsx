@@ -42,8 +42,8 @@ export function Header() {
       serviceTitle={
         <>
           Filière d'enquête{' '}
-          <Badge as="span" noIcon severity="new">
-            Alpha
+          <Badge as="span" noIcon severity="success">
+            Beta
           </Badge>
         </>
       }
