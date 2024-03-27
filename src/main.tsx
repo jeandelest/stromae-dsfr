@@ -1,14 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { OidcProvider } from 'oidc'
-import {
-  RouterProvider,
-  createRouter,
-  type RegisteredRouter,
-} from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from 'router/router'
 import { startReactDsfr } from '@codegouvfr/react-dsfr/spa'
-import { Link } from '@tanstack/react-router'
+import { Link, type LinkComponent } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { MuiDsfrThemeProvider } from '@codegouvfr/react-dsfr/mui'
 
@@ -19,9 +15,7 @@ startReactDsfr({
 
 declare module '@codegouvfr/react-dsfr/spa' {
   interface RegisterLink {
-    Link: (
-      props: Parameters<typeof Link<RegisteredRouter['routeTree']>>[0]
-    ) => JSX.Element
+    Link: LinkComponent<'a'>
   }
 }
 

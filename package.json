@@ -18,14 +18,14 @@
     "prebuild": "only-include-used-icons && npx @inseefr/lunatic"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^1.9.2",
+    "@codegouvfr/react-dsfr": "^1.9.3",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@inseefr/lunatic": "3.0.0-rc.13",
     "@inseefr/lunatic-dsfr": "2.0.0-rc.6",
     "@mui/material": "^5.15.14",
     "@tanstack/react-query": "^5.28.6",
-    "@tanstack/react-router": "^1.18.3",
+    "@tanstack/react-router": "^1.20.0",
     "axios": "^1.6.8",
     "oidc-spa": "^4.4.1",
     "powerhooks": "^1.0.9",

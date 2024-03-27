@@ -17,11 +17,7 @@ export const rootRoute = createRootRouteWithContext<{
       <Outlet />
     </Layout>
   ),
-  notFoundComponent: () => (
-    <Layout>
-      <ErrorPage code={404} />
-    </Layout>
-  ),
+  notFoundComponent: () => <ErrorPage code={404} />,
 })
 
 export const routeTree = rootRoute.addChildren([
