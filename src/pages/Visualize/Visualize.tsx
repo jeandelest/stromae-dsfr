@@ -3,6 +3,8 @@ import { VisualizeForm } from './Form/VisualizeForm'
 import { visualizeRoute } from './route'
 import { axiosGet } from 'utils/axios'
 import { queryOptions, useQueryClient } from '@tanstack/react-query'
+import type { Nomenclature } from 'components/Orchestrator/utils/lunaticType'
+
 
 export function VisualizePage() {
   const loaderResults = visualizeRoute.useLoaderData()
@@ -26,7 +28,7 @@ export function VisualizePage() {
     return queryClient.ensureQueryData(
       queryOptions({
         queryKey: [name],
-        queryFn: () => axiosGet<Array<unknown>>(nomenclature[name]),
+        queryFn: () => axiosGet<Nomenclature>(nomenclature[name]),
       })
     )
   }

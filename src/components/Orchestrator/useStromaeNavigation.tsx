@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import { assert, type Equals } from 'tsafe/assert'
-import type { useLunatic } from '@inseefr/lunatic'
 import type { InternalPageType, PageType, StromaePage } from 'model/Page'
+import type {
+  LunaticGoNextPage,
+  LunaticGoPreviousPage,
+  LunaticGoToPage,
+} from './utils/lunaticType'
 
-type LunaticGoToPage = ReturnType<typeof useLunatic>['goToPage']
 type Params = {
   isFirstPage: boolean
   isLastPage: boolean
   initialCurrentPage: PageType | undefined
-  goNextLunatic: ReturnType<typeof useLunatic>['goNextPage']
-  goPrevLunatic: ReturnType<typeof useLunatic>['goPreviousPage']
+  goNextLunatic: LunaticGoNextPage
+  goPrevLunatic: LunaticGoPreviousPage
   openValidationModal: () => Promise<void>
   goToLunaticPage: LunaticGoToPage
 }

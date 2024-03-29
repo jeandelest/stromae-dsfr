@@ -19,13 +19,15 @@ import type { SurveyUnitData } from 'model/SurveyUnitData'
 import type { StateData } from 'model/StateData'
 import { isBlockingError, isSameErrors } from './utils/controls'
 import { slotComponents } from './slotComponents'
+import type { LunaticGetReferentiel } from './utils/lunaticType'
 
 export function Orchestrator(props: {
   source: LunaticSource
   surveyUnitData?: SurveyUnitData
-  getReferentiel?: (name: string) => Promise<Array<unknown>>
+  getReferentiel: LunaticGetReferentiel
 }) {
   const { source, surveyUnitData, getReferentiel } = props
+
   const navigate = useNavigate()
 
   const initialCurrentPage = surveyUnitData?.stateData?.currentPage
@@ -118,7 +120,7 @@ export function Orchestrator(props: {
         stateData: getCurrentStateData(),
         personalization: surveyUnitData?.personalization,
       },
-      //The label of source is not dynamic 
+      //The label of source is not dynamic
       filename: `${source.label.value}-${new Date().toLocaleDateString()}`,
     })
   }
