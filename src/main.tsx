@@ -1,21 +1,26 @@
-import React from 'react'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import React, { type ReactElement } from 'react'
 import ReactDOM from 'react-dom/client'
 import { OidcProvider } from 'oidc'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import {
+  RouterProvider,
+  createRouter,
+  Link,
+  type LinkProps,
+} from '@tanstack/react-router'
 import { routeTree } from 'router/router'
 import { startReactDsfr } from '@codegouvfr/react-dsfr/spa'
-import { Link, type LinkComponent } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { MuiDsfrThemeProvider } from '@codegouvfr/react-dsfr/mui'
 
 startReactDsfr({
   defaultColorScheme: 'system',
+  // @ts-expect-error
   Link,
 })
-
 declare module '@codegouvfr/react-dsfr/spa' {
   interface RegisterLink {
-    Link: LinkComponent<'a'>
+    Link: (props: LinkProps) => ReactElement
   }
 }
 

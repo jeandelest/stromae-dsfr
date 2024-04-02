@@ -796,10 +796,10 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.13.0.tgz#6abd79db7ff8d01a58865ba20a63cfd23d9e2a10"
   integrity sha512-UKXUQNbO3DOhzLRwHSpa0HnhhCgNODvfoPWv2FCXme8N/ANFfhIPMGuOT+QuKd16+B5yxZ0HdpNlqPvTMS1qfw==
 
-"@tanstack/history@1.22.8":
-  version "1.22.8"
-  resolved "https://registry.yarnpkg.com/@tanstack/history/-/history-1.22.8.tgz#9e78a5fb47ecd7fb2fccad563583cb107d283b87"
-  integrity sha512-PJoMQfre4+QoLsZhbicZV9nit9LapyyZmvbnT289GJglK4owr+TPsQNqTWC1D6LlOCBndiFrPCtapKNO67CAAg==
+"@tanstack/history@1.26.3":
+  version "1.26.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/history/-/history-1.26.3.tgz#bc53893a68304eca5dabdd4dba40c8d21b84fe1f"
+  integrity sha512-NhRgiyTdNy7lw2iL1gggj6Znz5wWi8c2yFE1zCfn0G6CPRDZZ//Stgd7bPOs6XIp24YeCFrIq4J3HAhbo8jyZg==
 
 "@tanstack/query-core@5.28.6":
   version "5.28.6"
@@ -813,12 +813,12 @@
   dependencies:
     "@tanstack/query-core" "5.28.6"
 
-"@tanstack/react-router@^1.20.0":
-  version "1.22.9"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.22.9.tgz#6e716cadfa8bf08030496307df36736f3b52b611"
-  integrity sha512-WtZrMbprxShFbfmHFIupLu0jbpngkYvOKRLH6+xDejGcRXpzwydg3XoMYLBfMnxYLzLtaJ/yZzBhceM3M+BHMg==
+"@tanstack/react-router@^1.26.3":
+  version "1.26.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.26.3.tgz#c2cd299022793549d1a1f5a84aa34f77115a4367"
+  integrity sha512-6iYZMMzW9y1V1CUssf5tPI84u9BJ8Ja3SKPNdTKJpNbgxygfdhts1yZm4Ev+4ZVr8CX0woy48SOJV9EoHMU8qA==
   dependencies:
-    "@tanstack/history" "1.22.8"
+    "@tanstack/history" "1.26.3"
     "@tanstack/react-store" "^0.2.1"
     tiny-invariant "^1.3.1"
     tiny-warning "^1.0.3"
