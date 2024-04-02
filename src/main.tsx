@@ -18,9 +18,10 @@ startReactDsfr({
   // @ts-expect-error
   Link,
 })
+
 declare module '@codegouvfr/react-dsfr/spa' {
   interface RegisterLink {
-    Link: (props: LinkProps) => ReactElement
+    Link: (props: LinkProps & { ref?: any }) => ReactElement
   }
 }
 

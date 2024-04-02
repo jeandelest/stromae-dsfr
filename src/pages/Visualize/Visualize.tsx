@@ -5,7 +5,6 @@ import { axiosGet } from 'utils/axios'
 import { queryOptions, useQueryClient } from '@tanstack/react-query'
 import type { Nomenclature } from 'components/Orchestrator/utils/lunaticType'
 
-
 export function VisualizePage() {
   const loaderResults = visualizeRoute.useLoaderData()
   const queryClient = useQueryClient()

@@ -3,7 +3,6 @@ import { renderToString } from 'react-dom/server'
 
 export function useDocumentTitle(title: string) {
   useEffect(() => {
-
     const prevTitle = document.title
 
     document.title = title
