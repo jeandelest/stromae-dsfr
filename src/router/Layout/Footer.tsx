@@ -37,7 +37,6 @@ export function Footer() {
       }
       websiteMapLinkProps={{
         to: '/plan-du-site',
-        params: { programId: 'now' },
       }}
       accessibilityLinkProps={{
         to: '/accessibilite',
