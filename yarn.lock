@@ -259,10 +259,17 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
+<<<<<<< HEAD
 "@codegouvfr/react-dsfr@^1.9.5":
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.9.5.tgz#7bc27f4951ef5a2a63eced3fcd8228ce77cf0b46"
   integrity sha512-hyEIO7c4x9ACJlqEJ9NvM8wG88nMRP+yv1TDjI1oK/i9DWIUwELzb1VcGjVj7JT6mLlU62vn0t1LZH1t4M9YHQ==
+=======
+"@codegouvfr/react-dsfr@^1.9.6":
+  version "1.9.6"
+  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.9.6.tgz#acb89c01c03b28b347a53eff0dcba52c8437b2ae"
+  integrity sha512-1s9m6CMZbayocCFDt0V7KHCjnwxkZ4GiT+dc0+HhNSuqYfMbeYnfFK5ANaGscMplzrJ3TE9SF5Qb21UJaU1PPQ==
+>>>>>>> 14a36e5 (Update tanstack router)
   dependencies:
     tsafe "^1.6.3"
     yargs-parser "^21.1.1"
@@ -1096,14 +1103,32 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.13.0.tgz#6abd79db7ff8d01a58865ba20a63cfd23d9e2a10"
   integrity sha512-UKXUQNbO3DOhzLRwHSpa0HnhhCgNODvfoPWv2FCXme8N/ANFfhIPMGuOT+QuKd16+B5yxZ0HdpNlqPvTMS1qfw==
 
+<<<<<<< HEAD
 "@stoplight/better-ajv-errors@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@stoplight/better-ajv-errors/-/better-ajv-errors-1.0.3.tgz#d74a5c4da5d786c17188d7f4edec505f089885fa"
   integrity sha512-0p9uXkuB22qGdNfy3VeEhxkU5uwvp/KrBTAbrLBURv6ilxIVwanKwjMc41lQfIVgPGcOkmLbTolfFrSsueu7zA==
+=======
+"@tanstack/history@1.26.3":
+  version "1.26.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/history/-/history-1.26.3.tgz#bc53893a68304eca5dabdd4dba40c8d21b84fe1f"
+  integrity sha512-NhRgiyTdNy7lw2iL1gggj6Znz5wWi8c2yFE1zCfn0G6CPRDZZ//Stgd7bPOs6XIp24YeCFrIq4J3HAhbo8jyZg==
+
+"@tanstack/query-core@5.28.6":
+  version "5.28.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.28.6.tgz#a3bdb108f9f8d4e2ba3163068dbe6ff55b905a81"
+  integrity sha512-hnhotV+DnQtvtR3jPvbQMPNMW4KEK0J4k7c609zJ8muiNknm+yoDyMHmxTWM5ZnlZpsz0zOxYFr+mzRJNHWJsA==
+
+"@tanstack/react-query@^5.28.6":
+  version "5.28.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.28.6.tgz#0d52b0a98a1d842debf9c65496e20a9981a23bc4"
+  integrity sha512-/DdYuDBSsA21Qbcder1R8Cr/3Nx0ZnA2lgtqKsLMvov8wL4+g0HBz/gWYZPlIsof7iyfQafyhg4wUVUsS3vWZw==
+>>>>>>> 14a36e5 (Update tanstack router)
   dependencies:
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
+<<<<<<< HEAD
 "@stoplight/json-ref-readers@1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@stoplight/json-ref-readers/-/json-ref-readers-1.2.2.tgz#e5992bae597f228f988f362a4c0304c03a92008b"
@@ -1319,6 +1344,13 @@
   resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.26.3.tgz#c2cd299022793549d1a1f5a84aa34f77115a4367"
   integrity sha512-6iYZMMzW9y1V1CUssf5tPI84u9BJ8Ja3SKPNdTKJpNbgxygfdhts1yZm4Ev+4ZVr8CX0woy48SOJV9EoHMU8qA==
   dependencies:
+=======
+"@tanstack/react-router@^1.26.7":
+  version "1.26.7"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.26.7.tgz#bc3ca3fa55b92a17e62022870c79ed06cfb0a52d"
+  integrity sha512-sEN4RvkobqcIUa18Eh9NgpaE+4lqmsBStiUG5fkH0XTCdkMJVBaYcpXKJ4owiLEZUxzs2UP6HcEkfIrkP2VuiQ==
+  dependencies:
+>>>>>>> 14a36e5 (Update tanstack router)
     "@tanstack/history" "1.26.3"
     "@tanstack/react-store" "^0.2.1"
     tiny-invariant "^1.3.1"

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { type ReactElement } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { OidcProvider } from 'oidc'
 import {
@@ -15,13 +15,12 @@ import { MuiDsfrThemeProvider } from '@codegouvfr/react-dsfr/mui'
 
 startReactDsfr({
   defaultColorScheme: 'system',
-  // @ts-expect-error
   Link,
 })
 
 declare module '@codegouvfr/react-dsfr/spa' {
   interface RegisterLink {
-    Link: (props: LinkProps & { ref?: any }) => ReactElement
+    Link: (props: LinkProps) => JSX.Element
   }
 }
 

@@ -19,14 +19,23 @@
     "openapi": "orval --config ./orval.config.ts"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@codegouvfr/react-dsfr": "^1.9.5",
+=======
+    "@codegouvfr/react-dsfr": "^1.9.6",
+>>>>>>> 14a36e5 (Update tanstack router)
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@inseefr/lunatic": "3.0.0-rc.21",
     "@inseefr/lunatic-dsfr": "2.0.0-rc.8",
     "@mui/material": "^5.15.14",
+<<<<<<< HEAD
     "@tanstack/react-query": "^5.28.9",
     "@tanstack/react-router": "^1.26.3",
+=======
+    "@tanstack/react-query": "^5.28.6",
+    "@tanstack/react-router": "^1.26.7",
+>>>>>>> 14a36e5 (Update tanstack router)
     "axios": "^1.6.8",
     "oidc-spa": "^4.4.1",
     "powerhooks": "^1.0.9",
