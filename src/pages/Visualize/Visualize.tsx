@@ -1,9 +1,8 @@
 import { Orchestrator } from 'components/Orchestrator/Orchestrator'
 import { VisualizeForm } from './Form/VisualizeForm'
 import { visualizeRoute } from './route'
-import { axiosGet } from 'utils/axios'
-import { queryOptions, useQueryClient } from '@tanstack/react-query'
-import type { Nomenclature } from 'components/Orchestrator/utils/lunaticType'
+import { useQueryClient } from '@tanstack/react-query'
+import { nomenclatureQueryOptions } from 'utils/query/visualizeQueryOptions'
 
 export function VisualizePage() {
   const loaderResults = visualizeRoute.useLoaderData()
@@ -25,15 +24,13 @@ export function VisualizePage() {
       )
     }
     return queryClient.ensureQueryData(
-      queryOptions({
-        queryKey: [name],
-        queryFn: () => axiosGet<Nomenclature>(nomenclature[name]),
-      })
+      nomenclatureQueryOptions(nomenclature[name])
     )
   }
 
   return (
     <Orchestrator
+      mode="visualize"
       source={source}
       surveyUnitData={surveyUnitData}
       getReferentiel={getReferentiel}

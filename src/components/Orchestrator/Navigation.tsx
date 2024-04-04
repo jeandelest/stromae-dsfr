@@ -4,6 +4,7 @@ import { Grid } from 'components/Grid'
 import type { InternalPageType } from 'model/Page'
 import { useMemo, type PropsWithChildren } from 'react'
 import { useStyles } from 'tss-react'
+import type { OrchestratorProps } from './Orchestrator'
 
 export function Navigation(
   props: PropsWithChildren<{
@@ -11,6 +12,7 @@ export function Navigation(
     handlePreviousClick: () => void
     handleNextClick: () => void
     handleDownloadData: () => void
+    mode: OrchestratorProps['mode']
   }>
 ) {
   const {
@@ -18,6 +20,7 @@ export function Navigation(
     handleNextClick,
     handlePreviousClick,
     handleDownloadData,
+    mode,
     children,
   } = props
   const { css } = useStyles()
@@ -65,19 +68,21 @@ export function Navigation(
           {nextLabel}
         </Button>
       </Grid>
-      <ButtonsGroup
-        buttons={[
-          {
-            children: 'Télécharger les données',
-            priority: 'tertiary no outline',
-            id: 'button-saveData',
-            iconId: 'ri-download-2-line',
-            onClick: handleDownloadData,
-          },
-        ]}
-        alignment="right"
-        buttonsEquisized={true}
-      />
+      {mode === 'visualize' && (
+        <ButtonsGroup
+          buttons={[
+            {
+              children: 'Télécharger les données',
+              priority: 'tertiary no outline',
+              id: 'button-saveData',
+              iconId: 'ri-download-2-line',
+              onClick: handleDownloadData,
+            },
+          ]}
+          alignment="right"
+          buttonsEquisized={true}
+        />
+      )}
     </>
   )
 }

@@ -21,12 +21,26 @@ import { isBlockingError, isSameErrors } from './utils/controls'
 import { slotComponents } from './slotComponents'
 import type { LunaticGetReferentiel } from './utils/lunaticType'
 
-export function Orchestrator(props: {
-  source: LunaticSource
-  surveyUnitData?: SurveyUnitData
-  getReferentiel: LunaticGetReferentiel
-}) {
-  const { source, surveyUnitData, getReferentiel } = props
+export type OrchestratorProps = OrchestratorProps.Common &
+  (OrchestratorProps.Visualize | OrchestratorProps.Collect)
+
+export namespace OrchestratorProps {
+  export type Common = {
+    source: LunaticSource
+    surveyUnitData?: SurveyUnitData
+    getReferentiel: LunaticGetReferentiel
+  }
+
+  export type Visualize = {
+    mode: 'visualize'
+  }
+
+  export type Collect = {
+    mode: 'collecte'
+  }
+}
+export function Orchestrator(props: OrchestratorProps) {
+  const { source, surveyUnitData, getReferentiel, mode } = props
 
   const navigate = useNavigate()
 
@@ -128,7 +142,7 @@ export function Orchestrator(props: {
   const isDownloadPage = currentPage === 'downloadPage'
 
   useEffect(() => {
-    if (!isDownloadPage) return
+    if (!isDownloadPage || mode !== 'visualize') return
     handleDownloadData()
     navigate({ to: '/visualize' })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -143,6 +157,7 @@ export function Orchestrator(props: {
             handlePreviousClick={goPrevious}
             handleDownloadData={handleDownloadData}
             currentPage={currentPage}
+            mode={mode}
           >
             <div className={fr.cx('fr-mb-4v')}>
               {currentPage === 'welcomePage' && (

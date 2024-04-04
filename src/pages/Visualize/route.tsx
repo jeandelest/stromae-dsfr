@@ -8,6 +8,7 @@ import {
   sourceQueryOptions,
   surveyUnitDataQueryOptions,
 } from 'utils/query/visualizeQueryOptions'
+import { ErrorComponent } from 'components/Error/ErrorComponent'
 
 export const visualizeRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -48,11 +49,13 @@ export const visualizeRoute = createRoute({
       ? queryClient.ensureQueryData(metadataQueryOptions(metadataUrl))
       : Promise.resolve(undefined)
 
-    const [source, surveyUnitData, metadata] = await Promise.all([
-      sourcePr,
-      surveyUnitDataPr,
-      metadataPr,
-    ])
-    return { source, surveyUnitData, metadata, nomenclature }
+    return Promise.all([sourcePr, surveyUnitDataPr, metadataPr]).then(
+      ([source, surveyUnitData, metadata]) => {
+        return { source, surveyUnitData, metadata, nomenclature }
+      }
+    )
+  },
+  errorComponent: ({ error }) => {
+    return <ErrorComponent error={error} redirectTo="visualizeForm" />
   },
 })

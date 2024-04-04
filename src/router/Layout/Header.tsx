@@ -30,13 +30,21 @@ export function Header() {
           },
           text: "Contacter l'assistance",
         },
-        isUserLoggedIn ?? {
-          buttonProps: {
-            onClick: logout,
-          },
-          iconId: 'ri-account-box-line',
-          text: 'Se déconnecter',
-        },
+        ...(!isUserLoggedIn
+          ? []
+          : [
+              {
+                iconId: 'ri-account-box-line',
+                buttonProps: {
+                  onClick: () =>
+                    logout({
+                      redirectTo: 'specific url',
+                      url: import.meta.env.VITE_PORTAIL_URL,
+                    }),
+                },
+                text: 'Se déconnecter',
+              } as const,
+            ]),
       ]}
       serviceTagline="Application de collecte internet"
       serviceTitle={

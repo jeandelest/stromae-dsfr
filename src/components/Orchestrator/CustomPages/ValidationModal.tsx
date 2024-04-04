@@ -32,6 +32,7 @@ export function ValidationModal(props: Props) {
         setOpenState({ resolve })
         modal.open()
       })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
