@@ -10,6 +10,7 @@ import { legalsRoute } from 'pages/Legals/route'
 import { navigationAssistanceRoute } from 'pages/NavigationAssistance/route'
 import { collectRoute } from 'pages/Collect/route'
 import { NotFoundError } from 'utils/error/notFoundError'
+import { reviewRoute } from 'pages/Review/route'
 
 export const rootRoute = createRootRouteWithContext<{
   queryClient: QueryClient
@@ -32,4 +33,5 @@ export const routeTree = rootRoute.addChildren([
   legalsRoute,
   navigationAssistanceRoute,
   collectRoute,
+  reviewRoute,
 ])

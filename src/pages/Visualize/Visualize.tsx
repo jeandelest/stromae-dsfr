@@ -3,6 +3,7 @@ import { VisualizeForm } from './Form/VisualizeForm'
 import { visualizeRoute } from './route'
 import { useQueryClient } from '@tanstack/react-query'
 import { nomenclatureQueryOptions } from 'utils/query/visualizeQueryOptions'
+import type { LunaticGetReferentiel } from 'components/Orchestrator/utils/lunaticType'
 
 export function VisualizePage() {
   const loaderResults = visualizeRoute.useLoaderData()
@@ -13,7 +14,7 @@ export function VisualizePage() {
   }
   const { source, surveyUnitData, nomenclature } = loaderResults
 
-  const getReferentiel = (name: string) => {
+  const getReferentiel: LunaticGetReferentiel = (name: string) => {
     if (!nomenclature) {
       return Promise.reject(new Error('No nomenclature provided'))
     }

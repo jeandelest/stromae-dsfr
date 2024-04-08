@@ -7,7 +7,7 @@ import { getErrorInformations } from 'utils/error/errorUtils'
 
 export function ErrorComponent(props: {
   error: unknown
-  redirectTo: 'home' | 'portal' | 'visualizeForm'
+  redirectTo: 'home' | 'portal' | 'visualizeForm' | undefined
 }) {
   const { error, redirectTo } = props
 
@@ -29,32 +29,34 @@ export function ErrorComponent(props: {
           {code && <span>Erreur {code}</span>}
           <p className={fr.cx('fr-mt-3w', 'fr-text--lead')}>{subtitle}</p>
           <p className={fr.cx('fr-mt-3w')}>{paragraph}</p>
-          <Button
-            size="large"
-            linkProps={(() => {
-              switch (redirectTo) {
-                case 'home':
-                  return { to: '/' }
-                case 'portal':
-                  return { href: import.meta.env.VITE_PORTAIL_URL }
-                case 'visualizeForm':
-                  return { to: '/visualize' }
-                default:
-                  return {}
-              }
-            })()}
-          >
-            {(() => {
-              switch (redirectTo) {
-                case 'home':
-                  return "Retourner à la page d'accueil"
-                case 'portal':
-                  return 'Retourner sur le portail'
-                case 'visualizeForm':
-                  return 'Retourner au formulaire de visualisation'
-              }
-            })()}
-          </Button>
+          {redirectTo && (
+            <Button
+              size="large"
+              linkProps={(() => {
+                switch (redirectTo) {
+                  case 'home':
+                    return { to: '/' }
+                  case 'portal':
+                    return { href: import.meta.env.VITE_PORTAIL_URL }
+                  case 'visualizeForm':
+                    return { to: '/visualize' }
+                  default:
+                    return {}
+                }
+              })()}
+            >
+              {(() => {
+                switch (redirectTo) {
+                  case 'home':
+                    return "Retourner à la page d'accueil"
+                  case 'portal':
+                    return 'Retourner sur le portail'
+                  case 'visualizeForm':
+                    return 'Retourner au formulaire de visualisation'
+                }
+              })()}
+            </Button>
+          )}
         </div>
         <div
           className={fr.cx(

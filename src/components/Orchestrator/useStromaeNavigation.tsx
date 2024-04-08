@@ -84,5 +84,5 @@ export function useStromaeNavigation({
         goToLunaticPage(params)
     }
   }
-  return { goNext, goPrevious, goToPage, currentPage: currentPage }
+  return { goNext, goPrevious, goToPage, currentPage }
 }

@@ -3,6 +3,7 @@ import {
   LunaticComponents,
   type LunaticSource,
   type LunaticError,
+  type LunaticData,
 } from '@inseefr/lunatic'
 import { fr } from '@codegouvfr/react-dsfr'
 import { downloadAsJson } from 'utils/downloadAsJson'
@@ -20,6 +21,9 @@ import type { StateData } from 'model/StateData'
 import { isBlockingError, isSameErrors } from './utils/controls'
 import { slotComponents } from './slotComponents'
 import type { LunaticGetReferentiel } from './utils/lunaticType'
+import { isObjectEmpty } from 'utils/isObjectEmpty'
+import { useUpdateEffect } from 'utils/useUpdateEffect'
+import { useWhyRender } from 'utils/useWhyRender'
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)
@@ -36,9 +40,15 @@ export namespace OrchestratorProps {
   }
 
   export type Collect = {
-    mode: 'collecte'
+    mode: 'collect'
+    updateCollectedData: (params: {
+      data: NonNullable<LunaticData['COLLECTED']>
+      onSuccess?: () => void
+    }) => void
+    updateStateData: (params: { stateData: StateData }) => void
   }
 }
+
 export function Orchestrator(props: OrchestratorProps) {
   const { source, surveyUnitData, getReferentiel, mode } = props
 
@@ -57,10 +67,13 @@ export function Orchestrator(props: OrchestratorProps) {
     isLastPage,
     pageTag,
     goToPage: goToLunaticPage,
+    getChangedData,
+    resetChangedData,
   } = useLunatic(source, surveyUnitData?.data, {
     activeControls: true,
     getReferentiel,
     autoSuggesterLoading: true,
+    trackChanges: mode === 'collect',
   })
 
   const [activeErrors, setActiveErrors] = useState<
@@ -111,7 +124,7 @@ export function Orchestrator(props: OrchestratorProps) {
     },
   })
 
-  const getCurrentStateData = (): StateData => {
+  function getCurrentStateData(): StateData {
     switch (currentPage) {
       case 'endPage':
         return { date: Date.now(), currentPage, state: 'VALIDATED' }
@@ -147,6 +160,20 @@ export function Orchestrator(props: OrchestratorProps) {
     navigate({ to: '/visualize' })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDownloadPage])
+
+  useUpdateEffect(() => {
+    // Persist data when the currentPage or pageTag changes and mode is 'collect'.
+    if (mode !== 'collect') return
+    const { updateCollectedData, updateStateData } = props
+
+    const data = getChangedData()
+
+    if (data.COLLECTED && !isObjectEmpty(data.COLLECTED)) {
+      updateCollectedData({ data: data.COLLECTED, onSuccess: resetChangedData })
+    }
+    updateStateData({ stateData: getCurrentStateData() })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, pageTag])
 
   return (
     <div className={fr.cx('fr-container--fluid', 'fr-mt-1w', 'fr-mb-7w')}>
