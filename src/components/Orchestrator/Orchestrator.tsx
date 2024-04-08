@@ -23,7 +23,6 @@ import { slotComponents } from './slotComponents'
 import type { LunaticGetReferentiel } from './utils/lunaticType'
 import { isObjectEmpty } from 'utils/isObjectEmpty'
 import { useUpdateEffect } from 'utils/useUpdateEffect'
-import { useWhyRender } from 'utils/useWhyRender'
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)
