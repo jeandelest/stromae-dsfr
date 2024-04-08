@@ -1,14 +1,13 @@
 import { createModal } from '@codegouvfr/react-dsfr/Modal'
-import { useState, useEffect, useId } from 'react'
+import { useState, useEffect, useId, type MutableRefObject } from 'react'
 import { assert } from 'tsafe/assert'
 
 export type Props = {
-  actions: {
+  actionsRef: MutableRefObject<{
     open?: () => Promise<void>
-  }
+  }>
 }
-export function ValidationModal(props: Props) {
-  const { actions } = props
+export function ValidationModal({actionsRef}: Props) {
 
   const id = useId()
 
@@ -27,7 +26,7 @@ export function ValidationModal(props: Props) {
   >(undefined)
 
   useEffect(() => {
-    actions.open = () =>
+    actionsRef.current.open = () =>
       new Promise<void>((resolve) => {
         setOpenState({ resolve })
         modal.open()

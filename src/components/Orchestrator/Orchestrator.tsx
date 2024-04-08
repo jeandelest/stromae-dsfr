@@ -5,6 +5,7 @@ import {
   type LunaticError,
   type LunaticData,
 } from '@inseefr/lunatic'
+import { useRef } from 'react'
 import { fr } from '@codegouvfr/react-dsfr'
 import { downloadAsJson } from 'utils/downloadAsJson'
 import { useNavigate } from '@tanstack/react-router'
@@ -15,14 +16,14 @@ import { Validation } from './CustomPages/Validation'
 import { useStromaeNavigation } from './useStromaeNavigation'
 import { EndPage } from './CustomPages/EndPage'
 import { ValidationModal } from './CustomPages/ValidationModal'
-import { assert } from 'tsafe/assert'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
 import type { StateData } from 'model/StateData'
 import { isBlockingError, isSameErrors } from './utils/controls'
 import { slotComponents } from './slotComponents'
 import type { LunaticGetReferentiel } from './utils/lunaticType'
 import { isObjectEmpty } from 'utils/isObjectEmpty'
-import { useUpdateEffect } from 'utils/useUpdateEffect'
+import { useUpdateEffect } from 'hooks/useUpdateEffect'
+import { useRefSync } from 'hooks/useRefSync'
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)
@@ -79,21 +80,22 @@ export function Orchestrator(props: OrchestratorProps) {
     Record<string, LunaticError[]> | undefined
   >(undefined)
 
-  const [validationModalActions] = useState<{
-    open?: () => Promise<void>
-  }>({})
+  const validationModalActionsRef = useRef({
+    open: () => Promise.resolve(),
+  })
 
-  const goNextHandlingControls = () => {
+  // Decorates goNext function with controls behavior
+  const goNextWithControls = () => {
     const { currentErrors } = compileControls()
 
-    //No errors, we goNext
+    // No errors, continue
     if (!currentErrors) {
       setActiveErrors(undefined)
       goNextLunatic()
       return
     }
 
-    //An error is blocking, we stay on the page
+    // An error is blocking, we stay on the page
     if (isBlockingError(currentErrors)) {
       //compileControls returns isCritical but I prefer define my own rules of blocking error in the orchestrator
       setActiveErrors(currentErrors)
@@ -111,19 +113,16 @@ export function Orchestrator(props: OrchestratorProps) {
   }
 
   const { currentPage, goNext, goToPage, goPrevious } = useStromaeNavigation({
-    goNextLunatic: goNextHandlingControls,
+    goNextLunatic: goNextWithControls,
     goPrevLunatic,
     isFirstPage,
     isLastPage,
     goToLunaticPage,
     initialCurrentPage,
-    openValidationModal: () => {
-      assert(validationModalActions.open !== undefined)
-      return validationModalActions.open()
-    },
+    openValidationModal: () => validationModalActionsRef.current.open(),
   })
 
-  function getCurrentStateData(): StateData {
+  const getCurrentStateData = (): StateData => {
     switch (currentPage) {
       case 'endPage':
         return { date: Date.now(), currentPage, state: 'VALIDATED' }
@@ -139,7 +138,7 @@ export function Orchestrator(props: OrchestratorProps) {
     }
   }
 
-  function handleDownloadData() {
+  const downloadAsJsonRef = useRefSync(() => {
     downloadAsJson<SurveyUnitData>({
       dataToDownload: {
         data: getData(false),
@@ -149,19 +148,19 @@ export function Orchestrator(props: OrchestratorProps) {
       //The label of source is not dynamic
       filename: `${source.label.value}-${new Date().toLocaleDateString()}`,
     })
-  }
+  })
 
   const isDownloadPage = currentPage === 'downloadPage'
 
+  // When reaching the download page, start downloading the page
   useEffect(() => {
     if (!isDownloadPage || mode !== 'visualize') return
-    handleDownloadData()
+    downloadAsJsonRef.current()
     navigate({ to: '/visualize' })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDownloadPage])
+  }, [isDownloadPage, downloadAsJsonRef, navigate, mode])
 
+  // Persist data when page change in "collect" mode
   useUpdateEffect(() => {
-    // Persist data when the currentPage or pageTag changes and mode is 'collect'.
     if (mode !== 'collect') return
     const { updateCollectedData, updateStateData } = props
 
@@ -181,7 +180,7 @@ export function Orchestrator(props: OrchestratorProps) {
           <Navigation
             handleNextClick={goNext}
             handlePreviousClick={goPrevious}
-            handleDownloadData={handleDownloadData}
+            handleDownloadData={downloadAsJsonRef.current}
             currentPage={currentPage}
             mode={mode}
           >
@@ -206,7 +205,7 @@ export function Orchestrator(props: OrchestratorProps) {
               {currentPage === 'endPage' && (
                 <EndPage date={surveyUnitData?.stateData?.date} />
               )}
-              <ValidationModal actions={validationModalActions} />
+              <ValidationModal actionsRef={validationModalActionsRef} />
             </div>
           </Navigation>
         </div>

@@ -3,10 +3,12 @@ import { Header as DsfrHeader } from '@codegouvfr/react-dsfr/Header'
 import logoInsee from 'assets/logo-insee.png'
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display'
 import { Badge } from '@codegouvfr/react-dsfr/Badge'
+import { useLogoutUrl } from 'hooks/useLogoutUrl'
 
 export function Header() {
   const { isUserLoggedIn, logout } = useOidc()
 
+  const logoutUrl = useLogoutUrl()
   return (
     <DsfrHeader
       brandTop={
@@ -39,7 +41,7 @@ export function Header() {
                   onClick: () =>
                     logout({
                       redirectTo: 'specific url',
-                      url: import.meta.env.VITE_PORTAIL_URL,
+                      url: logoutUrl,
                     }),
                 },
                 text: 'Se déconnecter',

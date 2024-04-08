@@ -9,12 +9,18 @@ import type {
 import { useSetStateData, useUpdateCollectedData } from 'api/06-survey-units'
 import type { LunaticData } from '@inseefr/lunatic'
 import type { StateData } from 'model/StateData'
+import { useDocumentTitle } from 'hooks/useDocumentTitle'
+import { useSetLogoutQuestionnaire } from 'hooks/useLogoutUrl'
 
 export function CollectPage() {
-  const { surveyUnitId } = collectRoute.useParams()
+  const { surveyUnitId, questionnaireId } = collectRoute.useParams()
   const queryClient = useQueryClient()
+  useSetLogoutQuestionnaire(questionnaireId)
 
   const loaderResults = collectRoute.useLoaderData()
+
+  //TODO -> use Metadata
+  useDocumentTitle("Questionnaire | Filière d'Enquête")
 
   const { source, surveyUnitData } = loaderResults
 

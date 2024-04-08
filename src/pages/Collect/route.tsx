@@ -18,7 +18,7 @@ export const collectRoute = createRoute({
     params: { questionnaireId, surveyUnitId },
     context: { queryClient },
   }) => {
-    document.title = "Questionnaire | Filière d'Enquête"
+    
 
     const sourcePr = queryClient
       .ensureQueryData(getGetQuestionnaireDataQueryOptions(questionnaireId))
