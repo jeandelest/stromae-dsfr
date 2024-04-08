@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
-    "@types/node": "^20.12.4",
+    "@types/node": "^20.12.5",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
@@ -52,7 +52,7 @@
     "prettier": "^3.2.5",
     "typescript": "^5.4.4",
     "vite": "^5.2.8",
-    "vite-envs": "^4.0.11",
+    "vite-envs": "^4.0.12",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }

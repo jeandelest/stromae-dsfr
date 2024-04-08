@@ -1425,10 +1425,10 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@^20.12.4":
-  version "20.12.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.4.tgz#af5921bd75ccdf3a3d8b3fa75bf3d3359268cd11"
-  integrity sha512-E+Fa9z3wSQpzgYQdYmme5X3OTuejnnTx88A6p6vkkJosR3KBz+HpE3kqNm98VE6cfLFcISx7zW7MsJkH6KwbTw==
+"@types/node@^20.12.5":
+  version "20.12.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.5.tgz#74c4f31ab17955d0b5808cdc8fd2839526ad00b3"
+  integrity sha512-BD+BjQ9LS/D8ST9p5uqBxghlN+S42iuNxjsUGjeZobe/ciXzk2qb1B6IXc6AnRLS+yFJRpN2IPEHMzwspfDJNw==
   dependencies:
     undici-types "~5.26.4"
 
@@ -5023,10 +5023,10 @@ vfile@^5.0.0:
     unist-util-stringify-position "^3.0.0"
     vfile-message "^3.0.0"
 
-vite-envs@^4.0.11:
-  version "4.0.11"
-  resolved "https://registry.yarnpkg.com/vite-envs/-/vite-envs-4.0.11.tgz#ca949d241e3684e63d6069db48f61e50abe2f70b"
-  integrity sha512-vYNRJUgYQ5rnmV3aPwCgUkuR5diHLX+7mhOWyBgJwC24USDC+eLkPr+ERjPk4KKRGan/m+33AM3AWmS7ZzWgdQ==
+vite-envs@^4.0.12:
+  version "4.0.12"
+  resolved "https://registry.yarnpkg.com/vite-envs/-/vite-envs-4.0.12.tgz#265c3ffece0620b12bed21e660c5883c9b663ebc"
+  integrity sha512-AhjgDYCkvUuIBTZ9P+QNUigD3rT8iY/x0BF8tnCrKdgdGqA6ouCXp1Ot6CZtJEnwRF2v4UeMcMbSq1hHW4Tvpw==
   dependencies:
     cheerio "^1.0.0-rc.12"
     dotenv "^16.4.4"
