@@ -6,7 +6,6 @@ export const stromaePageSchema = z.enum([
   'welcomePage',
   'validationPage',
   'endPage',
-  'downloadPage',
 ])
 
 assert<Equals<z.infer<typeof stromaePageSchema>, StromaePage>>()

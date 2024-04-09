@@ -6,7 +6,11 @@ import type {
   LunaticGetReferentiel,
   Nomenclature,
 } from 'components/Orchestrator/utils/lunaticType'
-import { useSetStateData, useUpdateCollectedData } from 'api/06-survey-units'
+import {
+  getGenerateDepositProofQueryOptions,
+  useSetStateData,
+  useUpdateCollectedData,
+} from 'api/06-survey-units'
 import type { LunaticData } from '@inseefr/lunatic'
 import type { StateData } from 'model/StateData'
 import { useDocumentTitle } from 'hooks/useDocumentTitle'
@@ -45,6 +49,28 @@ export function CollectPage() {
   const updateStateData = (params: { stateData: StateData }) =>
     mutationUpdateStateData.mutate({ id: surveyUnitId, data: params.stateData })
 
+  const getDepositProof = () =>
+    queryClient
+      .ensureQueryData(getGenerateDepositProofQueryOptions(surveyUnitId))
+      .then((response) => {
+        const fileName =
+          (response.headers['content-disposition'].match(
+            /filename="(.+?)"/
+          )[1] as string) ?? 'document.pdf' //content-disposition is present in OpenAPI spec but not well inferred by type
+
+        const url = URL.createObjectURL(response.data)
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', fileName)
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        URL.revokeObjectURL(url)
+      })
+      .catch((error) => {
+        console.error('Error downloading PDF:', error)
+      })
+
   return (
     <Orchestrator
       mode="collect"
@@ -53,6 +79,7 @@ export function CollectPage() {
       getReferentiel={getReferentiel}
       updateCollectedData={updateCollectedData}
       updateStateData={updateStateData}
+      getDepositProof={getDepositProof}
     />
   )
 }

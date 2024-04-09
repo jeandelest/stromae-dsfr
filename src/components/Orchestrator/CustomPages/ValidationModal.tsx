@@ -7,8 +7,7 @@ export type Props = {
     open?: () => Promise<void>
   }>
 }
-export function ValidationModal({actionsRef}: Props) {
-
+export function ValidationModal({ actionsRef }: Props) {
   const id = useId()
 
   const [modal] = useState(() =>

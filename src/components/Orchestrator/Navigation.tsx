@@ -12,6 +12,7 @@ export function Navigation(
     handlePreviousClick: () => void
     handleNextClick: () => void
     handleDownloadData: () => void
+    handleDepositProofClick: () => Promise<void>
     mode: OrchestratorProps['mode']
   }>
 ) {
@@ -20,6 +21,7 @@ export function Navigation(
     handleNextClick,
     handlePreviousClick,
     handleDownloadData,
+    handleDepositProofClick,
     mode,
     children,
   } = props
@@ -63,7 +65,11 @@ export function Navigation(
           priority="primary"
           title={"Passer à l'étape suivante"}
           id="continue-button"
-          onClick={handleNextClick}
+          onClick={
+            currentPage === 'endPage'
+              ? handleDepositProofClick
+              : handleNextClick
+          }
         >
           {nextLabel}
         </Button>

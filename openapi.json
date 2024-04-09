@@ -850,7 +850,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "Content-Disposition": {
+                "description": "The filename of the returned PDF",
+                "schema": {
+                  "type": "string",
+                  "example": "attachment; filename=\"deposit_proof.pdf\""
+                }
+              }
+            }
           }
         }
       }

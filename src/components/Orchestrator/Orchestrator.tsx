@@ -11,7 +11,7 @@ import { downloadAsJson } from 'utils/downloadAsJson'
 import { useNavigate } from '@tanstack/react-router'
 import { Welcome } from './CustomPages/Welcome'
 import { Navigation } from './Navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Validation } from './CustomPages/Validation'
 import { useStromaeNavigation } from './useStromaeNavigation'
 import { EndPage } from './CustomPages/EndPage'
@@ -46,13 +46,12 @@ export namespace OrchestratorProps {
       onSuccess?: () => void
     }) => void
     updateStateData: (params: { stateData: StateData }) => void
+    getDepositProof: () => Promise<void>
   }
 }
 
 export function Orchestrator(props: OrchestratorProps) {
   const { source, surveyUnitData, getReferentiel, mode } = props
-
-  const navigate = useNavigate()
 
   const initialCurrentPage = surveyUnitData?.stateData?.currentPage
 
@@ -120,6 +119,7 @@ export function Orchestrator(props: OrchestratorProps) {
     goToLunaticPage,
     initialCurrentPage,
     openValidationModal: () => validationModalActionsRef.current.open(),
+    mode,
   })
 
   const getCurrentStateData = (): StateData => {
@@ -128,9 +128,6 @@ export function Orchestrator(props: OrchestratorProps) {
         return { date: Date.now(), currentPage, state: 'VALIDATED' }
       case 'lunaticPage':
         return { date: Date.now(), currentPage: pageTag, state: 'INIT' }
-      case 'downloadPage':
-        //downloadPage is not really a page, this is only use internally to manage state
-        return { date: Date.now(), currentPage: 'endPage', state: 'VALIDATED' }
       case 'validationPage':
       case 'welcomePage':
       default:
@@ -150,15 +147,6 @@ export function Orchestrator(props: OrchestratorProps) {
     })
   })
 
-  const isDownloadPage = currentPage === 'downloadPage'
-
-  // When reaching the download page, start downloading the page
-  useEffect(() => {
-    if (!isDownloadPage || mode !== 'visualize') return
-    downloadAsJsonRef.current()
-    navigate({ to: '/visualize' })
-  }, [isDownloadPage, downloadAsJsonRef, navigate, mode])
-
   // Persist data when page change in "collect" mode
   useUpdateEffect(() => {
     if (mode !== 'collect') return
@@ -173,6 +161,20 @@ export function Orchestrator(props: OrchestratorProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, pageTag])
 
+  const navigate = useNavigate()
+
+  const handleDepositProofClick = async () => {
+    switch (mode) {
+      case 'visualize': {
+        downloadAsJsonRef.current()
+        navigate({ to: '/visualize' })
+        break
+      }
+      case 'collect': {
+        return props.getDepositProof()
+      }
+    }
+  }
   return (
     <div className={fr.cx('fr-container--fluid', 'fr-mt-1w', 'fr-mb-7w')}>
       <Provider>
@@ -183,6 +185,7 @@ export function Orchestrator(props: OrchestratorProps) {
             handleDownloadData={downloadAsJsonRef.current}
             currentPage={currentPage}
             mode={mode}
+            handleDepositProofClick={handleDepositProofClick}
           >
             <div className={fr.cx('fr-mb-4v')}>
               {currentPage === 'welcomePage' && (

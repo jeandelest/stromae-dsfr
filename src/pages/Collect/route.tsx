@@ -18,8 +18,6 @@ export const collectRoute = createRoute({
     params: { questionnaireId, surveyUnitId },
     context: { queryClient },
   }) => {
-    
-
     const sourcePr = queryClient
       .ensureQueryData(getGetQuestionnaireDataQueryOptions(questionnaireId))
       .then((e) => e.value as unknown as LunaticSource) // We'd like to use zod, but the files are heavy.

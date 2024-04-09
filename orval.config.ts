@@ -13,6 +13,14 @@ export default defineConfig({
           path: './src/api/axiosInstance.ts',
           name: 'stromaeInstance',
         },
+        operations: {
+          generateDepositProof: {
+            mutator: {
+              path: './src/api/axiosInstance.ts',
+              name: 'depositProofInstance',
+            },
+          },
+        },
       },
     },
     hooks: {

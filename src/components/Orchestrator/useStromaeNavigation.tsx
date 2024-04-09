@@ -15,6 +15,7 @@ type Params = {
   goPrevLunatic: LunaticGoPreviousPage
   openValidationModal: () => Promise<void>
   goToLunaticPage: LunaticGoToPage
+  mode: 'visualize' | 'collect'
 }
 
 export function useStromaeNavigation({
@@ -27,9 +28,7 @@ export function useStromaeNavigation({
   openValidationModal,
 }: Params) {
   const [currentPage, setCurrentPage] = useState<InternalPageType>(() =>
-    ['endPage', 'downloadPage'].includes(initialCurrentPage) //downloadPage should not be saved into state but to be sure i handle case
-      ? 'endPage'
-      : 'welcomePage'
+    initialCurrentPage === 'endPage' ? 'endPage' : 'welcomePage'
   )
 
   const goNext = () => {
@@ -44,8 +43,6 @@ export function useStromaeNavigation({
       case 'lunaticPage':
         return isLastPage ? setCurrentPage('validationPage') : goNextLunatic()
       case 'endPage':
-        return setCurrentPage('downloadPage')
-      case 'downloadPage':
         return
     }
     assert<Equals<typeof currentPage, never>>(false)
@@ -56,7 +53,6 @@ export function useStromaeNavigation({
         return setCurrentPage('lunaticPage')
       case 'lunaticPage':
         return isFirstPage ? setCurrentPage('welcomePage') : goPrevLunatic()
-      case 'downloadPage':
       case 'endPage':
       case 'welcomePage':
         return
@@ -73,7 +69,6 @@ export function useStromaeNavigation({
   ) => {
     switch (params.page) {
       case 'validationPage':
-      case 'downloadPage':
       case 'endPage':
       case 'welcomePage':
         setCurrentPage(params.page)

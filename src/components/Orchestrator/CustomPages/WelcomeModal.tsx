@@ -21,14 +21,14 @@ export function WelcomeModal(props: { goBack: () => void }) {
         },
         {
           doClosesModal: true,
-          children: "Reprendre la où j'en étais",
+          children: "Reprendre là où j'en étais",
           onClick: goBack,
         },
       ]}
       concealingBackdrop={true}
     >
       Vous avez déjà commencé à renseigner le questionnaire. Souhaitez-vous
-      reprendre la vous en étiez ou revenir à la première page ?
+      reprendre là où vous en étiez ou revenir à la première page ?
     </modal.Component>
   )
 }

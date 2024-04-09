@@ -20,8 +20,6 @@ const onRequest = async (config: any) => ({
     'Content-Type': 'application/json;charset=utf-8',
     Accept: 'application/json;charset=utf-8',
     ...(await (async () => {
-      // TODO : Remove this when oidc is in place
-      return undefined
       const accessToken = await getAccessToken()
 
       if (!accessToken) {
@@ -41,9 +39,20 @@ axiosInstance.interceptors.request.use(onRequest)
 export const stromaeInstance = <T>(
   config: AxiosRequestConfig,
   options?: AxiosRequestConfig
-): Promise<T> => {
-  return axiosInstance({
+) => {
+  return axiosInstance<T>({
     ...config,
     ...options,
   }).then(({ data }) => data)
+}
+
+//DepositProofInstance
+export const depositProofInstance = <T>(
+  config: AxiosRequestConfig,
+  options?: AxiosRequestConfig
+) => {
+  return axiosInstance<T>({
+    ...config,
+    ...options,
+  })
 }

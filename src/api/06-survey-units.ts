@@ -30,6 +30,7 @@ import type {
   UpdateDataBody,
 } from '../model/api'
 import { stromaeInstance } from './axiosInstance'
+import { depositProofInstance } from './axiosInstance'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
 
@@ -1443,11 +1444,16 @@ export const useGetInterviewerSurveyUnits = <
  */
 export const generateDepositProof = (
   id: string,
-  options?: SecondParameter<typeof stromaeInstance>,
+  options?: SecondParameter<typeof depositProofInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<void>(
-    { url: `/api/survey-unit/${id}/deposit-proof`, method: 'GET', signal },
+  return depositProofInstance<Blob>(
+    {
+      url: `/api/survey-unit/${id}/deposit-proof`,
+      method: 'GET',
+      responseType: 'blob',
+      signal,
+    },
     options
   )
 }
@@ -1469,7 +1475,7 @@ export const getGenerateDepositProofQueryOptions = <
         TData
       >
     >
-    request?: SecondParameter<typeof stromaeInstance>
+    request?: SecondParameter<typeof depositProofInstance>
   }
 ) => {
   const { query: queryOptions, request: requestOptions } = options ?? {}
@@ -1513,7 +1519,7 @@ export const useGenerateDepositProof = <
         TData
       >
     >
-    request?: SecondParameter<typeof stromaeInstance>
+    request?: SecondParameter<typeof depositProofInstance>
   }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGenerateDepositProofQueryOptions(id, options)
