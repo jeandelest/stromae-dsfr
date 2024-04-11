@@ -46,7 +46,7 @@ export const stromaeInstance = <T>(
   }).then(({ data }) => data)
 }
 
-//DepositProofInstance
+//We use a customInstance for depositProof because we need response headers to get fileName.
 export const depositProofInstance = <T>(
   config: AxiosRequestConfig,
   options?: AxiosRequestConfig

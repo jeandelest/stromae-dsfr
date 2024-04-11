@@ -24,6 +24,7 @@ import type { LunaticGetReferentiel } from './utils/lunaticType'
 import { isObjectEmpty } from 'utils/isObjectEmpty'
 import { useUpdateEffect } from 'hooks/useUpdateEffect'
 import { useRefSync } from 'hooks/useRefSync'
+import { isSequencePage } from './utils/sequence'
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)
@@ -55,6 +56,8 @@ export function Orchestrator(props: OrchestratorProps) {
 
   const initialCurrentPage = surveyUnitData?.stateData?.currentPage
 
+  const pagination = source.pagination ?? 'question'
+
   const {
     getComponents,
     Provider,
@@ -68,11 +71,13 @@ export function Orchestrator(props: OrchestratorProps) {
     goToPage: goToLunaticPage,
     getChangedData,
     resetChangedData,
+    overview,
   } = useLunatic(source, surveyUnitData?.data, {
     activeControls: true,
     getReferentiel,
     autoSuggesterLoading: true,
     trackChanges: mode === 'collect',
+    withOverview: true,
   })
 
   const [activeErrors, setActiveErrors] = useState<
@@ -147,7 +152,7 @@ export function Orchestrator(props: OrchestratorProps) {
     })
   })
 
-  // Persist data when page change in "collect" mode
+  // Persist data and stateData when page change in "collect" mode
   useUpdateEffect(() => {
     if (mode !== 'collect') return
     const { updateCollectedData, updateStateData } = props
@@ -175,10 +180,15 @@ export function Orchestrator(props: OrchestratorProps) {
       }
     }
   }
+
+  const components = getComponents({
+    except: pagination === 'sequence' ? 'Sequence' : undefined,
+  })
+
   return (
-    <div className={fr.cx('fr-container--fluid', 'fr-mt-1w', 'fr-mb-7w')}>
+    <div className={fr.cx('fr-container--fluid')}>
       <Provider>
-        <div className={fr.cx('fr-col-12', 'fr-container')}>
+        <div>
           <Navigation
             handleNextClick={goNext}
             handlePreviousClick={goPrevious}
@@ -186,6 +196,9 @@ export function Orchestrator(props: OrchestratorProps) {
             currentPage={currentPage}
             mode={mode}
             handleDepositProofClick={handleDepositProofClick}
+            pagination={pagination}
+            overview={overview}
+            isSequencePage={isSequencePage(components)}
           >
             <div className={fr.cx('fr-mb-4v')}>
               {currentPage === 'welcomePage' && (
@@ -197,7 +210,7 @@ export function Orchestrator(props: OrchestratorProps) {
               {currentPage === 'lunaticPage' && (
                 <LunaticComponents
                   autoFocusKey={pageTag}
-                  components={getComponents()}
+                  components={components}
                   slots={slotComponents}
                   componentProps={() => ({
                     errors: activeErrors,

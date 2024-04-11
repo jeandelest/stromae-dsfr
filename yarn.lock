@@ -757,10 +757,10 @@
   dependencies:
     react-number-format "^5.3.4"
 
-"@inseefr/lunatic@3.0.0-rc.21":
-  version "3.0.0-rc.21"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.0-rc.21.tgz#233a752d3120c8503b9b94af001c47458b3f2577"
-  integrity sha512-D7P2h3JcdifO52DVj4xqaurgmoPGyUVWol0VLTxhKDelPIG3ZoSbFs9jyYdHDUXSSeQ3yo3SefGWZFp7duOkiQ==
+"@inseefr/lunatic@3.0.0-rc.22":
+  version "3.0.0-rc.22"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.0-rc.22.tgz#d83503b69c3ae2bc9b3a2104b37197a9b2a6dfb3"
+  integrity sha512-dTCi5AYRi+sDV7QZdMgZA0jBpM0vK1DqiUWNq9AQJ2OteU0xfNVuUhUXe3KQjEsvWvp9YXWrYAQ7NCDmKbDDXA==
   dependencies:
     "@inseefr/trevas" "^0.1.20"
     "@inseefr/vtl-2.0-antlr-tools" "^0.1.0"

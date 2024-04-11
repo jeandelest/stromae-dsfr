@@ -14,3 +14,11 @@ export type LunaticGoPreviousPage = ReturnType<
   typeof useLunatic
 >['goPreviousPage']
 export type LunaticGoNextPage = ReturnType<typeof useLunatic>['goNextPage']
+
+export type LunaticOverview = ReturnType<typeof useLunatic>['overview']
+
+export type LunaticPageTag = ReturnType<typeof useLunatic>['pageTag']
+
+export type LunaticComponentProps = ReturnType<
+  ReturnType<typeof useLunatic>['getComponents']
+>
