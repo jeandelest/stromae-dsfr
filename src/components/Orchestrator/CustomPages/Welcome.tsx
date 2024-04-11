@@ -20,7 +20,7 @@ export function Welcome(props: {
 
   return (
     <>
-      <div className={fr.cx('fr-mb-1w')}>
+      <div className={fr.cx('fr-my-4w')}>
         <h1>Bienvenue sur le questionnaire de votre enquête</h1>
         <p className={fr.cx('fr-text--lead')}>
           Cette enquête permet de connaître plus d'informations sur le domaine

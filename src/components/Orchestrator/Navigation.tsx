@@ -63,8 +63,16 @@ export function Navigation(
   return (
     <>
       {!isPreviousButtonDisplayed && (
-        <div className={fr.cx('fr-grid-row')}>
+        <div className={fr.cx('fr-grid-row', 'fr-mt-1w')}>
           <div className={fr.cx('fr-container')}>
+            {displaySequenceSteeper && (
+              <Stepper
+                currentStep={currentSequence.index}
+                stepCount={overview.length}
+                title={currentSequence.element.label}
+                className={fr.cx('fr-mx-1w')}
+              />
+            )}
             <Button
               id="button-precedent"
               title="Revenir à l'étape précédente"
@@ -75,31 +83,29 @@ export function Navigation(
             >
               Précédent
             </Button>
-            {displaySequenceSteeper && (
-              <Stepper
-                currentStep={currentSequence.index}
-                stepCount={overview.length}
-                title={currentSequence.element.label}
-                className={fr.cx('fr-mx-1w')}
-              />
-            )}
           </div>
         </div>
       )}
 
       <div className={fr.cx('fr-container')}>
         <div className={fr.cx('fr-grid-row', 'fr-grid-row--center')}>
-          <div className={fr.cx(isLayoutExpanded ? 'fr-col-12' : 'fr-col-8')}>
-            <div style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
-              {pagination === 'sequence' && currentPage === 'lunaticPage' && (
+          <div
+            className={fr.cx(
+              isLayoutExpanded && currentPage === 'lunaticPage'
+                ? 'fr-col-12'
+                : 'fr-col-8'
+            )}
+          >
+            {pagination === 'sequence' && currentPage === 'lunaticPage' && (
+              <div style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
                 <Button
                   iconId="ri-expand-diagonal-line"
                   priority="tertiary no outline"
                   onClick={() => setIsLayoutExpanded((expanded) => !expanded)}
                   title="Étendre la vue"
                 />
-              )}
-            </div>
+              </div>
+            )}
             {children}
             <Button
               priority="primary"
@@ -113,24 +119,24 @@ export function Navigation(
             >
               {nextLabel}
             </Button>
+            {mode === 'visualize' && (
+              <ButtonsGroup
+                buttons={[
+                  {
+                    children: 'Télécharger les données',
+                    priority: 'tertiary no outline',
+                    id: 'button-saveData',
+                    iconId: 'ri-download-2-line',
+                    onClick: handleDownloadData,
+                  },
+                ]}
+                alignment="right"
+                buttonsEquisized={true}
+              />
+            )}
           </div>
         </div>
       </div>
-      {mode === 'visualize' && (
-        <ButtonsGroup
-          buttons={[
-            {
-              children: 'Télécharger les données',
-              priority: 'tertiary no outline',
-              id: 'button-saveData',
-              iconId: 'ri-download-2-line',
-              onClick: handleDownloadData,
-            },
-          ]}
-          alignment="right"
-          buttonsEquisized={true}
-        />
-      )}
     </>
   )
 }
