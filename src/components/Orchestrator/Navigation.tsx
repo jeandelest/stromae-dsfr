@@ -88,19 +88,18 @@ export function Navigation(
       )}
 
       <div className={fr.cx('fr-container')}>
-        <div
-          className={fr.cx('fr-grid-row', 'fr-grid-row--center', 'fr-my-10v')}
-        >
+        <div className={fr.cx('fr-grid-row', 'fr-grid-row--center')}>
           <div className={fr.cx(isLayoutExpanded ? 'fr-col-12' : 'fr-col-8')}>
-            {pagination === 'sequence' && currentPage === 'lunaticPage' && (
-              <Button
-                iconId="ri-expand-diagonal-line"
-                priority="tertiary no outline"
-                onClick={() => setIsLayoutExpanded((expanded) => !expanded)}
-                title="Étendre la vue"
-                style={{ float: 'right' }}
-              />
-            )}
+            <div style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
+              {pagination === 'sequence' && currentPage === 'lunaticPage' && (
+                <Button
+                  iconId="ri-expand-diagonal-line"
+                  priority="tertiary no outline"
+                  onClick={() => setIsLayoutExpanded((expanded) => !expanded)}
+                  title="Étendre la vue"
+                />
+              )}
+            </div>
             {children}
             <Button
               priority="primary"
