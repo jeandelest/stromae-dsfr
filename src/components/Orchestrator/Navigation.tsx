@@ -6,6 +6,7 @@ import { useMemo, useState, type PropsWithChildren } from 'react'
 import type { OrchestratorProps } from './Orchestrator'
 import { fr } from '@codegouvfr/react-dsfr'
 import type { LunaticOverview } from './utils/lunaticType'
+import { useStyles } from 'tss-react'
 
 export function Navigation(
   props: PropsWithChildren<{
@@ -32,6 +33,8 @@ export function Navigation(
     overview,
     isSequencePage,
   } = props
+
+  const { cx } = useStyles()
 
   const nextLabel = useMemo(() => {
     switch (currentPage) {
@@ -90,10 +93,10 @@ export function Navigation(
       <div className={fr.cx('fr-container')}>
         <div className={fr.cx('fr-grid-row', 'fr-grid-row--center')}>
           <div
-            className={fr.cx(
-              isLayoutExpanded && currentPage === 'lunaticPage'
-                ? 'fr-col-12'
-                : 'fr-col-8'
+            className={cx(
+              fr.cx('fr-col-12'),
+              !(isLayoutExpanded && currentPage === 'lunaticPage') &&
+                fr.cx('fr-col-md-9', 'fr-col-lg-8')
             )}
           >
             {pagination === 'sequence' && currentPage === 'lunaticPage' && (
