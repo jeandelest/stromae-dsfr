@@ -55,13 +55,14 @@ export function Navigation(
 
   const [isLayoutExpanded, setIsLayoutExpanded] = useState<boolean>(false)
 
-  const currentSequence = findLatestReachedElement(overview)
+  const currentSequenceIndex = overview.findIndex(
+    (sequence) => sequence.current
+  )
 
   const displaySequenceSteeper =
     !isSequencePage &&
     currentPage === 'lunaticPage' &&
-    overview.length > 0 &&
-    currentSequence
+    currentSequenceIndex >= 0
 
   return (
     <>
@@ -70,9 +71,9 @@ export function Navigation(
           <div className={fr.cx('fr-container')}>
             {displaySequenceSteeper && (
               <Stepper
-                currentStep={currentSequence.index}
+                currentStep={currentSequenceIndex + 1} //overview is sorted and index starts at 0
                 stepCount={overview.length}
-                title={currentSequence.element.label}
+                title={overview[currentSequenceIndex].label}
                 className={fr.cx('fr-mx-1w')}
               />
             )}
@@ -102,8 +103,12 @@ export function Navigation(
             {pagination === 'sequence' && currentPage === 'lunaticPage' && (
               <div style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
                 <Button
-                  iconId="ri-expand-diagonal-line"
-                  priority="tertiary no outline"
+                  iconId={
+                    isLayoutExpanded
+                      ? 'ri-collapse-diagonal-line'
+                      : 'ri-expand-diagonal-line'
+                  }
+                  priority="tertiary"
                   onClick={() => setIsLayoutExpanded((expanded) => !expanded)}
                   title="Étendre la vue"
                 />
@@ -142,17 +147,4 @@ export function Navigation(
       </div>
     </>
   )
-}
-
-/**
- * function will be deleted when lunatic will add currentSequence boolean in overview
- */
-function findLatestReachedElement(array: LunaticOverview) {
-  for (let i = array.length - 1; i >= 0; i--) {
-    if (array[i].reached === true) {
-      return { index: i + 1, element: array[i] }
-    }
-  }
-  // If no element with reached true is found, return null or handle accordingly
-  return null
 }
