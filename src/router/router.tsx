@@ -25,8 +25,12 @@ export const rootRoute = createRootRouteWithContext<{
   ),
 })
 
+console.log(import.meta.env.VITE_VISUALIZE_DISABLED)
+
 export const routeTree = rootRoute.addChildren([
-  visualizeRoute,
+  ...(import.meta.env.VITE_VISUALIZE_DISABLED === 'true'
+    ? []
+    : [visualizeRoute]),
   accessibilityRoute,
   securityRoute,
   siteMapRoute,
