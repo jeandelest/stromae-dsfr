@@ -1,24 +1,18 @@
-import type { useLunatic } from '@inseefr/lunatic'
+import type { LunaticOptions, LunaticState } from '@inseefr/lunatic'
 
-export type LunaticGetReferentiel = Parameters<
-  typeof useLunatic
->[2]['getReferentiel']
+export type LunaticGetReferentiel = LunaticOptions['getReferentiel']
 
 export type Nomenclature = Awaited<
   ReturnType<NonNullable<LunaticGetReferentiel>>
 >
 
-export type LunaticGoToPage = ReturnType<typeof useLunatic>['goToPage']
+export type LunaticGoToPage = LunaticState['goToPage']
 
-export type LunaticGoPreviousPage = ReturnType<
-  typeof useLunatic
->['goPreviousPage']
-export type LunaticGoNextPage = ReturnType<typeof useLunatic>['goNextPage']
+export type LunaticGoPreviousPage = LunaticState['goPreviousPage']
+export type LunaticGoNextPage = LunaticState['goNextPage']
 
-export type LunaticOverview = ReturnType<typeof useLunatic>['overview']
+export type LunaticOverview = LunaticState['overview']
 
-export type LunaticPageTag = ReturnType<typeof useLunatic>['pageTag']
+export type LunaticPageTag = LunaticState['pageTag']
 
-export type LunaticComponentProps = ReturnType<
-  ReturnType<typeof useLunatic>['getComponents']
->
+export type LunaticComponentsProps = ReturnType<LunaticState['getComponents']>
