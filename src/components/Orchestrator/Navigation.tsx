@@ -74,7 +74,7 @@ export function Navigation(
                 currentStep={currentSequenceIndex + 1} //overview is sorted and index starts at 0
                 stepCount={overview.length}
                 title={overview[currentSequenceIndex].label}
-                className={fr.cx('fr-mx-1w')}
+                className={fr.cx('fr-mb-1v')}
               />
             )}
             <Button
