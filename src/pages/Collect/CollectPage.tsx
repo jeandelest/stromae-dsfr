@@ -19,7 +19,7 @@ import { useSetLogoutQuestionnaire } from 'hooks/useLogoutUrl'
 export function CollectPage() {
   const { surveyUnitId, questionnaireId } = collectRoute.useParams()
   const queryClient = useQueryClient()
-  
+
   useSetLogoutQuestionnaire(questionnaireId)
 
   const loaderResults = collectRoute.useLoaderData()

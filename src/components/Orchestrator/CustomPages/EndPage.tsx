@@ -1,4 +1,4 @@
-import { fr } from "@codegouvfr/react-dsfr"
+import { fr } from '@codegouvfr/react-dsfr'
 
 export function EndPage(props: { date: number | undefined }) {
   const { date = Date.now() } = props

@@ -1,4 +1,4 @@
-import { fr } from "@codegouvfr/react-dsfr";
+import { fr } from '@codegouvfr/react-dsfr'
 
 export function Validation() {
   return (

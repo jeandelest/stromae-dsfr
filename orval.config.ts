@@ -5,7 +5,7 @@ export default defineConfig({
     input: './openapi.json',
     output: {
       mode: 'tags',
-      target: 'src/api/query.ts',
+      target: 'src/api/',
       schemas: 'src/model/api',
       client: 'react-query',
       override: {
