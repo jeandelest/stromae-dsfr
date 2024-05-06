@@ -1,16 +1,18 @@
 import { fr } from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
 import TechnicalError from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg'
+import { useNavigate } from '@tanstack/react-router'
 import { Container } from 'components/Container'
 import { useDocumentTitle } from 'hooks/useDocumentTitle'
 import { getErrorInformations } from 'utils/error/errorUtils'
 
 export function ErrorComponent(props: {
   error: unknown
+  reset?: () => void
   redirectTo: 'home' | 'portal' | 'visualizeForm' | undefined
 }) {
-  const { error, redirectTo } = props
-
+  const { error, redirectTo, reset } = props
+  const navigate = useNavigate()
   const { title, subtitle, paragraph, code } = getErrorInformations(error)
 
   useDocumentTitle(title)
@@ -39,7 +41,11 @@ export function ErrorComponent(props: {
                   case 'portal':
                     return { href: import.meta.env.VITE_PORTAIL_URL }
                   case 'visualizeForm':
-                    return { to: '/visualize' }
+                    return {
+                      onClick: () => {
+                        navigate({ to: '/visualize' }).then(reset)
+                      },
+                    }
                   default:
                     return {}
                 }

@@ -32,7 +32,6 @@ export const visualizeRoute = createRoute({
   }) => {
     //TODO get name (Filière d'Enquête) in metadata
     document.title = "Visualisation | Filière d'Enquête"
-
     if (!sourceUrl) {
       return
     }
@@ -55,7 +54,7 @@ export const visualizeRoute = createRoute({
       }
     )
   },
-  errorComponent: ({ error }) => {
-    return <ErrorComponent error={error} redirectTo="visualizeForm" />
-  },
+  errorComponent: ({ error, reset }) => (
+    <ErrorComponent error={error} reset={reset} redirectTo="visualizeForm" />
+  ),
 })
