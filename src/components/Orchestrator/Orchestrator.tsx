@@ -148,7 +148,7 @@ export function Orchestrator(props: OrchestratorProps) {
         personalization: surveyUnitData?.personalization,
       },
       //The label of source is not dynamic
-      filename: `${source.label.value}-${new Date().toLocaleDateString()}`,
+      filename: `${source.label?.value}-${new Date().toLocaleDateString()}`,
     })
   })
 
