@@ -5,7 +5,7 @@ import {
   type LunaticError,
   type LunaticData,
 } from '@inseefr/lunatic'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { fr } from '@codegouvfr/react-dsfr'
 import { downloadAsJson } from 'utils/downloadAsJson'
 import { useNavigate } from '@tanstack/react-router'
@@ -25,6 +25,7 @@ import { isObjectEmpty } from 'utils/isObjectEmpty'
 import { useUpdateEffect } from 'hooks/useUpdateEffect'
 import { useRefSync } from 'hooks/useRefSync'
 import { isSequencePage } from './utils/sequence'
+import { scrollToFirstError } from './utils/scrollToFirstError'
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)
@@ -84,6 +85,12 @@ export function Orchestrator(props: OrchestratorProps) {
     Record<string, LunaticError[]> | undefined
   >(undefined)
 
+  useEffect(() => {
+    if (activeErrors) {
+      scrollToFirstError()
+    }
+  }, [activeErrors])
+
   const validationModalActionsRef = useRef({
     open: () => Promise.resolve(),
   })
@@ -112,7 +119,6 @@ export function Orchestrator(props: OrchestratorProps) {
       goNextLunatic()
       return
     }
-
     setActiveErrors(currentErrors)
   }
 
@@ -163,7 +169,6 @@ export function Orchestrator(props: OrchestratorProps) {
       updateCollectedData({ data: data.COLLECTED, onSuccess: resetChangedData })
     }
     updateStateData({ stateData: getCurrentStateData() })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, pageTag])
 
   const navigate = useNavigate()
