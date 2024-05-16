@@ -23,7 +23,7 @@ export function SequenceHeader(props: SequenceHeaderProps) {
   if (pagination === 'question')
     return (
       <div>
-        <h2>{currentSequence.label}</h2>
+        <h2 className={fr.cx('fr-stepper__title')}>{currentSequence.label}</h2>
       </div>
     )
 
