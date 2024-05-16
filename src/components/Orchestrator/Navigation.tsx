@@ -1,5 +1,4 @@
 import Button from '@codegouvfr/react-dsfr/Button'
-import { Stepper } from '@codegouvfr/react-dsfr/Stepper'
 import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup'
 import type { InternalPageType } from 'model/Page'
 import { useMemo, useState, type PropsWithChildren } from 'react'
@@ -7,6 +6,7 @@ import type { OrchestratorProps } from './Orchestrator'
 import { fr } from '@codegouvfr/react-dsfr'
 import type { LunaticOverview } from './utils/lunaticType'
 import { useStyles } from 'tss-react'
+import { SequenceHeader } from './SequenceHeader'
 
 export function Navigation(
   props: PropsWithChildren<{
@@ -16,7 +16,7 @@ export function Navigation(
     handleDownloadData: () => void
     handleDepositProofClick: () => Promise<void>
     mode: OrchestratorProps['mode']
-    pagination: 'question' | 'sequence' | 'subsequence'
+    pagination: 'question' | 'sequence'
     overview: LunaticOverview
     isSequencePage: boolean
   }>
@@ -55,27 +55,15 @@ export function Navigation(
 
   const [isLayoutExpanded, setIsLayoutExpanded] = useState<boolean>(false)
 
-  const currentSequenceIndex = overview.findIndex(
-    (sequence) => sequence.current
-  )
-
-  const displaySequenceSteeper =
-    !isSequencePage &&
-    currentPage === 'lunaticPage' &&
-    currentSequenceIndex >= 0
+  const displaySequenceHeader = !isSequencePage && currentPage === 'lunaticPage'
 
   return (
     <>
       {!isPreviousButtonDisplayed && (
         <div className={fr.cx('fr-grid-row', 'fr-mt-1w')}>
           <div className={fr.cx('fr-container')}>
-            {displaySequenceSteeper && (
-              <Stepper
-                currentStep={currentSequenceIndex + 1} //overview is sorted and index starts at 0
-                stepCount={overview.length}
-                title={overview[currentSequenceIndex].label}
-                className={fr.cx('fr-mb-1v')}
-              />
+            {displaySequenceHeader && (
+              <SequenceHeader overview={overview} pagination={pagination} />
             )}
             <Button
               id="button-precedent"
