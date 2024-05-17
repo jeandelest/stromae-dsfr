@@ -29,6 +29,7 @@ export const visualizeRoute = createRoute({
   loader: async ({
     context: { queryClient },
     deps: { sourceUrl, surveyUnitDataUrl, metadataUrl, nomenclature },
+    abortController,
   }) => {
     //TODO get name (Filière d'Enquête) in metadata
     document.title = "Visualisation | Filière d'Enquête"
@@ -36,16 +37,22 @@ export const visualizeRoute = createRoute({
       return
     }
 
-    const sourcePr = queryClient.ensureQueryData(sourceQueryOptions(sourceUrl))
+    const sourcePr = queryClient.ensureQueryData(
+      sourceQueryOptions(sourceUrl, { signal: abortController.signal })
+    )
 
     const surveyUnitDataPr = surveyUnitDataUrl
       ? queryClient.ensureQueryData(
-          surveyUnitDataQueryOptions(surveyUnitDataUrl)
+          surveyUnitDataQueryOptions(surveyUnitDataUrl, {
+            signal: abortController.signal,
+          })
         )
       : Promise.resolve(undefined)
 
     const metadataPr = metadataUrl
-      ? queryClient.ensureQueryData(metadataQueryOptions(metadataUrl))
+      ? queryClient.ensureQueryData(
+          metadataQueryOptions(metadataUrl, { signal: abortController.signal })
+        )
       : Promise.resolve(undefined)
 
     return Promise.all([sourcePr, surveyUnitDataPr, metadataPr]).then(

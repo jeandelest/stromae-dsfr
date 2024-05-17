@@ -17,18 +17,29 @@ export const collectRoute = createRoute({
   loader: ({
     params: { questionnaireId, surveyUnitId },
     context: { queryClient },
+    abortController,
   }) => {
     const sourcePr = queryClient
-      .ensureQueryData(getGetQuestionnaireDataQueryOptions(questionnaireId))
+      .ensureQueryData(
+        getGetQuestionnaireDataQueryOptions(questionnaireId, {
+          request: { signal: abortController.signal },
+        })
+      )
       .then((e) => e.value as unknown as LunaticSource) // We'd like to use zod, but the files are heavy.
 
     const surveyUnitDataPr = queryClient
-      .ensureQueryData(getGetSurveyUnitByIdQueryOptions(surveyUnitId))
+      .ensureQueryData(
+        getGetSurveyUnitByIdQueryOptions(surveyUnitId, {
+          request: { signal: abortController.signal },
+        })
+      )
       .then((suData) => suData as SurveyUnitData) // data are heavy too
 
     //TODO use metadata and type
     const metadataPr = queryClient.ensureQueryData(
-      getGetMetadataByQuestionnaireIdQueryOptions(questionnaireId)
+      getGetMetadataByQuestionnaireIdQueryOptions(questionnaireId, {
+        request: { signal: abortController.signal },
+      })
     )
 
     return Promise.all([sourcePr, surveyUnitDataPr, metadataPr]).then(
