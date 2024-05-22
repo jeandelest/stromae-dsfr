@@ -19,7 +19,7 @@ export function Footer() {
           sont sous{' '}
           <a
             title="licence MIT - nouvelle fenêtre"
-            href="https://github.com/InseeFr/Stromae/blob/v3-master/LICENSE"
+            href="https://github.com/InseeFrLab/stromae-dsfr/blob/main/LICENSE"
             target="_blank"
           >
             licence MIT

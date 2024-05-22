@@ -25,8 +25,6 @@ export const rootRoute = createRootRouteWithContext<{
   ),
 })
 
-console.log(import.meta.env.VITE_VISUALIZE_DISABLED)
-
 export const routeTree = rootRoute.addChildren([
   ...(import.meta.env.VITE_VISUALIZE_DISABLED === 'true'
     ? []
