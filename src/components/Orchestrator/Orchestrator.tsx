@@ -177,7 +177,7 @@ export function Orchestrator(props: OrchestratorProps) {
     switch (mode) {
       case 'visualize': {
         downloadAsJsonRef.current()
-        navigate({ to: '/visualize' })
+        navigate({ to: '/visualize', params: {} })
         break
       }
       case 'collect': {

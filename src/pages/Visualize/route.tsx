@@ -10,21 +10,25 @@ import {
 } from 'utils/query/visualizeQueryOptions'
 import { ErrorComponent } from 'components/Error/ErrorComponent'
 
-export const visualizeRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: 'visualize',
-  component: VisualizePage,
-  validateSearch: z.object({
+const visualizeSearchSchema = z
+  .object({
     source: z.string().transform(decodeURIComponent).optional(),
     metadata: z.string().transform(decodeURIComponent).optional(),
     data: z.string().transform(decodeURIComponent).optional(),
     nomenclature: z.record(z.string().transform(decodeURIComponent)).optional(),
-  }),
+  })
+  .optional()
+
+export const visualizeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'visualize',
+  component: VisualizePage,
+  validateSearch: visualizeSearchSchema,
   loaderDeps: ({ search }) => ({
-    sourceUrl: search.source,
-    surveyUnitDataUrl: search.data,
-    metadataUrl: search.metadata,
-    nomenclature: search.nomenclature,
+    sourceUrl: search?.source,
+    surveyUnitDataUrl: search?.data,
+    metadataUrl: search?.metadata,
+    nomenclature: search?.nomenclature,
   }),
   loader: async ({
     context: { queryClient },
