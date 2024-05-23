@@ -4,7 +4,6 @@ import { Grid } from 'components/Grid'
 import { SelectNomenclatures } from './SelectNomenclatures'
 import { FormProvider, useForm } from 'react-hook-form'
 import { useNavigate } from '@tanstack/react-router'
-import { encodeParams } from './encodeParams'
 import { Container } from 'components/Container'
 import { useEffect } from 'react'
 
@@ -29,9 +28,18 @@ export function VisualizeForm() {
     formState: { errors },
   } = methods
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit((values) => {
+    const { data, metadata, nomenclature, source } = values
     navigate({
-      search: encodeParams(data),
+      search: {
+        source,
+        data,
+        metadata,
+        nomenclature: nomenclature.reduce(
+          (acc, { name, uri }) => ({ ...acc, [name]: uri }),
+          {}
+        ),
+      },
     })
   })
 
