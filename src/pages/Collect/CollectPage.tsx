@@ -8,8 +8,7 @@ import type {
 } from 'components/Orchestrator/utils/lunaticType'
 import {
   getGenerateDepositProofQueryOptions,
-  useSetStateData,
-  useUpdateCollectedData,
+  useUpdateSurveyUnitDataStateDataById,
 } from 'api/06-survey-units'
 import type { LunaticData } from '@inseefr/lunatic'
 import type { StateData } from 'model/StateData'
@@ -34,21 +33,20 @@ export function CollectPage() {
       .ensureQueryData(getGetNomenclatureByIdQueryOptions(name))
       .then((result) => result as unknown as Nomenclature) //waiting better type in backend, we can not use zod because nomenclature can be heavy
 
-  const mutationUpdateCollectedData = useUpdateCollectedData()
+  const mutationUpdateDataStateData = useUpdateSurveyUnitDataStateDataById()
 
-  const mutationUpdateStateData = useSetStateData()
-
-  const updateCollectedData = (params: {
+  const updateDataAndStateData = (params: {
+    stateData: StateData
     data: NonNullable<LunaticData['COLLECTED']>
     onSuccess?: () => void
   }) =>
-    mutationUpdateCollectedData.mutate(
-      { id: surveyUnitId, data: params.data },
+    mutationUpdateDataStateData.mutate(
+      {
+        id: surveyUnitId,
+        data: { data: params.data, stateData: params.stateData },
+      },
       { onSuccess: params.onSuccess }
     )
-
-  const updateStateData = (params: { stateData: StateData }) =>
-    mutationUpdateStateData.mutate({ id: surveyUnitId, data: params.stateData })
 
   const getDepositProof = () =>
     queryClient
@@ -78,8 +76,7 @@ export function CollectPage() {
       source={source}
       surveyUnitData={surveyUnitData}
       getReferentiel={getReferentiel}
-      updateCollectedData={updateCollectedData}
-      updateStateData={updateStateData}
+      updateDataAndStateData={updateDataAndStateData}
       getDepositProof={getDepositProof}
     />
   )

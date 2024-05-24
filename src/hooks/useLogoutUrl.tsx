@@ -28,13 +28,17 @@ export const LogoutPathProvider = ({ children }: PropsWithChildren) => {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useLogoutUrl(): string {
   return `${import.meta.env.VITE_PORTAIL_URL}/${useContext(LogoutPathContext)}`
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useSetLogoutQuestionnaire(questionnaireId: string): void {
   const setLogoutPath = useContext(SetLogoutPathContext)
   useEffect(() => {
-    setLogoutPath((questionnaireId.match(/^[^2]+/) ?? '')[0].toLowerCase())
+    setLogoutPath(
+      (RegExp(/^[^2]+/).exec(questionnaireId) ?? '')[0].toLowerCase()
+    )
   }, [questionnaireId, setLogoutPath])
 }

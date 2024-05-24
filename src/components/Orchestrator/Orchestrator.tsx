@@ -21,7 +21,6 @@ import type { StateData } from 'model/StateData'
 import { isBlockingError, isSameErrors } from './utils/controls'
 import { slotComponents } from './slotComponents'
 import type { LunaticGetReferentiel } from './utils/lunaticType'
-import { isObjectEmpty } from 'utils/isObjectEmpty'
 import { useUpdateEffect } from 'hooks/useUpdateEffect'
 import { useRefSync } from 'hooks/useRefSync'
 import { isSequencePage } from './utils/sequence'
@@ -43,11 +42,11 @@ export namespace OrchestratorProps {
 
   export type Collect = {
     mode: 'collect'
-    updateCollectedData: (params: {
+    updateDataAndStateData: (params: {
+      stateData: StateData
       data: NonNullable<LunaticData['COLLECTED']>
       onSuccess?: () => void
     }) => void
-    updateStateData: (params: { stateData: StateData }) => void
     getDepositProof: () => Promise<void>
   }
 }
@@ -161,14 +160,15 @@ export function Orchestrator(props: OrchestratorProps) {
   // Persist data and stateData when page change in "collect" mode
   useUpdateEffect(() => {
     if (mode !== 'collect') return
-    const { updateCollectedData, updateStateData } = props
+    const { updateDataAndStateData } = props
 
     const data = getChangedData()
 
-    if (data.COLLECTED && !isObjectEmpty(data.COLLECTED)) {
-      updateCollectedData({ data: data.COLLECTED, onSuccess: resetChangedData })
-    }
-    updateStateData({ stateData: getCurrentStateData() })
+    updateDataAndStateData({
+      stateData: getCurrentStateData(),
+      data: data,
+      onSuccess: resetChangedData,
+    })
   }, [currentPage, pageTag])
 
   const navigate = useNavigate()

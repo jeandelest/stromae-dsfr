@@ -2,7 +2,6 @@ import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from 'router/router'
 import { VisualizePage } from './Visualize'
 import { z } from 'zod'
-
 import {
   metadataQueryOptions,
   sourceQueryOptions,

@@ -16,7 +16,8 @@
     "postinstall": "copy-dsfr-to-public",
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
-    "openapi": "orval --config ./orval.config.ts"
+    "openapi": "orval --config ./orval.config.ts",
+    "resolve-schema": "node ./script/resolveSchema.js"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.9.11",
@@ -38,6 +39,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@apidevtools/json-schema-ref-parser": "^11.6.2",
     "@hookform/devtools": "^4.3.1",
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.2",
