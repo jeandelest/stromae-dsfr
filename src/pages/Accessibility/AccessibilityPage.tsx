@@ -6,9 +6,7 @@ export function AccessibilityPage() {
     <Grid>
       <Breadcrumb
         currentPageLabel="Accessibilité"
-        homeLinkProps={{
-          to: '/',
-        }}
+        homeLinkProps={{}}
         segments={[]}
       />
       <h2>Accessibilité</h2>

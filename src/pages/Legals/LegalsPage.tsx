@@ -6,9 +6,7 @@ export function LegalPage() {
     <Grid>
       <Breadcrumb
         currentPageLabel="Mentions Légales"
-        homeLinkProps={{
-          to: '/',
-        }}
+        homeLinkProps={{}}
         segments={[]}
       />
       <h2>Mentions légales</h2>

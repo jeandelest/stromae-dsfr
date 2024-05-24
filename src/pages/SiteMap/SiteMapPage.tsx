@@ -8,16 +8,11 @@ export function SiteMapPage() {
     <Grid>
       <Breadcrumb
         currentPageLabel="Plan du site"
-        homeLinkProps={{
-          to: '/',
-        }}
+        homeLinkProps={{}}
         segments={[]}
       />
       <h2>Plan du site</h2>
       <ul>
-        <li>
-          <Link to="/">Accueil</Link>
-        </li>
         <li>
           <Link to="/mentions-legales">Mentions légales</Link>
         </li>

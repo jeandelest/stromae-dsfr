@@ -6,9 +6,7 @@ export function SecurityPage() {
     <Grid>
       <Breadcrumb
         currentPageLabel="Sécurité"
-        homeLinkProps={{
-          to: '/',
-        }}
+        homeLinkProps={{}}
         segments={[]}
       />
       <h2>Sécurité</h2>
