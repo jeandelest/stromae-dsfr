@@ -1,5 +1,4 @@
 import Button from '@codegouvfr/react-dsfr/Button'
-import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup'
 import type { InternalPageType } from 'model/Page'
 import { useMemo, useState, type PropsWithChildren } from 'react'
 import type { OrchestratorProps } from './Orchestrator'
@@ -83,7 +82,7 @@ export function Navigation(
         <div className={fr.cx('fr-grid-row', 'fr-grid-row--center')}>
           <div
             className={cx(
-              fr.cx('fr-col-12'),
+              fr.cx('fr-col-12', 'fr-mb-10v'),
               !(isLayoutExpanded && currentPage === 'lunaticPage') &&
                 fr.cx('fr-col-md-9', 'fr-col-lg-8')
             )}
@@ -116,19 +115,16 @@ export function Navigation(
               {nextLabel}
             </Button>
             {mode === 'visualize' && (
-              <ButtonsGroup
-                buttons={[
-                  {
-                    children: 'Télécharger les données',
-                    priority: 'tertiary no outline',
-                    id: 'button-saveData',
-                    iconId: 'ri-download-2-line',
-                    onClick: handleDownloadData,
-                  },
-                ]}
-                alignment="right"
-                buttonsEquisized={true}
-              />
+              <div style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
+                <Button
+                  iconId="ri-download-2-line"
+                  priority="tertiary no outline"
+                  onClick={handleDownloadData}
+                  title="Télécharger les données"
+                >
+                  Télécharger les données
+                </Button>
+              </div>
             )}
           </div>
         </div>
