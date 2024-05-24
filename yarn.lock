@@ -815,10 +815,10 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic-dsfr@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.0.6.tgz#de4139f2670c0edea95a43e1ca21bfef17657e06"
-  integrity sha512-1a5fqTIoblXtEJhlIeBdZxLP38c9bxfYP4jJpjScVZTuymurlCLVr8boOUd4RV4aJzdlX6Vax90zNu6qnYylJg==
+"@inseefr/lunatic-dsfr@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.0.7.tgz#4f905da9af5ad90a2bfa1b58f6ee6c365d50956b"
+  integrity sha512-Q31cu9tU1lqzUhVkOufI5yUZ9HIVhbN+Z1HLyD+al3qz2B3Dy4UCP6zVGYTw8WfY0rD4YvG9NwLy4OXMP5Dj1A==
   dependencies:
     react-number-format "^5.3.4"
 
