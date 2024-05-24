@@ -166,7 +166,7 @@ export function Orchestrator(props: OrchestratorProps) {
 
     updateDataAndStateData({
       stateData: getCurrentStateData(),
-      data: data,
+      data: data.COLLECTED,
       onSuccess: resetChangedData,
     })
   }, [currentPage, pageTag])

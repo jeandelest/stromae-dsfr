@@ -14,6 +14,7 @@ import type { LunaticData } from '@inseefr/lunatic'
 import type { StateData } from 'model/StateData'
 import { useDocumentTitle } from 'hooks/useDocumentTitle'
 import { useSetLogoutQuestionnaire } from 'hooks/useLogoutUrl'
+import toast from 'react-hot-toast'
 
 export function CollectPage() {
   const { surveyUnitId, questionnaireId } = collectRoute.useParams()
@@ -45,7 +46,19 @@ export function CollectPage() {
         id: surveyUnitId,
         data: { data: params.data, stateData: params.stateData },
       },
-      { onSuccess: params.onSuccess }
+      {
+        onSuccess: () => {
+          params.onSuccess?.()
+          toast.success('Les données ont bien été sauvegardées', {
+            position: 'bottom-right',
+          })
+        },
+        onError: () =>
+          toast.error(
+            "Il y a eu une erreur, les données n'ont pas été sauvegardées",
+            { position: 'bottom-right' }
+          ),
+      }
     )
 
   const getDepositProof = () =>
