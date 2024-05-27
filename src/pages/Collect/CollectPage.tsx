@@ -14,7 +14,7 @@ import type { LunaticData } from '@inseefr/lunatic'
 import type { StateData } from 'model/StateData'
 import { useDocumentTitle } from 'hooks/useDocumentTitle'
 import { useSetLogoutQuestionnaire } from 'hooks/useLogoutUrl'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify'
 
 export function CollectPage() {
   const { surveyUnitId, questionnaireId } = collectRoute.useParams()
@@ -49,14 +49,12 @@ export function CollectPage() {
       {
         onSuccess: () => {
           params.onSuccess?.()
-          toast.success('Les données ont bien été sauvegardées', {
-            position: 'bottom-right',
-          })
+          params.data &&
+            toast.success('Les données ont bien été sauvegardées', {})
         },
         onError: () =>
           toast.error(
-            "Il y a eu une erreur, les données n'ont pas été sauvegardées",
-            { position: 'bottom-right' }
+            "Il y a eu une erreur, les données n'ont pas été sauvegardées"
           ),
       }
     )

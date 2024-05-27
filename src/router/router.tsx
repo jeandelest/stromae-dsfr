@@ -11,19 +11,34 @@ import { navigationAssistanceRoute } from 'pages/NavigationAssistance/route'
 import { collectRoute } from 'pages/Collect/route'
 import { NotFoundError } from 'utils/error/notFoundError'
 import { reviewRoute } from 'pages/Review/route'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark'
 
 export const rootRoute = createRootRouteWithContext<{
   queryClient: QueryClient
 }>()({
-  component: () => (
-    <Layout>
-      <Outlet />
-    </Layout>
-  ),
+  component: RootComponent,
   notFoundComponent: () => (
     <ErrorComponent error={new NotFoundError()} redirectTo="home" />
   ),
 })
+
+function RootComponent() {
+  const { isDark } = useIsDark()
+  return (
+    <Layout>
+      <main id="main">
+        <ToastContainer
+          position="top-right"
+          theme={isDark ? 'dark' : 'light'}
+          stacked
+        />
+        <Outlet />
+      </main>
+    </Layout>
+  )
+}
 
 export const routeTree = rootRoute.addChildren([
   ...(import.meta.env.VITE_VISUALIZE_DISABLED === 'true'

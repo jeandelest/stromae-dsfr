@@ -11,7 +11,6 @@ import { routeTree } from 'router/router'
 import { startReactDsfr } from '@codegouvfr/react-dsfr/spa'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { MuiDsfrThemeProvider } from '@codegouvfr/react-dsfr/mui'
-import { Toaster } from 'react-hot-toast'
 
 startReactDsfr({
   defaultColorScheme: 'system',
@@ -45,7 +44,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <QueryClientProvider client={queryClient}>
         <OidcProvider>
           <RouterProvider router={router} />
-          <Toaster />
         </OidcProvider>
       </QueryClientProvider>
     </MuiDsfrThemeProvider>
