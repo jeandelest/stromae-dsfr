@@ -12,10 +12,7 @@ import type {
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
-import type {
-  GetMetadataByCampaignId200,
-  GetMetadataByQuestionnaireId200,
-} from '../model/api'
+import type { SchemaMetadata } from '../model/api/schema.metadata'
 import { stromaeInstance } from './axiosInstance'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
@@ -29,7 +26,7 @@ export const getMetadataByQuestionnaireId = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetMetadataByQuestionnaireId200>(
+  return stromaeInstance<SchemaMetadata>(
     { url: `/api/questionnaire/${id}/metadata`, method: 'GET', signal },
     options
   )
@@ -120,7 +117,7 @@ export const getMetadataByCampaignId = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetMetadataByCampaignId200>(
+  return stromaeInstance<SchemaMetadata>(
     { url: `/api/campaign/${id}/metadata`, method: 'GET', signal },
     options
   )

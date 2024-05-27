@@ -5,11 +5,10 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.1-SNAPSHOT
  */
-import type { SurveyUnitDataStateDataUpdateData } from './surveyUnitDataStateDataUpdateData'
-import type { SurveyUnitDataStateDataUpdateStateData } from './surveyUnitDataStateDataUpdateStateData'
+import type { SchemaCollectedData } from './schema.collected-data/schemaCollectedData'
+import type { StateDataUpdate } from './stateDataUpdate'
 
 export interface SurveyUnitDataStateDataUpdate {
-  /** Validation of survey unit collected data */
-  data: SurveyUnitDataStateDataUpdateData
-  stateData: SurveyUnitDataStateDataUpdateStateData
+  data: SchemaCollectedData
+  stateData: StateDataUpdate
 }

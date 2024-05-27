@@ -5,12 +5,10 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.1-SNAPSHOT
  */
-import type { IntegrationResultsCampaign } from './integrationResultsCampaign'
-import type { IntegrationResultsNomenclaturesItem } from './integrationResultsNomenclaturesItem'
-import type { IntegrationResultsQuestionnaireModelsItem } from './integrationResultsQuestionnaireModelsItem'
+import type { IntegrationResultUnit } from './integrationResultUnit'
 
 export interface IntegrationResults {
-  campaign?: IntegrationResultsCampaign
-  nomenclatures?: IntegrationResultsNomenclaturesItem[]
-  questionnaireModels?: IntegrationResultsQuestionnaireModelsItem[]
+  campaign?: IntegrationResultUnit
+  nomenclatures?: IntegrationResultUnit[]
+  questionnaireModels?: IntegrationResultUnit[]
 }

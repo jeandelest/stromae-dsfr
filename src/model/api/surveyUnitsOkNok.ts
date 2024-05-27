@@ -5,10 +5,9 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.1-SNAPSHOT
  */
-import type { SurveyUnitsOkNokSurveyUnitNOKItem } from './surveyUnitsOkNokSurveyUnitNOKItem'
-import type { SurveyUnitsOkNokSurveyUnitOKItem } from './surveyUnitsOkNokSurveyUnitOKItem'
+import type { SurveyUnit } from './surveyUnit'
 
 export interface SurveyUnitsOkNok {
-  surveyUnitNOK?: SurveyUnitsOkNokSurveyUnitNOKItem[]
-  surveyUnitOK?: SurveyUnitsOkNokSurveyUnitOKItem[]
+  surveyUnitNOK?: SurveyUnit[]
+  surveyUnitOK?: SurveyUnit[]
 }

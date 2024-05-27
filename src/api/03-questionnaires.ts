@@ -16,12 +16,11 @@ import type {
   UseQueryResult,
 } from '@tanstack/react-query'
 import type {
-  CreateQuestionnaireBody,
   GetQuestionnaireData200,
-  GetQuestionnaireDatasByCampaignId200Item,
-  GetQuestionnaireIdsByCampaignId200Item,
-  GetQuestionnaireModelIdBySurveyUnits200,
-  GetQuestionnaireValue200,
+  QuestionnaireModelCreation,
+  QuestionnaireModelId,
+  QuestionnaireModelValue,
+  SurveyUnitsOkNok,
 } from '../model/api'
 import { stromaeInstance } from './axiosInstance'
 
@@ -35,7 +34,7 @@ export const getQuestionnaireModelIdBySurveyUnits = (
   getQuestionnaireModelIdBySurveyUnitsBody: string[],
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
-  return stromaeInstance<GetQuestionnaireModelIdBySurveyUnits200>(
+  return stromaeInstance<SurveyUnitsOkNok>(
     {
       url: `/api/survey-units/questionnaire-model-id`,
       method: 'POST',
@@ -113,7 +112,7 @@ export const useGetQuestionnaireModelIdBySurveyUnits = <
  * @summary Create a Questionnaire Model
  */
 export const createQuestionnaire = (
-  createQuestionnaireBody: CreateQuestionnaireBody,
+  questionnaireModelCreation: QuestionnaireModelCreation,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -121,7 +120,7 @@ export const createQuestionnaire = (
       url: `/api/questionnaire-models`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      data: createQuestionnaireBody,
+      data: questionnaireModelCreation,
     },
     options
   )
@@ -134,21 +133,21 @@ export const getCreateQuestionnaireMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createQuestionnaire>>,
     TError,
-    { data: CreateQuestionnaireBody },
+    { data: QuestionnaireModelCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof createQuestionnaire>>,
   TError,
-  { data: CreateQuestionnaireBody },
+  { data: QuestionnaireModelCreation },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof createQuestionnaire>>,
-    { data: CreateQuestionnaireBody }
+    { data: QuestionnaireModelCreation }
   > = (props) => {
     const { data } = props ?? {}
 
@@ -161,7 +160,7 @@ export const getCreateQuestionnaireMutationOptions = <
 export type CreateQuestionnaireMutationResult = NonNullable<
   Awaited<ReturnType<typeof createQuestionnaire>>
 >
-export type CreateQuestionnaireMutationBody = CreateQuestionnaireBody
+export type CreateQuestionnaireMutationBody = QuestionnaireModelCreation
 export type CreateQuestionnaireMutationError = unknown
 
 /**
@@ -174,14 +173,14 @@ export const useCreateQuestionnaire = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createQuestionnaire>>,
     TError,
-    { data: CreateQuestionnaireBody },
+    { data: QuestionnaireModelCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof createQuestionnaire>>,
   TError,
-  { data: CreateQuestionnaireBody },
+  { data: QuestionnaireModelCreation },
   TContext
 > => {
   const mutationOptions = getCreateQuestionnaireMutationOptions(options)
@@ -198,7 +197,7 @@ export const getQuestionnaireValue = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetQuestionnaireValue200>(
+  return stromaeInstance<QuestionnaireModelValue>(
     { url: `/api/questionnaire/${id}`, method: 'GET', signal },
     options
   )
@@ -380,7 +379,7 @@ export const getQuestionnaireDatasByCampaignId = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetQuestionnaireDatasByCampaignId200Item[]>(
+  return stromaeInstance<QuestionnaireModelValue[]>(
     { url: `/api/campaign/${id}/questionnaires`, method: 'GET', signal },
     options
   )
@@ -475,7 +474,7 @@ export const getQuestionnaireIdsByCampaignId = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetQuestionnaireIdsByCampaignId200Item[]>(
+  return stromaeInstance<QuestionnaireModelId[]>(
     { url: `/api/campaign/${id}/questionnaire-id`, method: 'GET', signal },
     options
   )

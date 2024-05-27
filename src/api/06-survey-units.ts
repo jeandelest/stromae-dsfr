@@ -16,22 +16,19 @@ import type {
   UseQueryResult,
 } from '@tanstack/react-query'
 import type {
-  CreateUpdateSurveyUnitBody,
   GetCommentBySurveyUnit200,
-  GetDataBySurveyUnit200,
-  GetInterviewerSurveyUnits200Item,
-  GetListSurveyUnitByCampaign200Item,
-  GetPersonalizationBySurveyUnit200Item,
-  GetStateDataBySurveyUnit200,
-  GetStateDataBySurveyUnits200,
-  GetSurveyUnitById200,
   SetCommentBody,
-  SetPersonalizationBodyItem,
-  SetStateDataBody,
-  UpdateDataBody,
-  UpdateSurveyUnitByIdBody,
-  UpdateSurveyUnitDataStateDataByIdBody,
+  StateData,
+  StateDataUpdate,
+  SurveyUnit,
+  SurveyUnitCreation,
+  SurveyUnitDataStateDataUpdate,
+  SurveyUnitSummary,
+  SurveyUnitUpdate,
+  SurveyUnitsOkNok,
 } from '../model/api'
+import type { SchemaPersonalization } from '../model/api/schema.personalization'
+import type { SchemaData } from '../model/api/schema.data'
 import { stromaeInstance } from './axiosInstance'
 import { depositProofInstance } from './axiosInstance'
 
@@ -46,7 +43,7 @@ export const getSurveyUnitById = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetSurveyUnitById200>(
+  return stromaeInstance<SurveyUnit>(
     { url: `/api/survey-unit/${id}`, method: 'GET', signal },
     options
   )
@@ -133,7 +130,7 @@ export const useGetSurveyUnitById = <
  */
 export const updateSurveyUnitById = (
   id: string,
-  updateSurveyUnitByIdBody: UpdateSurveyUnitByIdBody,
+  surveyUnitUpdate: SurveyUnitUpdate,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -141,7 +138,7 @@ export const updateSurveyUnitById = (
       url: `/api/survey-unit/${id}`,
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      data: updateSurveyUnitByIdBody,
+      data: surveyUnitUpdate,
     },
     options
   )
@@ -154,21 +151,21 @@ export const getUpdateSurveyUnitByIdMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof updateSurveyUnitById>>,
     TError,
-    { id: string; data: UpdateSurveyUnitByIdBody },
+    { id: string; data: SurveyUnitUpdate },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof updateSurveyUnitById>>,
   TError,
-  { id: string; data: UpdateSurveyUnitByIdBody },
+  { id: string; data: SurveyUnitUpdate },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof updateSurveyUnitById>>,
-    { id: string; data: UpdateSurveyUnitByIdBody }
+    { id: string; data: SurveyUnitUpdate }
   > = (props) => {
     const { id, data } = props ?? {}
 
@@ -181,7 +178,7 @@ export const getUpdateSurveyUnitByIdMutationOptions = <
 export type UpdateSurveyUnitByIdMutationResult = NonNullable<
   Awaited<ReturnType<typeof updateSurveyUnitById>>
 >
-export type UpdateSurveyUnitByIdMutationBody = UpdateSurveyUnitByIdBody
+export type UpdateSurveyUnitByIdMutationBody = SurveyUnitUpdate
 export type UpdateSurveyUnitByIdMutationError = unknown
 
 /**
@@ -194,14 +191,14 @@ export const useUpdateSurveyUnitById = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof updateSurveyUnitById>>,
     TError,
-    { id: string; data: UpdateSurveyUnitByIdBody },
+    { id: string; data: SurveyUnitUpdate },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof updateSurveyUnitById>>,
   TError,
-  { id: string; data: UpdateSurveyUnitByIdBody },
+  { id: string; data: SurveyUnitUpdate },
   TContext
 > => {
   const mutationOptions = getUpdateSurveyUnitByIdMutationOptions(options)
@@ -289,7 +286,7 @@ export const useDeleteSurveyUnit = <
  */
 export const updateSurveyUnitDataStateDataById = (
   id: string,
-  updateSurveyUnitDataStateDataByIdBody: UpdateSurveyUnitDataStateDataByIdBody,
+  surveyUnitDataStateDataUpdate: SurveyUnitDataStateDataUpdate,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -297,7 +294,7 @@ export const updateSurveyUnitDataStateDataById = (
       url: `/api/survey-unit/${id}`,
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      data: updateSurveyUnitDataStateDataByIdBody,
+      data: surveyUnitDataStateDataUpdate,
     },
     options
   )
@@ -310,21 +307,21 @@ export const getUpdateSurveyUnitDataStateDataByIdMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof updateSurveyUnitDataStateDataById>>,
     TError,
-    { id: string; data: UpdateSurveyUnitDataStateDataByIdBody },
+    { id: string; data: SurveyUnitDataStateDataUpdate },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof updateSurveyUnitDataStateDataById>>,
   TError,
-  { id: string; data: UpdateSurveyUnitDataStateDataByIdBody },
+  { id: string; data: SurveyUnitDataStateDataUpdate },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof updateSurveyUnitDataStateDataById>>,
-    { id: string; data: UpdateSurveyUnitDataStateDataByIdBody }
+    { id: string; data: SurveyUnitDataStateDataUpdate }
   > = (props) => {
     const { id, data } = props ?? {}
 
@@ -338,7 +335,7 @@ export type UpdateSurveyUnitDataStateDataByIdMutationResult = NonNullable<
   Awaited<ReturnType<typeof updateSurveyUnitDataStateDataById>>
 >
 export type UpdateSurveyUnitDataStateDataByIdMutationBody =
-  UpdateSurveyUnitDataStateDataByIdBody
+  SurveyUnitDataStateDataUpdate
 export type UpdateSurveyUnitDataStateDataByIdMutationError = unknown
 
 /**
@@ -351,14 +348,14 @@ export const useUpdateSurveyUnitDataStateDataById = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof updateSurveyUnitDataStateDataById>>,
     TError,
-    { id: string; data: UpdateSurveyUnitDataStateDataByIdBody },
+    { id: string; data: SurveyUnitDataStateDataUpdate },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof updateSurveyUnitDataStateDataById>>,
   TError,
-  { id: string; data: UpdateSurveyUnitDataStateDataByIdBody },
+  { id: string; data: SurveyUnitDataStateDataUpdate },
   TContext
 > => {
   const mutationOptions =
@@ -375,7 +372,7 @@ export const getStateDataBySurveyUnit = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetStateDataBySurveyUnit200>(
+  return stromaeInstance<StateData>(
     { url: `/api/survey-unit/${id}/state-data`, method: 'GET', signal },
     options
   )
@@ -463,7 +460,7 @@ export const useGetStateDataBySurveyUnit = <
  */
 export const setStateData = (
   id: string,
-  setStateDataBody: SetStateDataBody,
+  stateDataUpdate: StateDataUpdate,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -471,7 +468,7 @@ export const setStateData = (
       url: `/api/survey-unit/${id}/state-data`,
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      data: setStateDataBody,
+      data: stateDataUpdate,
     },
     options
   )
@@ -484,21 +481,21 @@ export const getSetStateDataMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof setStateData>>,
     TError,
-    { id: string; data: SetStateDataBody },
+    { id: string; data: StateDataUpdate },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof setStateData>>,
   TError,
-  { id: string; data: SetStateDataBody },
+  { id: string; data: StateDataUpdate },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof setStateData>>,
-    { id: string; data: SetStateDataBody }
+    { id: string; data: StateDataUpdate }
   > = (props) => {
     const { id, data } = props ?? {}
 
@@ -511,7 +508,7 @@ export const getSetStateDataMutationOptions = <
 export type SetStateDataMutationResult = NonNullable<
   Awaited<ReturnType<typeof setStateData>>
 >
-export type SetStateDataMutationBody = SetStateDataBody
+export type SetStateDataMutationBody = StateDataUpdate
 export type SetStateDataMutationError = unknown
 
 /**
@@ -524,14 +521,14 @@ export const useSetStateData = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof setStateData>>,
     TError,
-    { id: string; data: SetStateDataBody },
+    { id: string; data: StateDataUpdate },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof setStateData>>,
   TError,
-  { id: string; data: SetStateDataBody },
+  { id: string; data: StateDataUpdate },
   TContext
 > => {
   const mutationOptions = getSetStateDataMutationOptions(options)
@@ -547,7 +544,7 @@ export const getPersonalizationBySurveyUnit = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetPersonalizationBySurveyUnit200Item[]>(
+  return stromaeInstance<SchemaPersonalization>(
     { url: `/api/survey-unit/${id}/personalization`, method: 'GET', signal },
     options
   )
@@ -638,7 +635,7 @@ export const useGetPersonalizationBySurveyUnit = <
  */
 export const setPersonalization = (
   id: string,
-  setPersonalizationBodyItem: SetPersonalizationBodyItem[],
+  schemaPersonalization: SchemaPersonalization,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -646,7 +643,7 @@ export const setPersonalization = (
       url: `/api/survey-unit/${id}/personalization`,
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      data: setPersonalizationBodyItem,
+      data: schemaPersonalization,
     },
     options
   )
@@ -659,21 +656,21 @@ export const getSetPersonalizationMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof setPersonalization>>,
     TError,
-    { id: string; data: SetPersonalizationBodyItem[] },
+    { id: string; data: SchemaPersonalization },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof setPersonalization>>,
   TError,
-  { id: string; data: SetPersonalizationBodyItem[] },
+  { id: string; data: SchemaPersonalization },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof setPersonalization>>,
-    { id: string; data: SetPersonalizationBodyItem[] }
+    { id: string; data: SchemaPersonalization }
   > = (props) => {
     const { id, data } = props ?? {}
 
@@ -686,7 +683,7 @@ export const getSetPersonalizationMutationOptions = <
 export type SetPersonalizationMutationResult = NonNullable<
   Awaited<ReturnType<typeof setPersonalization>>
 >
-export type SetPersonalizationMutationBody = SetPersonalizationBodyItem[]
+export type SetPersonalizationMutationBody = SchemaPersonalization
 export type SetPersonalizationMutationError = unknown
 
 /**
@@ -699,14 +696,14 @@ export const useSetPersonalization = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof setPersonalization>>,
     TError,
-    { id: string; data: SetPersonalizationBodyItem[] },
+    { id: string; data: SchemaPersonalization },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof setPersonalization>>,
   TError,
-  { id: string; data: SetPersonalizationBodyItem[] },
+  { id: string; data: SchemaPersonalization },
   TContext
 > => {
   const mutationOptions = getSetPersonalizationMutationOptions(options)
@@ -722,7 +719,7 @@ export const getDataBySurveyUnit = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetDataBySurveyUnit200>(
+  return stromaeInstance<SchemaData>(
     { url: `/api/survey-unit/${id}/data`, method: 'GET', signal },
     options
   )
@@ -809,7 +806,7 @@ export const useGetDataBySurveyUnit = <
  */
 export const updateData = (
   id: string,
-  updateDataBody: UpdateDataBody,
+  schemaData: SchemaData,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -817,7 +814,7 @@ export const updateData = (
       url: `/api/survey-unit/${id}/data`,
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      data: updateDataBody,
+      data: schemaData,
     },
     options
   )
@@ -830,21 +827,21 @@ export const getUpdateDataMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof updateData>>,
     TError,
-    { id: string; data: UpdateDataBody },
+    { id: string; data: SchemaData },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof updateData>>,
   TError,
-  { id: string; data: UpdateDataBody },
+  { id: string; data: SchemaData },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof updateData>>,
-    { id: string; data: UpdateDataBody }
+    { id: string; data: SchemaData }
   > = (props) => {
     const { id, data } = props ?? {}
 
@@ -857,7 +854,7 @@ export const getUpdateDataMutationOptions = <
 export type UpdateDataMutationResult = NonNullable<
   Awaited<ReturnType<typeof updateData>>
 >
-export type UpdateDataMutationBody = UpdateDataBody
+export type UpdateDataMutationBody = SchemaData
 export type UpdateDataMutationError = unknown
 
 /**
@@ -867,14 +864,14 @@ export const useUpdateData = <TError = unknown, TContext = unknown>(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof updateData>>,
     TError,
-    { id: string; data: UpdateDataBody },
+    { id: string; data: SchemaData },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof updateData>>,
   TError,
-  { id: string; data: UpdateDataBody },
+  { id: string; data: SchemaData },
   TContext
 > => {
   const mutationOptions = getUpdateDataMutationOptions(options)
@@ -1058,7 +1055,7 @@ export const getStateDataBySurveyUnits = (
   getStateDataBySurveyUnitsBody: string[],
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
-  return stromaeInstance<GetStateDataBySurveyUnits200>(
+  return stromaeInstance<SurveyUnitsOkNok>(
     {
       url: `/api/survey-units/state-data`,
       method: 'POST',
@@ -1136,7 +1133,7 @@ export const useGetStateDataBySurveyUnits = <
  */
 export const createUpdateSurveyUnit = (
   id: string,
-  createUpdateSurveyUnitBody: CreateUpdateSurveyUnitBody,
+  surveyUnitCreation: SurveyUnitCreation,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -1144,7 +1141,7 @@ export const createUpdateSurveyUnit = (
       url: `/api/campaign/${id}/survey-unit`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      data: createUpdateSurveyUnitBody,
+      data: surveyUnitCreation,
     },
     options
   )
@@ -1157,21 +1154,21 @@ export const getCreateUpdateSurveyUnitMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createUpdateSurveyUnit>>,
     TError,
-    { id: string; data: CreateUpdateSurveyUnitBody },
+    { id: string; data: SurveyUnitCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof createUpdateSurveyUnit>>,
   TError,
-  { id: string; data: CreateUpdateSurveyUnitBody },
+  { id: string; data: SurveyUnitCreation },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof createUpdateSurveyUnit>>,
-    { id: string; data: CreateUpdateSurveyUnitBody }
+    { id: string; data: SurveyUnitCreation }
   > = (props) => {
     const { id, data } = props ?? {}
 
@@ -1184,7 +1181,7 @@ export const getCreateUpdateSurveyUnitMutationOptions = <
 export type CreateUpdateSurveyUnitMutationResult = NonNullable<
   Awaited<ReturnType<typeof createUpdateSurveyUnit>>
 >
-export type CreateUpdateSurveyUnitMutationBody = CreateUpdateSurveyUnitBody
+export type CreateUpdateSurveyUnitMutationBody = SurveyUnitCreation
 export type CreateUpdateSurveyUnitMutationError = unknown
 
 /**
@@ -1197,14 +1194,14 @@ export const useCreateUpdateSurveyUnit = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createUpdateSurveyUnit>>,
     TError,
-    { id: string; data: CreateUpdateSurveyUnitBody },
+    { id: string; data: SurveyUnitCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof createUpdateSurveyUnit>>,
   TError,
-  { id: string; data: CreateUpdateSurveyUnitBody },
+  { id: string; data: SurveyUnitCreation },
   TContext
 > => {
   const mutationOptions = getCreateUpdateSurveyUnitMutationOptions(options)
@@ -1289,7 +1286,7 @@ export const getInterviewerSurveyUnits = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetInterviewerSurveyUnits200Item[]>(
+  return stromaeInstance<SurveyUnit[]>(
     { url: `/api/survey-units/interviewer`, method: 'GET', signal },
     options
   )
@@ -1464,7 +1461,7 @@ export const getListSurveyUnitByCampaign = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetListSurveyUnitByCampaign200Item[]>(
+  return stromaeInstance<SurveyUnitSummary[]>(
     { url: `/api/campaign/${id}/survey-units`, method: 'GET', signal },
     options
   )

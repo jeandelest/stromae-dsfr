@@ -38,13 +38,13 @@ export function CollectPage() {
 
   const updateDataAndStateData = (params: {
     stateData: StateData
-    data: NonNullable<LunaticData['COLLECTED']>
+    data: LunaticData['COLLECTED']
     onSuccess?: () => void
   }) =>
     mutationUpdateDataStateData.mutate(
       {
         id: surveyUnitId,
-        data: { data: params.data, stateData: params.stateData },
+        data: { data: params.data ?? {}, stateData: params.stateData }, //Waiting for API to accept request with undefined data
       },
       {
         onSuccess: () => {

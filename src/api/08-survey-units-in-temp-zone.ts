@@ -15,10 +15,8 @@ import type {
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
-import type {
-  GetSurveyUnitsInTempZone200Item,
-  PostSurveyUnitByIdInTempZoneBody,
-} from '../model/api'
+import type { SchemaSurveyUnitTempZone } from '../model/api/schema.survey-unit-temp-zone'
+import type { SurveyUnitTempZone } from '../model/api'
 import { stromaeInstance } from './axiosInstance'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
@@ -29,7 +27,7 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
  */
 export const postSurveyUnitByIdInTempZone = (
   id: string,
-  postSurveyUnitByIdInTempZoneBody: PostSurveyUnitByIdInTempZoneBody,
+  schemaSurveyUnitTempZone: SchemaSurveyUnitTempZone,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -37,7 +35,7 @@ export const postSurveyUnitByIdInTempZone = (
       url: `/api/survey-unit/${id}/temp-zone`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      data: postSurveyUnitByIdInTempZoneBody,
+      data: schemaSurveyUnitTempZone,
     },
     options
   )
@@ -50,21 +48,21 @@ export const getPostSurveyUnitByIdInTempZoneMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postSurveyUnitByIdInTempZone>>,
     TError,
-    { id: string; data: PostSurveyUnitByIdInTempZoneBody },
+    { id: string; data: SchemaSurveyUnitTempZone },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof postSurveyUnitByIdInTempZone>>,
   TError,
-  { id: string; data: PostSurveyUnitByIdInTempZoneBody },
+  { id: string; data: SchemaSurveyUnitTempZone },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof postSurveyUnitByIdInTempZone>>,
-    { id: string; data: PostSurveyUnitByIdInTempZoneBody }
+    { id: string; data: SchemaSurveyUnitTempZone }
   > = (props) => {
     const { id, data } = props ?? {}
 
@@ -77,8 +75,7 @@ export const getPostSurveyUnitByIdInTempZoneMutationOptions = <
 export type PostSurveyUnitByIdInTempZoneMutationResult = NonNullable<
   Awaited<ReturnType<typeof postSurveyUnitByIdInTempZone>>
 >
-export type PostSurveyUnitByIdInTempZoneMutationBody =
-  PostSurveyUnitByIdInTempZoneBody
+export type PostSurveyUnitByIdInTempZoneMutationBody = SchemaSurveyUnitTempZone
 export type PostSurveyUnitByIdInTempZoneMutationError = unknown
 
 /**
@@ -91,14 +88,14 @@ export const usePostSurveyUnitByIdInTempZone = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postSurveyUnitByIdInTempZone>>,
     TError,
-    { id: string; data: PostSurveyUnitByIdInTempZoneBody },
+    { id: string; data: SchemaSurveyUnitTempZone },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof postSurveyUnitByIdInTempZone>>,
   TError,
-  { id: string; data: PostSurveyUnitByIdInTempZoneBody },
+  { id: string; data: SchemaSurveyUnitTempZone },
   TContext
 > => {
   const mutationOptions =
@@ -114,7 +111,7 @@ export const getSurveyUnitsInTempZone = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetSurveyUnitsInTempZone200Item[]>(
+  return stromaeInstance<SurveyUnitTempZone[]>(
     { url: `/api/survey-units/temp-zone`, method: 'GET', signal },
     options
   )

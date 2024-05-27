@@ -5,13 +5,12 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.1-SNAPSHOT
  */
-import type { SurveyUnitTempZoneSurveyUnit } from './surveyUnitTempZoneSurveyUnit'
+import type { SchemaSurveyUnitTempZone } from './schema.survey-unit-temp-zone/schemaSurveyUnitTempZone'
 
 export interface SurveyUnitTempZone {
   date?: number
   id?: string
-  /** Validation of survey unit temp zone */
-  surveyUnit?: SurveyUnitTempZoneSurveyUnit
+  surveyUnit?: SchemaSurveyUnitTempZone
   surveyUnitId?: string
   userId?: string
 }

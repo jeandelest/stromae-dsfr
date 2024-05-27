@@ -15,10 +15,8 @@ import type {
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
-import type {
-  GetNomenclatureById200Item,
-  PostNomenclatureBody,
-} from '../model/api'
+import type { NomenclatureCreation } from '../model/api'
+import type { SchemaNomenclature } from '../model/api/schema.nomenclature'
 import { stromaeInstance } from './axiosInstance'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
@@ -28,7 +26,7 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
  * @summary Create/update a nomenclature
  */
 export const postNomenclature = (
-  postNomenclatureBody: PostNomenclatureBody,
+  nomenclatureCreation: NomenclatureCreation,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -36,7 +34,7 @@ export const postNomenclature = (
       url: `/api/nomenclature`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      data: postNomenclatureBody,
+      data: nomenclatureCreation,
     },
     options
   )
@@ -49,21 +47,21 @@ export const getPostNomenclatureMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postNomenclature>>,
     TError,
-    { data: PostNomenclatureBody },
+    { data: NomenclatureCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof postNomenclature>>,
   TError,
-  { data: PostNomenclatureBody },
+  { data: NomenclatureCreation },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof postNomenclature>>,
-    { data: PostNomenclatureBody }
+    { data: NomenclatureCreation }
   > = (props) => {
     const { data } = props ?? {}
 
@@ -76,7 +74,7 @@ export const getPostNomenclatureMutationOptions = <
 export type PostNomenclatureMutationResult = NonNullable<
   Awaited<ReturnType<typeof postNomenclature>>
 >
-export type PostNomenclatureMutationBody = PostNomenclatureBody
+export type PostNomenclatureMutationBody = NomenclatureCreation
 export type PostNomenclatureMutationError = unknown
 
 /**
@@ -89,14 +87,14 @@ export const usePostNomenclature = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postNomenclature>>,
     TError,
-    { data: PostNomenclatureBody },
+    { data: NomenclatureCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof postNomenclature>>,
   TError,
-  { data: PostNomenclatureBody },
+  { data: NomenclatureCreation },
   TContext
 > => {
   const mutationOptions = getPostNomenclatureMutationOptions(options)
@@ -299,7 +297,7 @@ export const getNomenclatureById = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetNomenclatureById200Item[]>(
+  return stromaeInstance<SchemaNomenclature>(
     { url: `/api/nomenclature/${id}`, method: 'GET', signal },
     options
   )

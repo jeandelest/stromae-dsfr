@@ -5,8 +5,8 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.1-SNAPSHOT
  */
-import type { MetadataCreationValue } from './metadataCreationValue'
+import type { SchemaMetadata } from './schema.metadata/schemaMetadata'
 
 export interface MetadataCreation {
-  value: MetadataCreationValue
+  value: SchemaMetadata
 }

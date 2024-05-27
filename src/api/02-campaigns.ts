@@ -16,11 +16,9 @@ import type {
   UseQueryResult,
 } from '@tanstack/react-query'
 import type {
-  CreateCampaignBody,
-  CreateCampaignV2Body,
+  CampaignCreation,
+  CampaignSummary,
   DeleteCampaignByIdParams,
-  GetInterviewerCampaignList200Item,
-  GetListCampaign200Item,
 } from '../model/api'
 import { stromaeInstance } from './axiosInstance'
 
@@ -34,7 +32,7 @@ export const getInterviewerCampaignList = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetInterviewerCampaignList200Item[]>(
+  return stromaeInstance<CampaignSummary[]>(
     { url: `/api/campaigns`, method: 'GET', signal },
     options
   )
@@ -111,7 +109,7 @@ export const useGetInterviewerCampaignList = <
  * @summary Create a campaign
  */
 export const createCampaign = (
-  createCampaignBody: CreateCampaignBody,
+  campaignCreation: CampaignCreation,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -119,7 +117,7 @@ export const createCampaign = (
       url: `/api/campaigns`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      data: createCampaignBody,
+      data: campaignCreation,
     },
     options
   )
@@ -132,21 +130,21 @@ export const getCreateCampaignMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createCampaign>>,
     TError,
-    { data: CreateCampaignBody },
+    { data: CampaignCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof createCampaign>>,
   TError,
-  { data: CreateCampaignBody },
+  { data: CampaignCreation },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof createCampaign>>,
-    { data: CreateCampaignBody }
+    { data: CampaignCreation }
   > = (props) => {
     const { data } = props ?? {}
 
@@ -159,7 +157,7 @@ export const getCreateCampaignMutationOptions = <
 export type CreateCampaignMutationResult = NonNullable<
   Awaited<ReturnType<typeof createCampaign>>
 >
-export type CreateCampaignMutationBody = CreateCampaignBody
+export type CreateCampaignMutationBody = CampaignCreation
 export type CreateCampaignMutationError = unknown
 
 /**
@@ -173,14 +171,14 @@ export const useCreateCampaign = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createCampaign>>,
     TError,
-    { data: CreateCampaignBody },
+    { data: CampaignCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof createCampaign>>,
   TError,
-  { data: CreateCampaignBody },
+  { data: CampaignCreation },
   TContext
 > => {
   const mutationOptions = getCreateCampaignMutationOptions(options)
@@ -192,7 +190,7 @@ export const useCreateCampaign = <
  * @summary Create a campaign
  */
 export const createCampaignV2 = (
-  createCampaignV2Body: CreateCampaignV2Body,
+  campaignCreation: CampaignCreation,
   options?: SecondParameter<typeof stromaeInstance>
 ) => {
   return stromaeInstance<void>(
@@ -200,7 +198,7 @@ export const createCampaignV2 = (
       url: `/api/campaign`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      data: createCampaignV2Body,
+      data: campaignCreation,
     },
     options
   )
@@ -213,21 +211,21 @@ export const getCreateCampaignV2MutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createCampaignV2>>,
     TError,
-    { data: CreateCampaignV2Body },
+    { data: CampaignCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationOptions<
   Awaited<ReturnType<typeof createCampaignV2>>,
   TError,
-  { data: CreateCampaignV2Body },
+  { data: CampaignCreation },
   TContext
 > => {
   const { mutation: mutationOptions, request: requestOptions } = options ?? {}
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof createCampaignV2>>,
-    { data: CreateCampaignV2Body }
+    { data: CampaignCreation }
   > = (props) => {
     const { data } = props ?? {}
 
@@ -240,7 +238,7 @@ export const getCreateCampaignV2MutationOptions = <
 export type CreateCampaignV2MutationResult = NonNullable<
   Awaited<ReturnType<typeof createCampaignV2>>
 >
-export type CreateCampaignV2MutationBody = CreateCampaignV2Body
+export type CreateCampaignV2MutationBody = CampaignCreation
 export type CreateCampaignV2MutationError = unknown
 
 /**
@@ -253,14 +251,14 @@ export const useCreateCampaignV2 = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createCampaignV2>>,
     TError,
-    { data: CreateCampaignV2Body },
+    { data: CampaignCreation },
     TContext
   >
   request?: SecondParameter<typeof stromaeInstance>
 }): UseMutationResult<
   Awaited<ReturnType<typeof createCampaignV2>>,
   TError,
-  { data: CreateCampaignV2Body },
+  { data: CampaignCreation },
   TContext
 > => {
   const mutationOptions = getCreateCampaignV2MutationOptions(options)
@@ -275,7 +273,7 @@ export const getListCampaign = (
   options?: SecondParameter<typeof stromaeInstance>,
   signal?: AbortSignal
 ) => {
-  return stromaeInstance<GetListCampaign200Item[]>(
+  return stromaeInstance<CampaignSummary[]>(
     { url: `/api/admin/campaigns`, method: 'GET', signal },
     options
   )

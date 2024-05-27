@@ -12,10 +12,9 @@ import type {
   UseMutationResult,
 } from '@tanstack/react-query'
 import type {
-  IntegrateContext200,
   IntegrateContextBody,
-  IntegrateXmlContext200,
   IntegrateXmlContextBody,
+  IntegrationResults,
 } from '../model/api'
 import { stromaeInstance } from './axiosInstance'
 
@@ -33,7 +32,7 @@ export const integrateXmlContext = (
   const formData = new FormData()
   formData.append('file', integrateXmlContextBody.file)
 
-  return stromaeInstance<IntegrateXmlContext200>(
+  return stromaeInstance<IntegrationResults>(
     {
       url: `/api/campaign/xml/context`,
       method: 'POST',
@@ -117,7 +116,7 @@ export const integrateContext = (
   const formData = new FormData()
   formData.append('file', integrateContextBody.file)
 
-  return stromaeInstance<IntegrateContext200>(
+  return stromaeInstance<IntegrationResults>(
     {
       url: `/api/campaign/context`,
       method: 'POST',

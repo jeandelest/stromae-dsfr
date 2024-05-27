@@ -6,17 +6,15 @@
  * OpenAPI spec version: 4.3.1-SNAPSHOT
  */
 import type { SurveyUnitComment } from './surveyUnitComment'
-import type { SurveyUnitData } from './surveyUnitData'
-import type { SurveyUnitPersonalizationItem } from './surveyUnitPersonalizationItem'
-import type { SurveyUnitStateData } from './surveyUnitStateData'
+import type { SchemaData } from './schema.data/schemaData'
+import type { SchemaPersonalization } from './schema.personalization/schemaPersonalization'
+import type { StateData } from './stateData'
 
 export interface SurveyUnit {
   comment?: SurveyUnitComment
-  /** Validation of survey unit data */
-  data?: SurveyUnitData
+  data?: SchemaData
   id?: string
-  /** Validation of personalizations for a survey unit */
-  personalization?: SurveyUnitPersonalizationItem[]
+  personalization?: SchemaPersonalization
   questionnaireId?: string
-  stateData?: SurveyUnitStateData
+  stateData?: StateData
 }

@@ -44,7 +44,7 @@ export namespace OrchestratorProps {
     mode: 'collect'
     updateDataAndStateData: (params: {
       stateData: StateData
-      data: NonNullable<LunaticData['COLLECTED']>
+      data: LunaticData['COLLECTED']
       onSuccess?: () => void
     }) => void
     getDepositProof: () => Promise<void>

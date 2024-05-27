@@ -5,11 +5,11 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.1-SNAPSHOT
  */
-import type { CampaignCreationMetadata } from './campaignCreationMetadata'
+import type { MetadataCreation } from './metadataCreation'
 
 export interface CampaignCreation {
   id?: string
   label: string
-  metadata?: CampaignCreationMetadata
+  metadata?: MetadataCreation
   questionnaireIds: string[]
 }
