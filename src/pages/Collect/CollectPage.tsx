@@ -44,7 +44,7 @@ export function CollectPage() {
     mutationUpdateDataStateData.mutate(
       {
         id: surveyUnitId,
-        data: { data: params.data ?? {}, stateData: params.stateData }, //Waiting for API to accept request with undefined data
+        data: { data: params.data, stateData: params.stateData }, //Waiting for API to accept request with undefined data
       },
       {
         onSuccess: () => {

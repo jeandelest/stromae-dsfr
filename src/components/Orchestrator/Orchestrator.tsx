@@ -25,6 +25,7 @@ import { useUpdateEffect } from 'hooks/useUpdateEffect'
 import { useRefSync } from 'hooks/useRefSync'
 import { isSequencePage } from './utils/sequence'
 import { scrollToFirstError } from './utils/scrollToFirstError'
+import { isObjectEmpty } from 'utils/isObjectEmpty'
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)
@@ -163,10 +164,10 @@ export function Orchestrator(props: OrchestratorProps) {
     const { updateDataAndStateData } = props
 
     const data = getChangedData()
-
+    
     updateDataAndStateData({
       stateData: getCurrentStateData(),
-      data: data.COLLECTED,
+      data: isObjectEmpty(data.COLLECTED ?? {}) ? undefined : data.COLLECTED,
       onSuccess: resetChangedData,
     })
   }, [currentPage, pageTag])

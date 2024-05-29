@@ -3,12 +3,12 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.1-SNAPSHOT
+ * OpenAPI spec version: 4.3.2-SNAPSHOT
  */
 import type { SchemaCollectedData } from './schema.collected-data/schemaCollectedData'
 import type { StateDataUpdate } from './stateDataUpdate'
 
 export interface SurveyUnitDataStateDataUpdate {
-  data: SchemaCollectedData
+  data?: SchemaCollectedData
   stateData: StateDataUpdate
 }

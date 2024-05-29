@@ -3,7 +3,7 @@
   "info": {
     "title": "queen-api",
     "description": "API for Queen/Stromae",
-    "version": "4.3.1-SNAPSHOT"
+    "version": "4.3.2-SNAPSHOT"
   },
   "servers": [
     {
@@ -1489,7 +1489,7 @@
             "$ref": "#/components/schemas/StateDataUpdate"
           }
         },
-        "required": ["data", "stateData"]
+        "required": ["stateData"]
       },
       "SurveyUnitTempZone": {
         "properties": {
