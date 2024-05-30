@@ -1,10 +1,10 @@
 import { Input } from '@codegouvfr/react-dsfr/Input'
 import { Button } from '@codegouvfr/react-dsfr/Button'
-import { Grid } from 'components/Grid'
+import { Grid } from 'shared/components/Grid'
 import { SelectNomenclatures } from './SelectNomenclatures'
 import { FormProvider, useForm } from 'react-hook-form'
 import { useNavigate } from '@tanstack/react-router'
-import { Container } from 'components/Container'
+import { Container } from 'shared/components/Container'
 import { useEffect } from 'react'
 
 export type FormInputs = {

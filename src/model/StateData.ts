@@ -1,6 +1,5 @@
 import { assert } from 'tsafe/assert'
 import { type Extends } from 'tsafe/Extends'
-
 import type { PageType } from './Page'
 import type { StateDataDto, StateDataInput } from './api'
 

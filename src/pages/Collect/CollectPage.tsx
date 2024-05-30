@@ -1,19 +1,19 @@
-import { Orchestrator } from 'components/Orchestrator/Orchestrator'
+import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
 import { collectRoute } from './route'
 import { useQueryClient } from '@tanstack/react-query'
 import { getGetNomenclatureByIdQueryOptions } from 'api/04-nomenclatures'
 import type {
   LunaticGetReferentiel,
   Nomenclature,
-} from 'components/Orchestrator/utils/lunaticType'
+} from 'shared/components/Orchestrator/utils/lunaticType'
 import {
   getGenerateDepositProofQueryOptions,
   useUpdateSurveyUnitDataStateDataById,
 } from 'api/06-survey-units'
 import type { LunaticData } from '@inseefr/lunatic'
 import type { StateData } from 'model/StateData'
-import { useDocumentTitle } from 'hooks/useDocumentTitle'
-import { useSetLogoutQuestionnaire } from 'hooks/useLogoutUrl'
+import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
+import { useSetLogoutQuestionnaire } from 'shared/hooks/useLogoutUrl'
 import { toast } from 'react-toastify'
 
 export function CollectPage() {

@@ -24,4 +24,5 @@ export const internalPageTypeSchema = z.union([
   stromaePageSchema,
   z.literal('lunaticPage'),
 ])
+
 assert<Equals<z.infer<typeof internalPageTypeSchema>, InternalPageType>>()

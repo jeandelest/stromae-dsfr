@@ -21,12 +21,12 @@ import type { StateData } from 'model/StateData'
 import { isBlockingError, isSameErrors } from './utils/controls'
 import { slotComponents } from './slotComponents'
 import type { LunaticGetReferentiel } from './utils/lunaticType'
-import { useUpdateEffect } from 'hooks/useUpdateEffect'
-import { useRefSync } from 'hooks/useRefSync'
+import { useRefSync } from 'utils/useRefSync'
 import { isSequencePage } from './utils/sequence'
 import { scrollToFirstError } from './utils/scrollToFirstError'
 import { isObjectEmpty } from 'utils/isObjectEmpty'
-import { useAddPreLogoutAction } from 'utils/prelogout'
+import { useAddPreLogoutAction } from 'shared/hooks/prelogout'
+import { useUpdateEffect } from 'utils/useUpdateEffect'
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)

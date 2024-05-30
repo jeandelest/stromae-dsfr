@@ -1,7 +1,7 @@
 import type { QueryClient } from '@tanstack/react-query'
 import { Layout } from './Layout'
 import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
-import { ErrorComponent } from 'components/Error/ErrorComponent'
+import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import { visualizeRoute } from 'pages/Visualize/route'
 import { accessibilityRoute } from 'pages/Accessibility/route'
 import { securityRoute } from 'pages/Security/route'
@@ -9,11 +9,11 @@ import { siteMapRoute } from 'pages/SiteMap/route'
 import { legalsRoute } from 'pages/Legals/route'
 import { navigationAssistanceRoute } from 'pages/NavigationAssistance/route'
 import { collectRoute } from 'pages/Collect/route'
-import { NotFoundError } from 'utils/error/notFoundError'
 import { reviewRoute } from 'pages/Review/route'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark'
+import { NotFoundError } from 'shared/error/notFoundError'
 
 export const rootRoute = createRootRouteWithContext<{
   queryClient: QueryClient

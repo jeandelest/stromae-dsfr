@@ -6,8 +6,8 @@ import {
   metadataQueryOptions,
   sourceQueryOptions,
   surveyUnitDataQueryOptions,
-} from 'utils/query/visualizeQueryOptions'
-import { ErrorComponent } from 'components/Error/ErrorComponent'
+} from 'shared/query/visualizeQueryOptions'
+import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 
 const visualizeSearchSchema = z
   .object({

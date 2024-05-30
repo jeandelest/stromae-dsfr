@@ -2,9 +2,9 @@ import { fr } from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
 import TechnicalError from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg'
 import { useNavigate } from '@tanstack/react-router'
-import { Container } from 'components/Container'
-import { useDocumentTitle } from 'hooks/useDocumentTitle'
-import { getErrorInformations } from 'utils/error/errorUtils'
+import { Container } from 'shared/components/Container'
+import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
+import { getErrorInformations } from 'shared/error/errorUtils'
 
 export function ErrorComponent(props: {
   error: unknown

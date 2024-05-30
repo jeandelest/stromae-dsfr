@@ -1,5 +1,5 @@
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb'
-import { Grid } from 'components/Grid'
+import { Grid } from 'shared/components/Grid'
 
 export function NavigationAssistancePage() {
   return (

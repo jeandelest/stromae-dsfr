@@ -2,7 +2,7 @@ import type { LunaticSource } from '@inseefr/lunatic'
 import { queryOptions } from '@tanstack/react-query'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
 import axios, { type AxiosRequestConfig } from 'axios'
-import type { Nomenclature } from 'components/Orchestrator/utils/lunaticType'
+import type { Nomenclature } from 'shared/components/Orchestrator/utils/lunaticType'
 
 function axiosGet<T>(url: string, options?: AxiosRequestConfig) {
   return axios.get<T>(url, options).then(({ data }) => data)
