@@ -4,6 +4,7 @@ import logoInsee from 'assets/logo-insee.png'
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display'
 import { Badge } from '@codegouvfr/react-dsfr/Badge'
 import { useLogoutUrl } from 'hooks/useLogoutUrl'
+import { executePreLogoutActions } from 'utils/prelogout'
 
 export function Header() {
   const { isUserLoggedIn, logout } = useOidc()
@@ -38,11 +39,13 @@ export function Header() {
               {
                 iconId: 'ri-account-box-line',
                 buttonProps: {
-                  onClick: () =>
+                  onClick: async () => {
+                    await executePreLogoutActions()
                     logout({
                       redirectTo: 'specific url',
                       url: logoutUrl,
-                    }),
+                    })
+                  },
                 },
                 text: 'Se déconnecter',
               } as const,

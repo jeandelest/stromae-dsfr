@@ -26,6 +26,7 @@ import { useRefSync } from 'hooks/useRefSync'
 import { isSequencePage } from './utils/sequence'
 import { scrollToFirstError } from './utils/scrollToFirstError'
 import { isObjectEmpty } from 'utils/isObjectEmpty'
+import { useAddPreLogoutAction } from 'utils/prelogout'
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)
@@ -158,13 +159,26 @@ export function Orchestrator(props: OrchestratorProps) {
     })
   })
 
+  useAddPreLogoutAction(() => {
+    if (mode !== 'collect') return
+
+    const { updateDataAndStateData } = props
+
+    const data = getChangedData()
+
+    updateDataAndStateData({
+      stateData: getCurrentStateData(),
+      data: isObjectEmpty(data.COLLECTED ?? {}) ? undefined : data.COLLECTED,
+      onSuccess: resetChangedData,
+    })
+  })
   // Persist data and stateData when page change in "collect" mode
   useUpdateEffect(() => {
     if (mode !== 'collect') return
     const { updateDataAndStateData } = props
 
     const data = getChangedData()
-    
+
     updateDataAndStateData({
       stateData: getCurrentStateData(),
       data: isObjectEmpty(data.COLLECTED ?? {}) ? undefined : data.COLLECTED,
