@@ -15,6 +15,9 @@ export function useAddPreLogoutAction(
   const stableAction = useEvent(action)
   useEffect(() => {
     actions.add(stableAction)
+    return () => {
+      actions.delete(stableAction)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }
