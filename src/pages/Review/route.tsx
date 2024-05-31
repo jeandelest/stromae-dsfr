@@ -1,13 +1,13 @@
 import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from 'router/router'
 import { ReviewPage } from './ReviewPage'
-import { protectedRouteLoader } from 'router/loader/protectedLoader'
 import { getGetQuestionnaireDataQueryOptions } from 'api/03-questionnaires'
 import { getGetSurveyUnitByIdQueryOptions } from 'api/06-survey-units'
 import { getGetMetadataByQuestionnaireIdQueryOptions } from 'api/05-metadata'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import type { LunaticSource } from '@inseefr/lunatic'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
+import { protectedRouteLoader } from 'shared/loader/protectedLoader'
 
 export const reviewRoute = createRoute({
   getParentRoute: () => rootRoute,
