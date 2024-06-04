@@ -8,6 +8,7 @@ type ImportMetaEnv = {
   VITE_PORTAIL_URL: string
   VITE_API_URL: string
   VITE_VISUALIZE_DISABLED: string
+  VITE_BASE_PATH: string
   BASE_URL: string
   MODE: string
   DEV: boolean
