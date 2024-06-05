@@ -815,17 +815,17 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic-dsfr@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.0.7.tgz#4f905da9af5ad90a2bfa1b58f6ee6c365d50956b"
-  integrity sha512-Q31cu9tU1lqzUhVkOufI5yUZ9HIVhbN+Z1HLyD+al3qz2B3Dy4UCP6zVGYTw8WfY0rD4YvG9NwLy4OXMP5Dj1A==
+"@inseefr/lunatic-dsfr@^2.0.8":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.0.8.tgz#e478f88be8c01ac0f4a4e13fce4ba1095ad56f79"
+  integrity sha512-jM0MgsBBZQCd1JT+bkNRIkfCHx/NlzxyJm6jghVAZezTbEnNS1mKrTKcV6riWKUolcqkkLPz63EQB6fCTFbHng==
   dependencies:
-    react-number-format "^5.3.4"
+    react-number-format "^5.4.0"
 
-"@inseefr/lunatic@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.3.tgz#730af39193d9aad47f75bc0437984630b2d4865c"
-  integrity sha512-ZjbOlOmNhyGhls/WAUzU2RzFoAfFJm8FT9/XkaUq/hVAjnMAASepbNGYHTGvVQBx95IsjVJDQdPKY7vLsYkqOA==
+"@inseefr/lunatic@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.6.tgz#dddccee88287e2b09e9299f98d1b1784ec38a647"
+  integrity sha512-vykWWZXXMUwOBNkof5kI7tluMvM4L2moj/QRMTNe1PL8NB8S2z6PpsEKY2ZHBX6b62jR7zZ9u1/CE1uu/+AeoQ==
   dependencies:
     "@inseefr/trevas" "^0.1.21"
     "@inseefr/vtl-2.0-antlr-tools" "^0.3.2"
@@ -4642,6 +4642,13 @@ react-number-format@^5.3.4:
   version "5.3.4"
   resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.3.4.tgz#4780522ba1fdaff20aaa0732716490c6758b8557"
   integrity sha512-2hHN5mbLuCDUx19bv0Q8wet67QqYK6xmtLQeY5xx+h7UXiMmRtaCwqko4mMPoKXLc6xAzwRrutg8XbTRlsfjRg==
+  dependencies:
+    prop-types "^15.7.2"
+
+react-number-format@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.4.0.tgz#8c1e97add1970d1a2f372ca286bcdaa49632ba5c"
+  integrity sha512-NWdICrqLhI7rAS8yUeLVd6Wr4cN7UjJ9IBTS0f/a9i7UB4x4Ti70kGnksBtZ7o4Z7YRbvCMMR/jQmkoOBa/4fg==
   dependencies:
     prop-types "^15.7.2"
 
