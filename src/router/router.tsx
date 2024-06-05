@@ -24,6 +24,7 @@ export const rootRoute = createRootRouteWithContext<{
   ),
 })
 
+// eslint-disable-next-line react-refresh/only-export-components
 function RootComponent() {
   const { isDark } = useIsDark()
   return (
