@@ -23,7 +23,7 @@ import { slotComponents } from './slotComponents'
 import type { LunaticGetReferentiel } from './utils/lunaticType'
 import { useRefSync } from 'utils/useRefSync'
 import { isSequencePage } from './utils/sequence'
-import { scrollToFirstError } from './utils/scrollToFirstError'
+import { scrollAndFocusToFirstError } from './utils/scrollAndFocusToFirstError'
 import { isObjectEmpty } from 'utils/isObjectEmpty'
 import { useAddPreLogoutAction } from 'shared/hooks/prelogout'
 import { useUpdateEffect } from 'utils/useUpdateEffect'
@@ -88,7 +88,7 @@ export function Orchestrator(props: OrchestratorProps) {
 
   useEffect(() => {
     if (activeErrors) {
-      scrollToFirstError()
+      scrollAndFocusToFirstError()
     }
   }, [activeErrors])
 
