@@ -21,6 +21,7 @@ export function Footer() {
             title="licence MIT - nouvelle fenêtre"
             href="https://github.com/InseeFrLab/stromae-dsfr/blob/main/LICENSE"
             target="_blank"
+            rel="noreferrer"
           >
             licence MIT
           </a>
@@ -29,6 +30,7 @@ export function Footer() {
             href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
             title="licence etalab-2.0 - nouvelle fenêtre"
             target="_blank"
+            rel="noreferrer"
           >
             licence etalab-2.0
           </a>

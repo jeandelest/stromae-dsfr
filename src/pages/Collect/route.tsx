@@ -1,8 +1,10 @@
 import type { LunaticSource } from '@inseefr/lunatic'
 import { createRoute } from '@tanstack/react-router'
 import { getGetQuestionnaireDataQueryOptions } from 'api/03-questionnaires'
-import { getGetMetadataByQuestionnaireIdQueryOptions } from 'api/05-metadata'
-import { getGetSurveyUnitByIdQueryOptions } from 'api/06-survey-units'
+import {
+  getGetSurveyUnitByIdQueryOptions,
+  getGetSurveyUnitMetadataByIdQueryOptions,
+} from 'api/06-survey-units'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
 import { rootRoute } from 'router/router'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
@@ -11,8 +13,8 @@ import { z } from 'zod'
 import { CollectPage } from './CollectPage'
 
 const collectSearchParams = z.object({
-  pathLogout: z.string(),
-  pathAssistance: z.string(),
+  pathLogout: z.string().optional(),
+  pathAssistance: z.string().optional(),
 })
 
 export const collectPath =
@@ -45,9 +47,8 @@ export const collectRoute = createRoute({
       )
       .then((suData) => suData as SurveyUnitData) // data are heavy too
 
-    //TODO use metadata and type
     const metadataPr = queryClient.ensureQueryData(
-      getGetMetadataByQuestionnaireIdQueryOptions(questionnaireId, {
+      getGetSurveyUnitMetadataByIdQueryOptions(surveyUnitId, {
         request: { signal: abortController.signal },
       })
     )

@@ -13,14 +13,11 @@ import type {
   Nomenclature,
 } from 'shared/components/Orchestrator/utils/lunaticType'
 import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
-import { useSetLogoutQuestionnaire } from 'shared/hooks/useLogoutUrl'
 import { collectRoute } from './route'
 
 export function CollectPage() {
-  const { surveyUnitId, questionnaireId } = collectRoute.useParams()
+  const { surveyUnitId } = collectRoute.useParams()
   const queryClient = useQueryClient()
-
-  useSetLogoutQuestionnaire(questionnaireId)
 
   const loaderResults = collectRoute.useLoaderData()
 

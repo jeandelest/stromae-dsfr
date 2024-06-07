@@ -1,5 +1,4 @@
 import type { PropsWithChildren } from 'react'
-import { LogoutPathProvider } from 'shared/hooks/useLogoutUrl'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
@@ -9,13 +8,11 @@ export function Layout(props: PropsWithChildren) {
     <div
       style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
     >
-      <LogoutPathProvider>
-        <Header />
-        <main id="contenu" role="main">
-          {children}
-        </main>
-        <Footer />
-      </LogoutPathProvider>
+      <Header />
+      <main id="contenu" role="main">
+        {children}
+      </main>
+      <Footer />
     </div>
   )
 }
