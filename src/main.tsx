@@ -43,7 +43,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <MuiDsfrThemeProvider>
       <QueryClientProvider client={queryClient}>
         <OidcProvider>
-          <RouterProvider router={router} basepath={import.meta.env.BASE_URL} />
+          <RouterProvider
+            router={router}
+            basepath={import.meta.env.VITE_BASE_PATH}
+          />
         </OidcProvider>
       </QueryClientProvider>
     </MuiDsfrThemeProvider>
