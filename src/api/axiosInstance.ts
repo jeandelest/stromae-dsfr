@@ -13,6 +13,7 @@ const getAccessToken = async () => {
   return oidc.getTokens().accessToken
 }
 
+// Type issue https://github.com/axios/axios/issues/5494
 const onRequest = async (config: any) => ({
   ...config,
   headers: {

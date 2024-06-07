@@ -64,7 +64,7 @@ export function CollectPage() {
       .ensureQueryData(getGenerateDepositProofQueryOptions(surveyUnitId))
       .then((response) => {
         const fileName =
-          (response.headers['content-disposition'].match(
+          (response.headers['Content-Disposition'].match(
             /filename="(.+?)"/
           )[1] as string) ?? 'document.pdf' //content-disposition is present in OpenAPI spec but not well inferred by type
 

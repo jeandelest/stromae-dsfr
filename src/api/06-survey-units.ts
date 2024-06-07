@@ -3,7 +3,7 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.4-SNAPSHOT
+ * OpenAPI spec version: 4.3.6-SNAPSHOT
  */
 import type {
   MutationFunction,
@@ -1456,8 +1456,13 @@ export const generateDepositProof = (
   options?: SecondParameter<typeof depositProofInstance>,
   signal?: AbortSignal
 ) => {
-  return depositProofInstance<unknown>(
-    { url: `/api/survey-unit/${id}/deposit-proof`, method: 'GET', signal },
+  return depositProofInstance<Blob>(
+    {
+      url: `/api/survey-unit/${id}/deposit-proof`,
+      method: 'GET',
+      responseType: 'blob',
+      signal,
+    },
     options
   )
 }

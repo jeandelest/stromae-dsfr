@@ -3,7 +3,7 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.4-SNAPSHOT
+ * OpenAPI spec version: 4.3.6-SNAPSHOT
  */
 import type { SchemaData } from '../schema.data/schemaData'
 import type { SchemaPersonalization } from '../schema.personalization/schemaPersonalization'

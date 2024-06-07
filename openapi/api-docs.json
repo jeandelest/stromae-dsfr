@@ -3,7 +3,7 @@
   "info": {
     "title": "queen-api",
     "description": "API for Queen/Stromae",
-    "version": "4.3.4-SNAPSHOT"
+    "version": "4.3.6-SNAPSHOT"
   },
   "servers": [
     {
@@ -883,7 +883,12 @@
               }
             },
             "content": {
-              "application/pdf": {}
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
           }
         }
