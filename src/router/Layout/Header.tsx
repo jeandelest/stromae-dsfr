@@ -1,10 +1,10 @@
-import { useOidc } from 'oidc'
+import { Badge } from '@codegouvfr/react-dsfr/Badge'
+import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display'
 import { Header as DsfrHeader } from '@codegouvfr/react-dsfr/Header'
 import logoInsee from 'assets/logo-insee.png'
-import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display'
-import { Badge } from '@codegouvfr/react-dsfr/Badge'
-import { useLogoutUrl } from 'shared/hooks/useLogoutUrl'
+import { useOidc } from 'oidc'
 import { executePreLogoutActions } from 'shared/hooks/prelogout'
+import { useLogoutUrl } from 'shared/hooks/useLogoutUrl'
 
 export function Header() {
   const { isUserLoggedIn, logout } = useOidc()

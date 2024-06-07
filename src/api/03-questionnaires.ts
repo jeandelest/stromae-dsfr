@@ -5,7 +5,6 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.2-SNAPSHOT
  */
-import { useMutation, useQuery } from '@tanstack/react-query'
 import type {
   MutationFunction,
   QueryFunction,
@@ -15,6 +14,7 @@ import type {
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import type {
   GetQuestionnaireData200,
   QuestionnaireModelCreation,

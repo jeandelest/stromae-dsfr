@@ -1,16 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { OidcProvider } from 'oidc'
-import {
-  RouterProvider,
-  createRouter,
-  Link,
-  type LinkProps,
-} from '@tanstack/react-router'
-import { routeTree } from 'router/router'
+import { MuiDsfrThemeProvider } from '@codegouvfr/react-dsfr/mui'
 import { startReactDsfr } from '@codegouvfr/react-dsfr/spa'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { MuiDsfrThemeProvider } from '@codegouvfr/react-dsfr/mui'
+import {
+  Link,
+  RouterProvider,
+  createRouter,
+  type LinkProps,
+} from '@tanstack/react-router'
+import { OidcProvider } from 'oidc'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { routeTree } from 'router/router'
 
 startReactDsfr({
   defaultColorScheme: 'system',

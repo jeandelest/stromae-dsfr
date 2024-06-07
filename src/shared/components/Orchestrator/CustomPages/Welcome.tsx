@@ -1,8 +1,8 @@
 import { fr } from '@codegouvfr/react-dsfr'
-import { WelcomeModal } from './WelcomeModal'
-import type { useStromaeNavigation } from '../useStromaeNavigation'
-import { useEffect } from 'react'
 import type { PageType } from 'model/Page'
+import { useEffect } from 'react'
+import type { useStromaeNavigation } from '../useStromaeNavigation'
+import { WelcomeModal } from './WelcomeModal'
 
 export function Welcome(props: {
   initialCurrentPage: PageType | undefined

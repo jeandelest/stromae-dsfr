@@ -1,11 +1,11 @@
+import { fr } from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
 import type { InternalPageType } from 'model/Page'
 import { useMemo, useState, type PropsWithChildren } from 'react'
-import type { OrchestratorProps } from './Orchestrator'
-import { fr } from '@codegouvfr/react-dsfr'
-import type { LunaticOverview } from './utils/lunaticType'
 import { useStyles } from 'tss-react'
+import type { OrchestratorProps } from './Orchestrator'
 import { SequenceHeader } from './SequenceHeader'
+import type { LunaticOverview } from './utils/lunaticType'
 
 export function Navigation(
   props: PropsWithChildren<{

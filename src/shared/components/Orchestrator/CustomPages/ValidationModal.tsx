@@ -1,5 +1,5 @@
 import { createModal } from '@codegouvfr/react-dsfr/Modal'
-import { useState, useEffect, useId, type MutableRefObject } from 'react'
+import { useEffect, useId, useState, type MutableRefObject } from 'react'
 import { assert } from 'tsafe/assert'
 
 export type Props = {

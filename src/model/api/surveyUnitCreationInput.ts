@@ -5,10 +5,10 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.2.1
  */
-import type { SurveyUnitCreationInputComment } from './surveyUnitCreationInputComment'
-import type { SurveyUnitCreationInputData } from './surveyUnitCreationInputData'
 import type { ArrayNode } from './arrayNode'
 import type { StateDataInput } from './stateDataInput'
+import type { SurveyUnitCreationInputComment } from './surveyUnitCreationInputComment'
+import type { SurveyUnitCreationInputData } from './surveyUnitCreationInputData'
 
 export interface SurveyUnitCreationInput {
   comment: SurveyUnitCreationInputComment

@@ -1,20 +1,20 @@
-import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
-import { collectRoute } from './route'
+import type { LunaticData } from '@inseefr/lunatic'
 import { useQueryClient } from '@tanstack/react-query'
 import { getGetNomenclatureByIdQueryOptions } from 'api/04-nomenclatures'
-import type {
-  LunaticGetReferentiel,
-  Nomenclature,
-} from 'shared/components/Orchestrator/utils/lunaticType'
 import {
   getGenerateDepositProofQueryOptions,
   useUpdateSurveyUnitDataStateDataById,
 } from 'api/06-survey-units'
-import type { LunaticData } from '@inseefr/lunatic'
 import type { StateData } from 'model/StateData'
+import { toast } from 'react-toastify'
+import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
+import type {
+  LunaticGetReferentiel,
+  Nomenclature,
+} from 'shared/components/Orchestrator/utils/lunaticType'
 import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 import { useSetLogoutQuestionnaire } from 'shared/hooks/useLogoutUrl'
-import { toast } from 'react-toastify'
+import { collectRoute } from './route'
 
 export function CollectPage() {
   const { surveyUnitId, questionnaireId } = collectRoute.useParams()

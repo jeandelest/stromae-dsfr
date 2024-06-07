@@ -5,9 +5,9 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.2-SNAPSHOT
  */
-import type { SchemaSurveyUnitTempZoneComment } from './schemaSurveyUnitTempZoneComment'
 import type { SchemaData } from '../schema.data/schemaData'
 import type { SchemaPersonalization } from '../schema.personalization/schemaPersonalization'
+import type { SchemaSurveyUnitTempZoneComment } from './schemaSurveyUnitTempZoneComment'
 import type { StateData } from './stateData'
 
 /**

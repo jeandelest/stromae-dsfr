@@ -1,5 +1,5 @@
-import { createReactOidc } from 'oidc-spa/react'
 import { createMockReactOidc } from 'oidc-spa/mock/react'
+import { createReactOidc } from 'oidc-spa/react'
 import { z } from 'zod'
 
 export const { OidcProvider, useOidc, prOidc } =

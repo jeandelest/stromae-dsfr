@@ -1,7 +1,7 @@
-import { Header } from './Header'
-import { Footer } from './Footer'
 import type { PropsWithChildren } from 'react'
 import { LogoutPathProvider } from 'shared/hooks/useLogoutUrl'
+import { Footer } from './Footer'
+import { Header } from './Header'
 
 export function Layout(props: PropsWithChildren) {
   const { children } = props

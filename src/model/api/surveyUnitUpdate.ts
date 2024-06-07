@@ -5,10 +5,10 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.2-SNAPSHOT
  */
-import type { SurveyUnitUpdateComment } from './surveyUnitUpdateComment'
 import type { SchemaData } from './schema.data/schemaData'
 import type { SchemaPersonalization } from './schema.personalization/schemaPersonalization'
 import type { StateDataUpdate } from './stateDataUpdate'
+import type { SurveyUnitUpdateComment } from './surveyUnitUpdateComment'
 
 export interface SurveyUnitUpdate {
   comment?: SurveyUnitUpdateComment

@@ -6,5 +6,6 @@
   "tabWidth": 2,
   "jsxSingleQuote": false,
   "jsxBracketSameLine": false,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "plugins": ["prettier-plugin-organize-imports"]
 }

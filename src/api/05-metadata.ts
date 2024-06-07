@@ -5,13 +5,13 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.2-SNAPSHOT
  */
-import { useQuery } from '@tanstack/react-query'
 import type {
   QueryFunction,
   QueryKey,
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import type { SchemaMetadata } from '../model/api/schema.metadata'
 import { stromaeInstance } from './axiosInstance'
 

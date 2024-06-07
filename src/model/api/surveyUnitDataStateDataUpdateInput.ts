@@ -5,8 +5,8 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.2.1
  */
-import type { SurveyUnitDataStateDataUpdateInputData } from './surveyUnitDataStateDataUpdateInputData'
 import type { StateDataInput } from './stateDataInput'
+import type { SurveyUnitDataStateDataUpdateInputData } from './surveyUnitDataStateDataUpdateInputData'
 
 export interface SurveyUnitDataStateDataUpdateInput {
   data: SurveyUnitDataStateDataUpdateInputData

@@ -5,7 +5,6 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.2-SNAPSHOT
  */
-import { useMutation, useQuery } from '@tanstack/react-query'
 import type {
   MutationFunction,
   QueryFunction,
@@ -15,6 +14,7 @@ import type {
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import type {
   GetCommentBySurveyUnit200,
   SetCommentBody,
@@ -27,10 +27,9 @@ import type {
   SurveyUnitUpdate,
   SurveyUnitsOkNok,
 } from '../model/api'
-import type { SchemaPersonalization } from '../model/api/schema.personalization'
 import type { SchemaData } from '../model/api/schema.data'
-import { stromaeInstance } from './axiosInstance'
-import { depositProofInstance } from './axiosInstance'
+import type { SchemaPersonalization } from '../model/api/schema.personalization'
+import { depositProofInstance, stromaeInstance } from './axiosInstance'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
 

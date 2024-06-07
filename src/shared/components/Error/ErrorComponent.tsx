@@ -3,8 +3,8 @@ import Button from '@codegouvfr/react-dsfr/Button'
 import TechnicalError from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg'
 import { useNavigate } from '@tanstack/react-router'
 import { Container } from 'shared/components/Container'
-import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 import { getErrorInformations } from 'shared/error/errorUtils'
+import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 
 export function ErrorComponent(props: {
   error: unknown

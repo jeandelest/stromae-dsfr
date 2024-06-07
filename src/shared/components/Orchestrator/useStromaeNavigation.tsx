@@ -1,6 +1,6 @@
+import type { InternalPageType, PageType, StromaePage } from 'model/Page'
 import { useState } from 'react'
 import { assert, type Equals } from 'tsafe/assert'
-import type { InternalPageType, PageType, StromaePage } from 'model/Page'
 import type {
   LunaticGoNextPage,
   LunaticGoPreviousPage,

@@ -815,17 +815,17 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic-dsfr@^2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.0.8.tgz#e478f88be8c01ac0f4a4e13fce4ba1095ad56f79"
-  integrity sha512-jM0MgsBBZQCd1JT+bkNRIkfCHx/NlzxyJm6jghVAZezTbEnNS1mKrTKcV6riWKUolcqkkLPz63EQB6fCTFbHng==
+"@inseefr/lunatic-dsfr@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.0.10.tgz#c787b0c8a8067bb09a16cbf5790fe2975b110672"
+  integrity sha512-lEUjBPOO3l+mjBwdmXm7leb/GSC4SNp6QXKGD0IENxhJVhEHHnJg/dSVOPVIersO+zc3JBunkjPCEbZCMFi3uA==
   dependencies:
     react-number-format "^5.4.0"
 
-"@inseefr/lunatic@^3.0.6":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.6.tgz#dddccee88287e2b09e9299f98d1b1784ec38a647"
-  integrity sha512-vykWWZXXMUwOBNkof5kI7tluMvM4L2moj/QRMTNe1PL8NB8S2z6PpsEKY2ZHBX6b62jR7zZ9u1/CE1uu/+AeoQ==
+"@inseefr/lunatic@^3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.8.tgz#41c733a86273abfddd8b776f93850801ff281a4b"
+  integrity sha512-vhj7opq8wflFEgtPkaNAqXIdUJ5GIAuXGHOLyU58i9+WwauoKY7gUSOrE0xY6PI4QkjejFMNmK4K5SM/pw6Ihg==
   dependencies:
     "@inseefr/trevas" "^0.1.21"
     "@inseefr/vtl-2.0-antlr-tools" "^0.3.2"
@@ -4550,6 +4550,11 @@ prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
+
+prettier-plugin-organize-imports@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-organize-imports/-/prettier-plugin-organize-imports-3.2.4.tgz#77967f69d335e9c8e6e5d224074609309c62845e"
+  integrity sha512-6m8WBhIp0dfwu0SkgfOxJqh+HpdyfqSSLfKKRZSFbDuEQXDDndb8fTpRWkUrX/uBenkex3MgnVk0J3b3Y5byog==
 
 prettier@^3.2.5:
   version "3.2.5"

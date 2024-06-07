@@ -1,13 +1,13 @@
 import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from 'router/router'
-import { VisualizePage } from './Visualize'
-import { z } from 'zod'
+import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import {
   metadataQueryOptions,
   sourceQueryOptions,
   surveyUnitDataQueryOptions,
 } from 'shared/query/visualizeQueryOptions'
-import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
+import { z } from 'zod'
+import { VisualizePage } from './Visualize'
 
 const visualizeSearchSchema = z
   .object({
