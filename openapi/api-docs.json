@@ -3,7 +3,7 @@
   "info": {
     "title": "queen-api",
     "description": "API for Queen/Stromae",
-    "version": "4.3.2-SNAPSHOT"
+    "version": "4.3.4-SNAPSHOT"
   },
   "servers": [
     {
@@ -831,6 +831,30 @@
         }
       }
     },
+    "/api/survey-unit/{id}/metadata": {
+      "get": {
+        "tags": ["06. Survey units"],
+        "summary": "Get survey-unit metadata",
+        "description": "Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT / ",
+        "operationId": "getSurveyUnitMetadataById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          }
+        }
+      }
+    },
     "/api/survey-unit/{id}/deposit-proof": {
       "get": {
         "tags": ["06. Survey units"],
@@ -850,13 +874,16 @@
         "responses": {
           "200": {
             "description": "OK",
-            "content": {
-              "*/*": {
+            "headers": {
+              "Content-Disposition": {
+                "style": "simple",
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "example": "form-data; name=\"attachment\"; filename=\"deposit.pdf\""
                 }
               }
+            },
+            "content": {
+              "application/pdf": {}
             }
           }
         }

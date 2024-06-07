@@ -3,13 +3,13 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.2-SNAPSHOT
+ * OpenAPI spec version: 4.3.4-SNAPSHOT
  */
+import type { SchemaMetadataInseeContext } from './schemaMetadataInseeContext'
 import type { Variable } from './variable'
 
 export interface SchemaMetadata {
-  /** @pattern ^(household|business)$ */
-  inseeContext?: string
+  inseeContext?: SchemaMetadataInseeContext
   /** @minItems 0 */
   variables?: Variable[]
   [key: string]: any

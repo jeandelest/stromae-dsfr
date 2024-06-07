@@ -3,7 +3,7 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.2-SNAPSHOT
+ * OpenAPI spec version: 4.3.4-SNAPSHOT
  */
 
 export type VariableValue = string | boolean

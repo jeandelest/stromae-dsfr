@@ -3,7 +3,7 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.2-SNAPSHOT
+ * OpenAPI spec version: 4.3.4-SNAPSHOT
  */
 import type {
   MutationFunction,
@@ -1358,6 +1358,97 @@ export const useGetInterviewerSurveyUnits = <
 
 /**
  * Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT /
+ * @summary Get survey-unit metadata
+ */
+export const getSurveyUnitMetadataById = (
+  id: string,
+  options?: SecondParameter<typeof stromaeInstance>,
+  signal?: AbortSignal
+) => {
+  return stromaeInstance<unknown>(
+    { url: `/api/survey-unit/${id}/metadata`, method: 'GET', signal },
+    options
+  )
+}
+
+export const getGetSurveyUnitMetadataByIdQueryKey = (id: string) => {
+  return [`/api/survey-unit/${id}/metadata`] as const
+}
+
+export const getGetSurveyUnitMetadataByIdQueryOptions = <
+  TData = Awaited<ReturnType<typeof getSurveyUnitMetadataById>>,
+  TError = unknown,
+>(
+  id: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof getSurveyUnitMetadataById>>,
+        TError,
+        TData
+      >
+    >
+    request?: SecondParameter<typeof stromaeInstance>
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {}
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetSurveyUnitMetadataByIdQueryKey(id)
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getSurveyUnitMetadataById>>
+  > = ({ signal }) => getSurveyUnitMetadataById(id, requestOptions, signal)
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getSurveyUnitMetadataById>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey }
+}
+
+export type GetSurveyUnitMetadataByIdQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getSurveyUnitMetadataById>>
+>
+export type GetSurveyUnitMetadataByIdQueryError = unknown
+
+/**
+ * @summary Get survey-unit metadata
+ */
+export const useGetSurveyUnitMetadataById = <
+  TData = Awaited<ReturnType<typeof getSurveyUnitMetadataById>>,
+  TError = unknown,
+>(
+  id: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof getSurveyUnitMetadataById>>,
+        TError,
+        TData
+      >
+    >
+    request?: SecondParameter<typeof stromaeInstance>
+  }
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getGetSurveyUnitMetadataByIdQueryOptions(id, options)
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey
+  }
+
+  query.queryKey = queryOptions.queryKey
+
+  return query
+}
+
+/**
+ * Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT /
  * @summary Get deposit proof for a survey unit
  */
 export const generateDepositProof = (
@@ -1365,13 +1456,8 @@ export const generateDepositProof = (
   options?: SecondParameter<typeof depositProofInstance>,
   signal?: AbortSignal
 ) => {
-  return depositProofInstance<Blob>(
-    {
-      url: `/api/survey-unit/${id}/deposit-proof`,
-      method: 'GET',
-      responseType: 'blob',
-      signal,
-    },
+  return depositProofInstance<unknown>(
+    { url: `/api/survey-unit/${id}/deposit-proof`, method: 'GET', signal },
     options
   )
 }
