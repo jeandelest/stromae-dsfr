@@ -9,9 +9,12 @@ import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import { protectedRouteLoader } from 'shared/loader/protectedLoader'
 import { ReviewPage } from './ReviewPage'
 
+export const reviewPath =
+  '/questionnaire/readonly/$questionnaireId/unite-enquetee/$surveyUnitId'
+
 export const reviewRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/questionnaire/readonly/$questionnaireId/unite-enquetee/$surveyUnitId',
+  path: reviewPath,
   component: ReviewPage,
   beforeLoad: protectedRouteLoader,
   loader: ({

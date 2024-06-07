@@ -235,7 +235,6 @@ export function Orchestrator(props: OrchestratorProps) {
     { components: [], bottomComponents: [] }
   )
 
-  console.log({ components, bottomComponents })
   return (
     <div className={fr.cx('fr-container--fluid')}>
       <Provider>

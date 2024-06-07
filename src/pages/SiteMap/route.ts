@@ -2,9 +2,10 @@ import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from 'router/router'
 import { SiteMapPage } from './SiteMapPage'
 
+export const siteMapPath = '/plan-du-site'
 export const siteMapRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'plan-du-site',
+  path: siteMapPath,
   component: SiteMapPage,
   loader: () => {
     //TODO get name (Filière d'Enquête) in metadata

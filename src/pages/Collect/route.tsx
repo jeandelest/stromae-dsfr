@@ -7,13 +7,23 @@ import type { SurveyUnitData } from 'model/SurveyUnitData'
 import { rootRoute } from 'router/router'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import { protectedRouteLoader } from 'shared/loader/protectedLoader'
+import { z } from 'zod'
 import { CollectPage } from './CollectPage'
+
+const collectSearchParams = z.object({
+  pathLogout: z.string(),
+  pathAssistance: z.string(),
+})
+
+export const collectPath =
+  '/questionnaire/$questionnaireId/unite-enquetee/$surveyUnitId'
 
 export const collectRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/questionnaire/$questionnaireId/unite-enquetee/$surveyUnitId',
+  path: collectPath,
   component: CollectPage,
   beforeLoad: protectedRouteLoader,
+  validateSearch: collectSearchParams,
   loader: ({
     params: { questionnaireId, surveyUnitId },
     context: { queryClient },

@@ -18,9 +18,10 @@ const visualizeSearchSchema = z
   })
   .optional()
 
+export const visualizePath = '/visualize'
 export const visualizeRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'visualize',
+  path: visualizePath,
   component: VisualizePage,
   validateSearch: visualizeSearchSchema,
   loaderDeps: ({ search }) => ({
