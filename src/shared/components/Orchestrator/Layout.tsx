@@ -1,13 +1,18 @@
 import { fr } from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
 import type { InternalPageType } from 'model/Page'
-import { useMemo, useState, type PropsWithChildren } from 'react'
+import {
+  useMemo,
+  useState,
+  type PropsWithChildren,
+  type ReactNode,
+} from 'react'
 import { useStyles } from 'tss-react'
 import type { OrchestratorProps } from './Orchestrator'
 import { SequenceHeader } from './SequenceHeader'
 import type { LunaticOverview } from './utils/lunaticType'
 
-export function Navigation(
+export function Layout(
   props: PropsWithChildren<{
     currentPage: InternalPageType
     handlePreviousClick: () => void
@@ -18,6 +23,7 @@ export function Navigation(
     pagination: 'question' | 'sequence'
     overview: LunaticOverview
     isSequencePage: boolean
+    bottomLayout: ReactNode
   }>
 ) {
   const {
@@ -31,6 +37,7 @@ export function Navigation(
     pagination,
     overview,
     isSequencePage,
+    bottomLayout,
   } = props
 
   const { cx } = useStyles()
@@ -114,6 +121,7 @@ export function Navigation(
             >
               {nextLabel}
             </Button>
+            {bottomLayout}
             {mode === 'visualize' && (
               <div style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
                 <Button

@@ -1,32 +1,40 @@
-import {
-  useLunatic,
-  LunaticComponents,
-  type LunaticSource,
-  type LunaticError,
-  type LunaticData,
-} from '@inseefr/lunatic'
-import { useEffect, useRef } from 'react'
 import { fr } from '@codegouvfr/react-dsfr'
-import { downloadAsJson } from 'utils/downloadAsJson'
+import {
+  LunaticComponents,
+  useLunatic,
+  type LunaticData,
+  type LunaticError,
+  type LunaticSource,
+} from '@inseefr/lunatic'
 import { useNavigate } from '@tanstack/react-router'
-import { Welcome } from './CustomPages/Welcome'
-import { Navigation } from './Navigation'
-import { useState } from 'react'
-import { Validation } from './CustomPages/Validation'
-import { useStromaeNavigation } from './useStromaeNavigation'
-import { EndPage } from './CustomPages/EndPage'
-import { ValidationModal } from './CustomPages/ValidationModal'
-import type { SurveyUnitData } from 'model/SurveyUnitData'
 import type { StateData } from 'model/StateData'
-import { isBlockingError, isSameErrors } from './utils/controls'
-import { slotComponents } from './slotComponents'
-import type { LunaticGetReferentiel } from './utils/lunaticType'
-import { useRefSync } from 'utils/useRefSync'
-import { isSequencePage } from './utils/sequence'
-import { scrollAndFocusToFirstError } from './utils/scrollAndFocusToFirstError'
-import { isObjectEmpty } from 'utils/isObjectEmpty'
+import type { SurveyUnitData } from 'model/SurveyUnitData'
+import { useEffect, useRef, useState } from 'react'
 import { useAddPreLogoutAction } from 'shared/hooks/prelogout'
+import { downloadAsJson } from 'utils/downloadAsJson'
+import { isObjectEmpty } from 'utils/isObjectEmpty'
+import { useRefSync } from 'utils/useRefSync'
 import { useUpdateEffect } from 'utils/useUpdateEffect'
+import { EndPage } from './CustomPages/EndPage'
+import { Validation } from './CustomPages/Validation'
+import { ValidationModal } from './CustomPages/ValidationModal'
+import { Welcome } from './CustomPages/Welcome'
+import { Layout } from './Layout'
+import { slotComponents } from './slotComponents'
+import { useStromaeNavigation } from './useStromaeNavigation'
+import { isBlockingError, isSameErrors } from './utils/controls'
+import type {
+  LunaticComponentsProps,
+  LunaticGetReferentiel,
+} from './utils/lunaticType'
+import { scrollAndFocusToFirstError } from './utils/scrollAndFocusToFirstError'
+import { isSequencePage } from './utils/sequence'
+
+declare module '@inseefr/lunatic' {
+  interface LunaticExtraProps {
+    position: 'bottom' | undefined
+  }
+}
 
 export type OrchestratorProps = OrchestratorProps.Common &
   (OrchestratorProps.Visualize | OrchestratorProps.Collect)
@@ -201,15 +209,38 @@ export function Orchestrator(props: OrchestratorProps) {
     }
   }
 
-  const components = getComponents({
-    except: pagination === 'sequence' ? 'Sequence' : undefined,
-  })
+  const { components, bottomComponents } = getComponents().reduce<{
+    components: LunaticComponentsProps
+    bottomComponents: LunaticComponentsProps
+  }>(
+    (acc, c) => {
+      // In sequence pagination we do not want to display Sequence components
+      if (pagination === 'sequence' && c.componentType === 'Sequence') {
+        return acc // Skip this component
+      }
 
+      // We want to be able to display at the bottom components with position "bottom"
+      if (c.position === 'bottom') {
+        return {
+          components: acc.components,
+          bottomComponents: [...acc.bottomComponents, c],
+        }
+      }
+
+      return {
+        components: [...acc.components, c],
+        bottomComponents: acc.bottomComponents,
+      }
+    },
+    { components: [], bottomComponents: [] }
+  )
+
+  console.log({ components, bottomComponents })
   return (
     <div className={fr.cx('fr-container--fluid')}>
       <Provider>
         <div>
-          <Navigation
+          <Layout
             handleNextClick={goNext}
             handlePreviousClick={goPrevious}
             handleDownloadData={downloadAsJsonRef.current}
@@ -219,6 +250,19 @@ export function Orchestrator(props: OrchestratorProps) {
             pagination={pagination}
             overview={overview}
             isSequencePage={isSequencePage(components)}
+            bottomLayout={
+              <div className={fr.cx('fr-my-10v')}>
+                {currentPage === 'lunaticPage' && (
+                  <LunaticComponents
+                    components={bottomComponents}
+                    slots={slotComponents}
+                    componentProps={() => ({
+                      errors: activeErrors,
+                    })}
+                  />
+                )}
+              </div>
+            }
           >
             <div className={fr.cx('fr-mb-4v')}>
               {currentPage === 'welcomePage' && (
@@ -243,7 +287,7 @@ export function Orchestrator(props: OrchestratorProps) {
               )}
               <ValidationModal actionsRef={validationModalActionsRef} />
             </div>
-          </Navigation>
+          </Layout>
         </div>
       </Provider>
     </div>
