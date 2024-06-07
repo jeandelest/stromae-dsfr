@@ -16,7 +16,6 @@ import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 import { useSetLogoutQuestionnaire } from 'shared/hooks/useLogoutUrl'
 import { collectRoute } from './route'
 
-
 export function CollectPage() {
   const { surveyUnitId, questionnaireId } = collectRoute.useParams()
   const queryClient = useQueryClient()
