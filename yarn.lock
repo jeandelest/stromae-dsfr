@@ -822,10 +822,10 @@
   dependencies:
     react-number-format "^5.4.0"
 
-"@inseefr/lunatic@^3.0.8":
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.8.tgz#41c733a86273abfddd8b776f93850801ff281a4b"
-  integrity sha512-vhj7opq8wflFEgtPkaNAqXIdUJ5GIAuXGHOLyU58i9+WwauoKY7gUSOrE0xY6PI4QkjejFMNmK4K5SM/pw6Ihg==
+"@inseefr/lunatic@^3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.0.9.tgz#e0970189514d0dfeb0ecd6f8761d6cb90ac1acbc"
+  integrity sha512-cbVVLcTpxlownz7DYbIGUbnZWdUGo6JmWn6KsJ5iZC2Cqg3m3ohKhDOYYnnjtjsFZxsfEamWuZiQcibFNJpLNg==
   dependencies:
     "@inseefr/trevas" "^0.1.21"
     "@inseefr/vtl-2.0-antlr-tools" "^0.3.2"
