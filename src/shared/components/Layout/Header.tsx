@@ -12,7 +12,7 @@ export function Header() {
   const { isUserLoggedIn, logout } = useOidc()
 
   /**
-   * There is an issue with this part of code, search is not will type inferred with isCollectRoute, waiting for better solution
+   * There is an issue with this part of the code: the search type is not well narrowed with isCollectRoute. I'm waiting for a better solution.
    */
   const matchRoute = useMatchRoute()
   const isCollectRoute = !!matchRoute({ to: collectPath })
