@@ -2,17 +2,21 @@ import { fr } from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
 import TechnicalError from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg'
 import { useNavigate } from '@tanstack/react-router'
+import { declareComponentKeys, useTranslation } from 'i18n'
 import { Container } from 'shared/components/Container'
 import { getErrorInformations } from 'shared/error/errorUtils'
 import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 
-export function ErrorComponent(props: {
+type Props = {
   error: unknown
   reset?: () => void
   redirectTo: 'home' | 'portal' | 'visualizeForm' | undefined
-}) {
+}
+
+export function ErrorComponent(props: Props) {
   const { error, redirectTo, reset } = props
   const navigate = useNavigate()
+  const { t } = useTranslation({ ErrorComponent })
   const { title, subtitle, paragraph, code } = getErrorInformations(error)
 
   useDocumentTitle(title)
@@ -51,16 +55,7 @@ export function ErrorComponent(props: {
                 }
               })()}
             >
-              {(() => {
-                switch (redirectTo) {
-                  case 'home':
-                    return "Retourner à la page d'accueil"
-                  case 'portal':
-                    return 'Retourner sur le portail'
-                  case 'visualizeForm':
-                    return 'Retourner au formulaire de visualisation'
-                }
-              })()}
+              {t('error button redirect to', { redirectTo })}
             </Button>
           )}
         </div>
@@ -98,3 +93,11 @@ export function ErrorComponent(props: {
     </Container>
   )
 }
+
+const { i18n } = declareComponentKeys<{
+  K: 'error button redirect to'
+  P: { redirectTo: Props['redirectTo'] }
+  R: string
+}>()({ ErrorComponent })
+
+export type I18n = typeof i18n
