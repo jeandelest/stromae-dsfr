@@ -4,7 +4,7 @@ import TechnicalError from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/syste
 import { useNavigate } from '@tanstack/react-router'
 import { declareComponentKeys, useTranslation } from 'i18n'
 import { Container } from 'shared/components/Container'
-import { getErrorInformations } from 'shared/error/errorUtils'
+import { errorNormalizer } from 'shared/error/errorNormalizer'
 import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 
 type Props = {
@@ -17,7 +17,7 @@ export function ErrorComponent(props: Props) {
   const { error, redirectTo, reset } = props
   const navigate = useNavigate()
   const { t } = useTranslation({ ErrorComponent })
-  const { title, subtitle, paragraph, code } = getErrorInformations(error)
+  const { title, subtitle, paragraph, code } = errorNormalizer(error)
 
   useDocumentTitle(title)
 

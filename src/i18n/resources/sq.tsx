@@ -202,4 +202,46 @@ export const translations: Translations<'sq'> = {
     'uri label': 'Uri',
     'delete button title': 'Fshi',
   },
+  errorNormalizer: {
+    'notFound.title': 'Faqja nuk u gjet',
+    'notFound.subtitle':
+      'Faqja që po kërkoni nuk mund të gjendet. Kërkojmë falje për shqetësimin.',
+    'notFound.paragraph':
+      "Nëse keni shtypur adresën e internetit në shfletues, ju lutem kontrolloni që është e saktë. Faqja mund të mos jetë më e disponueshme. Në këtë rast, për të vazhduar vizitën tuaj mund të ktheheni në faqen kryesore. Përndryshe, na kontaktoni që të mund t'ju ndihmojmë.",
+    'connectionError.title': 'Gabim në lidhje',
+    'connectionError.subtitle': 'Ndodhi një gabim gjatë lidhjes me serverin.',
+    'connectionError.paragraph':
+      'Ju lutem kontrolloni lidhjen tuaj të internetit dhe provoni përsëri. Nëse problemi vazhdon, ju lutem kontaktoni ofruesin tuaj të shërbimit të internetit ose administratorin e faqes për ndihmë.',
+    'resourceNotFound.title': 'Burimi nuk u gjet',
+    'resourceNotFound.subtitle':
+      'Burimi që po kërkoni nuk mund të gjendet në server.',
+    'resourceNotFound.paragraph':
+      'Ju lutem kontrolloni URL-në që keni futur ose kontaktoni administratorin e faqes për ndihmë.',
+    'unauthorized.title': 'E paautorizuar',
+    'unauthorized.subtitle': 'Nuk keni leje për të hyrë në këtë burim.',
+    'unauthorized.paragraph':
+      'Ju lutem hyni me kredencialet e duhura ose kontaktoni administratorin e faqes për ndihmë.',
+    'forbidden.title': 'Qasja e ndaluar',
+    'forbidden.subtitle': 'Nuk keni leje për të hyrë në këtë burim.',
+    'forbidden.paragraph':
+      'Ju lutem kontaktoni administratorin e faqes për ndihmë.',
+    'badRequest.title': 'Kërkesë e gabuar',
+    'badRequest.subtitle':
+      'Kërkesa që keni dërguar është e gabuar ose e formatuar gabim.',
+    'badRequest.paragraph':
+      'Ju lutem kontrolloni të dhënat që keni dërguar dhe provoni përsëri.',
+    'serverError.title': 'Gabim i brendshëm i serverit',
+    'serverError.subtitle':
+      'Ndodhi një gabim në anën e serverit. Ju lutem provoni më vonë.',
+    'serverError.paragraph':
+      'Nëse problemi vazhdon, ju lutem kontaktoni administratorin e faqes për ndihmë.',
+    'unhandledError.title': 'Gabim i pa trajtuar',
+    'unhandledError.subtitle': 'Ndodhi një gabim gjatë kërkesës.',
+    'unhandledError.paragraph':
+      'Ju lutem provoni më vonë ose kontaktoni administratorin e faqes për ndihmë.',
+    'unknownError.title': 'Gabim i panjohur',
+    'unknownError.subtitle': 'Ndodhi një gabim i papritur.',
+    'unknownError.paragraph':
+      'Ju lutem provoni më vonë ose kontaktoni administratorin e faqes për ndihmë.',
+  },
 }

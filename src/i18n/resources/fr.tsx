@@ -204,4 +204,49 @@ export const translations: Translations<'fr'> = {
     'uri label': 'Uri',
     'delete button title': 'Supprimer',
   },
+  errorNormalizer: {
+    'notFound.title': 'Page non trouvée',
+    'notFound.subtitle':
+      'La page que vous cherchez est introuvable. Excusez-nous pour la gêne occasionnée.',
+    'notFound.paragraph':
+      'Si vous avez tapé l’adresse web dans le navigateur, vérifiez qu’elle est correcte. La page n’est peut-être plus disponible. Dans ce cas, pour continuer votre visite vous pouvez retourner sur la page d’accueil. Sinon contactez-nous pour que l’on puisse vous aider.',
+    'connectionError.title': 'Erreur de connexion',
+    'connectionError.subtitle':
+      "Une erreur s'est produite lors de la connexion au serveur.",
+    'connectionError.paragraph':
+      "Veuillez vérifier votre connexion Internet et réessayer. Si le problème persiste, veuillez contacter votre fournisseur de services Internet ou l'administrateur du site pour obtenir de l'aide.",
+    'resourceNotFound.title': 'Ressource non trouvée',
+    'resourceNotFound.subtitle':
+      'La ressource que vous cherchez est introuvable sur le serveur.',
+    'resourceNotFound.paragraph':
+      'Veuillez vérifier l’URL que vous avez saisie ou contactez l’administrateur du site pour obtenir de l’aide.',
+    'unauthorized.title': 'Non autorisé',
+    'unauthorized.subtitle':
+      'Vous n’avez pas l’autorisation d’accéder à cette ressource.',
+    'unauthorized.paragraph':
+      'Veuillez vous connecter avec les informations appropriées ou contacter l’administrateur du site pour obtenir de l’aide.',
+    'forbidden.title': 'Accès refusé',
+    'forbidden.subtitle':
+      'Vous n’êtes pas autorisé à accéder à cette ressource.',
+    'forbidden.paragraph':
+      'Veuillez contacter l’administrateur du site pour obtenir de l’aide.',
+    'badRequest.title': 'Requête incorrecte',
+    'badRequest.subtitle':
+      'La requête que vous avez envoyée est incorrecte ou malformée.',
+    'badRequest.paragraph':
+      'Veuillez vérifier les données que vous avez envoyées et réessayer.',
+    'serverError.title': 'Erreur interne du serveur',
+    'serverError.subtitle':
+      'Une erreur est survenue du côté du serveur. Veuillez réessayer ultérieurement.',
+    'serverError.paragraph':
+      'Si le problème persiste, veuillez contacter l’administrateur du site pour obtenir de l’aide.',
+    'unhandledError.title': 'Erreur non gérée',
+    'unhandledError.subtitle': "Une erreur s'est produite lors de la requête.",
+    'unhandledError.paragraph':
+      "Veuillez réessayer ultérieurement ou contacter l'administrateur du site pour obtenir de l'aide.",
+    'unknownError.title': 'Erreur inconnue',
+    'unknownError.subtitle': "Une erreur inattendue s'est produite.",
+    'unknownError.paragraph':
+      "Veuillez réessayer ultérieurement ou contacter l'administrateur du site pour obtenir de l'aide.",
+  },
 }

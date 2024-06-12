@@ -200,4 +200,46 @@ export const translations: Translations<'en'> = {
     'uri label': 'Uri',
     'delete button title': 'Delete',
   },
+  errorNormalizer: {
+    'notFound.title': 'Page not found',
+    'notFound.subtitle':
+      'The page you are looking for cannot be found. We apologize for the inconvenience.',
+    'notFound.paragraph':
+      'If you typed the web address in the browser, please check that it is correct. The page may no longer be available. In this case, to continue your visit, you can return to the homepage. Otherwise, contact us so we can help you.',
+    'connectionError.title': 'Connection error',
+    'connectionError.subtitle':
+      'An error occurred while connecting to the server.',
+    'connectionError.paragraph':
+      'Please check your Internet connection and try again. If the problem persists, please contact your Internet service provider or the site administrator for assistance.',
+    'resourceNotFound.title': 'Resource not found',
+    'resourceNotFound.subtitle':
+      'The resource you are looking for cannot be found on the server.',
+    'resourceNotFound.paragraph':
+      'Please check the URL you entered or contact the site administrator for assistance.',
+    'unauthorized.title': 'Unauthorized',
+    'unauthorized.subtitle':
+      'You do not have permission to access this resource.',
+    'unauthorized.paragraph':
+      'Please log in with the appropriate credentials or contact the site administrator for assistance.',
+    'forbidden.title': 'Access denied',
+    'forbidden.subtitle': 'You are not authorized to access this resource.',
+    'forbidden.paragraph':
+      'Please contact the site administrator for assistance.',
+    'badRequest.title': 'Bad request',
+    'badRequest.subtitle': 'The request you sent is incorrect or malformed.',
+    'badRequest.paragraph': 'Please check the data you sent and try again.',
+    'serverError.title': 'Internal server error',
+    'serverError.subtitle':
+      'An error occurred on the server side. Please try again later.',
+    'serverError.paragraph':
+      'If the problem persists, please contact the site administrator for assistance.',
+    'unhandledError.title': 'Unhandled error',
+    'unhandledError.subtitle': 'An error occurred during the request.',
+    'unhandledError.paragraph':
+      'Please try again later or contact the site administrator for assistance.',
+    'unknownError.title': 'Unknown error',
+    'unknownError.subtitle': 'An unexpected error occurred.',
+    'unknownError.paragraph':
+      'Please try again later or contact the site administrator for assistance.',
+  },
 }

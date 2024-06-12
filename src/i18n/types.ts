@@ -27,7 +27,8 @@ export type ComponentKey =
   | import('pages/SiteMap/SiteMapPage').I18n
   | import('pages/Visualize/Form/VisualizeForm').I18n
   | import('pages/Visualize/Form/SelectNomenclatures').I18n
-
+  | import('shared/error/errorNormalizer').I18n
+  
 export type Translations<L extends Language> = GenericTranslations<
   ComponentKey,
   Language,
