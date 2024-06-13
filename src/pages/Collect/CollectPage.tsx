@@ -8,10 +8,7 @@ import {
 import type { StateData } from 'model/StateData'
 import { toast } from 'react-toastify'
 import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
-import type {
-  LunaticGetReferentiel,
-  Nomenclature,
-} from 'shared/components/Orchestrator/utils/lunaticType'
+import type { LunaticGetReferentiel } from 'shared/components/Orchestrator/utils/lunaticType'
 import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 import { collectRoute } from './route'
 
@@ -29,7 +26,7 @@ export function CollectPage() {
   const getReferentiel: LunaticGetReferentiel = (name: string) =>
     queryClient
       .ensureQueryData(getGetNomenclatureByIdQueryOptions(name))
-      .then((result) => result as unknown as Nomenclature) //waiting better type in backend, we can not use zod because nomenclature can be heavy
+      .then((result) => result)
 
   const mutationUpdateDataStateData = useUpdateSurveyUnitDataStateDataById()
 
