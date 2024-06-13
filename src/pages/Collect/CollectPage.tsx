@@ -6,10 +6,10 @@ import {
   useUpdateSurveyUnitDataStateDataById,
 } from 'api/06-survey-units'
 import type { StateData } from 'model/StateData'
-import { toast } from 'react-toastify'
 import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
 import type { LunaticGetReferentiel } from 'shared/components/Orchestrator/utils/lunaticType'
 import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
+import { showToast } from 'shared/toast/Toast'
 import { collectRoute } from './route'
 
 export function CollectPage() {
@@ -44,12 +44,19 @@ export function CollectPage() {
         onSuccess: () => {
           params.onSuccess?.()
           params.data &&
-            toast.success('Les données ont bien été sauvegardées', {})
+            showToast({
+              severity: 'success',
+              title: 'Les données ont bien été sauvegardées',
+            })
         },
-        onError: () =>
-          toast.error(
-            "Il y a eu une erreur, les données n'ont pas été sauvegardées"
-          ),
+
+        onError: () => {
+          showToast({
+            severity: 'error',
+            title:
+              "Il y a eu une erreur, les données n'ont pas été sauvegardées",
+          })
+        },
       }
     )
 

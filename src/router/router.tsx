@@ -1,4 +1,3 @@
-import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark'
 import type { QueryClient } from '@tanstack/react-query'
 import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
 import { accessibilityRoute } from 'pages/Accessibility/route'
@@ -9,8 +8,7 @@ import { reviewRoute } from 'pages/Review/route'
 import { securityRoute } from 'pages/Security/route'
 import { siteMapRoute } from 'pages/SiteMap/route'
 import { visualizeRoute } from 'pages/Visualize/route'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { Toaster } from 'react-hot-toast'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import { Footer } from 'shared/components/Layout/Footer'
 import { Header } from 'shared/components/Layout/Header'
@@ -27,18 +25,13 @@ export const rootRoute = createRootRouteWithContext<{
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootComponent() {
-  const { isDark } = useIsDark()
   return (
     <div
       style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
     >
       <Header />
       <main id="main" role="main">
-        <ToastContainer
-          position="top-right"
-          theme={isDark ? 'dark' : 'light'}
-          stacked
-        />
+        <Toaster  />
         <Outlet />
       </main>
       <Footer />
