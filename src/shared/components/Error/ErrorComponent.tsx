@@ -1,7 +1,7 @@
 import { fr } from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
 import TechnicalError from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg'
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate, useSearch } from '@tanstack/react-router'
 import { declareComponentKeys, useTranslation } from 'i18n'
 import { Container } from 'shared/components/Container'
 import { errorNormalizer } from 'shared/error/errorNormalizer'
@@ -21,6 +21,7 @@ export function ErrorComponent(props: Props) {
 
   useDocumentTitle(title)
 
+  const search = useSearch({ strict: false })
   return (
     <Container>
       <div
@@ -43,7 +44,9 @@ export function ErrorComponent(props: Props) {
                   case 'home':
                     return { to: '/' }
                   case 'portal':
-                    return { href: import.meta.env.VITE_PORTAIL_URL }
+                    return {
+                      href: `${import.meta.env.VITE_PORTAIL_URL}${search?.['pathLogout'] ?? ''}`,
+                    }
                   case 'visualizeForm':
                     return {
                       onClick: () => {

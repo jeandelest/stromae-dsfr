@@ -4,11 +4,12 @@ import logoInsee from 'assets/logo-insee.png'
 import { declareComponentKeys, useTranslation } from 'i18n'
 import { NavigationAssistancePage } from 'pages/NavigationAssistance/NavigationAssistancePage'
 import { SecurityPage } from 'pages/Security/SecurityPage'
-
+import { Header } from './Header'
 export function Footer() {
   const { t } = useTranslation({
     Footer,
   })
+  const { t: t_Header } = useTranslation({ Header })
   const { t: t_NavigationAssistancePage } = useTranslation({
     NavigationAssistancePage,
   })
@@ -22,6 +23,10 @@ export function Footer() {
       accessibility="partially compliant"
       contentDescription={t('footer content description')}
       license={t('license')}
+      homeLinkProps={{
+        search: true,
+        title: t_Header('home link title'),
+      }}
       websiteMapLinkProps={{
         to: '/plan-du-site',
       }}

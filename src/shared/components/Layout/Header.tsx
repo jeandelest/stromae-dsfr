@@ -28,7 +28,7 @@ export function Header() {
         </>
       }
       homeLinkProps={{
-        to: '/',
+        search: true,
         title: t('home link title'),
       }}
       quickAccessItems={[
@@ -37,7 +37,7 @@ export function Header() {
           iconId: 'fr-icon-mail-fill',
           linkProps: {
             href: collectPath
-              ? `${import.meta.env.VITE_PORTAIL_URL}${(search as any)['pathAssistance'] ?? ''}`
+              ? `${import.meta.env.VITE_PORTAIL_URL}${search?.['pathAssistance'] ?? ''}`
               : '',
             disabled: isCollectRoute,
           },
@@ -53,7 +53,7 @@ export function Header() {
                     await executePreLogoutActions()
                     logout({
                       redirectTo: 'specific url',
-                      url: `${import.meta.env.VITE_PORTAIL_URL}${(search as any)['pathLogout'] ?? ''}`,
+                      url: `${import.meta.env.VITE_PORTAIL_URL}${search?.['pathLogout'] ?? ''}`,
                     })
                   },
                   disabled: !isCollectRoute,
