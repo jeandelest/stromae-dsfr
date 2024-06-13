@@ -10,7 +10,7 @@ import { protectedRouteLoader } from 'shared/loader/protectedLoader'
 import { ReviewPage } from './ReviewPage'
 
 export const reviewPath =
-  '/questionnaire/readonly/$questionnaireId/unite-enquetee/$surveyUnitId'
+  '/questionnaire/review/$questionnaireId/unite-enquetee/$surveyUnitId'
 
 export const reviewRoute = createRoute({
   getParentRoute: () => rootRoute,
