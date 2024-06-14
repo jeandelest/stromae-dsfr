@@ -46,15 +46,18 @@ export function CollectPage() {
           params.data &&
             showToast({
               severity: 'success',
-              title: 'Les données ont bien été sauvegardées',
+              description:
+                'Vos modifications ont été enregistrées et sauvegardées.',
+              title: 'Données sauvegardées avec succès !',
             })
         },
 
         onError: () => {
           showToast({
             severity: 'error',
-            title:
-              "Il y a eu une erreur, les données n'ont pas été sauvegardées",
+            title: 'Erreur de sauvegarde',
+            description:
+              "Une erreur est survenue lors de l'enregistrement de vos modifications. ",
           })
         },
       }

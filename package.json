@@ -24,7 +24,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@inseefr/lunatic": "^3.0.9",
-    "@inseefr/lunatic-dsfr": "^2.0.10",
+    "@inseefr/lunatic-dsfr": "^2.0.12",
     "@mui/material": "^5.15.20",
     "@tanstack/react-query": "^5.45.0",
     "@tanstack/react-router": "^1.36.1",
