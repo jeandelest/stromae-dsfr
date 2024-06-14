@@ -67,6 +67,7 @@ export const translations: Translations<'en'> = {
     title: 'Welcome to your survey questionnaire',
     paragraph:
       'This survey allows us to gather more information on the relevant field',
+    'title who answer': 'Who should answer this questionnaire?',
   },
   WelcomeModal: {
     title: 'Welcome',

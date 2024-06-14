@@ -6,4 +6,7 @@
  * OpenAPI spec version: 4.3.8-SNAPSHOT
  */
 
-export type QuestionnaireModelValueValue = { [key: string]: any }
+export interface Logo {
+  label?: string
+  url?: string
+}

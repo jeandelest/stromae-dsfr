@@ -3,7 +3,7 @@
   "info": {
     "title": "queen-api",
     "description": "API for Queen/Stromae",
-    "version": "4.3.6-SNAPSHOT"
+    "version": "4.3.8-SNAPSHOT"
   },
   "servers": [
     {
@@ -850,7 +850,13 @@
         "responses": {
           "200": {
             "description": "OK",
-            "content": {}
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyUnitMetadata"
+                }
+              }
+            }
           }
         }
       }
@@ -874,16 +880,8 @@
         "responses": {
           "200": {
             "description": "OK",
-            "headers": {
-              "Content-Disposition": {
-                "style": "simple",
-                "schema": {
-                  "example": "form-data; name=\"attachment\"; filename=\"deposit.pdf\""
-                }
-              }
-            },
             "content": {
-              "application/pdf": {
+              "*/*": {
                 "schema": {
                   "type": "string",
                   "format": "binary"
@@ -1542,6 +1540,63 @@
           "surveyUnit": {
             "type": "object",
             "$ref": "schema.survey-unit-temp-zone.json"
+          }
+        }
+      },
+      "Logo": {
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      },
+      "Logos": {
+        "properties": {
+          "main": {
+            "$ref": "#/components/schemas/Logo"
+          },
+          "secondaries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Logo"
+            }
+          }
+        }
+      },
+      "MetadataVariable": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {}
+        }
+      },
+      "SurveyUnitMetadata": {
+        "properties": {
+          "context": {
+            "type": "string",
+            "enum": ["household", "business"]
+          },
+          "personalization": {
+            "$ref": "schema.personalization.json"
+          },
+          "label": {
+            "type": "string"
+          },
+          "objectives": {
+            "type": "string"
+          },
+          "variables": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetadataVariable"
+            }
+          },
+          "logos": {
+            "$ref": "#/components/schemas/Logos"
           }
         }
       },

@@ -6,11 +6,11 @@
  * OpenAPI spec version: 4.3.8-SNAPSHOT
  */
 
-export type SchemaMetadataInseeContext =
-  (typeof SchemaMetadataInseeContext)[keyof typeof SchemaMetadataInseeContext]
+export type SurveyUnitMetadataContext =
+  (typeof SurveyUnitMetadataContext)[keyof typeof SurveyUnitMetadataContext]
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const SchemaMetadataInseeContext = {
+export const SurveyUnitMetadataContext = {
   household: 'household',
   business: 'business',
 } as const

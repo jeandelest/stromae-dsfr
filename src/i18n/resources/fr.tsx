@@ -67,6 +67,7 @@ export const translations: Translations<'fr'> = {
     title: 'Bienvenue sur le questionnaire de votre enquête',
     paragraph:
       "Cette enquête permet de connaître plus d'informations sur le domaine concerné",
+    'title who answer': 'Qui doit répondre à ce questionnaire ?',
   },
   WelcomeModal: {
     title: 'Bienvenue',

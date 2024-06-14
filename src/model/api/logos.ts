@@ -5,5 +5,9 @@
  * API for Queen/Stromae
  * OpenAPI spec version: 4.3.8-SNAPSHOT
  */
+import type { Logo } from './logo'
 
-export type QuestionnaireModelValueValue = { [key: string]: any }
+export interface Logos {
+  main?: Logo
+  secondaries?: Logo[]
+}

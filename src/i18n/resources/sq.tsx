@@ -67,6 +67,7 @@ export const translations: Translations<'sq'> = {
     title: 'Mirë se vini në pyetësorin e anketës tuaj',
     paragraph:
       'Kjo anketë na lejon të mbledhim më shumë informacione mbi fushën përkatëse',
+    'title who answer': 'Kush duhet ta përgjigjet këtë pyetësor?',
   },
   WelcomeModal: {
     title: 'Mirë se vini',
