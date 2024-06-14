@@ -107,14 +107,16 @@ export function SurveyContainer(
               {t('button continue label', { currentPage })}
             </Button>
             {bottomContent}
-            {mode === 'visualize' && (
+            {['visualize', 'review'].includes(mode) && (
               <div style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
                 <Button
                   iconId="ri-download-2-line"
                   priority="tertiary no outline"
                   onClick={handleDownloadData}
                   title={t('button download')}
-                />
+                >
+                  {t('button download')}
+                </Button>
               </div>
             )}
           </div>

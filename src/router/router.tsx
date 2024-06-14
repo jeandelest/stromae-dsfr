@@ -31,7 +31,7 @@ function RootComponent() {
     >
       <Header />
       <main id="main" role="main">
-        <Toaster  />
+        <Toaster />
         <Outlet />
       </main>
       <Footer />

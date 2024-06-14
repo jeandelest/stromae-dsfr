@@ -19,9 +19,11 @@ export function CollectPage() {
   const loaderResults = collectRoute.useLoaderData()
 
   //TODO -> use Metadata
-  useDocumentTitle("Questionnaire | Filière d'Enquête")
 
-  const { source, surveyUnitData } = loaderResults
+  const { source, surveyUnitData, metadata } = loaderResults
+
+  useDocumentTitle(metadata.label ?? "Questionnaire | Filière d'Enquête")
+  console.log(metadata)
 
   const getReferentiel: LunaticGetReferentiel = (name: string) =>
     queryClient
@@ -87,6 +89,7 @@ export function CollectPage() {
 
   return (
     <Orchestrator
+      metadata={metadata}
       mode="collect"
       source={source}
       surveyUnitData={surveyUnitData}

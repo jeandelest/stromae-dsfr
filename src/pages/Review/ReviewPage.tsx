@@ -1,16 +1,27 @@
-import { declareComponentKeys } from 'i18n'
+import { useQueryClient } from '@tanstack/react-query'
+import { getGetNomenclatureByIdQueryOptions } from 'api/04-nomenclatures'
+import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
+import type { LunaticGetReferentiel } from 'shared/components/Orchestrator/utils/lunaticType'
 import { reviewRoute } from './route'
 
 export function ReviewPage() {
-  const params = reviewRoute.useParams()
+  const queryClient = useQueryClient()
 
   const loaderResults = reviewRoute.useLoaderData()
 
-  console.log({ params, loaderResults })
+  const { source, surveyUnitData } = loaderResults
 
-  return <>Review Page</>
+  const getReferentiel: LunaticGetReferentiel = (name: string) =>
+    queryClient
+      .ensureQueryData(getGetNomenclatureByIdQueryOptions(name))
+      .then((result) => result)
+
+  return (
+    <Orchestrator
+      mode="review"
+      source={source}
+      surveyUnitData={surveyUnitData}
+      getReferentiel={getReferentiel}
+    />
+  )
 }
-
-const { i18n } = declareComponentKeys()({ ReviewPage })
-
-export type I18n = typeof i18n

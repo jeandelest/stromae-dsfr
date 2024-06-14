@@ -9,6 +9,7 @@ import {
 import { useNavigate } from '@tanstack/react-router'
 import type { StateData } from 'model/StateData'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
+import type { SurveyUnitMetadata } from 'model/api'
 import { useEffect, useRef, useState } from 'react'
 import { useAddPreLogoutAction } from 'shared/hooks/prelogout'
 import { downloadAsJson } from 'utils/downloadAsJson'
@@ -40,17 +41,26 @@ declare module '@inseefr/lunatic' {
 }
 
 export type OrchestratorProps = OrchestratorProps.Common &
-  (OrchestratorProps.Visualize | OrchestratorProps.Collect)
+  (
+    | OrchestratorProps.Visualize
+    | OrchestratorProps.Collect
+    | OrchestratorProps.Review
+  )
 
 export namespace OrchestratorProps {
   export type Common = {
     source: LunaticSource
     surveyUnitData?: SurveyUnitData
     getReferentiel: LunaticGetReferentiel
+    metadata?: SurveyUnitMetadata
   }
 
   export type Visualize = {
     mode: 'visualize'
+  }
+
+  export type Review = {
+    mode: 'review'
   }
 
   export type Collect = {
@@ -65,7 +75,7 @@ export namespace OrchestratorProps {
 }
 
 export function Orchestrator(props: OrchestratorProps) {
-  const { source, surveyUnitData, getReferentiel, mode } = props
+  const { source, surveyUnitData, getReferentiel, mode, metadata } = props
 
   const initialCurrentPage = surveyUnitData?.stateData?.currentPage
 
@@ -142,7 +152,6 @@ export function Orchestrator(props: OrchestratorProps) {
     goToLunaticPage,
     initialCurrentPage,
     openValidationModal: () => validationModalActionsRef.current.open(),
-    mode,
   })
 
   const getCurrentStateData = (): StateData => {
@@ -209,6 +218,9 @@ export function Orchestrator(props: OrchestratorProps) {
       case 'collect': {
         return props.getDepositProof()
       }
+      case 'review':
+      default:
+        break
     }
   }
 
@@ -271,6 +283,7 @@ export function Orchestrator(props: OrchestratorProps) {
                 <WelcomePage
                   initialCurrentPage={initialCurrentPage}
                   goToPage={goToPage}
+                  metadata={metadata}
                 />
               )}
               {currentPage === 'lunaticPage' && (

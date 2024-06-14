@@ -15,7 +15,6 @@ type Params = {
   goPrevLunatic: LunaticGoPreviousPage
   openValidationModal: () => Promise<void>
   goToLunaticPage: LunaticGoToPage
-  mode: 'visualize' | 'collect'
 }
 
 export function useStromaeNavigation({
