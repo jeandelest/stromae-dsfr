@@ -8,7 +8,6 @@ import {
 import type { StateData } from 'model/StateData'
 import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
 import type { LunaticGetReferentiel } from 'shared/components/Orchestrator/utils/lunaticType'
-import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 import { showToast } from 'shared/toast/Toast'
 import { collectRoute } from './route'
 
@@ -18,12 +17,7 @@ export function CollectPage() {
 
   const loaderResults = collectRoute.useLoaderData()
 
-  //TODO -> use Metadata
-
   const { source, surveyUnitData, metadata } = loaderResults
-
-  useDocumentTitle(metadata.label ?? "Questionnaire | Filière d'Enquête")
-  console.log(metadata)
 
   const getReferentiel: LunaticGetReferentiel = (name: string) =>
     queryClient

@@ -8,6 +8,6 @@
 import type { Logo } from './logo'
 
 export interface Logos {
-  main?: Logo
+  main: Logo
   secondaries?: Logo[]
 }

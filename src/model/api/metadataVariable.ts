@@ -7,6 +7,6 @@
  */
 
 export interface MetadataVariable {
-  name?: string
+  name: string
   value?: unknown
 }

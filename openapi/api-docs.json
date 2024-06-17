@@ -1565,7 +1565,8 @@
               "$ref": "#/components/schemas/Logo"
             }
           }
-        }
+        },
+        "required": ["main"]
       },
       "MetadataVariable": {
         "properties": {
@@ -1573,7 +1574,8 @@
             "type": "string"
           },
           "value": {}
-        }
+        },
+        "required": ["name"]
       },
       "SurveyUnitMetadata": {
         "properties": {

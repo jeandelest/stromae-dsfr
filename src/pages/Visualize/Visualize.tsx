@@ -12,7 +12,7 @@ export function VisualizePage() {
   if (!loaderResults) {
     return <VisualizeForm />
   }
-  const { source, surveyUnitData, nomenclature } = loaderResults
+  const { source, surveyUnitData, nomenclature, metadata } = loaderResults
 
   const getReferentiel: LunaticGetReferentiel = (name: string) => {
     if (!nomenclature) {
@@ -32,6 +32,7 @@ export function VisualizePage() {
   return (
     <Orchestrator
       mode="visualize"
+      metadata={metadata}
       source={source}
       surveyUnitData={surveyUnitData}
       getReferentiel={getReferentiel}

@@ -7,9 +7,9 @@ import {
   type LunaticSource,
 } from '@inseefr/lunatic'
 import { useNavigate } from '@tanstack/react-router'
+import type { Metadata } from 'model/Metadata'
 import type { StateData } from 'model/StateData'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
-import type { SurveyUnitMetadata } from 'model/api'
 import { useEffect, useRef, useState } from 'react'
 import { useAddPreLogoutAction } from 'shared/hooks/prelogout'
 import { downloadAsJson } from 'utils/downloadAsJson'
@@ -50,9 +50,9 @@ export type OrchestratorProps = OrchestratorProps.Common &
 export namespace OrchestratorProps {
   export type Common = {
     source: LunaticSource
-    surveyUnitData?: SurveyUnitData
+    surveyUnitData: SurveyUnitData | undefined
     getReferentiel: LunaticGetReferentiel
-    metadata?: SurveyUnitMetadata
+    metadata: Metadata | undefined
   }
 
   export type Visualize = {

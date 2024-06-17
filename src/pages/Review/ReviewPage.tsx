@@ -9,7 +9,7 @@ export function ReviewPage() {
 
   const loaderResults = reviewRoute.useLoaderData()
 
-  const { source, surveyUnitData } = loaderResults
+  const { source, surveyUnitData, metadata } = loaderResults
 
   const getReferentiel: LunaticGetReferentiel = (name: string) =>
     queryClient
@@ -19,6 +19,7 @@ export function ReviewPage() {
   return (
     <Orchestrator
       mode="review"
+      metadata={metadata}
       source={source}
       surveyUnitData={surveyUnitData}
       getReferentiel={getReferentiel}

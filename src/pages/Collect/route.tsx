@@ -9,6 +9,7 @@ import type { SurveyUnitData } from 'model/SurveyUnitData'
 import { rootRoute } from 'router/router'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import { protectedRouteLoader } from 'shared/loader/protectedLoader'
+import { metadataStore } from 'shared/metadataStore/metadataStore'
 import { z } from 'zod'
 import { CollectPage } from './CollectPage'
 
@@ -47,11 +48,23 @@ export const collectRoute = createRoute({
       )
       .then((suData) => suData as SurveyUnitData) // data are heavy too
 
-    const metadataPr = queryClient.ensureQueryData(
-      getGetSurveyUnitMetadataByIdQueryOptions(surveyUnitId, {
-        request: { signal: abortController.signal },
+    const metadataPr = queryClient
+      .ensureQueryData(
+        getGetSurveyUnitMetadataByIdQueryOptions(surveyUnitId, {
+          request: { signal: abortController.signal },
+        })
+      )
+      .then((metadata) => {
+        metadataStore.updateMetadata({
+          label: metadata.label,
+          mainLogo: metadata.logos?.main,
+          secondariesLogo: metadata.logos?.secondaries,
+        })
+
+        document.title = metadata.label ?? "Questionnaire | Filière d'Enquête"
+
+        return metadata
       })
-    )
 
     return Promise.all([sourcePr, surveyUnitDataPr, metadataPr]).then(
       ([source, surveyUnitData, metadata]) => ({

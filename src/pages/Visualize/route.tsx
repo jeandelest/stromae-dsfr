@@ -1,6 +1,7 @@
 import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from 'router/router'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
+import { metadataStore } from 'shared/metadataStore/metadataStore'
 import {
   metadataQueryOptions,
   sourceQueryOptions,
@@ -35,8 +36,8 @@ export const visualizeRoute = createRoute({
     deps: { sourceUrl, surveyUnitDataUrl, metadataUrl, nomenclature },
     abortController,
   }) => {
-    //TODO get name (Filière d'Enquête) in metadata
     document.title = "Visualisation | Filière d'Enquête"
+
     if (!sourceUrl) {
       return
     }
@@ -54,9 +55,23 @@ export const visualizeRoute = createRoute({
       : Promise.resolve(undefined)
 
     const metadataPr = metadataUrl
-      ? queryClient.ensureQueryData(
-          metadataQueryOptions(metadataUrl, { signal: abortController.signal })
-        )
+      ? queryClient
+          .ensureQueryData(
+            metadataQueryOptions(metadataUrl, {
+              signal: abortController.signal,
+            })
+          )
+          .then((metadata) => {
+            metadataStore.updateMetadata({
+              label: metadata.label,
+              mainLogo: metadata.logos?.main,
+              secondariesLogo: metadata.logos?.secondaries,
+            })
+
+            metadata.label && (document.title = metadata.label)
+
+            return metadata
+          })
       : Promise.resolve(undefined)
 
     return Promise.all([sourcePr, surveyUnitDataPr, metadataPr]).then(

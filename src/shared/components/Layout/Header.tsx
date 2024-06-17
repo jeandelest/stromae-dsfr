@@ -1,15 +1,17 @@
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display'
 import { Header as DsfrHeader } from '@codegouvfr/react-dsfr/Header'
 import { useMatchRoute, useSearch } from '@tanstack/react-router'
-import logoInsee from 'assets/logo-insee.png'
 import { declareComponentKeys, useTranslation } from 'i18n'
 import { useOidc } from 'oidc'
 import { collectPath } from 'pages/Collect/route'
 import { executePreLogoutActions } from 'shared/hooks/prelogout'
+import { useMetadataStore } from 'shared/metadataStore/useMetadataStore'
 
 export function Header() {
   const { t } = useTranslation({ Header })
   const { isUserLoggedIn, logout } = useOidc()
+
+  const { label: serviceTitle, mainLogo } = useMetadataStore()
 
   /**
    * There is an issue with this part of the code: the search type is not well narrowed with isCollectRoute. I'm waiting for a better solution.
@@ -63,10 +65,10 @@ export function Header() {
             ]),
       ]}
       serviceTagline={t('service tag line')}
-      serviceTitle={t('service title')}
+      serviceTitle={serviceTitle}
       operatorLogo={{
-        alt: t('operator logo alt'),
-        imgUrl: logoInsee,
+        alt: mainLogo.label,
+        imgUrl: mainLogo.url,
         orientation: 'vertical',
       }}
     />

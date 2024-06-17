@@ -1,9 +1,9 @@
 import { fr } from '@codegouvfr/react-dsfr'
 import { Footer as DSFRFooter } from '@codegouvfr/react-dsfr/Footer'
-import logoInsee from 'assets/logo-insee.png'
 import { declareComponentKeys, useTranslation } from 'i18n'
 import { NavigationAssistancePage } from 'pages/NavigationAssistance/NavigationAssistancePage'
 import { SecurityPage } from 'pages/Security/SecurityPage'
+import { useMetadataStore } from 'shared/metadataStore/useMetadataStore'
 import { Header } from './Header'
 export function Footer() {
   const { t } = useTranslation({
@@ -17,6 +17,8 @@ export function Footer() {
   const { t: t_SecurityPage } = useTranslation({
     SecurityPage,
   })
+
+  const { mainLogo } = useMetadataStore()
 
   return (
     <DSFRFooter
@@ -37,8 +39,8 @@ export function Footer() {
         to: '/mentions-legales',
       }}
       operatorLogo={{
-        alt: t('footer operator logo alt'),
-        imgUrl: logoInsee,
+        alt: mainLogo.label,
+        imgUrl: mainLogo.url,
         orientation: 'vertical',
       }}
       bottomItems={[
