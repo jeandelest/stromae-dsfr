@@ -29,7 +29,17 @@ export const metadataStore = {
     return state
   },
   updateMetadata(newState: Partial<MetadataStoreType>) {
-    state = { ...state, ...newState }
+    const updatedState = Object.keys(newState).reduce(
+      (acc, key) => {
+        if (newState[key as keyof MetadataStoreType] !== undefined) {
+          return { ...acc, [key]: newState[key as keyof MetadataStoreType] }
+        }
+        return acc
+      },
+      { ...state }
+    )
+
+    state = updatedState
     emitChange()
   },
   subscribe(listener: () => void): () => void {
