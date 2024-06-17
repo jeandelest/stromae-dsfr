@@ -120,34 +120,71 @@ export const translations: Translations<'sq'> = {
     'accessibility title': 'Aksesueshmëria',
   },
   LegalsPage: {
-    'legals title': 'Shënimet ligjore',
-    'legals content': (
+    'legals title': 'Përmendjet Ligjore',
+    'service title': 'Prezantimi i Shërbimit',
+    'service content': (
       <>
-        <h3>Copyright</h3>
-        <p>
-          Çdo riprodhim për përdorim tjetër përveç atij strikt privat të markave
-          dhe logove të shfaqura në këtë sajt është rreptësisht i ndaluar.
-        </p>
-
-        <h3>Informacionet e botuesit</h3>
-        <p>
-          Instituti Kombëtar i Statistikave dhe Studimeve Ekonomike CS 70058
-        </p>
-
-        <p>88 Rruga Verdier</p>
-        <p> 92541 MONTROUGE CEDEX FRANCË</p>
-        <p>Tel.: 01 87 69 50 00</p>
-        <p>
-          Në përputhje me rregulloren, deklarata e nevojshme është kryer pranë
-          Komisionit Kombëtar për Informatikë dhe Liri.
-        </p>
-
-        <h3>Të dhënat personale</h3>
-        <p>
-          <a href="https://www.insee.fr/fr/information/3719162">
-            Të dhënat personale
-          </a>
-        </p>
+        Shërbimi i përgjigjeve online është i destinuar për familjet dhe
+        bizneset që janë të anketuara si pjesë e një ankete statistikore
+        publike. Këta përdorues mund t'i fusin pyetësorët e tyre drejtpërdrejt
+        në internet.
+        <br />
+        Për të hyrë në shërbimin e përgjigjeve online, përdoruesi duhet të
+        identifikohet duke dhënë kodin e tij të hyrjes dhe fjalëkalimin të
+        listuara në letrën që i është dërguar.
+        <br />
+        Përdoruesi i shërbimit mund të ndërpresë plotësimin e pyetësorit pa
+        humbur informacionin që ka futur. Përgjigjet ruhen automatikisht me çdo
+        ndryshim faqeje. Pasi pyetësori të përfundojë, përdoruesi e dorëzon
+        pyetësorin duke klikuar butonin "Dërgo përgjigjet e mia".
+      </>
+    ),
+    'survey legals terms title': 'Kuadri Ligjor i Anketës',
+    'survey legals terms content':
+      'Është i listuar në portalin promovues të kësaj ankete.',
+    'cookies title': 'Menaxhimi i Cookies',
+    'cookies content':
+      'Ky portal nuk përdor asnjë cookie që kërkon pëlqimin e përdoruesve. Prandaj, ju nuk keni nevojë të pranoni përdorimin e tyre përpara se të vazhdoni navigimin tuaj.',
+    'session title': 'Seanca',
+    'session content': (
+      <>
+        Sapo përdoruesi të jetë identifikuar, një seancë vendoset me serverin.{' '}
+        <br />
+        <br />
+        Nëse përdoruesi qëndron pasiv për më shumë se 15 minuta në shërbimin e
+        përgjigjeve të pyetësorit, seanca ndërpritet. Insee konsideron se pas
+        kësaj periudhe, përdoruesi ka lënë faqen pa mbyllur seancën, duke
+        paraqitur një rrezik të konfidencialitetit të informacionit të futur.
+        Përdoruesi mund të hyjë përsëri në pyetësor duke u identifikuar.
+      </>
+    ),
+    'copyright title': 'Të Drejtat e Autorit',
+    'copyright content':
+      'Çdo riprodhim për qëllime të tjera përveç atyre strikt private të markave dhe logove të shfaqura në këtë faqe është rreptësisht i ndaluar.',
+    'editor information title': 'Informacioni i Botuesit',
+    'editor information content': (
+      <>
+        Instituti Kombëtar i Statistikave dhe Studimeve Ekonomike CS 70058{' '}
+        <br />
+        <br />
+        88 Rruga Verdier
+        <br />
+        <br />
+        92541 MONTROUGE CEDEX FRANCE
+        <br />
+        <br />
+        Tel.: 01 87 69 50 00
+      </>
+    ),
+    'design production title': 'Informacioni i Botuesit',
+    'design production content':
+      'Dylan DECRULLE nga Shërbimi Kombëtar i Zhvillimit Informatik të Lille',
+    'personal data title': 'Të Dhënat Personale',
+    'personal data content': (
+      <>
+        <a href="https://www.insee.fr/fr/information/3719162">
+          Të Dhënat Personale
+        </a>
       </>
     ),
   },

@@ -120,33 +120,69 @@ export const translations: Translations<'en'> = {
     'accessibility title': 'Accessibility',
   },
   LegalsPage: {
-    'legals title': 'Legal notices',
-    'legals content': (
+    'legals title': 'Legal Mentions',
+    'service title': 'Service Presentation',
+    'service content': (
       <>
-        <h3>Copyright</h3>
-        <p>
-          Any reproduction for any use other than strictly private of the
-          trademarks and logos displayed on this site is strictly prohibited.
-        </p>
-
-        <h3>Publisher information</h3>
-        <p>National Institute of Statistics and Economic Studies CS 70058</p>
-
-        <p>88 Verdier Avenue</p>
-        <p> 92541 MONTROUGE CEDEX FRANCE</p>
-        <p>Phone: 01 87 69 50 00</p>
-        <p>
-          In accordance with the regulations, the necessary declaration has been
-          made to the National Commission for Information Technology and
-          Liberties.
-        </p>
-
-        <h3>Personal data</h3>
-        <p>
-          <a href="https://www.insee.fr/fr/information/3719162">
-            Personal data
-          </a>
-        </p>
+        The online response service is intended for households and businesses
+        that are surveyed as part of a public statistics survey. These users can
+        enter their questionnaires directly online via the Internet.
+        <br />
+        To access the online response service, the user must identify themselves
+        by providing their access code and password found in the letter sent to
+        them.
+        <br />
+        The user of the service can interrupt the completion of the
+        questionnaire without losing the information they have entered. The
+        responses are saved automatically with each page change. Once the
+        questionnaire is completed, the user submits the questionnaire by
+        clicking the "Send my responses" button.
+      </>
+    ),
+    'survey legals terms title': 'Legal Terms of the Survey',
+    'survey legals terms content':
+      'It is listed on the promotion portal of this survey.',
+    'cookies title': 'Cookie Management',
+    'cookies content':
+      'This portal does not use any cookies requiring user consent. Therefore, you do not need to accept their use before continuing your navigation.',
+    'session title': 'Session',
+    'session content': (
+      <>
+        As soon as the user is identified, a session is established with the
+        server. <br />
+        <br />
+        If the user remains inactive for more than 15 minutes in the
+        questionnaire response service, the session is interrupted. Insee
+        considers that after this period, the user has likely left the site
+        without closing the session, posing a confidentiality risk for the
+        entered information. The user can access the questionnaire again by
+        identifying themselves.
+      </>
+    ),
+    'copyright title': 'Copyright',
+    'copyright content':
+      'Any reproduction for purposes other than strictly private of the brands and logos displayed on this site is strictly prohibited.',
+    'editor information title': 'Publisher Information',
+    'editor information content': (
+      <>
+        National Institute of Statistics and Economic Studies CS 70058 <br />
+        <br />
+        88 Verdier Avenue
+        <br />
+        <br />
+        92541 MONTROUGE CEDEX FRANCE
+        <br />
+        <br />
+        Tel.: 01 87 69 50 00
+      </>
+    ),
+    'design production title': 'Publisher Information',
+    'design production content':
+      'Dylan DECRULLE from the National Service of Computer Development of Lille',
+    'personal data title': 'Personal Data',
+    'personal data content': (
+      <>
+        <a href="https://www.insee.fr/fr/information/3719162">Personal Data</a>
       </>
     ),
   },

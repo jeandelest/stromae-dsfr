@@ -35,8 +35,7 @@ export const translations: Translations<'fr'> = {
     ),
   },
   Header: {
-    'home link title':
-      "Accueil - Nom de l’entité (ministère, secrétariat d'état, gouvernement)",
+    'home link title': 'Application de collecte internet',
     'quick access support': "Contacter l'assistance",
     'quick access logout': 'Se déconnecter',
     'service tag line': 'Application de collecte internet',
@@ -121,35 +120,73 @@ export const translations: Translations<'fr'> = {
   },
   LegalsPage: {
     'legals title': 'Mentions légales',
-    'legals content': (
+    'service title': 'Présentation du service',
+    'service content': (
       <>
-        <h3>Copyright</h3>
-        <p>
-          Toute reproduction pour un usage autre que strictement privé des
-          marques et logos affichés sur le présent site est rigoureusement
-          interdite.
-        </p>
-
-        <h3>Informations éditeurs</h3>
-        <p>
-          Institut National de la Statistique et des Études Économiques CS 70058
-        </p>
-
-        <p>88 avenue Verdier</p>
-        <p> 92541 MONTROUGE CEDEX FRANCE</p>
-        <p>Tél. : 01 87 69 50 00</p>
-        <p>
-          Conformément à la réglementation, la déclaration nécessaire a été
-          effectuée auprès de la Commission nationale de l'informatique et des
-          libertés.
-        </p>
-
-        <h3>Données nominatives</h3>
-        <p>
-          <a href="https://www.insee.fr/fr/information/3719162">
-            Données à caractère personnel
-          </a>
-        </p>
+        Le service de réponse en ligne est destiné aux ménages et entreprises
+        qui sont interrogées dans le cadre d'une enquête de la statistique
+        publique. Ces usagers peuvent saisir leurs questionnaires directement en
+        ligne par Internet.
+        <br />
+        Pour accéder au service de réponse en ligne, l'utilisateur doit
+        s'identifier en fournissant son code d'accès et son mot de passe
+        figurant sur le courrier qui lui a été adressé.
+        <br />
+        L'utilisateur du service peut interrompre la saisie du questionnaire
+        sans perdre les informations qu'il a entrées. Les réponses sont
+        sauvegardées automatiquement à chaque changement de page. Une fois la
+        saisie du questionnaire terminée, l'utilisateur transmet le
+        questionnaire en cliquant sur le bouton « Envoyer mes réponses ».
+      </>
+    ),
+    'survey legals terms title': "Cadre juridique de l'enquête",
+    'survey legals terms content':
+      'Il figure sur le portail de promotion de cette enquête.',
+    'cookies title': 'Gestion des cookies',
+    'cookies content':
+      'Ce portail n’utilise aucun cookie nécessitant un consentement des usagers. C’est pourquoi vous n’avez pas à accepter leur utilisation avant de poursuivre votre navigation.',
+    'session title': 'Session',
+    'session content': (
+      <>
+        Dès que l'utilisateur a été identifié, une session est établie avec le
+        serveur. <br />
+        <br />
+        Si l'utilisateur reste plus de 15 minutes sans intervenir dans le
+        service de réponse au questionnaire, la session est interrompue. L'Insee
+        estime en effet qu'au-delà de cette durée, l'utilisateur a
+        vraisemblablement quitté le site sans fermer la session et que cela
+        présente un risque en termes de confidentialité des informations
+        saisies. L'utilisateur peut accéder de nouveau au questionnaire en
+        s'identifiant.
+      </>
+    ),
+    'copyright title': 'Copyright',
+    'copyright content':
+      'Toute reproduction pour un usage autre que strictement privé des marques et logos affichés sur le présent site est rigoureusement interdite.',
+    'editor information title': 'Informations éditeurs',
+    'editor information content': (
+      <>
+        Institut National de la Statistique et des Études Économiques CS 70058{' '}
+        <br />
+        <br />
+        88 avenue Verdier
+        <br />
+        <br />
+        92541 MONTROUGE CEDEX FRANCE
+        <br />
+        <br />
+        Tél. : 01 87 69 50 00
+      </>
+    ),
+    'design production title': 'Informations éditeurs',
+    'design production content':
+      'Dylan DECRULLE du Service National de Développement Informatique de Lille',
+    'personal data title': 'Données nominatives',
+    'personal data content': (
+      <>
+        <a href="https://www.insee.fr/fr/information/3719162">
+          Données à caractère personnel
+        </a>
       </>
     ),
   },
