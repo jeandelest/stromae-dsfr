@@ -1551,7 +1551,8 @@
           "label": {
             "type": "string"
           }
-        }
+        },
+        "required": ["url", "label"]
       },
       "Logos": {
         "properties": {

@@ -7,6 +7,6 @@
  */
 
 export interface Logo {
-  label?: string
-  url?: string
+  label: string
+  url: string
 }
