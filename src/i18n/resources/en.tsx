@@ -176,7 +176,7 @@ export const translations: Translations<'en'> = {
         Tel.: 01 87 69 50 00
       </>
     ),
-    'design production title': 'Publisher Information',
+    'design production title': 'Design and development',
     'design production content':
       'Dylan DECRULLE from the National Service of Computer Development of Lille',
     'personal data title': 'Personal Data',

@@ -176,7 +176,7 @@ export const translations: Translations<'sq'> = {
         Tel.: 01 87 69 50 00
       </>
     ),
-    'design production title': 'Informacioni i Botuesit',
+    'design production title': 'Dizajn dhe zhvillim',
     'design production content':
       'Dylan DECRULLE nga Shërbimi Kombëtar i Zhvillimit Informatik të Lille',
     'personal data title': 'Të Dhënat Personale',
