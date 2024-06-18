@@ -13,7 +13,7 @@ import { metadataStore } from 'shared/metadataStore/metadataStore'
 import { ReviewPage } from './ReviewPage'
 
 export const reviewPath =
-  '/questionnaire/review/$questionnaireId/unite-enquetee/$surveyUnitId'
+  'review/questionnaire/$questionnaireId/unite-enquetee/$surveyUnitId'
 
 export const reviewRoute = createRoute({
   getParentRoute: () => rootRoute,
