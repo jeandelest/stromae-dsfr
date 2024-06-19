@@ -1,5 +1,8 @@
 import { fr } from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
+import ArtWorkBackground from '@codegouvfr/react-dsfr/dsfr/artwork/background/ovoid.svg'
+import ArtWork from '@codegouvfr/react-dsfr/dsfr/artwork/system.svg'
+
 import TechnicalError from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg'
 import { useNavigate, useSearch } from '@tanstack/react-router'
 import { declareComponentKeys, useTranslation } from 'i18n'
@@ -66,30 +69,41 @@ export function ErrorComponent(props: Props) {
           className={fr.cx(
             'fr-col-lg-3',
             'fr-col-offset-lg-1',
-            'fr-col-8',
-            'fr-mt-6w',
-            'fr-col--middle'
+            'fr-hidden',
+            'fr-unhidden-lg'
           )}
         >
           <svg
-            className={fr.cx('fr-artwork')}
+            className={fr.cx('fr-artwork', 'fr-responsive-img')}
             aria-hidden="true"
-            viewBox="0 0 80 80"
-            width="200"
+            width="160"
             height="200"
+            viewBox="0 0 160 200"
           >
             <use
-              className={fr.cx('fr-artwork-decorative')}
-              xlinkHref={`${TechnicalError}#artwork-decorative`}
+              className={fr.cx('fr-artwork-motif')}
+              href={`${ArtWorkBackground}#artwork-motif`}
             ></use>
+            <use href={`${ArtWork}#artwork-motif`}></use>
+
             <use
-              className={fr.cx('fr-artwork-minor')}
-              xlinkHref={`${TechnicalError}#artwork-minor`}
+              className={fr.cx('fr-artwork-background')}
+              href={`${ArtWorkBackground}#artwork-background`}
             ></use>
-            <use
-              className={fr.cx('fr-artwork-major')}
-              xlinkHref={`${TechnicalError}#artwork-major`}
-            ></use>
+            <g transform="translate(40, 60)">
+              <use
+                className={fr.cx('fr-artwork-decorative')}
+                xlinkHref={`${TechnicalError}#artwork-decorative`}
+              ></use>
+              <use
+                className={fr.cx('fr-artwork-minor')}
+                xlinkHref={`${TechnicalError}#artwork-minor`}
+              ></use>
+              <use
+                className={fr.cx('fr-artwork-major')}
+                xlinkHref={`${TechnicalError}#artwork-major`}
+              ></use>
+            </g>
           </svg>
         </div>
       </div>
