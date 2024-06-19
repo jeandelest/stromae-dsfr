@@ -80,7 +80,10 @@ export function SurveyContainer(
             )}
           >
             {pagination === 'sequence' && currentPage === 'lunaticPage' && (
-              <div style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
+              <div
+                className={fr.cx('fr-hidden', 'fr-unhidden-md')}
+                style={{ justifyContent: 'flex-end', textAlign: 'right' }}
+              >
                 <Button
                   iconId={
                     isLayoutExpanded
