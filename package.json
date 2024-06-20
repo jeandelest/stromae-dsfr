@@ -1,7 +1,7 @@
 {
   "name": "stromae-dsfr",
   "private": true,
-  "version": "0.0.43",
+  "version": "0.0.44",
   "type": "module",
   "scripts": {
     "prepare": "vite-envs update-types",
