@@ -28,15 +28,13 @@ export const reviewRoute = createRoute({
     context: { queryClient },
     abortController,
   }) => {
-    document.title = "Questionnaire | Filière d'Enquête"
-
     const sourcePr = queryClient
       .ensureQueryData(
         getGetQuestionnaireDataQueryOptions(questionnaireId, {
           request: { signal: abortController.signal },
         })
       )
-      .then((e) => e.value as unknown as LunaticSource) // We'd like to use zod, but the files are heavy.
+      .then((e) => e as unknown as LunaticSource) // We'd like to use zod, but the files are heavy.
 
     const surveyUnitDataPr = queryClient
       .ensureQueryData(
