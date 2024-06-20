@@ -1,6 +1,8 @@
 import { prOidc } from 'oidc'
 
-export async function protectedRouteLoader() {
+export async function protectedRouteLoader(
+  extraQueryParams?: Record<string, string>
+) {
   const oidc = await prOidc
 
   if (oidc.isUserLoggedIn) {
@@ -9,5 +11,6 @@ export async function protectedRouteLoader() {
 
   await oidc.login({
     doesCurrentHrefRequiresAuth: true,
+    extraQueryParams,
   })
 }

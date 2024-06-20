@@ -10,6 +10,7 @@ type ImportMetaEnv = {
   VITE_API_URL: string
   VITE_VISUALIZE_DISABLED: string
   VITE_BASE_PATH: string
+  VITE_REVIEW_IDENTITY_PROVIDER: string
   BASE_URL: string
   MODE: string
   DEV: boolean

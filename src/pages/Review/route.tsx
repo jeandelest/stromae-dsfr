@@ -19,7 +19,10 @@ export const reviewRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: reviewPath,
   component: ReviewPage,
-  beforeLoad: protectedRouteLoader,
+  beforeLoad: async () =>
+    protectedRouteLoader({
+      kc_idp_hint: import.meta.env.VITE_REVIEW_IDENTITY_PROVIDER,
+    }),
   loader: ({
     params: { questionnaireId, surveyUnitId },
     context: { queryClient },
