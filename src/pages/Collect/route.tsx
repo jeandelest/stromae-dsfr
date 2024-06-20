@@ -25,7 +25,7 @@ export const collectRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: collectPath,
   component: CollectPage,
-  beforeLoad: protectedRouteLoader,
+  beforeLoad: async () => protectedRouteLoader(),
   validateSearch: collectSearchParams,
   loader: ({
     params: { questionnaireId, surveyUnitId },
