@@ -110,7 +110,14 @@ export const translations: Translations<'en'> = {
           return 'Submit my responses'
       }
     },
-    'button continue title': 'Proceed to the next step',
+    'button continue title': ({ currentPage }) => {
+      switch (currentPage) {
+        case 'endPage':
+          return 'Download the acknowledgment of receipt'
+        default:
+          return 'Proceed to the next step'
+      }
+    },
     'button download': 'Download data',
     'button expand': 'Expand view',
     'button previous title': 'Return to the previous step',

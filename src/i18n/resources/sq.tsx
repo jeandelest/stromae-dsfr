@@ -110,7 +110,14 @@ export const translations: Translations<'sq'> = {
           return 'Dërgo përgjigjet e mia'
       }
     },
-    'button continue title': 'Kalo në hapin tjetër',
+    'button continue title': ({ currentPage }) => {
+      switch (currentPage) {
+        case 'endPage':
+          return 'Shkarkoni konfirmimin e pranimit'
+        default:
+          return 'Kaloni në hapin tjetër'
+      }
+    },
     'button download': 'Shkarko të dhënat',
     'button expand': 'Zgjero pamjen',
     'button previous title': 'Kthehu në hapin e mëparshëm',

@@ -109,7 +109,14 @@ export const translations: Translations<'fr'> = {
           return 'Envoyer mes réponses'
       }
     },
-    'button continue title': "Passer à l'étape suivante",
+    'button continue title': ({ currentPage }) => {
+      switch (currentPage) {
+        case 'endPage':
+          return "Télécharger l'accusé de réception"
+        default:
+          return "Passer à l'étape suivante"
+      }
+    },
     'button download': 'Télécharger les données',
     'button expand': 'Étendre la vue',
     'button previous title': "Revenir à l'étape précédente",
