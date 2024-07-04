@@ -735,10 +735,10 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic-dsfr@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.1.1.tgz#53b2ed9d4640b688ecba2beb7386ca978b87d757"
-  integrity sha512-v0hZOMcJrMdlk9kQ7ePNnc5Doj08r5BqhLgA18L6FEDJYKy5dBhgbgtxyPQKjma0ZRNOm2baFF2Sh1zQSp7VLA==
+"@inseefr/lunatic-dsfr@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.1.2.tgz#eee220fa2ea466d4e88f893edac8b3a97b5cbb2d"
+  integrity sha512-gOw3IhWiULwgrnlrwGVIgopBoAJ1UY9ivcxqIXgYNnF7IigxCzPI08tXp6sjmE15N3Lo9Og71s9DvC3R4UDS+w==
   dependencies:
     react-number-format "^5.4.0"
 
