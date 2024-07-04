@@ -267,10 +267,10 @@
     "@babel/helper-validator-identifier" "^7.24.7"
     to-fast-properties "^2.0.0"
 
-"@codegouvfr/react-dsfr@^1.9.21":
-  version "1.9.21"
-  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.9.21.tgz#6828dc2bf619dc3917703e094083418a4d1335c7"
-  integrity sha512-xhlI2AHpmDbaA8lrFIUtQGsF3GkW2o6gANIwNpmwkyRpNSMynJkLiZywJamGuGDkfY7qEMoZ/IeEUQWE1sUhvQ==
+"@codegouvfr/react-dsfr@^1.9.22":
+  version "1.9.22"
+  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.9.22.tgz#fed5afb0f0b6fce19b755e384a19d31627ad9ede"
+  integrity sha512-bIT/djCWcp4992Zjnl1Hr4+wl8n/FJzUiqlK1/SGJVyfpzpsKczND3Lu4iRZ9ueKJFDOp5EgWXyT8JcakHFAgg==
   dependencies:
     tsafe "^1.6.3"
     yargs-parser "^21.1.1"
@@ -735,10 +735,10 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic-dsfr@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.1.0.tgz#653bfd3acfe26e1bce8a936b1e5b0d0f5d6f578d"
-  integrity sha512-R+qtUB2hjMuKPL1AVA0BWhZBOh+20v2uVfqQODM1LRszUGRHcqK8nWdgwjdrZzAX1r2lFu6K7m2NkC5E+sS0gQ==
+"@inseefr/lunatic-dsfr@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.1.1.tgz#53b2ed9d4640b688ecba2beb7386ca978b87d757"
+  integrity sha512-v0hZOMcJrMdlk9kQ7ePNnc5Doj08r5BqhLgA18L6FEDJYKy5dBhgbgtxyPQKjma0ZRNOm2baFF2Sh1zQSp7VLA==
   dependencies:
     react-number-format "^5.4.0"
 
