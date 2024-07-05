@@ -4,13 +4,8 @@ import type { Translations } from 'i18n/types'
 export const translations: Translations<'fr'> = {
   Footer: {
     'footer operator logo alt': 'Insee, mesurer pour comprendre',
-    'footer content description': `
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-    eu fugiat nulla pariatur.
-    `,
+    'footer content description':
+      'Mesurer pour comprendre : répondez pour un futur informé.',
     license: (
       <>
         Ce site utilise les applications Insee 'Stromae' et 'Lunatic', qui sont
