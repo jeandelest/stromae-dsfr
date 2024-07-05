@@ -28,17 +28,6 @@ export function WelcomePage(props: {
         <p className={fr.cx('fr-text--lead')}>
           {metadata?.objectives ?? t('paragraph')}
         </p>
-        {/* TODO Improve metadata type */}
-        {metadata?.context === 'household' ? (
-          <>
-            <h2>{t('title who answer')}</h2>
-            <ul>
-              <li>Alice Doe</li>
-              <li>Bernard Doe</li>
-              <li>Charlotte Doe</li>
-            </ul>
-          </>
-        ) : null}
       </div>
       {initialCurrentPage && (
         <WelcomeModal goBack={() => goToPage({ page: initialCurrentPage })} />
