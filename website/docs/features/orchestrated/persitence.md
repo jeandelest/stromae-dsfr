@@ -8,15 +8,15 @@ L'objet data est l'objet principal. Voilà un exemple :
 
 ```json
 {
-	"stateData": {
-		"state": "INIT",
-		"date": null,
-		"currentPage": null
-	},
+  "stateData": {
+    "state": "INIT",
+    "date": null,
+    "currentPage": null
+  },
 
-	"personalization": [{ "name": "QuiRepond1", "value": "Mme Dupond" }],
+  "personalization": [{ "name": "QuiRepond1", "value": "Mme Dupond" }],
 
-	"data": {}
+  "data": {}
 }
 ```
 

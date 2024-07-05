@@ -7,7 +7,7 @@ import {
 } from 'api/06-survey-units'
 import type { StateData } from 'model/StateData'
 import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
-import type { LunaticGetReferentiel } from 'shared/components/Orchestrator/utils/lunaticType'
+import type { LunaticGetReferentiel, Nomenclature } from 'shared/components/Orchestrator/utils/lunaticType'
 import { showToast } from 'shared/toast/Toast'
 import { collectRoute } from './route'
 
@@ -22,7 +22,7 @@ export function CollectPage() {
   const getReferentiel: LunaticGetReferentiel = (name: string) =>
     queryClient
       .ensureQueryData(getGetNomenclatureByIdQueryOptions(name))
-      .then((result) => result)
+      .then((result) => result as Nomenclature) //We should remove this cast when type fixed in api
 
   const mutationUpdateDataStateData = useUpdateSurveyUnitDataStateDataById()
 

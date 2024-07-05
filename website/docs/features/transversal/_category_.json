@@ -1,8 +1,8 @@
 {
-	"label": "Transversales",
-	"position": 2,
-	"link": {
-		"type": "generated-index",
-		"description": "Fonctionnalités de transversales de l'orchestrateur"
-	}
+  "label": "Transversales",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Fonctionnalités de transversales de l'orchestrateur"
+  }
 }

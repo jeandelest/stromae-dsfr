@@ -1,7 +1,7 @@
 import { fr } from '@codegouvfr/react-dsfr'
 import { declareComponentKeys, useTranslation } from 'i18n'
+import type { Metadata } from 'model/Metadata'
 import type { PageType } from 'model/Page'
-import type { SurveyUnitMetadata } from 'model/api'
 import { useEffect } from 'react'
 import type { useStromaeNavigation } from '../useStromaeNavigation'
 import { WelcomeModal } from './WelcomeModal'
@@ -9,7 +9,7 @@ import { WelcomeModal } from './WelcomeModal'
 export function WelcomePage(props: {
   initialCurrentPage: PageType | undefined
   goToPage: ReturnType<typeof useStromaeNavigation>['goToPage']
-  metadata?: SurveyUnitMetadata
+  metadata?: Metadata
 }) {
   const { t } = useTranslation({ WelcomePage })
   const { initialCurrentPage, goToPage, metadata } = props
