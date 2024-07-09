@@ -3,7 +3,6 @@ import Button from '@codegouvfr/react-dsfr/Button'
 import { declareComponentKeys, useTranslation } from 'i18n'
 import type { InternalPageType } from 'model/Page'
 import { useState, type PropsWithChildren, type ReactNode } from 'react'
-import { useStyles } from 'tss-react'
 import type { OrchestratorProps } from './Orchestrator'
 import { SequenceHeader } from './SequenceHeader'
 import type { LunaticOverview } from './utils/lunaticType'
@@ -35,8 +34,6 @@ export function SurveyContainer(
     isSequencePage,
     bottomContent,
   } = props
-
-  const { cx } = useStyles()
 
   const { t } = useTranslation({ SurveyContainer })
 
@@ -73,10 +70,12 @@ export function SurveyContainer(
       <div className={fr.cx('fr-container')}>
         <div className={fr.cx('fr-grid-row', 'fr-grid-row--center')}>
           <div
-            className={cx(
-              fr.cx('fr-col-12', 'fr-mb-10v'),
-              !(isLayoutExpanded && currentPage === 'lunaticPage') &&
-                fr.cx('fr-col-md-9', 'fr-col-lg-8')
+            className={fr.cx(
+              'fr-col-12',
+              'fr-mb-10v',
+              ...(!(isLayoutExpanded && currentPage === 'lunaticPage')
+                ? (['fr-col-md-9', 'fr-col-lg-8'] as const)
+                : [])
             )}
           >
             {pagination === 'sequence' && currentPage === 'lunaticPage' && (
