@@ -30,7 +30,7 @@
     "@tanstack/react-router": "^1.43.14",
     "axios": "^1.7.2",
     "i18nifty": "^3.2.1",
-    "oidc-spa": "^4.8.0",
+    "oidc-spa": "^4.8.1",
     "powerhooks": "^1.0.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

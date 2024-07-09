@@ -10,6 +10,7 @@ import { siteMapRoute } from 'pages/SiteMap/route'
 import { visualizeRoute } from 'pages/Visualize/route'
 import { Toaster } from 'react-hot-toast'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
+import { AutoLogoutCountdown } from 'shared/components/Layout/AutoLogoutCountdown'
 import { Footer } from 'shared/components/Layout/Footer'
 import { Header } from 'shared/components/Layout/Header'
 import { NotFoundError } from 'shared/error/notFoundError'
@@ -35,6 +36,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <AutoLogoutCountdown />
     </div>
   )
 }

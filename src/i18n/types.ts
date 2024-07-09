@@ -12,6 +12,7 @@ export type Language = (typeof languages)[number]
 export type ComponentKey =
   | import('shared/components/Layout/Footer').I18n
   | import('shared/components/Layout/Header').I18n
+  | import('shared/components/Layout/AutoLogoutCountdown').I18n
   | import('shared/components/Error/ErrorComponent').I18n
   | import('shared/components/Orchestrator/CustomPages/EndPage').I18n
   | import('shared/components/Orchestrator/CustomPages/ValidationModal').I18n

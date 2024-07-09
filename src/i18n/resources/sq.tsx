@@ -45,6 +45,11 @@ export const translations: Translations<'sq'> = {
     ),
     'operator logo alt': 'Insee, mat për të kuptuar',
   },
+  AutoLogoutCountdown: {
+    'paragraph still there': 'A jeni ende aty?',
+    'paragraph logged out in': ({ secondsLeft }) =>
+      `Do të dilni nga sistemi për ${secondsLeft} sekonda`,
+  },
   ErrorComponent: {
     'error button redirect to': ({ redirectTo }) => {
       switch (redirectTo) {

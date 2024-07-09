@@ -44,6 +44,11 @@ export const translations: Translations<'fr'> = {
     ),
     'operator logo alt': 'Insee, mesurer pour comprendre',
   },
+  AutoLogoutCountdown: {
+    'paragraph still there': 'Êtes-vous toujours là?',
+    'paragraph logged out in': ({ secondsLeft }) =>
+      `Vous serez déconnecté dans ${secondsLeft} secondes`,
+  },
   ErrorComponent: {
     'error button redirect to': ({ redirectTo }) => {
       switch (redirectTo) {
