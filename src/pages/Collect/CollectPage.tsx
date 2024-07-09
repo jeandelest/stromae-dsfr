@@ -7,7 +7,10 @@ import {
 } from 'api/06-survey-units'
 import type { StateData } from 'model/StateData'
 import { Orchestrator } from 'shared/components/Orchestrator/Orchestrator'
-import type { LunaticGetReferentiel, Nomenclature } from 'shared/components/Orchestrator/utils/lunaticType'
+import type {
+  LunaticGetReferentiel,
+  Nomenclature,
+} from 'shared/components/Orchestrator/utils/lunaticType'
 import { showToast } from 'shared/toast/Toast'
 import { collectRoute } from './route'
 
@@ -31,7 +34,7 @@ export function CollectPage() {
     data: LunaticData['COLLECTED']
     onSuccess?: () => void
   }) =>
-    mutationUpdateDataStateData.mutate(
+    mutationUpdateDataStateData.mutateAsync(
       {
         id: surveyUnitId,
         data: { data: params.data, stateData: params.stateData }, //Waiting for API to accept request with undefined data
@@ -56,6 +59,7 @@ export function CollectPage() {
               "Une erreur est survenue lors de l'enregistrement de vos modifications. ",
           })
         },
+        
       }
     )
 

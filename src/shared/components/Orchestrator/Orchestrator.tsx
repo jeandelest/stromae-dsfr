@@ -69,7 +69,7 @@ export namespace OrchestratorProps {
       stateData: StateData
       data: LunaticData['COLLECTED']
       onSuccess?: () => void
-    }) => void
+    }) => Promise<void>
     getDepositProof: () => Promise<void>
   }
 }
@@ -179,19 +179,20 @@ export function Orchestrator(props: OrchestratorProps) {
     })
   })
 
-  useAddPreLogoutAction(() => {
+  useAddPreLogoutAction(async () => {
     if (mode !== 'collect') return
 
     const { updateDataAndStateData } = props
 
     const data = getChangedData()
 
-    updateDataAndStateData({
+    return updateDataAndStateData({
       stateData: getCurrentStateData(),
       data: isObjectEmpty(data.COLLECTED ?? {}) ? undefined : data.COLLECTED,
       onSuccess: resetChangedData,
     })
   })
+
   // Persist data and stateData when page change in "collect" mode
   useUpdateEffect(() => {
     if (mode !== 'collect') return
