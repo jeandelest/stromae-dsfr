@@ -125,6 +125,122 @@ export const translations: Translations<'sq'> = {
   },
   AccessibilityPage: {
     'accessibility title': 'Aksesueshmëria',
+    'declaration content': ({ fullUrl }) => (
+      <>
+        <p>
+          INSEE është e angazhuar për të bërë faqet e saj të internetit,
+          intranet, ekstranet dhe programet e saj të aksesueshme (dhe
+          aplikacionet e saj mobile dhe mobiliet dixhitale urbane) në përputhje
+          me nenin 47 të ligjit nr. 2005-102 të 11 shkurt 2005.
+        </p>
+        <p>Për këtë qëllim, ajo zbaton strategjinë dhe veprimet e mëposhtme:</p>
+        <ul>
+          <li>Plani shumëvjeçar i aksesueshmërisë 2022-2024;</li>
+          <li>Planet e veprimit për 2023, 2024.</li>
+        </ul>
+        <p>Këto dokumente janë të disponueshme me kërkesë.</p>
+        <p>
+          Kjo deklaratë e aksesueshmërisë zbatohet për{' '}
+          <a href={fullUrl}>{fullUrl}</a>.
+        </p>
+      </>
+    ),
+    'conformity status title': 'Gjendja e përputhshmërisë',
+    'conformity status description': (
+      <p>
+        Faqja e përgjigjes online të anketave të INSEE nuk është në përputhje me
+        referencën e përgjithshme të përmirësimit të aksesueshmërisë (RGAA),
+        versioni 4 për shkak të mungesës së një auditi të përputhshmërisë në
+        proces.
+      </p>
+    ),
+    'test results title': 'Rezultatet e testeve',
+    'test results content': (
+      <p>
+        Kjo deklaratë do të përditësohet sapo të jenë të njohura rezultatet e
+        auditit të përputhshmërisë.
+      </p>
+    ),
+    'non accessible content title': 'Përmbajtja jo e aksesueshme',
+    'non accessible content content': <p>Nuk ka objekt.</p>,
+    'disproportionate burden title': 'Përjashtime për barrë të tepruar',
+    'disproportionate burden content': <p>Nuk ka objekt.</p>,
+    'non submitted content title':
+      'Përmbajtja që nuk i nënshtrohet detyrimit të aksesueshmërisë',
+    'non submitted content content': <p>Nuk ka objekt.</p>,
+    'establishment title': 'Vendosja e kësaj deklarate të aksesueshmërisë',
+    'establishment content': (
+      <p>
+        Kjo deklaratë është përpiluar më 9 korrik 2024 nga rrjeti i
+        aksesueshmërisë dixhitale të INSEE (Rani).
+      </p>
+    ),
+    'technologies used title':
+      'Teknologjitë e përdorura për zhvillimin e faqes',
+    'technologies used content': (
+      <ul>
+        <li>HTML5</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+        <li>React</li>
+      </ul>
+    ),
+    'test environment title': 'Mjedisi i testit',
+    'test environment content': <p>Nuk ka objekt.</p>,
+    'evaluation tools title': 'Mjetet për vlerësimin e aksesueshmërisë',
+    'evaluation tools content': <p>Nuk ka objekt.</p>,
+    'evaluated pages title':
+      'Faqet e faqes që janë verifikuar për përputhshmëri',
+    'evaluated pages content': <p>Nuk ka objekt.</p>,
+    'feedback contact title': 'Komentet dhe kontakti',
+    'feedback contact content': (
+      <p>
+        Nëse nuk mund të aksesoni një përmbajtje ose një shërbim, ju mund të
+        kontaktoni mbështetjen për të drejtuar në një alternativë të aksesueshme
+        ose për të marrë përmbajtjen në një formë tjetër.
+      </p>
+    ),
+    'recourse title': 'Rrugët e ankesës',
+    'recourse content': (
+      <>
+        <p>
+          Nëse vëreni një defekt të aksesueshmërisë që ju pengon të aksesoni një
+          përmbajtje ose një funksionalitet të faqes, ju mund ta raportoni dhe
+          nëse nuk merrni një përgjigje, ju keni të drejtë të dërgoni ankesat
+          tuaja ose një kërkesë për mbrojtësin e të drejtave.
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://formulaire.defenseurdesdroits.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Shkruani një mesazh për Mbrojtësin e të drejtave (përmes
+              formularit të kontaktit)
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.defenseurdesdroits.fr/carte-des-delegues"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Kontaktoni delegatin e Mbrojtësit të të drejtave në rajonin tuaj
+            </a>
+          </li>
+          <li>
+            Dërgoni një letër me postë (falas, pa vendosur pullë) në adresën e
+            mëposhtme:<div>Défenseur des droits</div>
+            <div>Libre réponse 71120</div>
+            <div>75342 Paris CEDEX 07</div>
+          </li>
+          <li>
+            Kontaktoni Mbrojtësin e të drejtave me telefon: 09 69 39 00 00.
+          </li>
+        </ul>
+      </>
+    ),
   },
   LegalsPage: {
     'legals title': 'Përmendjet Ligjore',

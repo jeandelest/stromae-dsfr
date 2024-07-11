@@ -23,7 +23,7 @@ export function Footer() {
 
   return (
     <DSFRFooter
-      accessibility="partially compliant"
+      accessibility="non compliant"
       contentDescription={t('footer content description')}
       license={t('license')}
       homeLinkProps={{

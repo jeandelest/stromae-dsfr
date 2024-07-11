@@ -124,6 +124,125 @@ export const translations: Translations<'fr'> = {
   },
   AccessibilityPage: {
     'accessibility title': 'Accessibilité',
+    'declaration content': ({ fullUrl }) => (
+      <>
+        <p>
+          L'Insee s’engage à rendre ses sites internet, intranet, extranet et
+          ses progiciels accessibles (et ses applications mobiles et mobilier
+          urbain numérique) conformément à l’article 47 de la loi n°2005-102 du
+          11 février 2005.
+        </p>
+        <p>
+          À cette fin, elle met en œuvre la stratégie et les actions suivantes :
+        </p>
+        <ul>
+          <li>Schéma pluriannuel de mise en accessibilité 2022-2024 ;</li>
+          <li>Plans d’actions 2023, 2024.</li>
+        </ul>
+        <p>Ces documents sont communicables à la demande.</p>
+        <p>
+          Cette déclaration d’accessibilité s’applique à{' '}
+          <a href={fullUrl}>{fullUrl}</a>.
+        </p>
+      </>
+    ),
+    'conformity status title': 'État de conformité',
+    'conformity status description': (
+      <p>
+        Le site de réponse en ligne des enquêtes de l'Insee est non conforme
+        avec le référentiel général d’amélioration de l’accessibilité (RGAA),
+        version 4 en raison d'une absence d'audit de conformité en cours de
+        réalisation.
+      </p>
+    ),
+    'test results title': 'Résultats des tests',
+    'test results content': (
+      <p>
+        La présente déclaration sera mise à jour dès que les résultats de
+        l'audit de conformité seront connus.
+      </p>
+    ),
+    'non accessible content title': 'Contenus non accessibles',
+    'non accessible content content': <p>Sans objet.</p>,
+    'disproportionate burden title': 'Dérogations pour charge disproportionnée',
+    'disproportionate burden content': <p>Sans objet.</p>,
+    'non submitted content title':
+      'Contenus non soumis à l’obligation d’accessibilité',
+    'non submitted content content': <p>Sans objet.</p>,
+    'establishment title': 'Établissement de cette déclaration d’accessibilité',
+    'establishment content': (
+      <p>
+        Cette déclaration a été établie le 9 juillet 2024 par le réseau
+        accessibilité numérique de l'Insee (Rani).
+      </p>
+    ),
+    'technologies used title':
+      'Technologies utilisées pour la réalisation du site',
+    'technologies used content': (
+      <ul>
+        <li>HTML5</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+        <li>React</li>
+      </ul>
+    ),
+    'test environment title': 'Environnement de test',
+    'test environment content': <p>Sans objet.</p>,
+    'evaluation tools title': 'Outils pour évaluer l’accessibilité',
+    'evaluation tools content': <p>Sans objet.</p>,
+    'evaluated pages title':
+      'Pages du site ayant fait l’objet de la vérification de conformité',
+    'evaluated pages content': <p>Sans objet.</p>,
+    'feedback contact title': 'Retour d’information et contact',
+    'feedback contact content': (
+      <p>
+        Si vous n’arrivez pas à accéder à un contenu ou à un service, vous
+        pouvez contacter l'assistance, pour être orienté vers une alternative
+        accessible ou obtenir le contenu sous une autre forme.
+      </p>
+    ),
+    'recourse title': 'Voies de recours',
+    'recourse content': (
+      <>
+        <p>
+          Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à
+          un contenu ou une fonctionnalité du site, que vous nous le signalez et
+          que vous ne parvenez pas à obtenir une réponse de notre part, vous
+          êtes en droit de faire parvenir vos doléances ou une demande de
+          saisine au Défenseur des droits.
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://formulaire.defenseurdesdroits.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Écrire un message au Défenseur des droits (via le formulaire de
+              contact
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.defenseurdesdroits.fr/carte-des-delegues"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contacter le délégué du Défenseur des droits dans votre région
+            </a>
+          </li>
+          <li>
+            Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre)
+            à l'adresse suivante :<div>Défenseur des droits</div>
+            <div>Libre réponse 71120</div>
+            <div>75342 Paris CEDEX 07</div>
+          </li>
+          <li>
+            Contacter le Défenseur des droits par téléphone : 09 69 39 00 00.
+          </li>
+        </ul>
+      </>
+    ),
   },
   LegalsPage: {
     'legals title': 'Mentions légales',

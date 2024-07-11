@@ -46,9 +46,9 @@ export const translations: Translations<'en'> = {
     'operator logo alt': 'Insee, measure to understand',
   },
   AutoLogoutCountdown: {
-    'paragraph still there' : "Are you still there?"
-    ,
-    "paragraph logged out in": ({secondsLeft}) => `You will be logged out in ${secondsLeft}`
+    'paragraph still there': 'Are you still there?',
+    'paragraph logged out in': ({ secondsLeft }) =>
+      `You will be logged out in ${secondsLeft}`,
   },
   ErrorComponent: {
     'error button redirect to': ({ redirectTo }) => {
@@ -125,6 +125,117 @@ export const translations: Translations<'en'> = {
   },
   AccessibilityPage: {
     'accessibility title': 'Accessibility',
+    'declaration content': ({ fullUrl }) => (
+      <>
+        <p>
+          Insee is committed to making its websites, intranet, extranet, and its
+          software accessible (and its mobile applications and digital urban
+          furniture) in accordance with Article 47 of Law No. 2005-102 of
+          February 11, 2005.
+        </p>
+        <p>To this end, it implements the following strategy and actions:</p>
+        <ul>
+          <li>Multi-year accessibility plan 2022-2024;</li>
+          <li>Action plans for 2023, 2024.</li>
+        </ul>
+        <p>These documents are available upon request.</p>
+        <p>
+          This accessibility statement applies to{' '}
+          <a href={fullUrl}>{fullUrl}</a>.
+        </p>
+      </>
+    ),
+    'conformity status title': 'Conformity Status',
+    'conformity status description': (
+      <p>
+        The Insee online survey response site is not compliant with the general
+        accessibility improvement reference (RGAA), version 4 due to a lack of
+        an ongoing compliance audit.
+      </p>
+    ),
+    'test results title': 'Test Results',
+    'test results content': (
+      <p>
+        This statement will be updated as soon as the results of the compliance
+        audit are known.
+      </p>
+    ),
+    'non accessible content title': 'Non-Accessible Content',
+    'non accessible content content': <p>Not applicable.</p>,
+    'disproportionate burden title': 'Exemptions for Disproportionate Burden',
+    'disproportionate burden content': <p>Not applicable.</p>,
+    'non submitted content title':
+      'Content Not Subject to Accessibility Obligation',
+    'non submitted content content': <p>Not applicable.</p>,
+    'establishment title': 'Establishment of this Accessibility Statement',
+    'establishment content': (
+      <p>
+        This statement was established on July 9, 2024, by the Insee Digital
+        Accessibility Network (Rani).
+      </p>
+    ),
+    'technologies used title': 'Technologies Used for the Site Development',
+    'technologies used content': (
+      <ul>
+        <li>HTML5</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+        <li>React</li>
+      </ul>
+    ),
+    'test environment title': 'Test Environment',
+    'test environment content': <p>Not applicable.</p>,
+    'evaluation tools title': 'Accessibility Evaluation Tools',
+    'evaluation tools content': <p>Not applicable.</p>,
+    'evaluated pages title':
+      'Pages of the Site That Have Been Verified for Conformity',
+    'evaluated pages content': <p>Not applicable.</p>,
+    'feedback contact title': 'Feedback and Contact',
+    'feedback contact content': (
+      <p>
+        If you are unable to access content or a service, you can contact
+        support to be directed to an accessible alternative or to obtain the
+        content in another form.
+      </p>
+    ),
+    'recourse title': 'Recourse',
+    'recourse content': (
+      <>
+        <p>
+          If you notice an accessibility defect preventing you from accessing
+          content or a functionality of the site, you can report it and if you
+          do not receive a response, you are entitled to send your complaints or
+          a request to the Defender of Rights.
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://formulaire.defenseurdesdroits.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Write a message to the Defender of Rights (via the contact form)
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.defenseurdesdroits.fr/carte-des-delegues"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contact the Defender of Rights delegate in your region
+            </a>
+          </li>
+          <li>
+            Send a letter by mail (free, no stamp required) to the following
+            address:<div>Défenseur des droits</div>
+            <div>Libre réponse 71120</div>
+            <div>75342 Paris CEDEX 07</div>
+          </li>
+          <li>Contact the Defender of Rights by phone: 09 69 39 00 00.</li>
+        </ul>
+      </>
+    ),
   },
   LegalsPage: {
     'legals title': 'Legal Mentions',

@@ -13,30 +13,31 @@ export function LegalsPage() {
         segments={[]}
       />
       <h2>{t('legals title')}</h2>
+      <section>
+        <h3>{t('service title')}</h3>
+        <p>{t('service content')}</p>
 
-      <h3>{t('service title')}</h3>
-      <p>{t('service content')}</p>
+        <h3>{t('survey legals terms title')}</h3>
+        <p>{t('survey legals terms content')}</p>
 
-      <h3>{t('survey legals terms title')}</h3>
-      <p>{t('survey legals terms content')}</p>
+        <h3>{t('cookies title')}</h3>
+        <p>{t('cookies content')}</p>
 
-      <h3>{t('cookies title')}</h3>
-      <p>{t('cookies content')}</p>
+        <h3>{t('session title')}</h3>
+        <p>{t('session content')}</p>
 
-      <h3>{t('session title')}</h3>
-      <p>{t('session content')}</p>
+        <h3>{t('copyright title')}</h3>
+        <p>{t('copyright content')}</p>
 
-      <h3>{t('copyright title')}</h3>
-      <p>{t('copyright content')}</p>
+        <h3>{t('editor information title')}</h3>
+        <p>{t('editor information content')}</p>
 
-      <h3>{t('editor information title')}</h3>
-      <p>{t('editor information content')}</p>
+        <h3>{t('design production title')}</h3>
+        <p>{t('design production content')}</p>
 
-      <h3>{t('design production title')}</h3>
-      <p>{t('design production content')}</p>
-
-      <h3>{t('personal data title')}</h3>
-      <p>{t('personal data content')}</p>
+        <h3>{t('personal data title')}</h3>
+        <p>{t('personal data content')}</p>
+      </section>
     </Grid>
   )
 }
