@@ -59,7 +59,6 @@ export function CollectPage() {
               "Une erreur est survenue lors de l'enregistrement de vos modifications. ",
           })
         },
-        
       }
     )
 

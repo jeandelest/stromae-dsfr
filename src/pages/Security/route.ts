@@ -3,6 +3,7 @@ import { rootRoute } from 'router/router'
 import { SecurityPage } from './SecurityPage'
 
 export const securitePath = '/securite'
+
 export const securityRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: securitePath,

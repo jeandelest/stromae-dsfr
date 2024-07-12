@@ -17,11 +17,10 @@ export function SequenceHeader(props: SequenceHeaderProps) {
   )
 
   const currentSequence = overview[currentSequenceIndex]
-  
+
   useSequenceTitle(currentSequence.label)
 
   if (currentSequenceIndex < 0) return null
-
 
   const stepCount = overview.length
   const currentStep = currentSequenceIndex + 1 //overview is sorted and index starts at 0

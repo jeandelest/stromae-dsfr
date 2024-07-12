@@ -267,10 +267,10 @@
     "@babel/helper-validator-identifier" "^7.24.7"
     to-fast-properties "^2.0.0"
 
-"@codegouvfr/react-dsfr@^1.9.26":
-  version "1.9.26"
-  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.9.26.tgz#9fb50765ebe3854a67bedbaeba2da753e34049b1"
-  integrity sha512-vvw4LKAQzw5toPOEqwUqSUMHR7z/oaL6qcg1RqZKG+JK8eKf2F00lTbxZ/DzvJOuVpNxlU4iA/Isf7UACOEbUA==
+"@codegouvfr/react-dsfr@^1.9.28":
+  version "1.9.28"
+  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.9.28.tgz#3aff9a4716ac6fe456fb367efbbfba7d3db22566"
+  integrity sha512-bTdcGPWkytyfoV/7+NeQTLXa2I2tF6EqQqFrQMhEjh0dV10vvhAXmzu/gIc1H/3IUwMsipGwHX+QIzlwyuUrug==
   dependencies:
     tsafe "^1.6.3"
     yargs-parser "^21.1.1"
@@ -3170,6 +3170,11 @@ human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
+
+husky@^9.0.11:
+  version "9.0.11"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-9.0.11.tgz#fc91df4c756050de41b3e478b2158b87c1e79af9"
+  integrity sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==
 
 i18nifty@^3.2.1:
   version "3.2.1"

@@ -120,7 +120,9 @@ export const translations: Translations<'fr'> = {
       }
     },
     'button download': 'Télécharger les données',
+
     'button expand': 'Étendre la vue',
+
     'button previous title': "Revenir à l'étape précédente",
     'button previous label': 'Précédent',
   },

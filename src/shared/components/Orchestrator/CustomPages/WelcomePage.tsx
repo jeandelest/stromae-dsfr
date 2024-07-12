@@ -23,7 +23,7 @@ export function WelcomePage(props: {
   }, [])
 
   useDocumentTitle(t('document title'))
-  
+
   return (
     <>
       <div className={fr.cx('fr-my-4w')}>

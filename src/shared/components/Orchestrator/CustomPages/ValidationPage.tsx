@@ -4,7 +4,7 @@ import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 
 export function ValidationPage() {
   const { t } = useTranslation({ ValidationPage })
-  
+
   useDocumentTitle(t('document title'))
 
   return (
