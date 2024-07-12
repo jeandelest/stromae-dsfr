@@ -67,7 +67,7 @@ export const translations: Translations<'sq'> = {
     title: 'Mirë se vini në pyetësorin e anketës tuaj',
     paragraph:
       'Kjo anketë na lejon të mbledhim më shumë informacione mbi fushën përkatëse',
-    'title who answer': 'Kush duhet ta përgjigjet këtë pyetësor?',
+    'document title': 'Faqja e pyetësorit',
   },
   WelcomeModal: {
     title: 'Mirë se vini',
@@ -80,11 +80,13 @@ export const translations: Translations<'sq'> = {
     title: 'Ju falënderojmë për bashkëpunimin tuaj në këtë anketë.',
     paragraph: ({ formatedDate }) =>
       `Përgjigjet tuaja janë dërguar më ${formatedDate}.`,
+    'document title': 'Fundi i pyetësorit',
   },
   ValidationPage: {
     title: 'Ju keni arritur në fund të pyetësorit',
     paragraph:
       'Pasi të dërgoni, nuk do të mund të modifikoni më përgjigjet tuaja dhe mund të shkarkoni një njoftim për pranimin.',
+    'document title': 'Dërgimi i pyetësorit',
   },
   ValidationModal: {
     title: 'Dëshironi të dërgoni përgjigjet tuaja',

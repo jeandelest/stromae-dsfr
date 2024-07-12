@@ -67,7 +67,7 @@ export const translations: Translations<'en'> = {
     title: 'Welcome to your survey questionnaire',
     paragraph:
       'This survey allows us to gather more information on the relevant field',
-    'title who answer': 'Who should answer this questionnaire?',
+    'document title': 'Questionnaire homepage',
   },
   WelcomeModal: {
     title: 'Welcome',
@@ -80,11 +80,13 @@ export const translations: Translations<'en'> = {
     title: 'Thank you for your participation in this survey.',
     paragraph: ({ formatedDate }) =>
       `Your responses were sent on ${formatedDate}.`,
+    'document title': 'End of questionnaire',
   },
   ValidationPage: {
     title: 'You have reached the end of the questionnaire',
     paragraph:
       'Once submitted, you will not be able to modify your responses, and you can download a receipt.',
+    'document title': 'Sending the questionnaire',
   },
   ValidationModal: {
     title: 'Do you want to submit your responses',

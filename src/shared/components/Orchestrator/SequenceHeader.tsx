@@ -1,5 +1,6 @@
 import { fr } from '@codegouvfr/react-dsfr'
 import { declareComponentKeys, useTranslation } from 'i18n'
+import { useSequenceTitle } from 'shared/hooks/useDocumentTitle'
 import type { LunaticOverview } from './utils/lunaticType'
 
 type SequenceHeaderProps = {
@@ -15,9 +16,12 @@ export function SequenceHeader(props: SequenceHeaderProps) {
     (sequence) => sequence.current
   )
 
+  const currentSequence = overview[currentSequenceIndex]
+  
+  useSequenceTitle(currentSequence.label)
+
   if (currentSequenceIndex < 0) return null
 
-  const currentSequence = overview[currentSequenceIndex]
 
   const stepCount = overview.length
   const currentStep = currentSequenceIndex + 1 //overview is sorted and index starts at 0

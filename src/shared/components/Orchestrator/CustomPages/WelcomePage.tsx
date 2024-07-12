@@ -3,6 +3,7 @@ import { declareComponentKeys, useTranslation } from 'i18n'
 import type { Metadata } from 'model/Metadata'
 import type { PageType } from 'model/Page'
 import { useEffect } from 'react'
+import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 import type { useStromaeNavigation } from '../useStromaeNavigation'
 import { WelcomeModal } from './WelcomeModal'
 
@@ -21,6 +22,8 @@ export function WelcomePage(props: {
     }
   }, [])
 
+  useDocumentTitle(t('document title'))
+  
   return (
     <>
       <div className={fr.cx('fr-my-4w')}>
@@ -37,7 +40,7 @@ export function WelcomePage(props: {
 }
 
 const { i18n } = declareComponentKeys<
-  'title' | 'paragraph' | 'title who answer'
+  'title' | 'paragraph' | 'document title'
 >()({ WelcomePage })
 
 export type I18n = typeof i18n

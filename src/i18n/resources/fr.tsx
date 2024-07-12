@@ -66,7 +66,7 @@ export const translations: Translations<'fr'> = {
     title: 'Bienvenue sur le questionnaire de votre enquête',
     paragraph:
       "Cette enquête permet de connaître plus d'informations sur le domaine concerné",
-    'title who answer': 'Qui doit répondre à ce questionnaire ?',
+    'document title': 'Accueil du questionnaire',
   },
   WelcomeModal: {
     title: 'Bienvenue',
@@ -79,11 +79,13 @@ export const translations: Translations<'fr'> = {
     title: 'Nous vous remercions pour votre collaboration à cette enquête.',
     paragraph: ({ formatedDate }) =>
       `Vos réponses ont été envoyées le ${formatedDate}.`,
+    'document title': 'Fin du questionnaire',
   },
   ValidationPage: {
     title: 'Vous êtes arrivé à la fin du questionnaire',
     paragraph:
       'Après envoi, vous ne pourrez plus modifier vos réponses et vous pourrez télécharger un accusé de réception.',
+    'document title': 'Envoi du questionnaire',
   },
   ValidationModal: {
     title: 'Voulez vous envoyer vos réponses',

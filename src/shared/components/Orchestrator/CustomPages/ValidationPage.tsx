@@ -1,8 +1,12 @@
 import { fr } from '@codegouvfr/react-dsfr'
 import { declareComponentKeys, useTranslation } from 'i18n'
+import { useDocumentTitle } from 'shared/hooks/useDocumentTitle'
 
 export function ValidationPage() {
   const { t } = useTranslation({ ValidationPage })
+  
+  useDocumentTitle(t('document title'))
+
   return (
     <div className={fr.cx('fr-my-4w')}>
       <h1>{t('title')}</h1>
@@ -11,7 +15,9 @@ export function ValidationPage() {
   )
 }
 
-const { i18n } = declareComponentKeys<'title' | 'paragraph'>()({
+const { i18n } = declareComponentKeys<
+  'title' | 'paragraph' | 'document title'
+>()({
   ValidationPage,
 })
 
