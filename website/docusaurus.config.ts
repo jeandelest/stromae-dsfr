@@ -3,12 +3,18 @@ import type { Config } from '@docusaurus/types'
 import { themes as prismThemes } from 'prism-react-renderer'
 
 const config: Config = {
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   title: 'Stromae',
+  staticDirectories: ['public', 'static'],
   tagline: `Orchestrateur web de la filière d'enquête de l'Insee`,
-  favicon: 'img/favicon.ico',
+  favicon: '/img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://inseefr.github.io/',
+  url: 'https://inseefr.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/stromae-dsfr',
@@ -37,7 +43,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/InseeFr/stromae-dsfr/tree/main/docs',
+          editUrl: 'https://github.com/InseeFr/stromae-dsfr/tree/main/website',
         },
         blog: false,
         theme: {
@@ -53,8 +59,8 @@ const config: Config = {
     navbar: {
       title: 'Stromae',
       logo: {
-        alt: 'My Site Logo',
-        src: 'assets/logo/logo-insee.png',
+        alt: 'Insee Logo',
+        src: '/logo/logo-insee.png',
       },
       items: [
         {
@@ -72,7 +78,7 @@ const config: Config = {
     },
     footer: {
       logo: {
-        src: 'assets/logo/Logo_Insee.svg',
+        src: '/logo/Logo_Insee.svg',
       },
       links: [
         {
@@ -89,6 +95,9 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    mermaid: {
+      theme: { light: 'default', dark: 'dark' },
     },
   } satisfies Preset.ThemeConfig,
 }
