@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "copy-dsfr-to-public",
+    "postinstall": "copy-dsfr-to-public ---publicDir static",
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
     "docusaurus": "docusaurus",
