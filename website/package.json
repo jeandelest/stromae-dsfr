@@ -18,15 +18,14 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^1.9.28",
+    "@codegouvfr/react-dsfr": "^1.9.31",
     "@docusaurus/core": "3.4.0",
     "@docusaurus/preset-classic": "3.4.0",
-    "@gouvfr/dsfr": "^1.11.2",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
-    "prism-react-renderer": "^2.3.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "@mdx-js/react": "^3.0.1",
+    "clsx": "^2.1.1",
+    "prism-react-renderer": "^2.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.4.0",
@@ -35,8 +34,8 @@
     "@docusaurus/types": "3.4.0",
     "docusaurus-plugin-sass": "^0.2.5",
     "dsfr-connect": "^1.1.2",
-    "sass": "^1.77.6",
-    "typescript": "~5.2.2"
+    "sass": "^1.77.8",
+    "typescript": "~5.5.3"
   },
   "browserslist": {
     "production": [
