@@ -8,6 +8,7 @@ import { reviewRoute } from 'pages/Review/route'
 import { securityRoute } from 'pages/Security/route'
 import { siteMapRoute } from 'pages/SiteMap/route'
 import { visualizeRoute } from 'pages/Visualize/route'
+import { memo } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import { AutoLogoutCountdown } from 'shared/components/Layout/AutoLogoutCountdown'
@@ -15,17 +16,8 @@ import { Footer } from 'shared/components/Layout/Footer'
 import { Header } from 'shared/components/Layout/Header'
 import { NotFoundError } from 'shared/error/notFoundError'
 
-export const rootRoute = createRootRouteWithContext<{
-  queryClient: QueryClient
-}>()({
-  component: RootComponent,
-  notFoundComponent: () => (
-    <ErrorComponent error={new NotFoundError()} redirectTo="home" />
-  ),
-})
-
 // eslint-disable-next-line react-refresh/only-export-components
-function RootComponent() {
+const RootComponent = memo(() => {
   return (
     <div
       style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
@@ -39,7 +31,16 @@ function RootComponent() {
       <AutoLogoutCountdown />
     </div>
   )
-}
+})
+
+export const rootRoute = createRootRouteWithContext<{
+  queryClient: QueryClient
+}>()({
+  component: RootComponent,
+  notFoundComponent: () => (
+    <ErrorComponent error={new NotFoundError()} redirectTo="home" />
+  ),
+})
 
 export const routeTree = rootRoute.addChildren([
   ...(import.meta.env.VITE_VISUALIZE_DISABLED === 'true'
