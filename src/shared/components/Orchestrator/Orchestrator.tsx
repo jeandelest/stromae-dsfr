@@ -79,8 +79,9 @@ export function Orchestrator(props: OrchestratorProps) {
   const { source, surveyUnitData, getReferentiel, mode, metadata } = props
 
   const initialCurrentPage = surveyUnitData?.stateData?.currentPage
-
   const pagination = source.pagination ?? 'question'
+
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const {
     getComponents,
@@ -194,8 +195,15 @@ export function Orchestrator(props: OrchestratorProps) {
     })
   })
 
-  // Persist data and stateData when page change in "collect" mode
   useUpdateEffect(() => {
+    //Reset scroll and focus when page change
+    if (containerRef.current) {
+      containerRef.current.scrollIntoView()
+      containerRef.current.setAttribute('tabindex', '-1')
+      containerRef.current.focus()
+      containerRef.current.removeAttribute('tabindex')
+    }
+    // Persist data and stateData when page change in "collect" mode
     if (mode !== 'collect') return
     const { updateDataAndStateData } = props
 
@@ -290,24 +298,25 @@ export function Orchestrator(props: OrchestratorProps) {
         overview={overview}
         isSequencePage={isSequencePage(components)}
         bottomContent={
-          <div className={fr.cx('fr-my-10v')}>
-            {currentPage === 'lunaticPage' && (
-              <LunaticComponents
-                components={bottomComponents}
-                slots={slotComponents}
-                componentProps={() => ({
-                  errors: activeErrors,
-                })}
-              />
-            )}
-          </div>
+          bottomComponents.length > 0 && (
+            <div className={fr.cx('fr-my-10v')}>
+              {currentPage === 'lunaticPage' && (
+                <LunaticComponents
+                  components={bottomComponents}
+                  slots={slotComponents}
+                  componentProps={() => ({
+                    errors: activeErrors,
+                  })}
+                />
+              )}
+            </div>
+          )
         }
       >
-        <div className={fr.cx('fr-mb-4v')}>
+        <div ref={containerRef} className={fr.cx('fr-mb-4v')}>
           {currentPage === 'welcomePage' && <WelcomePage metadata={metadata} />}
           {currentPage === 'lunaticPage' && (
             <LunaticComponents
-              autoFocusKey={pageTag}
               components={components}
               slots={slotComponents}
               componentProps={() => ({
