@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Les page dans le questionnaire
+# Les pages dans le questionnaire
 
 L'application Stromae affiche les questionnaires générés par Pogues. Toutefois, du contenu spécifique à Stromae est inséré au début et à la fin du questionnaire saisi. La navigation entre les pages est détaillée [ci-après](../navigation.md).
 
@@ -12,7 +12,7 @@ Cette page présente un aperçu de l'application et permet à l'utilisateur de d
 
 ![Page d'accueil](/img/welcomePage.png)
 
-Le texte "Cette enquête [...] sur le domaine concerné" est personnalisable via les métadonnées. Des personnalisations supplémentaires peuvent être ajoutées.
+Le texte "Cette enquête [...] sur le domaine concerné" est personnalisable via les métadonnées. Des personnalisations supplémentaires seront ajoutées prochainement.
 
 De plus, à l'arrivée sur le questionnaire, si des données sont récupérées, une modal s'affiche et propose de retourner à l'endroit où l'on a quitté le questionnaire ou de revenir à la première page.
 
@@ -34,6 +34,6 @@ S'il confirme en cliquant sur **Envoyer mes réponses**, une modal de confirmati
 
 ## Page de fin
 
-Une fois le questionnaire validé, l'utilisateur est redirigé vers une page de fin qui confirme la date de soumission du questionnaire et propose le téléchargement d'un accusé de réception.
+Une fois le questionnaire validé, l'utilisateur est redirigé vers une page de fin qui confirme la date de soumission du questionnaire et propose un bouton **Télécharger l'accusé de réception** pour télécharger un fichier PDF généré par l'API prouvant la soumission du questionnaire.
 
 ![Page de fin](/img/endPage.png)
