@@ -82,6 +82,7 @@ export function Orchestrator(props: OrchestratorProps) {
   const pagination = source.pagination ?? 'question'
 
   const containerRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
 
   const {
     getComponents,
@@ -195,13 +196,22 @@ export function Orchestrator(props: OrchestratorProps) {
     })
   })
 
+  //When page change
   useUpdateEffect(() => {
-    //Reset scroll and focus when page change
-    if (containerRef.current) {
-      containerRef.current.scrollIntoView()
-      containerRef.current.setAttribute('tabindex', '-1')
-      containerRef.current.focus()
-      containerRef.current.removeAttribute('tabindex')
+    //Reset scroll to the container when the top is not visible
+    if (
+      containerRef.current &&
+      containerRef.current.getBoundingClientRect().y < 0
+    ) {
+      containerRef.current.scrollIntoView(true)
+    }
+    //Reset the focus inside content so the next "Tab" will focus inside content
+    if (contentRef.current) {
+      contentRef.current.setAttribute('tabindex', '-1')
+      contentRef.current.focus({
+        preventScroll: true,
+      })
+      contentRef.current.removeAttribute('tabindex')
     }
     // Persist data and stateData when page change in "collect" mode
     if (mode !== 'collect') return
@@ -286,57 +296,63 @@ export function Orchestrator(props: OrchestratorProps) {
   )
 
   return (
-    <LunaticProvider>
-      <SurveyContainer
-        handleNextClick={goNext}
-        handlePreviousClick={goPrevious}
-        handleDownloadData={downloadAsJsonRef.current}
-        currentPage={currentPage}
-        mode={mode}
-        handleDepositProofClick={handleDepositProofClick}
-        pagination={pagination}
-        overview={overview}
-        isSequencePage={isSequencePage(components)}
-        bottomContent={
-          bottomComponents.length > 0 && (
-            <div className={fr.cx('fr-my-10v')}>
-              {currentPage === 'lunaticPage' && (
-                <LunaticComponents
-                  components={bottomComponents}
-                  slots={slotComponents}
-                  componentProps={() => ({
-                    errors: activeErrors,
-                  })}
-                />
-              )}
-            </div>
-          )
-        }
-      >
-        <div ref={containerRef} className={fr.cx('fr-mb-4v')}>
-          {currentPage === 'welcomePage' && <WelcomePage metadata={metadata} />}
-          {currentPage === 'lunaticPage' && (
-            <LunaticComponents
-              components={components}
-              slots={slotComponents}
-              componentProps={() => ({
-                errors: activeErrors,
-              })}
+    <div ref={containerRef}>
+      <LunaticProvider>
+        <SurveyContainer
+          handleNextClick={goNext}
+          handlePreviousClick={goPrevious}
+          handleDownloadData={downloadAsJsonRef.current}
+          currentPage={currentPage}
+          mode={mode}
+          handleDepositProofClick={handleDepositProofClick}
+          pagination={pagination}
+          overview={overview}
+          isSequencePage={isSequencePage(components)}
+          bottomContent={
+            bottomComponents.length > 0 && (
+              <div className={fr.cx('fr-my-10v')}>
+                {currentPage === 'lunaticPage' && (
+                  <LunaticComponents
+                    components={bottomComponents}
+                    slots={slotComponents}
+                    componentProps={() => ({
+                      errors: activeErrors,
+                    })}
+                  />
+                )}
+              </div>
+            )
+          }
+        >
+          <div ref={contentRef} className={fr.cx('fr-mb-4v')}>
+            {currentPage === 'welcomePage' && (
+              <WelcomePage metadata={metadata} />
+            )}
+            {currentPage === 'lunaticPage' && (
+              <LunaticComponents
+                components={components}
+                slots={slotComponents}
+                componentProps={() => ({
+                  errors: activeErrors,
+                })}
+              />
+            )}
+            {currentPage === 'validationPage' && <ValidationPage />}
+            {currentPage === 'endPage' && (
+              <EndPage date={surveyUnitData?.stateData?.date} />
+            )}
+            <WelcomeModal
+              goBack={() =>
+                initialCurrentPage
+                  ? goToPage({ page: initialCurrentPage })
+                  : null
+              }
+              open={shouldWelcome}
             />
-          )}
-          {currentPage === 'validationPage' && <ValidationPage />}
-          {currentPage === 'endPage' && (
-            <EndPage date={surveyUnitData?.stateData?.date} />
-          )}
-          <WelcomeModal
-            goBack={() =>
-              initialCurrentPage ? goToPage({ page: initialCurrentPage }) : null
-            }
-            open={shouldWelcome}
-          />
-          <ValidationModal actionsRef={validationModalActionsRef} />
-        </div>
-      </SurveyContainer>
-    </LunaticProvider>
+            <ValidationModal actionsRef={validationModalActionsRef} />
+          </div>
+        </SurveyContainer>
+      </LunaticProvider>
+    </div>
   )
 }
