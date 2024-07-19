@@ -1,5 +1,9 @@
 import type { QueryClient } from '@tanstack/react-query'
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
+import {
+  createRootRouteWithContext,
+  Outlet,
+  ScrollRestoration,
+} from '@tanstack/react-router'
 import { accessibilityRoute } from 'pages/Accessibility/route'
 import { collectRoute } from 'pages/Collect/route'
 import { legalsRoute } from 'pages/Legals/route'
@@ -25,6 +29,7 @@ const RootComponent = memo(() => {
       <Header />
       <main id="main" role="main">
         <Toaster />
+        <ScrollRestoration />
         <Outlet />
       </main>
       <Footer />
