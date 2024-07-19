@@ -13,14 +13,13 @@
     "_format": "prettier '**/*.{ts,tsx,json,md}'",
     "format": "npm run _format -- --write",
     "format:check": "npm run _format -- --list-different",
-    "postinstall": "copy-dsfr-to-public",
-    "predev": "only-include-used-icons",
-    "prebuild": "only-include-used-icons",
+    "predev": "react-dsfr update-icons",
+    "prebuild": "react-dsfr update-icons",
     "openapi": "orval --config ./orval.config.ts",
     "resolve-schema": "node ./script/resolveSchema.js"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^1.9.31",
+    "@codegouvfr/react-dsfr": "^1.10.9",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@inseefr/lunatic": "^3.2.3",

@@ -274,12 +274,12 @@
     "@babel/helper-validator-identifier" "^7.24.7"
     to-fast-properties "^2.0.0"
 
-"@codegouvfr/react-dsfr@^1.9.31":
-  version "1.9.31"
-  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.9.31.tgz#b8747a20344766fbf2692c82d4fe77f26923cf99"
-  integrity sha512-rE6SfshC/NmqkX6vbQiHtej5VhLkzAovDJmrqNY4CByF6ROkoUNmmphJJsQ6lUmttQ2QH2pAeesgdhjEqnsdgA==
+"@codegouvfr/react-dsfr@^1.10.9":
+  version "1.10.9"
+  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-1.10.9.tgz#49175522bad37b647f27d5126ceee3e9ee50314a"
+  integrity sha512-+y+ptvsiFcnTxIVjtoqNTKChEDIQiuvM3btt0FE3LF1ArP/KeNFb+5GFOX8E6fIvkV54DiX+qBc1VWfjfsmeqg==
   dependencies:
-    tsafe "^1.6.3"
+    tsafe "^1.7.2"
     yargs-parser "^21.1.1"
 
 "@data-forge/serialization@^1.0.0":
@@ -5128,7 +5128,7 @@ ts-api-utils@^1.3.0:
   resolved "https://registry.yarnpkg.com/ts-api-utils/-/ts-api-utils-1.3.0.tgz#4b490e27129f1e8e686b45cc4ab63714dc60eea1"
   integrity sha512-UQMIo7pb8WRomKR1/+MFVLTroIvDVtMX3K6OUir8ynLyzB8Jeriont2bTAtmNPa1ekAgN7YPDyf6V+ygrdU+eQ==
 
-tsafe@^1.6.3, tsafe@^1.6.5, tsafe@^1.6.6, tsafe@^1.7.2:
+tsafe@^1.6.5, tsafe@^1.6.6, tsafe@^1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/tsafe/-/tsafe-1.7.2.tgz#0f63d414876287ad01b135f832722f93e22da374"
   integrity sha512-dAPfQLhCfCRre5qs+Z5Q2a7s2CV7RxffZUmvj7puGaePYjECzWREJFd3w4XSFe/T5tbxgowfItA/JSSZ6Ma3dA==

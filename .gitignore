@@ -23,5 +23,4 @@ public/workers/*
 *.sln
 *.sw?
 
-/public/dsfr/
 /public/nomenclatures/
