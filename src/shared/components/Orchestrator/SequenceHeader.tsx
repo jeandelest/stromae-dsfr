@@ -16,11 +16,15 @@ export function SequenceHeader(props: SequenceHeaderProps) {
     (sequence) => sequence.current
   )
 
-  const currentSequence = overview[currentSequenceIndex]
+  if (currentSequenceIndex === -1) {
+    console.error('There are no explicit current Sequence')
+  }
 
-  useSequenceTitle(currentSequence.label)
+  const currentSequence = overview.at(currentSequenceIndex) //currentSequence can be undefined when overview equals to []
 
-  if (currentSequenceIndex < 0) return null
+  useSequenceTitle(currentSequence?.label)
+
+  if (currentSequenceIndex < 0 || currentSequence === undefined) return null
 
   const stepCount = overview.length
   const currentStep = currentSequenceIndex + 1 //overview is sorted and index starts at 0
