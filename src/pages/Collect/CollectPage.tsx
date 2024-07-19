@@ -3,6 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { getGetNomenclatureByIdQueryOptions } from 'api/04-nomenclatures'
 import {
   getGenerateDepositProofQueryOptions,
+  getGetSurveyUnitByIdQueryKey,
   updateSurveyUnitDataStateDataById,
 } from 'api/06-survey-units'
 import type { StateData } from 'model/StateData'
@@ -32,6 +33,8 @@ export const CollectPage = memo(function CollectPage() {
     [queryClient]
   )
 
+  const queryKeyToInvalidate = getGetSurveyUnitByIdQueryKey(surveyUnitId)
+
   const updateDataAndStateData = (params: {
     stateData: StateData
     data: LunaticData['COLLECTED']
@@ -42,6 +45,9 @@ export const CollectPage = memo(function CollectPage() {
       stateData: params.stateData,
     })
       .then(() => {
+        queryClient.invalidateQueries({
+          queryKey: [queryKeyToInvalidate],
+        })
         params.onSuccess?.()
         params.data &&
           showToast({
