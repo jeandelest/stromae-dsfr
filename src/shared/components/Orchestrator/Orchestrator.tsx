@@ -157,7 +157,7 @@ export function Orchestrator(props: OrchestratorProps) {
     openValidationModal: () => validationModalActionsRef.current.open(),
   })
 
-  const getCurrentStateData = (): StateData => {
+  const getCurrentStateData = useRefSync((): StateData => {
     switch (currentPage) {
       case 'endPage':
         return { date: Date.now(), currentPage, state: 'VALIDATED' }
@@ -168,13 +168,13 @@ export function Orchestrator(props: OrchestratorProps) {
       default:
         return { date: Date.now(), currentPage, state: 'INIT' }
     }
-  }
+  })
 
   const downloadAsJsonRef = useRefSync(() => {
     downloadAsJson<SurveyUnitData>({
       dataToDownload: {
         data: getData(false),
-        stateData: getCurrentStateData(),
+        stateData: getCurrentStateData.current(),
         personalization: surveyUnitData?.personalization,
       },
       //The label of source is not dynamic
@@ -190,7 +190,7 @@ export function Orchestrator(props: OrchestratorProps) {
     const data = getChangedData()
 
     return updateDataAndStateData({
-      stateData: getCurrentStateData(),
+      stateData: getCurrentStateData.current(),
       data: isObjectEmpty(data.COLLECTED ?? {}) ? undefined : data.COLLECTED,
       onSuccess: resetChangedData,
     })
@@ -220,7 +220,7 @@ export function Orchestrator(props: OrchestratorProps) {
     const data = getChangedData()
 
     updateDataAndStateData({
-      stateData: getCurrentStateData(),
+      stateData: getCurrentStateData.current(),
       data: isObjectEmpty(data.COLLECTED ?? {}) ? undefined : data.COLLECTED,
       onSuccess: resetChangedData,
     })
@@ -236,7 +236,8 @@ export function Orchestrator(props: OrchestratorProps) {
 
       if (!isObjectEmpty(data.COLLECTED ?? {})) {
         updateDataAndStateData({
-          stateData: getCurrentStateData(),
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          stateData: getCurrentStateData.current(),
           data: data.COLLECTED,
           onSuccess: resetChangedData,
         })

@@ -2,8 +2,8 @@ import type { LunaticSource } from '@inseefr/lunatic'
 import { createRoute } from '@tanstack/react-router'
 import { getGetQuestionnaireDataQueryOptions } from 'api/03-questionnaires'
 import {
-  getGetSurveyUnitByIdQueryOptions,
   getGetSurveyUnitMetadataByIdQueryOptions,
+  getSurveyUnitById,
 } from 'api/06-survey-units'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
 import { rootRoute } from 'router/router'
@@ -41,13 +41,12 @@ export const collectRoute = createRoute({
       )
       .then((e) => e as unknown as LunaticSource) // We'd like to use zod, but the files are heavy.
 
-    const surveyUnitDataPr = queryClient
-      .ensureQueryData(
-        getGetSurveyUnitByIdQueryOptions(surveyUnitId, {
-          request: { signal: abortController.signal },
-        })
-      )
-      .then((suData) => suData as SurveyUnitData) // data are heavy too
+    //We don't need the cache from react-query for data that changed too often and need to be fresh
+    const surveyUnitDataPr = getSurveyUnitById(
+      surveyUnitId,
+      undefined,
+      abortController.signal
+    ).then((suData) => suData as SurveyUnitData) // data are heavy too
 
     const metadataPr = queryClient
       .ensureQueryData(
@@ -75,6 +74,10 @@ export const collectRoute = createRoute({
       })
     )
   },
+  // Do not cache this route's data after it's unloaded
+  gcTime: 0,
+  //Show pendingComponent directly
+  pendingMs: 0,
   errorComponent: ({ error }) => {
     return <ErrorComponent error={error} redirectTo="portal" />
   },
