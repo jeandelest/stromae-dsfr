@@ -13,10 +13,16 @@ export const SecurityPage = memo(function SecurityPage() {
         segments={[]}
       />
       <h2>{t('security title')}</h2>
+      {t('security content', {
+        fullUrl: `${window.location.protocol}//${window.location.hostname}`,
+      })}
     </Grid>
   )
 })
 
-const { i18n } = declareComponentKeys<'security title'>()('SecurityPage')
+const { i18n } = declareComponentKeys<
+  | 'security title'
+  | { K: 'security content'; R: JSX.Element; P: { fullUrl: string } }
+>()('SecurityPage')
 
 export type I18n = typeof i18n

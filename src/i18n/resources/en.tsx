@@ -328,6 +328,13 @@ export const translations: Translations<'en'> = {
   },
   SecurityPage: {
     'security title': 'Security',
+    'security content': ({ fullUrl }) => (
+      <p>
+        The site <a href={fullUrl}>{fullUrl}</a> has been subject to an approval
+        decision issued by the approval authority on behalf of the qualified
+        authority for information system security.
+      </p>
+    ),
   },
   SiteMapPage: {
     'sitemap title': 'Site map',

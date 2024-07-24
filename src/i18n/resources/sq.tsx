@@ -335,6 +335,13 @@ export const translations: Translations<'sq'> = {
   },
   SecurityPage: {
     'security title': 'Siguria',
+    'security content': ({ fullUrl }) => (
+      <p>
+        Faqja <a href={fullUrl}>{fullUrl}</a> ka qenë subjekt i një vendimi
+        miratimi të lëshuar nga autoriteti i miratimit në emër të autoritetit të
+        kualifikuar për sigurinë e sistemit të informacionit.
+      </p>
+    ),
   },
   SiteMapPage: {
     'sitemap title': 'Harta e sajtit',

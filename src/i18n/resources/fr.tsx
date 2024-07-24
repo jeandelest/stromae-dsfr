@@ -342,6 +342,13 @@ export const translations: Translations<'fr'> = {
   },
   SecurityPage: {
     'security title': 'Sécurité',
+    'security content': ({ fullUrl }) => (
+      <p>
+        Le site <a href={fullUrl}>{fullUrl}</a> a fait l'objet d'une décision
+        d'homologation prononcée par l'autorité d'homologation pour le compte de
+        l'autorité qualifiée de la sécurité du système d'information.
+      </p>
+    ),
   },
   SiteMapPage: {
     'sitemap title': 'Plan du site',
