@@ -19,10 +19,10 @@
     "resolve-schema": "node ./script/resolveSchema.js"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^1.10.10",
+    "@codegouvfr/react-dsfr": "^1.10.11",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@inseefr/lunatic": "^3.2.3",
+    "@inseefr/lunatic": "^3.2.4",
     "@inseefr/lunatic-dsfr": "^2.2.3",
     "@mui/material": "^5.16.4",
     "@tanstack/react-query": "^5.51.4",
