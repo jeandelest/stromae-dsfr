@@ -37,7 +37,6 @@ export function Footer() {
   return (
     <DSFRFooter
       accessibility="non compliant"
-      contentDescription={t('footer content description')}
       license={t('license')}
       homeLinkProps={{
         search: true,
@@ -58,6 +57,12 @@ export function Footer() {
         orientation: 'vertical',
       }}
       partnersLogos={partnersLogos}
+      domains={[
+        'cnis.fr',
+        'ec.europa.eu/eurostat',
+        'insee.fr',
+        'plus.transformation.gouv.fr',
+      ]}
       bottomItems={[
         {
           text: t_SecurityPage('security title'),
