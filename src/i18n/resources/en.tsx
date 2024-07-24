@@ -4,8 +4,7 @@ import type { Translations } from 'i18n/types'
 export const translations: Translations<'en'> = {
   Footer: {
     'footer operator logo alt': 'Insee, measure to understand',
-    'footer content description':
-      'Measure to understand: respond for an informed future.',
+
     license: (
       <>
         This site uses Insee's 'Stromae' and 'Lunatic' applications, which are

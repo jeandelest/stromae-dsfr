@@ -86,9 +86,7 @@ export function Footer() {
 }
 
 const { i18n } = declareComponentKeys<
-  | 'footer content description'
-  | 'footer operator logo alt'
-  | { K: 'license'; R: JSX.Element }
+  'footer operator logo alt' | { K: 'license'; R: JSX.Element }
 >()({ Footer })
 
 export type I18n = typeof i18n

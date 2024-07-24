@@ -4,8 +4,7 @@ import type { Translations } from 'i18n/types'
 export const translations: Translations<'sq'> = {
   Footer: {
     'footer operator logo alt': 'Insee, mat për të kuptuar',
-    'footer content description':
-      'Matni për të kuptuar: përgjigjuni për një të ardhme të informuar.',
+
     license: (
       <>
         Ky sajt përdor aplikacionet e Insee 'Stromae' dhe 'Lunatic', të cilat
