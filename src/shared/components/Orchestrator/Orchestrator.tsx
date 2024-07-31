@@ -10,7 +10,7 @@ import { useNavigate } from '@tanstack/react-router'
 import type { Metadata } from 'model/Metadata'
 import type { StateData } from 'model/StateData'
 import type { SurveyUnitData } from 'model/SurveyUnitData'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useAddPreLogoutAction } from 'shared/hooks/prelogout'
 import { downloadAsJson } from 'utils/downloadAsJson'
 import { isObjectEmpty } from 'utils/isObjectEmpty'
@@ -22,12 +22,15 @@ import { ValidationPage } from './CustomPages/ValidationPage'
 import { WelcomeModal } from './CustomPages/WelcomeModal'
 import { WelcomePage } from './CustomPages/WelcomePage'
 import { SurveyContainer } from './SurveyContainer'
+import { VTLDevTools } from './VTLDevTools/VTLDevtools'
+import { createLunaticLogger } from './VTLDevTools/VTLErrorStore'
 import { slotComponents } from './slotComponents'
 import { useStromaeNavigation } from './useStromaeNavigation'
 import { isBlockingError, isSameErrors } from './utils/controls'
 import type {
   LunaticComponentsProps,
   LunaticGetReferentiel,
+  LunaticPageTag,
 } from './utils/lunaticType'
 import { scrollAndFocusToFirstError } from './utils/scrollAndFocusToFirstError'
 import { isSequencePage } from './utils/sequence'
@@ -83,6 +86,15 @@ export function Orchestrator(props: OrchestratorProps) {
 
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+  const pageTagRef = useRef<LunaticPageTag>('1')
+
+  const lunaticLogger = useMemo(
+    () =>
+      mode === 'visualize'
+        ? createLunaticLogger({ pageTag: pageTagRef })
+        : undefined,
+    [mode]
+  )
 
   const {
     getComponents,
@@ -99,12 +111,15 @@ export function Orchestrator(props: OrchestratorProps) {
     resetChangedData,
     overview,
   } = useLunatic(source, surveyUnitData?.data, {
+    logger: lunaticLogger,
     activeControls: true,
     getReferentiel,
     autoSuggesterLoading: true,
     trackChanges: mode === 'collect',
     withOverview: true,
   })
+
+  pageTagRef.current = pageTag
 
   const [activeErrors, setActiveErrors] = useState<
     Record<string, LunaticError[]> | undefined
@@ -351,6 +366,7 @@ export function Orchestrator(props: OrchestratorProps) {
               open={shouldWelcome}
             />
             <ValidationModal actionsRef={validationModalActionsRef} />
+            {mode === 'visualize' && <VTLDevTools />}
           </div>
         </SurveyContainer>
       </LunaticProvider>
