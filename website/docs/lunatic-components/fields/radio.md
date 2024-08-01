@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Les questions à choix unique
 
 Le composant Radio Permet de sélectionner une valeur parmi une liste d'options (questions à choix unique).

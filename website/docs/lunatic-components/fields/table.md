@@ -1,3 +1,7 @@
+---
+sidebar_position: 9
+---
+
 # Les tableaux fixes
 
 Le composant Table est un composant permettant d'afficher un tableau d'information à l'utilisateur.

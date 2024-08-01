@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Les durées
 
 Le composant Duration peut être utilisée pour collecter une date. Elle peut consister en :

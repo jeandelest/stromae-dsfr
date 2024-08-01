@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Les questions à choix multiples
 
 La question à choix multiples est représentée par un composant CheckboxGroup.

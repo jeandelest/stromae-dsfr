@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Les champs Date
 
 Le composant Datepicker permet à l'utilisateur de sélectionner une date.

@@ -2623,7 +2623,7 @@ html[data-theme='dark'] {
   font-style: normal;
   font-weight: 300;
   src:
-    url('/dsfr/fonts//Marianne-Light.woff2') format('woff2'),
+    url('/dsfr/fonts/Marianne-Light.woff2') format('woff2'),
     url('/dsfr/fonts/Marianne-Light.woff') format('woff');
 }
 

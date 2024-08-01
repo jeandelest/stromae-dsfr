@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Champ Nombre
 
 Le composant InputNumber permet d'afficher un champ numérique.

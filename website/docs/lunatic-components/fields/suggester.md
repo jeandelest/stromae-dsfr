@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # La recherche sur liste
 
 Le composant Suggester permet d'avoir un menu déroulant avec une option de recherche.

@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # La liste déroulante
 
 Le composant Dropdown permet de générer un menu déroulant.

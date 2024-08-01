@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Les déclarations
 
 La déclaration ou aide est un texte qui aidera l'enquêté à comprendre la question et comment y répondre.
