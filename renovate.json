@@ -11,6 +11,17 @@
       "labels": ["dependencies"]
     },
     {
+      "matchPaths": ["package.json"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "lunatic",
+      "groupSlug": "lunatic",
+      "matchPackagePatterns": ["@inseefr/lunatic.*"],
+      "labels": ["lunatic"],
+      "bumpVersion": "minor",
+      "dependencyDashboardApproval": true
+    },
+    {
       "matchPaths": ["website/**"],
       "matchDepTypes": ["dependencies", "devDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
