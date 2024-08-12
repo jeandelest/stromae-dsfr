@@ -1,9 +1,9 @@
-import { prOidc } from 'oidc'
+import { getOidc } from 'oidc'
 
 export async function protectedRouteLoader(
   extraQueryParams?: Record<string, string>
 ) {
-  const oidc = await prOidc
+  const oidc = await getOidc()
 
   if (oidc.isUserLoggedIn) {
     return null

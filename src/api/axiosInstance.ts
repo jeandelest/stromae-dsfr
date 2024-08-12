@@ -1,12 +1,12 @@
 import axios, { type AxiosRequestConfig } from 'axios'
-import { prOidc } from 'oidc'
+import { getOidc } from 'oidc'
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 })
 
 const getAccessToken = async () => {
-  const oidc = await prOidc
+  const oidc = await getOidc()
 
   if (!oidc.isUserLoggedIn) return undefined
 

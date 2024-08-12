@@ -2,7 +2,7 @@ import { createMockReactOidc } from 'oidc-spa/mock/react'
 import { createReactOidc } from 'oidc-spa/react'
 import { z } from 'zod'
 
-export const { OidcProvider, useOidc, prOidc } =
+export const { OidcProvider, useOidc, getOidc } =
   import.meta.env.VITE_OIDC_ENABLED === 'false'
     ? createMockReactOidc({ isUserInitiallyLoggedIn: false })
     : createReactOidc({
