@@ -56,6 +56,7 @@ export const SiteMapPage = memo(function SiteMapPage() {
   )
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<'sitemap title'>()({ SiteMapPage })
 
 export type I18n = typeof i18n

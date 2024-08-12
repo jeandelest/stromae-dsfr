@@ -21,6 +21,7 @@ export function WelcomePage(props: { metadata?: Metadata }) {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   'title' | 'paragraph' | 'document title'
 >()({ WelcomePage })

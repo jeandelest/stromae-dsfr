@@ -22,6 +22,7 @@ export const NavigationAssistancePage = memo(
   }
 )
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   | 'navigation assistance title'
   | { K: 'navigation assistance content'; R: ReactNode }

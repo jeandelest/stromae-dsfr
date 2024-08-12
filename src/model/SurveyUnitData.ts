@@ -10,4 +10,4 @@ export type SurveyUnitData = {
   personalization?: Array<{ name: string; value: string }>
 }
 
-assert<Extends<SurveyUnitData, SurveyUnit>>
+assert<Extends<SurveyUnitData, SurveyUnit>>()

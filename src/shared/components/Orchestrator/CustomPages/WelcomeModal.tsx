@@ -52,6 +52,7 @@ export function WelcomeModal({ goBack, open }: Props) {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   'title' | 'button first page' | 'button go back' | 'content'
 >()({ WelcomeModal })

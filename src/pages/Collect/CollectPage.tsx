@@ -48,14 +48,17 @@ export const CollectPage = memo(function CollectPage() {
         queryClient.invalidateQueries({
           queryKey: [queryKeyToInvalidate],
         })
+
         params.onSuccess?.()
-        params.data &&
+
+        if (params.data) {
           showToast({
             severity: 'success',
             description:
               'Vos modifications ont été enregistrées et sauvegardées.',
             title: 'Données sauvegardées avec succès !',
           })
+        }
       })
       .catch(() => {
         showToast({

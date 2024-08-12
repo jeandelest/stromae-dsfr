@@ -96,6 +96,7 @@ type AllErrorKeys =
   | GenerateKeys<'unhandledError'>
   | GenerateKeys<'unknownError'>
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<AllErrorKeys>()('errorNormalizer')
 
 export type I18n = typeof i18n

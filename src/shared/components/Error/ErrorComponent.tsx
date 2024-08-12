@@ -111,6 +111,7 @@ export function ErrorComponent(props: Props) {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<{
   K: 'error button redirect to'
   P: { redirectTo: Props['redirectTo'] }

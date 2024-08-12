@@ -75,6 +75,7 @@ export function Header() {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   | 'home link title'
   | 'quick access support'

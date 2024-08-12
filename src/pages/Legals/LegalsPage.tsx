@@ -42,6 +42,7 @@ export const LegalsPage = memo(function LegalsPage() {
   )
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   | 'legals title'
   | 'service title'

@@ -85,6 +85,7 @@ export function Footer() {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   'footer operator logo alt' | { K: 'license'; R: JSX.Element }
 >()({ Footer })

@@ -20,6 +20,7 @@ export const SecurityPage = memo(function SecurityPage() {
   )
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   | 'security title'
   | { K: 'security content'; R: JSX.Element; P: { fullUrl: string } }

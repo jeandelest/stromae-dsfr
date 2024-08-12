@@ -62,6 +62,7 @@ export const AccessibilityPage = memo(function AccessibilityPage() {
   )
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   | 'accessibility title'
   | { K: 'declaration content'; R: JSX.Element; P: { fullUrl: string } }

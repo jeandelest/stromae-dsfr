@@ -17,6 +17,7 @@ export function EndPage(props: { date: number | undefined }) {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   | 'title'
   | {

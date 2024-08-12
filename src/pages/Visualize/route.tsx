@@ -69,7 +69,9 @@ export const visualizeRoute = createRoute({
               secondariesLogo: metadata.logos?.secondaries,
             })
 
-            metadata.label && (document.title = metadata.label)
+            if (metadata.label) {
+              document.title = metadata.label
+            }
 
             return metadata
           })

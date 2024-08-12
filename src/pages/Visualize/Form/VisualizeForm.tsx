@@ -88,6 +88,7 @@ export function VisualizeForm() {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   | 'form title'
   | 'source file title'

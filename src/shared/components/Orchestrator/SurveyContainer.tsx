@@ -145,6 +145,7 @@ export function SurveyContainer(
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   | 'button previous title'
   | 'button previous label'

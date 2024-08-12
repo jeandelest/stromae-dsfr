@@ -59,6 +59,7 @@ export function ValidationModal({ actionsRef }: Props) {
     </modal.Component>
   )
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
   'title' | 'button cancel' | 'button validate' | 'content'
 >()({ ValidationModal })
