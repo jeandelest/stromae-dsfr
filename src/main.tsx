@@ -23,7 +23,7 @@ declare module '@codegouvfr/react-dsfr/spa' {
   }
 }
 
-export const queryClient = new QueryClient({
+const queryClient = new QueryClient({
   defaultOptions: {
     mutations: {
       networkMode: 'always',
