@@ -20,7 +20,9 @@ De plus, à l'arrivée sur le questionnaire, si des données sont récupérées,
 
 ## Le formulaire
 
-L'affichage du questionnaire est effectué grâce à la librairie Lunatic et à [Lunatic-DSFR](https://github.com/InseeFr/Lunatic-dsfr), qui personnalise l'ensemble des composants rendus par Lunatic au système de design de l'État. L'utilisateur peut naviguer à travers les questions et saisir ses réponses.
+L'affichage du questionnaire est effectué grâce à la librairie Lunatic et à [Lunatic-DSFR](https://github.com/InseeFr/Lunatic-dsfr), qui personnalise l'ensemble des composants en utilisant le système de design de l'État.
+
+L'utilisateur peut naviguer à travers les questions et saisir ses réponses.
 
 ## Page de validation
 

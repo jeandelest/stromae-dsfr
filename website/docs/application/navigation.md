@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Navigation
 
-La navigation des pages est linéaire, a l'intérieur du questionnaire il existe toutefois un cas particulier le rond-point.
+La navigation des pages est linéaire, à l'intérieur du questionnaire il existe toutefois un cas particulier : [le rond-point](../lunatic-components/aggregators/roundabout.md).
 
 Ce diagramme explique la navigation entre les différentes pages de l'orchestrateur :
 

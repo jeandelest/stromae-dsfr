@@ -1,6 +1,6 @@
 # Contrôles
 
-Les contrôles permettent de définir des règles de validation dans le questionnaire (sous forme d'expression VTL). Ils sont [spécifiés dans Pogues](https://inseefr.github.io/Bowie/pogues/guide/) ou ajoutés automatiquement et exécutés par Lunatic. Stromae DSFR s'occupe simplement de piloter leurs exécutions.
+Les contrôles permettent de définir des règles de validation dans le questionnaire (sous forme d'expression VTL). Ils sont [spécifiés dans Pogues](https://inseefr.github.io/Bowie/pogues/guide/) ou ajoutés automatiquement et exécutés par Lunatic. Stromae DSFR s'occupe simplement de piloter leur exécution.
 
 Chaque contrôle possède les caractéristiques suivantes :
 
@@ -42,4 +42,4 @@ Lorsque plusieurs contrôles ont été décrits, ils apparaissent avec une préc
 ![image](https://github.com/InseeFr/Stromae/assets/71011059/daa729f2-331e-41a7-9fef-a3a1650ce8f4)
 ![image](https://github.com/InseeFr/Stromae/assets/71011059/68dfa757-e997-430c-a45e-c8d50cf0d8b5)
 
-Stromae DSFR se contente de piloter l’exécution des contrôles et de transmettre les erreurs aux composants affichés par Lunatic. La customisation de l’affichage des composants, et donc des contrôles, est gérée par Lunatic DSFR.
+Stromae DSFR se contente de piloter l’exécution des contrôles et de transmettre les erreurs aux composants affichés par Lunatic. La customisation de l’affichage des composants, et donc des contrôles, est gérée par [Lunatic DSFR](https://github.com/InseeFr/Lunatic-dsfr).
