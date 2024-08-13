@@ -3,9 +3,10 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.10-SNAPSHOT
+ * OpenAPI spec version: 4.3.15
  */
 import type { SchemaVariableTypeAnyOfItem } from './schemaVariableTypeAnyOfItem'
+import type { SchemaVariableTypeAnyOfTwoItemItem } from './schemaVariableTypeAnyOfTwoItemItem'
 
 /**
  * Validation of variables values in survey unit data
@@ -16,3 +17,4 @@ export type SchemaVariableType =
   | boolean
   | null
   | SchemaVariableTypeAnyOfItem[]
+  | SchemaVariableTypeAnyOfTwoItemItem[][]

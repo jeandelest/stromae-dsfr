@@ -3,7 +3,7 @@
   "info": {
     "title": "queen-api",
     "description": "API for Queen/Stromae",
-    "version": "4.3.10-SNAPSHOT"
+    "version": "4.3.15"
   },
   "servers": [
     {
@@ -82,7 +82,7 @@
       "put": {
         "tags": ["06. Survey units"],
         "summary": "Update survey-unit",
-        "description": "Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT / ",
+        "description": "Authorized roles: ADMIN / WEBCLIENT / INTERVIEWER / ",
         "operationId": "updateSurveyUnitById",
         "parameters": [
           {
@@ -134,7 +134,7 @@
       "patch": {
         "tags": ["06. Survey units"],
         "summary": "Update survey-unit updated data/state-data",
-        "description": "Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT / ",
+        "description": "Authorized roles: ADMIN / WEBCLIENT / INTERVIEWER / SURVEY_UNIT / ",
         "operationId": "updateSurveyUnitDataStateDataById",
         "parameters": [
           {
@@ -195,7 +195,7 @@
       "put": {
         "tags": ["06. Survey units"],
         "summary": "Update state-data for a survey unit",
-        "description": "Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT / ",
+        "description": "Authorized roles: ADMIN / WEBCLIENT / INTERVIEWER / SURVEY_UNIT / ",
         "operationId": "setStateData",
         "parameters": [
           {
@@ -317,7 +317,7 @@
       "put": {
         "tags": ["06. Survey units"],
         "summary": "Update data for a survey unit",
-        "description": "Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT / ",
+        "description": "Authorized roles: ADMIN / WEBCLIENT / INTERVIEWER / SURVEY_UNIT / ",
         "operationId": "updateData",
         "parameters": [
           {
@@ -1300,6 +1300,39 @@
   },
   "components": {
     "schemas": {
+      "StateDataForSurveyUnitUpdate": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": ["INIT", "COMPLETED", "VALIDATED", "TOEXTRACT", "EXTRACTED"]
+          },
+          "date": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "currentPage": {
+            "type": "string"
+          }
+        },
+        "required": ["currentPage", "date"]
+      },
+      "SurveyUnitUpdate": {
+        "properties": {
+          "personalization": {
+            "$ref": "schema.personalization.json"
+          },
+          "data": {
+            "type": "object",
+            "$ref": "schema.data.json"
+          },
+          "comment": {
+            "type": "object"
+          },
+          "stateData": {
+            "$ref": "#/components/schemas/StateDataForSurveyUnitUpdate"
+          }
+        }
+      },
       "StateDataUpdate": {
         "properties": {
           "state": {
@@ -1315,23 +1348,6 @@
           }
         },
         "required": ["currentPage", "date", "state"]
-      },
-      "SurveyUnitUpdate": {
-        "properties": {
-          "personalization": {
-            "$ref": "schema.personalization.json"
-          },
-          "data": {
-            "type": "object",
-            "$ref": "schema.data.json"
-          },
-          "comment": {
-            "type": "object"
-          },
-          "stateData": {
-            "$ref": "#/components/schemas/StateDataUpdate"
-          }
-        }
       },
       "StateData": {
         "properties": {

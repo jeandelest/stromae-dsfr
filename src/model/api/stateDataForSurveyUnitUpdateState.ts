@@ -6,11 +6,11 @@
  * OpenAPI spec version: 4.3.15
  */
 
-export type StateDataUpdateState =
-  (typeof StateDataUpdateState)[keyof typeof StateDataUpdateState]
+export type StateDataForSurveyUnitUpdateState =
+  (typeof StateDataForSurveyUnitUpdateState)[keyof typeof StateDataForSurveyUnitUpdateState]
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const StateDataUpdateState = {
+export const StateDataForSurveyUnitUpdateState = {
   INIT: 'INIT',
   COMPLETED: 'COMPLETED',
   VALIDATED: 'VALIDATED',

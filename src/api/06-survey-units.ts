@@ -3,7 +3,7 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.10-SNAPSHOT
+ * OpenAPI spec version: 4.3.15
  */
 import type {
   DefinedInitialDataOptions,
@@ -193,7 +193,7 @@ export function useGetSurveyUnitById<
 }
 
 /**
- * Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT /
+ * Authorized roles: ADMIN / WEBCLIENT / INTERVIEWER /
  * @summary Update survey-unit
  */
 export const updateSurveyUnitById = (
@@ -349,7 +349,7 @@ export const useDeleteSurveyUnit = <
   return useMutation(mutationOptions)
 }
 /**
- * Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT /
+ * Authorized roles: ADMIN / WEBCLIENT / INTERVIEWER / SURVEY_UNIT /
  * @summary Update survey-unit updated data/state-data
  */
 export const updateSurveyUnitDataStateDataById = (
@@ -588,7 +588,7 @@ export function useGetStateDataBySurveyUnit<
 }
 
 /**
- * Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT /
+ * Authorized roles: ADMIN / WEBCLIENT / INTERVIEWER / SURVEY_UNIT /
  * @summary Update state-data for a survey unit
  */
 export const setStateData = (
@@ -1064,7 +1064,7 @@ export function useGetDataBySurveyUnit<
 }
 
 /**
- * Authorized roles: ADMIN / WEBCLIENT / REVIEWER / REVIEWER_ALTERNATIVE / INTERVIEWER / SURVEY_UNIT /
+ * Authorized roles: ADMIN / WEBCLIENT / INTERVIEWER / SURVEY_UNIT /
  * @summary Update data for a survey unit
  */
 export const updateData = (

@@ -6,6 +6,4 @@
  * OpenAPI spec version: 4.3.15
  */
 
-export type DeleteCampaignByIdParams = {
-  force: boolean
-}
+export type SchemaVariableTypeAnyOfTwoItemItem = string | null

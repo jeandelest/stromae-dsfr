@@ -3,7 +3,7 @@
  * Do not edit manually.
  * queen-api
  * API for Queen/Stromae
- * OpenAPI spec version: 4.3.10-SNAPSHOT
+ * OpenAPI spec version: 4.3.15
  */
 
 export * from './addParadataBody'
@@ -33,6 +33,8 @@ export * from './questionnaireModelValue'
 export * from './questionnaireModelValueValue'
 export * from './setCommentBody'
 export * from './stateData'
+export * from './stateDataForSurveyUnitUpdate'
+export * from './stateDataForSurveyUnitUpdateState'
 export * from './stateDataState'
 export * from './stateDataUpdate'
 export * from './stateDataUpdateState'
