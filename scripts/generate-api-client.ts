@@ -68,18 +68,18 @@ function createModifiedOrvalConfigContent(
 
   return configContent
     .replace(/openapi: {/, `openapi: {\n    input: '${openApiFilePath}',`)
-    .replace(
-      /path: '(.*?)'/g,
-      (_, relativePath) => `path: '${resolve(PROJECT_ROOT, relativePath)}'`
-    )
-    .replace(
-      /target: '(.*?)'/,
-      `target: '${resolve(PROJECT_ROOT, 'src/api/')}'`
-    )
-    .replace(
-      /schemas: '(.*?)'/,
-      `schemas: '${resolve(PROJECT_ROOT, 'src/model/api')}'`
-    )
+    .replace(/path: '(.*?)'/g, (_, relativePath) => {
+      const absolutePath = resolve(PROJECT_ROOT, relativePath)
+      return `path: '${absolutePath}'`
+    })
+    .replace(/target: '(.*?)'/, (_, targetPath) => {
+      const absolutePath = resolve(PROJECT_ROOT, targetPath)
+      return `target: '${absolutePath}'`
+    })
+    .replace(/schemas: '(.*?)'/, (_, schemasPath) => {
+      const absolutePath = resolve(PROJECT_ROOT, schemasPath)
+      return `schemas: '${absolutePath}'`
+    })
 }
 
 // Write the modified orval.config.ts to the cache directory
