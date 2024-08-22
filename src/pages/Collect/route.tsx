@@ -11,6 +11,7 @@ import { ContentSkeleton } from 'shared/components/ContentSkeleton'
 import { ErrorComponent } from 'shared/components/Error/ErrorComponent'
 import { protectedRouteLoader } from 'shared/loader/protectedLoader'
 import { metadataStore } from 'shared/metadataStore/metadataStore'
+import { convertOldPersonalization } from 'utils/convertOldPersonalization'
 import { z } from 'zod'
 import { CollectPage } from './CollectPage'
 
@@ -55,15 +56,14 @@ export const collectRoute = createRoute({
         })
       )
       .then((metadata) => {
-        metadataStore.updateMetadata({
-          label: metadata.label,
-          mainLogo: metadata.logos?.main,
-          secondariesLogo: metadata.logos?.secondaries,
-        })
-
         document.title = metadata.label ?? "Questionnaire | Filière d'Enquête"
 
-        return metadata
+        return metadataStore.updateMetadata({
+          ...metadata,
+          mainLogo: metadata.logos?.main,
+          secondariesLogo: metadata.logos?.secondaries,
+          surveyUnitInfo: convertOldPersonalization(metadata.personalization),
+        })
       })
 
     return Promise.all([sourcePr, surveyUnitDataPr, metadataPr]).then(

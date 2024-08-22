@@ -1,23 +1,22 @@
-import { assert } from 'tsafe/assert'
-import type { Extends } from 'tsafe/Extends'
-import type { SurveyUnitMetadata } from './api'
+import type { LocalizedString } from 'i18n'
 
-type Logo = {
-  label: string
+export type Logo = {
+  label: LocalizedString
   url: string
 }
 
-type Logos = {
-  main: Logo
-  secondaries?: Logo[]
-}
-export type Metadata = {
-  context: 'household' | 'business'
-  label: string
-  logos?: Logos
-  objectives: string
-  personalization?: { name: string; value: string }[]
-  variables?: { name: string; value?: unknown }[] //value is not optional but an issue with zod https://github.com/colinhacks/zod/issues/2966
+export type Content = {
+  type: 'paragraph' | 'list'
+  textItems: string[]
 }
 
-assert<Extends<SurveyUnitMetadata, Metadata>>() //Must be replaced by Equals when zod solve issue
+export type Contents = { title?: string; contentBlocks: Content[] }
+export type Metadata = {
+  label: LocalizedString
+  objectives: LocalizedString
+  mainLogo: Logo
+  secondariesLogo?: Logo[]
+  campaignInfo?: Contents[]
+  surveyUnitInfo?: Contents[]
+  surveyUnitIdentifier: LocalizedString
+}

@@ -1,38 +1,47 @@
 import logoInsee from 'assets/logo-insee.png'
+import type { Metadata } from 'model/Metadata'
 
-type Logo = {
-  label: string
-  url: string
-}
-
-export type MetadataStoreType = {
-  label: string
-  description: string
-  mainLogo: Logo
-  secondariesLogo?: Logo[]
-}
-
-const defaultState: MetadataStoreType = {
-  label: "Filière d'enquête",
-  description: 'Application de collecte internet',
+const defaultState: Metadata = {
+  label: {
+    fr: "Filière d'enquête",
+    en: 'Survey Line',
+    sq: 'Linja e Anketës',
+  },
+  objectives: {
+    fr: 'Objectif court de votre enquête',
+    en: 'Short objective of your survey',
+    sq: 'Objektivi i shkurtër i anketës tuaj',
+  },
+  surveyUnitIdentifier: {
+    fr: 'Application de collecte internet',
+    en: 'Internet Collection Application',
+    sq: 'Aplikacioni për Mbledhjen e të Dhënave në Internet',
+  },
   mainLogo: {
-    label: "Logo de l'insee",
+    label: {
+      fr: "Logo de l'insee",
+      en: 'INSEE Logo',
+      sq: 'Logoja e INSEE',
+    },
     url: logoInsee,
   },
+  campaignInfo: undefined,
+  secondariesLogo: undefined,
+  surveyUnitInfo: undefined,
 }
 
-let state: MetadataStoreType = defaultState
+let state: Metadata = defaultState
 const listeners: Set<() => void> = new Set()
 
 export const metadataStore = {
-  getSnapshot(): MetadataStoreType {
+  getSnapshot(): Metadata {
     return state
   },
-  updateMetadata(newState: Partial<MetadataStoreType>) {
+  updateMetadata(newState: Partial<Metadata>) {
     const updatedState = Object.keys(newState).reduce(
       (acc, key) => {
-        if (newState[key as keyof MetadataStoreType] !== undefined) {
-          return { ...acc, [key]: newState[key as keyof MetadataStoreType] }
+        if (key in state && newState[key as keyof Metadata] !== undefined) {
+          return { ...acc, [key]: newState[key as keyof Metadata] }
         }
         return acc
       },
@@ -41,6 +50,7 @@ export const metadataStore = {
 
     state = updatedState
     emitChange()
+    return state
   },
   subscribe(listener: () => void): () => void {
     listeners.add(listener)

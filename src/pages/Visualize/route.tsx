@@ -8,6 +8,8 @@ import {
   sourceQueryOptions,
   surveyUnitDataQueryOptions,
 } from 'shared/query/visualizeQueryOptions'
+
+import { convertOldPersonalization } from 'utils/convertOldPersonalization'
 import { z } from 'zod'
 import { VisualizePage } from './Visualize'
 
@@ -63,19 +65,19 @@ export const visualizeRoute = createRoute({
             })
           )
           .then((metadata) => {
-            metadataStore.updateMetadata({
-              label: metadata.label,
-              mainLogo: metadata.logos?.main,
-              secondariesLogo: metadata.logos?.secondaries,
-            })
-
             if (metadata.label) {
               document.title = metadata.label
             }
-
-            return metadata
+            return metadataStore.updateMetadata({
+              ...metadata,
+              mainLogo: metadata.logos?.main,
+              secondariesLogo: metadata.logos?.secondaries,
+              surveyUnitInfo: convertOldPersonalization(
+                metadata.personalization
+              ),
+            })
           })
-      : Promise.resolve(undefined)
+      : Promise.resolve(metadataStore.getSnapshot())
 
     return Promise.all([sourcePr, surveyUnitDataPr, metadataPr]).then(
       ([source, surveyUnitData, metadata]) => {

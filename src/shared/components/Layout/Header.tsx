@@ -1,7 +1,11 @@
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display'
 import { Header as DsfrHeader } from '@codegouvfr/react-dsfr/Header'
 import { useMatchRoute, useSearch } from '@tanstack/react-router'
-import { declareComponentKeys, useTranslation } from 'i18n'
+import {
+  declareComponentKeys,
+  useResolveLocalizedString,
+  useTranslation,
+} from 'i18n'
 import { useOidc } from 'oidc'
 import { collectPath } from 'pages/Collect/route'
 import { executePreLogoutActions } from 'shared/hooks/prelogout'
@@ -10,8 +14,16 @@ import { useMetadataStore } from 'shared/metadataStore/useMetadataStore'
 export function Header() {
   const { t } = useTranslation({ Header })
   const { isUserLoggedIn, logout } = useOidc()
+  const { resolveLocalizedString, resolveLocalizedStringDetailed } =
+    useResolveLocalizedString({
+      labelWhenMismatchingLanguage: true,
+    })
 
-  const { label: serviceTitle, mainLogo } = useMetadataStore()
+  const {
+    label: serviceTitle,
+    mainLogo,
+    surveyUnitIdentifier,
+  } = useMetadataStore()
 
   /**
    * There is an issue with this part of the code: the search type is not well narrowed with isCollectRoute. I'm waiting for a better solution.
@@ -64,10 +76,10 @@ export function Header() {
               } as const,
             ]),
       ]}
-      serviceTagline={t('service tag line')}
-      serviceTitle={serviceTitle}
+      serviceTagline={resolveLocalizedString(surveyUnitIdentifier)}
+      serviceTitle={resolveLocalizedString(serviceTitle)}
       operatorLogo={{
-        alt: mainLogo.label,
+        alt: resolveLocalizedStringDetailed(mainLogo.label).str,
         imgUrl: mainLogo.url,
         orientation: 'vertical',
       }}
@@ -77,12 +89,7 @@ export function Header() {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { i18n } = declareComponentKeys<
-  | 'home link title'
-  | 'quick access support'
-  | 'quick access logout'
-  | 'service tag line'
-  | { K: 'service title'; R: JSX.Element }
-  | 'operator logo alt'
+  'home link title' | 'quick access support' | 'quick access logout'
 >()({ Header })
 
 export type I18n = typeof i18n
