@@ -136,13 +136,13 @@ export function Orchestrator(props: OrchestratorProps) {
   })
 
   // Decorates goNext function with controls behavior
-  const goNextWithControls = () => {
+  const goNextWithControls = (goNext: () => void) => {
     const { currentErrors } = compileControls()
 
     // No errors, continue
     if (!currentErrors) {
       setActiveErrors(undefined)
-      goNextLunatic()
+      goNext()
       return
     }
 
@@ -156,14 +156,15 @@ export function Orchestrator(props: OrchestratorProps) {
     // activeErrors and currentErrors are the same and no blocking error, we go next
     if (isSameErrors(currentErrors, activeErrors)) {
       setActiveErrors(undefined)
-      goNextLunatic()
+      goNext()
       return
     }
     setActiveErrors(currentErrors)
   }
 
   const { currentPage, goNext, goToPage, goPrevious } = useStromaeNavigation({
-    goNextLunatic: goNextWithControls,
+    goNextWithControls,
+    goNextLunatic,
     goPrevLunatic,
     isFirstPage,
     isLastPage,

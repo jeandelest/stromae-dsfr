@@ -11,6 +11,7 @@ type Params = {
   isFirstPage: boolean
   isLastPage: boolean
   initialCurrentPage: PageType | undefined
+  goNextWithControls: (goNext: () => void) => void
   goNextLunatic: LunaticGoNextPage
   goPrevLunatic: LunaticGoPreviousPage
   openValidationModal: () => Promise<void>
@@ -21,6 +22,7 @@ export function useStromaeNavigation({
   isFirstPage,
   isLastPage,
   initialCurrentPage = 'welcomePage',
+  goNextWithControls,
   goNextLunatic,
   goPrevLunatic,
   goToLunaticPage,
@@ -29,6 +31,13 @@ export function useStromaeNavigation({
   const [currentPage, setCurrentPage] = useState<InternalPageType>(() =>
     initialCurrentPage === 'endPage' ? 'endPage' : 'welcomePage'
   )
+
+  const goNextFromLunaticPage = (isLastPage: boolean) => {
+    const goNext = isLastPage
+      ? () => setCurrentPage('validationPage')
+      : goNextLunatic
+    return goNextWithControls(goNext)
+  }
 
   const goNext = () => {
     switch (currentPage) {
@@ -40,7 +49,7 @@ export function useStromaeNavigation({
       case 'welcomePage':
         return setCurrentPage('lunaticPage')
       case 'lunaticPage':
-        return isLastPage ? setCurrentPage('validationPage') : goNextLunatic()
+        return goNextFromLunaticPage(isLastPage)
       case 'endPage':
         return
     }
