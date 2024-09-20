@@ -75,7 +75,7 @@ export function Footer() {
         'cnis.fr',
         'ec.europa.eu/eurostat',
         'insee.fr',
-        'plus.transformation.gouv.fr',
+        'service-public.fr',
       ]}
       bottomItems={[
         {
