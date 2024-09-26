@@ -905,10 +905,10 @@
   dependencies:
     react-number-format "^5.4.0"
 
-"@inseefr/lunatic@^3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.4.3.tgz#ebe76ec4bf655a28122ad6d0526eff3bb06545f6"
-  integrity sha512-8ubFw1zQndF2ZLkzYCEY/3LwhAgCiO05V3YMQdWVV0ji1PDLapQHSV7yJ9YAAS+7eDiCK9n7HO8WDUTxY80h2g==
+"@inseefr/lunatic@^3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.4.4.tgz#8c7a2e6b93d7156b6f65717463137015f0b2606f"
+  integrity sha512-A2KPwZ6iJoSdomFGMqqa4bs8bPpnWMAk37u2y2c2DiSkaLTKROrmARcZAEeTyzpLA9+2DgvjHHZWkDihd+w6Hw==
   dependencies:
     "@inseefr/trevas" "^0.1.21"
     "@inseefr/vtl-2.0-antlr-tools" "^0.3.2"
