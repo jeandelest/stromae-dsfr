@@ -1,3 +1,10 @@
+### 1.2.3
+
+#### Correction de bugs
+
+- en mode collecte, retourner sur la page de confirmation d'un questionnaire déjà validé ne re-déclenche plus son envoi
+- en mode collecte, retourner sur la page d'un questionnaire déjà validé n'affiche plus la modale demandant si l'utilisateur veut retourner sur la dernière page remplie
+
 ### 1.2.2
 
 #### Correction de bugs
