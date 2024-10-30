@@ -4,6 +4,8 @@
 
 - en mode collecte, retourner sur la page de confirmation d'un questionnaire déjà validé ne re-déclenche plus son envoi
 - en mode collecte, retourner sur la page d'un questionnaire déjà validé n'affiche plus la modale demandant si l'utilisateur veut retourner sur la dernière page remplie
+- en mode collecte, sur la page de fin, on affiche la bonne date à laquelle les réponses ont été envoyé
+- en mode collecte, sur la page de fin, on n'affiche plus la date à laquelle les réponses ont été envoyé quand l'extraction a commencé et a modifié ladite date
 
 ### 1.2.2
 
