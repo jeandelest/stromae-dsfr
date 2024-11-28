@@ -10,7 +10,7 @@ export default tseslint.config(
       'dist',
       // generated files
       'src/api/[0-9][0-9]-*.ts',
-      'src/model/api/',
+      'src/models/api/',
       'src/vite-env.d.ts',
     ],
   },
