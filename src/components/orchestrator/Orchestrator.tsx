@@ -19,6 +19,10 @@ import { usePrevious } from '@/hooks/usePrevious'
 import type { Metadata } from '@/models/Metadata'
 import type { StateData } from '@/models/StateData'
 import type { SurveyUnitData } from '@/models/SurveyUnitData'
+import type {
+  LunaticGetReferentiel,
+  LunaticPageTag,
+} from '@/models/lunaticType'
 import {
   computeControlEvent,
   computeControlSkipEvent,
@@ -43,7 +47,6 @@ import { isBlockingError } from './utils/controls'
 import { trimCollectedData } from './utils/data'
 import { downloadAsJson } from './utils/downloadAsJson'
 import { isObjectEmpty } from './utils/isObjectEmpty'
-import type { LunaticGetReferentiel, LunaticPageTag } from './utils/lunaticType'
 import { hasBeenSent, shouldDisplayWelcomeModal } from './utils/orchestrator'
 import { scrollAndFocusToFirstError } from './utils/scrollAndFocusToFirstError'
 import { isSequencePage } from './utils/sequence'
@@ -102,11 +105,11 @@ export namespace OrchestratorProps {
 export function Orchestrator(props: OrchestratorProps) {
   const { source, surveyUnitData, getReferentiel, mode, metadata } = props
 
+  const navigate = useNavigate()
+
   // Allow to send telemetry events once survey unit id has been set
   const [isTelemetryActivated, setIsTelemetryActivated] =
     useState<boolean>(false)
-
-  const navigate = useNavigate()
   const {
     isTelemetryDisabled,
     pushEvent,
@@ -115,31 +118,6 @@ export function Orchestrator(props: OrchestratorProps) {
   } = useTelemetry()
   const { setEventToPushAfterInactivity, triggerInactivityTimeoutEvent } =
     usePushEventAfterInactivity(pushEvent)
-
-  const containerRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const pageTagRef = useRef<LunaticPageTag>('1')
-  const validationModalActionsRef = useRef({
-    open: () => Promise.resolve(),
-  })
-
-  const initialCurrentPage = surveyUnitData?.stateData?.currentPage
-  const initialState = surveyUnitData?.stateData?.state
-  const pagination = source.pagination ?? 'question'
-
-  /** Displays the welcome modal which allows to come back to current page */
-  const shouldWelcome = shouldDisplayWelcomeModal(
-    initialState,
-    initialCurrentPage,
-  )
-
-  const lunaticLogger = useMemo(
-    () =>
-      mode === MODE_TYPE.VISUALIZE
-        ? createLunaticLogger({ pageTag: pageTagRef })
-        : undefined,
-    [mode],
-  )
 
   /** Triggers telemetry input event on Lunatic change */
   const handleLunaticChange: LunaticChangesHandler = useCallback(
@@ -167,6 +145,25 @@ export function Orchestrator(props: OrchestratorProps) {
       }
     },
     [pushEvent, setEventToPushAfterInactivity],
+  )
+
+  const containerRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const pageTagRef = useRef<LunaticPageTag>('1')
+  const validationModalActionsRef = useRef({
+    open: () => Promise.resolve(),
+  })
+
+  const initialCurrentPage = surveyUnitData?.stateData?.currentPage
+  const initialState = surveyUnitData?.stateData?.state
+  const pagination = source.pagination ?? 'question'
+
+  const lunaticLogger = useMemo(
+    () =>
+      mode === MODE_TYPE.VISUALIZE
+        ? createLunaticLogger({ pageTag: pageTagRef })
+        : undefined,
+    [mode],
   )
 
   const {
@@ -282,9 +279,16 @@ export function Orchestrator(props: OrchestratorProps) {
 
   /** Allows to download data for visualize  */
   const downloadAsJsonRef = useRefSync(() => {
+    const data = getData(false)
+    const trimmedCollectedData = trimCollectedData(data.COLLECTED)
+    const trimmedData = {
+      ...data,
+      COLLECTED: trimmedCollectedData,
+    }
+
     downloadAsJson<SurveyUnitData>({
       dataToDownload: {
-        data: getData(false),
+        data: trimmedData,
         stateData: getCurrentStateData.current(),
         personalization: surveyUnitData?.personalization,
       },
@@ -411,18 +415,14 @@ export function Orchestrator(props: OrchestratorProps) {
   )
 
   const handleDepositProofClick = async () => {
-    switch (mode) {
-      case MODE_TYPE.VISUALIZE: {
-        downloadAsJsonRef.current()
-        navigate({ to: '/visualize', params: {} })
-        break
-      }
-      case MODE_TYPE.COLLECT: {
-        return props.getDepositProof()
-      }
-      case MODE_TYPE.REVIEW:
-      default:
-        break
+    if (mode === MODE_TYPE.VISUALIZE) {
+      downloadAsJsonRef.current()
+      navigate({ to: '/visualize', params: {} })
+      return
+    }
+    if (mode === MODE_TYPE.COLLECT) {
+      props.getDepositProof()
+      return
     }
   }
 
@@ -478,7 +478,7 @@ export function Orchestrator(props: OrchestratorProps) {
                   ? goToPage({ page: initialCurrentPage })
                   : null
               }
-              open={shouldWelcome}
+              open={shouldDisplayWelcomeModal(initialState, initialCurrentPage)}
             />
             <ValidationModal actionsRef={validationModalActionsRef} />
             {mode === MODE_TYPE.VISUALIZE && <VTLDevTools />}
