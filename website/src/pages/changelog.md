@@ -1,3 +1,10 @@
+### 1.3.2
+
+#### Montée de version Lunatic
+
+Montée de version Lunatic 3.4.10
+Montée de version Lunatic-DSFR 2.4.4
+
 ### 1.3.1
 
 #### QoL
