@@ -907,10 +907,10 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic-dsfr@^2.4.7":
-  version "2.4.7"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.4.7.tgz#a403f922e559c8d1000d879c7933bc0771738bdb"
-  integrity sha512-WwRT37DCmLwvsqd/Lh1I6cpdxnbhfMHY5d7vUjkUQhX/+sr+vDcIvfBghSFOssjNDtE0aQuCU5Tw3LD5lmJHtw==
+"@inseefr/lunatic-dsfr@^2.4.8":
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.4.8.tgz#dc7cd7f4d0c9578579c55c8cc16c761b63afec0a"
+  integrity sha512-U0Dozqoj6aanpFvysxISGW5ebFCgV9S7ullJmDm+LT4wP5d17YDZ8RugjrvgbZJsga/U3x/3pmU91hURWAdgaA==
   dependencies:
     react-number-format "^5.4.0"
 
