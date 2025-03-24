@@ -809,10 +809,10 @@
   dependencies:
     react-number-format "^5.4.0"
 
-"@inseefr/lunatic@^3.4.20":
-  version "3.4.20"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.4.20.tgz#8155b6a21d70326304389c582aeae7b310d8ce19"
-  integrity sha512-jHgVWTY3O4GDna2/E4O3vCckrsnJGBQDHY4OpKdWrZzW/oTqUIwK9Mebedt+1/aFZZ+DUtIvrdKHEbV/Pn/2nA==
+"@inseefr/lunatic@^3.4.21":
+  version "3.4.21"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.4.21.tgz#8f2a7d9c5511530e35f90943fa68780fb7833c88"
+  integrity sha512-qGH69Wu27cVVfJvdtevLf+kfywCEtfrMOKhEoZZgWGhZYWqyvsu2YKCpgipUXgr9AIr8FmM9uqRlA4O56PleGQ==
   dependencies:
     "@inseefr/trevas" "^0.1.21"
     "@inseefr/vtl-2.0-antlr-tools" "^0.3.2"
