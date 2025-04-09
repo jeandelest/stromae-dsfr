@@ -809,10 +809,10 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic-dsfr@^2.5.0-rc.0":
-  version "2.5.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.5.0-rc.0.tgz#7f2d04c62d84b24fbd41462938c6d507efb0bf12"
-  integrity sha512-Cw0plgtjLhZyWob2542iTgUPWoZqsxMI1iV7EVgLKL0DyP+Exixnp2Y0Hl1qiAZ0w55OLKb7NSrDVVOmNTmeCA==
+"@inseefr/lunatic-dsfr@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.5.0.tgz#654246feaa7e426c7be86c858dca4bcbeb0620b7"
+  integrity sha512-qXwi+lRaCJ9MvBZvq//nDvqsIIK6I4XfmNitIrhj342bKKK5YWdb3NrTX+Q+pl9YZ2YtGMUpVpe7FH1YE3EbSQ==
   dependencies:
     "@mui/x-date-pickers" "^7.28.0"
     date-fns "^4.1.0"
