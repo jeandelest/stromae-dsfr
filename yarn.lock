@@ -818,10 +818,10 @@
     date-fns "^4.1.0"
     react-number-format "^5.4.0"
 
-"@inseefr/lunatic@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.5.1.tgz#3d130ad7fe29adf31f4e2caddf1d0958e3c67f73"
-  integrity sha512-qnE/CU9ZEVlhMuIjJt5AEf/t168U723+k/zTM/FEKRIn5iw9wHb/ZTD0X82u+1MqT772zUVDjZruCu+GgKaEDQ==
+"@inseefr/lunatic@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.5.2.tgz#e58ba8c4f68e7892d37b720150d73d1224be8a3e"
+  integrity sha512-0oofPcWgzEqnQOgVIJSMqYjJHCVL6AFxo/wq/j9+2IlyYlPSbSJl8DdRn9ZG9mLfYR4YtavSKFe3u21tj1CucA==
   dependencies:
     "@inseefr/trevas" "^0.1.21"
     "@inseefr/vtl-2.0-antlr-tools" "^0.3.2"
