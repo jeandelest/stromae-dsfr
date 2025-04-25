@@ -951,10 +951,10 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic-dsfr@^2.5.2":
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.5.2.tgz#b5ad659cd6e7a19551a2a6eaa85206c4e31a3ece"
-  integrity sha512-P+MqIhZxJUaxTTngO8NhOfBf6hx6UKJ7yR+KB4329/V9wrZHXwxDG8fRORwkA7Fibm5MeBvYIUVdLnPvfFtGyA==
+"@inseefr/lunatic-dsfr@^2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic-dsfr/-/lunatic-dsfr-2.5.3.tgz#6f6658d1487a41f76595af5db7cc991ab47c165b"
+  integrity sha512-Jz4+li4OEHMmXbohmanB6hY0r4lSXMrcGB9wXNZ1Yz6KEue+otgmx5dUcWt/q1LMDmoac38OdO7aXggEuelcVw==
   dependencies:
     "@mui/x-date-pickers" "^7.28.0"
     date-fns "^4.1.0"
