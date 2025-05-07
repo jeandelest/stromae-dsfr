@@ -22,17 +22,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: yarn
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Build website
-        run: yarn build
+      - name: build docs website
+        working-directory: ./website/
+        run: yarn && yarn build
       - uses: actions/upload-artifact@v4
         with:
-          name: website/build
+          name: website-build
           path: website/build
 
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy docs to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
@@ -40,11 +39,11 @@ jobs:
       - name: Download docs artifact
         uses: actions/download-artifact@v4
         with:
-          name: website/build
+          name: website-build
           path: website/build
       - name: Deploy docs to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/build
-          destination_dir: ./
+          destination_dir: ./docs

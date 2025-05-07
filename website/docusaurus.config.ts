@@ -74,10 +74,10 @@ const config: Config = {
           label: 'Changelog',
         },
         {
-					href: 'https://inseefr.github.io/stromae-dsfr/storybook',
-					label: 'Storybook',
-					position: 'right',
-				},
+          href: 'https://inseefr.github.io/stromae-dsfr/storybook',
+          label: 'Storybook',
+          position: 'right',
+        },
         {
           href: 'https://github.com/Inseefr/stromae-dsfr',
           label: 'Github',
