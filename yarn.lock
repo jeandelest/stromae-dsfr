@@ -951,10 +951,10 @@
     minimatch "^6.2.0"
     validator "^13.11.0"
 
-"@inseefr/lunatic@^3.5.4":
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.5.4.tgz#293ae25bee6eed17c2390d16f1a7e6cf5bb382e6"
-  integrity sha512-uP02mT5u5vWzkPBeYbpSi+y6QIKQ5k7m/34oLfNeaPuJjIS5VTScTO5dRx3hYrUOntmf0Q7WqFVcOQqGevYMYw==
+"@inseefr/lunatic@^3.5.8":
+  version "3.5.8"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-3.5.8.tgz#cf131bba34dc2e532bc848043bfd1cb80c02daba"
+  integrity sha512-P0anzRI6PNcVkY2j/0ij75CveSW8ZE83TRcBYfl5AKmkPb0O/qC9otGZ20FvhTj3c6hKgd82+S2Sa4pr5BFGGA==
   dependencies:
     "@inseefr/trevas" "^0.1.21"
     "@inseefr/vtl-2.0-antlr-tools" "^0.3.2"
