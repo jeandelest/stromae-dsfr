@@ -197,31 +197,30 @@ export function Orchestrator(props: OrchestratorProps) {
     surveyUnitData?.stateData?.date,
   )
 
+  const { currentPage, goNext, goToPage, goPrevious } = useStromaeNavigation({
+    goNextLunatic: goNextLunaticPage,
+    goPrevLunatic: goPreviousLunaticPage,
+    goToLunaticPage: goToLunaticPage,
+    isFirstPage,
+    isLastPage,
+    initialCurrentPage,
+    openValidationModal: () => validationModalActionsRef.current.open(),
+  })
+
   const {
     activeErrors,
-    handleGoToLunaticPage,
-    handleNextLunaticPage,
-    handlePreviousLunaticPage,
+    handleGoToPage,
+    handleNextPage,
+    handlePreviousPage,
     resetControls,
   } = useControls({
     compileControls,
     pushEvent,
     isTelemetryInitialized,
-    goNextPage: goNextLunaticPage,
-    goPreviousPage: goPreviousLunaticPage,
-    goToPage: goToLunaticPage,
+    goNextPage: goNext,
+    goPreviousPage: goPrevious,
+    goToPage: goToPage,
   })
-
-  const { currentPage, handleNextPage, handleGoToPage, handlePreviousPage } =
-    useStromaeNavigation({
-      goNextLunatic: handleNextLunaticPage,
-      goPrevLunatic: handlePreviousLunaticPage,
-      goToLunaticPage: handleGoToLunaticPage,
-      isFirstPage,
-      isLastPage,
-      initialCurrentPage,
-      openValidationModal: () => validationModalActionsRef.current.open(),
-    })
 
   const previousPage = usePrevious(currentPage) ?? initialCurrentPage
   const previousPageTag = usePrevious(pageTag) ?? initialCurrentPage
@@ -396,7 +395,9 @@ export function Orchestrator(props: OrchestratorProps) {
     <div ref={containerRef}>
       <LunaticProvider>
         <SurveyContainer
-          handleNextClick={handleNextPage}
+          handleNextClick={() =>
+            handleNextPage(currentPage === PAGE_TYPE.LUNATIC)
+          }
           handlePreviousClick={handlePreviousPage}
           handleDownloadData={downloadAsJsonRef.current} // Visualize
           currentPage={currentPage}
